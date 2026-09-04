@@ -3,446 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="EPIC - Trung tâm năng khiếu và phát triển kỹ năng. Khám phá tài năng, nuôi dưỡng đam mê, tự tin tỏa sáng.">
-  <title>EPIC | Trung tâm Năng khiếu</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <meta name="description" content="EPIC Talent Center – Trung tâm đào tạo năng khiếu dành cho trẻ em từ 4–18 tuổi.">
+  <title>EPIC Talent Center | Thỏa sức đam mê, khơi nguồn sáng tạo</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <!-- HEADER -->
-  <header class="header" id="header">
-    <div class="container nav">
-      <a href="#home" class="brand" aria-label="EPIC - Trang chủ">
-        <img src="assets/logo.png" alt="Logo EPIC" class="logo">
+  <div class="floating-doodles" aria-hidden="true">
+    <span class="doodle d1">✦</span><span class="doodle d2">♪</span><span class="doodle d3">✎</span><span class="doodle d4">✿</span><span class="doodle d5">★</span>
+  </div>
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="#trang-chu" aria-label="EPIC Talent Center">
+        <img src="assets/logo.png" alt="EPIC Talent Center" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+        <span class="brand-fallback">EPIC<span>TALENT CENTER</span></span>
       </a>
-
-      <button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav class="nav-menu" id="navMenu">
-        <a href="#home" class="nav-link active">Trang chủ</a>
-        <a href="#about" class="nav-link">Về EPIC</a>
-        <a href="#programs" class="nav-link">Chương trình</a>
-        <a href="#teachers" class="nav-link">Giáo viên</a>
-        <a href="#activities" class="nav-link">Hoạt động</a>
-        <a href="#contact" class="nav-link">Liên hệ</a>
-        <a href="#register" class="btn btn-small">Đăng ký học thử</a>
+      <button class="menu-toggle" aria-label="Mở menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <a class="active" href="#trang-chu">TRANG CHỦ</a><a href="#epic">EPIC</a><a href="#chuong-trinh">CHƯƠNG TRÌNH</a><a href="#giao-vien">GIÁO VIÊN</a><a href="#hoat-dong">HOẠT ĐỘNG</a><a href="#dang-ky">ĐĂNG KÝ</a><a href="#lien-he">LIÊN HỆ</a>
       </nav>
+      <a class="nav-cta" href="#dang-ky">Đăng ký học thử <span>↗</span></a>
     </div>
   </header>
-
   <main>
-    <!-- HERO -->
-    <section class="hero section" id="home">
-      <div class="hero-shape shape-one"></div>
-      <div class="hero-shape shape-two"></div>
-
+    <section class="hero section" id="trang-chu">
       <div class="container hero-grid">
-        <div class="hero-content reveal">
-          <span class="eyebrow"><span class="eyebrow-dot"></span> EPIC TALENT CENTER</span>
-          <h1>Khám phá tài năng.<br><span>Kiến tạo tương lai.</span></h1>
-          <p class="hero-text">
-            Nơi mỗi học viên được khám phá đam mê, phát triển năng lực
-            và tự tin thể hiện bản thân qua những trải nghiệm học tập đầy cảm hứng.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#register" class="btn btn-primary">Đăng ký học thử <span>→</span></a>
-            <a href="#programs" class="btn btn-outline">Khám phá chương trình</a>
-          </div>
-
-          <div class="hero-stats">
-            <div><strong>5+</strong><span>Chương trình</span></div>
-            <div><strong>100%</strong><span>Trải nghiệm thực hành</span></div>
-            <div><strong>1</strong><span>Môi trường sáng tạo</span></div>
-          </div>
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span>✦</span> KHƠI MỞ TIỀM NĂNG</div>
+          <h1>EPIC – Thỏa sức đam mê,<br><em>khơi nguồn sáng tạo</em></h1>
+          <p>Trung tâm đào tạo năng khiếu dành cho trẻ em từ <strong>4–18 tuổi</strong>, nơi mỗi bạn nhỏ được tự tin khám phá điều mình yêu thích.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#dang-ky">Đăng ký học thử <span>↗</span></a><a class="btn btn-outline" href="#chuong-trinh">Khám phá chương trình <span>→</span></a></div>
+          <div class="hero-note"><span class="spark">✦</span> Học để vui – Vui để tỏa sáng</div>
         </div>
+        <div class="hero-art reveal">
+          <div class="paint paint-a"></div><div class="paint paint-b"></div><div class="paint paint-c"></div>
+          <div class="hero-placeholder"><div class="placeholder-icon">🎨</div><strong>KHU VỰC HÌNH ẢNH</strong><span>Ảnh học viên / lớp học sẽ được thay tại đây</span></div>
+          <div class="sticker sticker-music">♪</div><div class="sticker sticker-star">★</div><div class="sticker sticker-palette">● ● ●</div>
+        </div>
+      </div>
+      <div class="scroll-hint">CUỘN XUỐNG <span>↓</span></div>
+    </section>
 
-        <div class="hero-visual reveal">
-          <div class="visual-card">
-            <div class="visual-image">
-              <div class="visual-placeholder">
-                <span class="visual-icon">✦</span>
-                <p>YOUR<br>CREATIVITY<br>STARTS HERE</p>
-              </div>
-            </div>
-            <div class="floating-card floating-card-top">
-              <span>✦</span>
-              <div><strong>Khơi nguồn</strong><small>đam mê sáng tạo</small></div>
-            </div>
-            <div class="floating-card floating-card-bottom">
-              <span>★</span>
-              <div><strong>Tỏa sáng</strong><small>theo cách của bạn</small></div>
-            </div>
-          </div>
+    <section class="section about" id="epic">
+      <div class="container about-grid">
+        <div class="about-visual reveal"><div class="about-card"><div class="about-placeholder">🖍️</div><span>KHÔNG GIAN SÁNG TẠO</span><small>Ảnh trung tâm sẽ được cập nhật</small></div><div class="mini-badge">4–18<br><small>TUỔI</small></div></div>
+        <div class="about-copy reveal"><div class="section-label">VỀ EPIC <span>✦</span></div><h2>Mỗi đứa trẻ đều có<br><em>một tài năng riêng.</em></h2><p>EPIC tạo ra môi trường để trẻ được thử, được sai, được sáng tạo và từng bước tự tin thể hiện bản thân.</p>
+          <div class="value-row"><div><b>01</b><strong>Khám phá</strong><span>Tìm ra điều con yêu thích.</span></div><div><b>02</b><strong>Phát triển</strong><span>Nuôi dưỡng kỹ năng mỗi ngày.</span></div><div><b>03</b><strong>Tỏa sáng</strong><span>Tự tin thể hiện cá tính.</span></div></div>
+          <a class="text-link" href="#dang-ky">Tìm hiểu về EPIC <span>→</span></a>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="about section" id="about">
-      <div class="container">
-        <div class="section-heading centered reveal">
-          <span class="eyebrow">VỀ EPIC</span>
-          <h2>Không chỉ học.<br><span>Còn là một hành trình khám phá.</span></h2>
-          <p>
-            EPIC xây dựng môi trường để học viên học bằng trải nghiệm,
-            phát triển bằng thực hành và trưởng thành bằng sự tự tin.
-          </p>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-story reveal">
-            <div class="story-number">01</div>
-            <h3>Mỗi người đều có một tài năng riêng.</h3>
-            <p>
-              Chúng tôi tin rằng năng khiếu không chỉ là khả năng bẩm sinh.
-              Đó còn là niềm yêu thích, sự tò mò và quá trình được khuyến khích
-              để thử sức. EPIC tạo không gian an toàn để mỗi học viên tìm ra
-              điều mình yêu thích và phát triển theo cách riêng.
-            </p>
-            <a href="#register" class="text-link">Bắt đầu hành trình <span>→</span></a>
-          </div>
-
-          <div class="values-grid reveal">
-            <article class="value-card">
-              <div class="value-icon blue">✦</div>
-              <h3>Sáng tạo</h3>
-              <p>Tự do khám phá ý tưởng và thể hiện cá tính.</p>
-            </article>
-            <article class="value-card">
-              <div class="value-icon red">↗</div>
-              <h3>Phát triển</h3>
-              <p>Rèn luyện kỹ năng qua thực hành và trải nghiệm.</p>
-            </article>
-            <article class="value-card">
-              <div class="value-icon yellow">★</div>
-              <h3>Tự tin</h3>
-              <p>Dám thử, dám thể hiện và tự hào về thành quả.</p>
-            </article>
-            <article class="value-card">
-              <div class="value-icon navy">∞</div>
-              <h3>Đam mê</h3>
-              <p>Nuôi dưỡng tình yêu lâu dài với điều mình chọn.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROGRAMS -->
-    <section class="programs section section-light" id="programs">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">CHƯƠNG TRÌNH</span>
-          <h2>Khám phá điều<br><span>bạn yêu thích.</span></h2>
-          <p>Chương trình có thể tùy chỉnh theo độ tuổi, trình độ và mục tiêu của học viên.</p>
-        </div>
-
+    <section class="section programs" id="chuong-trinh">
+      <div class="container"><div class="section-head reveal"><div><div class="section-label">KHÁM PHÁ <span>✦</span></div><h2>Các lớp <em>năng khiếu</em></h2></div><p>Chọn một sân chơi phù hợp để con thỏa sức sáng tạo và phát triển thế mạnh riêng.</p></div>
         <div class="program-grid">
-          <article class="program-card program-blue reveal">
-            <div class="program-number">01</div>
-            <div class="program-icon">🎨</div>
-            <h3>Mỹ thuật</h3>
-            <p>Khám phá màu sắc, hình khối, bố cục và tư duy nghệ thuật.</p>
-            <ul>
-              <li>Vẽ & màu sắc</li>
-              <li>Tư duy hình ảnh</li>
-              <li>Thực hành sáng tạo</li>
-            </ul>
-            <a href="#register" class="card-link">Tìm hiểu lớp <span>→</span></a>
-          </article>
-
-          <article class="program-card program-red reveal">
-            <div class="program-number">02</div>
-            <div class="program-icon">🎹</div>
-            <h3>Âm nhạc</h3>
-            <p>Làm quen với nhạc cụ, nhạc lý và phát triển cảm thụ âm nhạc.</p>
-            <ul>
-              <li>Piano / Keyboard</li>
-              <li>Nhạc lý cơ bản</li>
-              <li>Cảm thụ âm nhạc</li>
-            </ul>
-            <a href="#register" class="card-link">Tìm hiểu lớp <span>→</span></a>
-          </article>
-
-          <article class="program-card program-yellow reveal">
-            <div class="program-number">03</div>
-            <div class="program-icon">💃</div>
-            <h3>Dance</h3>
-            <p>Phát triển khả năng vận động, nhịp điệu và biểu diễn.</p>
-            <ul>
-              <li>Dance hiện đại</li>
-              <li>Rhythm & movement</li>
-              <li>Biểu diễn sân khấu</li>
-            </ul>
-            <a href="#register" class="card-link">Tìm hiểu lớp <span>→</span></a>
-          </article>
-
-          <article class="program-card program-navy reveal">
-            <div class="program-number">04</div>
-            <div class="program-icon">🎤</div>
-            <h3>Thanh nhạc</h3>
-            <p>Luyện giọng, tiết tấu và khả năng tự tin trình diễn.</p>
-            <ul>
-              <li>Kỹ thuật thanh nhạc</li>
-              <li>Phát âm & hơi thở</li>
-              <li>Biểu diễn</li>
-            </ul>
-            <a href="#register" class="card-link">Tìm hiểu lớp <span>→</span></a>
-          </article>
-
-          <article class="program-card program-mixed reveal">
-            <div class="program-number">05</div>
-            <div class="program-icon">🎭</div>
-            <h3>Kỹ năng biểu diễn</h3>
-            <p>Rèn luyện giao tiếp, biểu cảm, làm việc nhóm và sân khấu.</p>
-            <ul>
-              <li>Giao tiếp</li>
-              <li>Biểu cảm</li>
-              <li>Làm việc nhóm</li>
-            </ul>
-            <a href="#register" class="card-link">Tìm hiểu lớp <span>→</span></a>
-          </article>
-
-          <article class="program-card program-white reveal">
-            <div class="program-number">06</div>
-            <div class="program-icon">✦</div>
-            <h3>Chương trình cá nhân</h3>
-            <p>Tư vấn lộ trình phù hợp với sở thích và mục tiêu riêng.</p>
-            <ul>
-              <li>Đánh giá nhu cầu</li>
-              <li>Lộ trình linh hoạt</li>
-              <li>Theo dõi tiến bộ</li>
-            </ul>
-            <a href="#register" class="card-link">Tư vấn ngay <span>→</span></a>
-          </article>
+          <article class="program-card art reveal"><div class="program-image"><span>🎨</span><small>HÌNH ẢNH SẼ CẬP NHẬT</small></div><div class="program-body"><div class="number">01</div><h3>Mỹ thuật</h3><p>Khơi nguồn cảm hứng và tư duy hình ảnh qua màu sắc, đường nét.</p><a href="#dang-ky">Khám phá lớp <span>→</span></a></div></article>
+          <article class="program-card piano reveal"><div class="program-image"><span>🎹</span><small>HÌNH ẢNH SẼ CẬP NHẬT</small></div><div class="program-body"><div class="number">02</div><h3>Piano</h3><p>Rèn luyện sự tập trung, cảm thụ âm nhạc và khả năng biểu đạt.</p><a href="#dang-ky">Khám phá lớp <span>→</span></a></div></article>
+          <article class="program-card dance reveal"><div class="program-image"><span>💃</span><small>HÌNH ẢNH SẼ CẬP NHẬT</small></div><div class="program-body"><div class="number">03</div><h3>Dance</h3><p>Phát triển thể chất, nhịp điệu và sự tự tin qua chuyển động.</p><a href="#dang-ky">Khám phá lớp <span>→</span></a></div></article>
         </div>
       </div>
     </section>
 
-    <!-- DIFFERENCE -->
-    <section class="difference section">
-      <div class="container difference-grid">
-        <div class="difference-copy reveal">
-          <span class="eyebrow">TRẢI NGHIỆM EPIC</span>
-          <h2>Học để làm.<br><span>Làm để tỏa sáng.</span></h2>
-          <p>
-            Tại EPIC, mỗi buổi học không chỉ xoay quanh kiến thức.
-            Học viên được thực hành, sáng tạo, hợp tác và có cơ hội trình bày
-            thành quả của mình.
-          </p>
+    <section class="section why"><div class="container"><div class="center-head reveal"><div class="section-label">ĐIỀU LÀM NÊN EPIC <span>✦</span></div><h2>Vì sao chọn <em>EPIC?</em></h2></div><div class="why-grid">
+      <article class="why-card reveal"><span>♡</span><h3>Học bằng đam mê</h3><p>Khuyến khích trẻ học từ sự tò mò và niềm vui.</p></article><article class="why-card reveal"><span>✦</span><h3>Giáo viên tận tâm</h3><p>Đồng hành, hướng dẫn và tôn trọng cá tính của từng học viên.</p></article><article class="why-card reveal"><span>◎</span><h3>Môi trường tích cực</h3><p>Không gian thân thiện, an toàn để trẻ tự tin thể hiện.</p></article><article class="why-card reveal"><span>★</span><h3>Phát triển toàn diện</h3><p>Kết hợp kỹ năng, cảm xúc, sáng tạo và khả năng trình bày.</p></article>
+    </div></div></section>
 
-          <div class="check-list">
-            <div><span>✓</span> Nội dung theo độ tuổi và trình độ</div>
-            <div><span>✓</span> Học qua thực hành và dự án</div>
-            <div><span>✓</span> Khuyến khích cá tính riêng</div>
-            <div><span>✓</span> Hoạt động trình diễn và trải nghiệm</div>
-          </div>
-        </div>
+    <section class="section teachers" id="giao-vien"><div class="container"><div class="section-head reveal"><div><div class="section-label">ĐỒNG HÀNH CÙNG CON <span>✦</span></div><h2>Đội ngũ <em>giáo viên</em></h2></div><p>Thông tin giáo viên có thể thay đổi sau khi EPIC cung cấp hồ sơ chính thức.</p></div><div class="teacher-grid">
+      <article class="teacher-card reveal"><div class="teacher-photo">👩🏻‍🎨</div><h3>Giáo viên Mỹ thuật</h3><p>Chuyên môn Mỹ thuật</p></article><article class="teacher-card reveal"><div class="teacher-photo">🎹</div><h3>Giáo viên Piano</h3><p>Chuyên môn Âm nhạc</p></article><article class="teacher-card reveal"><div class="teacher-photo">💃🏻</div><h3>Giáo viên Dance</h3><p>Chuyên môn Vũ đạo</p></article>
+    </div></div></section>
 
-        <div class="process reveal">
-          <div class="process-item">
-            <span class="process-num">01</span>
-            <div><h3>Khám phá</h3><p>Tìm hiểu sở thích và điểm mạnh.</p></div>
-          </div>
-          <div class="process-line"></div>
-          <div class="process-item">
-            <span class="process-num">02</span>
-            <div><h3>Thực hành</h3><p>Học bằng trải nghiệm và dự án.</p></div>
-          </div>
-          <div class="process-line"></div>
-          <div class="process-item">
-            <span class="process-num">03</span>
-            <div><h3>Phát triển</h3><p>Rèn kỹ năng và xây dựng sự tự tin.</p></div>
-          </div>
-          <div class="process-line"></div>
-          <div class="process-item">
-            <span class="process-num">04</span>
-            <div><h3>Tỏa sáng</h3><p>Thể hiện thành quả theo cách riêng.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="section activities" id="hoat-dong"><div class="container"><div class="center-head reveal"><div class="section-label">EPIC MOMENTS <span>✦</span></div><h2>Hoạt động & <em>thành tích</em></h2><p>Những khoảnh khắc sẽ được cập nhật bằng hình ảnh thật của EPIC.</p></div><div class="gallery-grid">
+      <div class="gallery-item large reveal"><span>📸</span><b>Hoạt động học tập</b></div><div class="gallery-item reveal"><span>🏆</span><b>Sân khấu & biểu diễn</b></div><div class="gallery-item reveal"><span>🎨</span><b>Sản phẩm sáng tạo</b></div><div class="gallery-item reveal"><span>⭐</span><b>Thành tích học viên</b></div><div class="gallery-item reveal"><span>🎉</span><b>Sự kiện EPIC</b></div>
+    </div></div></section>
 
-    <!-- TEACHERS -->
-    <section class="teachers section section-light" id="teachers">
-      <div class="container">
-        <div class="section-heading centered reveal">
-          <span class="eyebrow">ĐỘI NGŨ</span>
-          <h2>Những người đồng hành<br><span>cùng tài năng của bạn.</span></h2>
-          <p>Thay ảnh và thông tin dưới đây bằng đội ngũ thật của EPIC.</p>
-        </div>
+    <section class="section info-section"><div class="container info-grid"><div class="info-box schedule reveal" id="lich-hoc"><div class="section-label">LỊCH HỌC <span>✦</span></div><h2>Linh hoạt theo <em>từng nhu cầu</em></h2><p>Lịch học chính thức sẽ được cập nhật khi EPIC cung cấp khung giờ.</p><div class="info-placeholder"><span>📅</span> Chưa có lịch học – sẽ cập nhật</div></div><div class="info-box tuition reveal" id="hoc-phi"><div class="section-label">HỌC PHÍ <span>✦</span></div><h2>Minh bạch & <em>dễ hiểu</em></h2><p>Thông tin học phí để trống để EPIC cập nhật mức phí chính thức.</p><div class="price-placeholder"><strong>---</strong><span>Học phí sẽ cập nhật</span></div></div></div></section>
 
-        <div class="teacher-grid">
-          <article class="teacher-card reveal">
-            <div class="teacher-photo">👩🏻‍🎨</div>
-            <div class="teacher-info">
-              <span>GIẢNG VIÊN</span>
-              <h3>Nguyễn Minh Anh</h3>
-              <p>Mỹ thuật & sáng tạo</p>
-            </div>
-          </article>
-          <article class="teacher-card reveal">
-            <div class="teacher-photo">👨🏻‍🎹</div>
-            <div class="teacher-info">
-              <span>GIẢNG VIÊN</span>
-              <h3>Trần Minh Khang</h3>
-              <p>Âm nhạc & Piano</p>
-            </div>
-          </article>
-          <article class="teacher-card reveal">
-            <div class="teacher-photo">👩🏻‍💃🏻</div>
-            <div class="teacher-info">
-              <span>GIẢNG VIÊN</span>
-              <h3>Lê Khánh Linh</h3>
-              <p>Dance & biểu diễn</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+    <section class="section register" id="dang-ky"><div class="container register-card reveal"><div class="register-copy"><div class="section-label">ĐĂNG KÝ HỌC THỬ <span>✦</span></div><h2>Cho con một cơ hội<br><em>thử sức & tỏa sáng.</em></h2><p>Điền thông tin cơ bản, EPIC sẽ liên hệ để tư vấn lớp phù hợp.</p><div class="register-points"><span>✓ Tư vấn chương trình</span><span>✓ Chọn lớp phù hợp độ tuổi</span><span>✓ Hẹn lịch học thử</span></div></div>
+      <form class="registration-form" id="registrationForm"><label>Họ tên phụ huynh<input name="parentName" required placeholder="Nhập họ tên"></label><label>Số điện thoại<input name="phone" required type="tel" placeholder="Nhập số điện thoại"></label><label>Tên học viên<input name="studentName" required placeholder="Nhập tên bé"></label><div class="form-row"><label>Độ tuổi<select name="age" required><option value="">Chọn tuổi</option><option>4–6 tuổi</option><option>7–10 tuổi</option><option>11–14 tuổi</option><option>15–18 tuổi</option></select></label><label>Môn quan tâm<select name="program" required><option value="">Chọn môn</option><option>Mỹ thuật</option><option>Piano</option><option>Dance</option></select></label></div><label>Ghi chú<textarea name="note" rows="3" placeholder="Khung giờ mong muốn hoặc điều EPIC cần biết..."></textarea></label><button class="btn btn-primary full" type="submit">Gửi đăng ký học thử <span>↗</span></button><p class="form-message" id="formMessage" role="status"></p></form>
+    </div></section>
 
-    <!-- ACTIVITIES -->
-    <section class="activities section" id="activities">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">HOẠT ĐỘNG</span>
-          <h2>Mỗi khoảnh khắc<br><span>đều đáng nhớ.</span></h2>
-        </div>
-
-        <div class="gallery-grid">
-          <div class="gallery-item gallery-large reveal"><span>ẢNH HOẠT ĐỘNG 01</span></div>
-          <div class="gallery-item gallery-red reveal"><span>ẢNH HOẠT ĐỘNG 02</span></div>
-          <div class="gallery-item gallery-yellow reveal"><span>ẢNH HOẠT ĐỘNG 03</span></div>
-          <div class="gallery-item gallery-blue reveal"><span>ẢNH HOẠT ĐỘNG 04</span></div>
-          <div class="gallery-item gallery-dark reveal"><span>ẢNH HOẠT ĐỘNG 05</span></div>
-        </div>
-        <p class="gallery-note">Bạn có thể thay các ô này bằng ảnh thật của lớp học và sự kiện EPIC.</p>
-      </div>
-    </section>
-
-    <!-- REGISTER -->
-    <section class="register section" id="register">
-      <div class="container">
-        <div class="register-box reveal">
-          <div class="register-copy">
-            <span class="eyebrow eyebrow-light">ĐĂNG KÝ HỌC THỬ</span>
-            <h2>Sẵn sàng khám phá<br>tài năng của bạn?</h2>
-            <p>
-              Điền thông tin để EPIC tư vấn chương trình và khung giờ phù hợp.
-            </p>
-
-            <div class="contact-mini">
-              <div><span>☎</span><div><small>Hotline</small><strong>0900 000 000</strong></div></div>
-              <div><span>✉</span><div><small>Email</small><strong>hello@epic.edu.vn</strong></div></div>
-            </div>
-          </div>
-
-          <form class="register-form" id="registerForm">
-            <div class="form-row">
-              <label>Họ và tên phụ huynh
-                <input type="text" name="parentName" placeholder="Nhập họ tên" required>
-              </label>
-              <label>Số điện thoại
-                <input type="tel" name="phone" placeholder="Nhập số điện thoại" required>
-              </label>
-            </div>
-
-            <div class="form-row">
-              <label>Họ tên học viên
-                <input type="text" name="studentName" placeholder="Nhập họ tên học viên" required>
-              </label>
-              <label>Độ tuổi
-                <input type="number" name="age" min="3" max="30" placeholder="Ví dụ: 8" required>
-              </label>
-            </div>
-
-            <label>Môn học quan tâm
-              <select name="program" required>
-                <option value="">-- Chọn chương trình --</option>
-                <option>Mỹ thuật</option>
-                <option>Âm nhạc / Piano</option>
-                <option>Dance</option>
-                <option>Thanh nhạc</option>
-                <option>Kỹ năng biểu diễn</option>
-                <option>Chưa biết, cần tư vấn</option>
-              </select>
-            </label>
-
-            <label>Ghi chú
-              <textarea name="note" rows="4" placeholder="Khung giờ mong muốn hoặc điều bạn muốn EPIC biết..."></textarea>
-            </label>
-
-            <button class="btn btn-yellow btn-submit" type="submit">Gửi đăng ký <span>→</span></button>
-            <p class="form-message" id="formMessage" role="status"></p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact section" id="contact">
-      <div class="container contact-grid">
-        <div class="contact-copy reveal">
-          <span class="eyebrow">LIÊN HỆ EPIC</span>
-          <h2>Hẹn gặp bạn<br><span>tại EPIC.</span></h2>
-          <p>Thay thông tin mẫu bên dưới bằng thông tin thật của trung tâm.</p>
-
-          <div class="contact-list">
-            <div class="contact-item"><span>📍</span><div><small>Địa chỉ</small><strong>Địa chỉ trung tâm EPIC</strong></div></div>
-            <div class="contact-item"><span>☎</span><div><small>Điện thoại</small><strong>0900 000 000</strong></div></div>
-            <div class="contact-item"><span>✉</span><div><small>Email</small><strong>hello@epic.edu.vn</strong></div></div>
-          </div>
-        </div>
-
-        <div class="map-placeholder reveal">
-          <div class="map-pin">📍</div>
-          <h3>EPIC TALENT CENTER</h3>
-          <p>Chèn Google Maps tại đây khi bạn có địa chỉ chính thức.</p>
-          <a href="#register" class="btn btn-primary">Đăng ký học thử</a>
-        </div>
-      </div>
-    </section>
+    <section class="section contact" id="lien-he"><div class="container contact-grid"><div class="reveal"><div class="section-label">KẾT NỐI VỚI EPIC <span>✦</span></div><h2>Cùng con bắt đầu<br><em>một hành trình mới.</em></h2><p>Thông tin liên hệ đang để trống để bạn cập nhật sau.</p></div><div class="contact-list reveal"><div><span>☎</span><div><small>HOTLINE</small><strong>Đang cập nhật</strong></div></div><div><span>✉</span><div><small>EMAIL</small><strong>Đang cập nhật</strong></div></div><div><span>⌖</span><div><small>ĐỊA CHỈ</small><strong>Đang cập nhật</strong></div></div><div><span>◉</span><div><small>MẠNG XÃ HỘI</small><strong>Facebook / TikTok – cập nhật sau</strong></div></div></div></div></section>
   </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-top">
-      <div class="footer-brand">
-        <img src="assets/logo.png" alt="EPIC">
-        <p>Khám phá tài năng. Kiến tạo tương lai.</p>
-      </div>
-
-      <div class="footer-links">
-        <div>
-          <h4>Khám phá</h4>
-          <a href="#about">Về EPIC</a>
-          <a href="#programs">Chương trình</a>
-          <a href="#teachers">Giáo viên</a>
-        </div>
-        <div>
-          <h4>Kết nối</h4>
-          <a href="#activities">Hoạt động</a>
-          <a href="#contact">Liên hệ</a>
-          <a href="#register">Đăng ký</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="container footer-bottom">
-      <span>© <span id="year"></span> EPIC Talent Center. All rights reserved.</span>
-      <span>Designed for EPIC</span>
-    </div>
-  </footer>
-
-  <button class="back-top" id="backTop" aria-label="Về đầu trang">↑</button>
-
+  <footer><div class="container footer-wrap"><div class="footer-brand">EPIC <span>TALENT CENTER</span></div><p>Thỏa sức đam mê · Khơi nguồn sáng tạo</p><a href="#top" class="to-top">↑</a></div><div class="copyright">© <span id="year"></span> EPIC Talent Center. All rights reserved.</div></footer>
   <script src="script.js"></script>
 </body>
 </html>
