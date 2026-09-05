@@ -1736,7 +1736,7 @@ footer{
 /* =========================================
    EPIC FONT OVERRIDE
    Title: Cherry Bomb One
-   Other text: Dongle
+   Other text: Varela Round
 ========================================= */
 
 /* Font chung */
@@ -1752,7 +1752,7 @@ small,
 strong,
 b,
 label {
-    font-family:'Dongle', sans-serif;
+    font-family:'Varela Round', sans-serif;
 }
 
 /* Font tiêu đề */
@@ -1772,167 +1772,151 @@ h6 {
     font-family:'Cherry Bomb One', cursive;
 }
 
-/* Chữ phụ của logo */
+/* Chữ phụ logo */
 .brand-fallback span,
 .footer-brand span {
-    font-family:'Dongle', sans-serif;
+    font-family:'Varela Round', sans-serif;
     font-size:12px;
 }
 
 /* Menu */
 .main-nav a,
 .nav-cta {
-    font-family:'Dongle', sans-serif;
-    font-size:16px;
+    font-family:'Varela Round', sans-serif;
+    font-size:14px;
 }
 
 /* Nhãn */
 .section-label,
 .eyebrow {
-    font-family:'Dongle', sans-serif;
-    font-size:16px;
+    font-family:'Varela Round', sans-serif;
+    font-size:14px;
 }
 
 /* Nút */
 .btn {
-    font-family:'Dongle', sans-serif;
-    font-size:17px;
-}
-
-/* Các phần nội dung */
-.hero-note {
-    font-family:'Dongle', sans-serif;
-    font-size:17px;
-}
-
-.hero-placeholder span {
-    font-family:'Dongle', sans-serif;
+    font-family:'Varela Round', sans-serif;
     font-size:15px;
 }
 
+/* Nội dung */
+.hero-note {
+    font-family:'Varela Round', sans-serif;
+    font-size:15px;
+}
+
+.hero-placeholder span {
+    font-family:'Varela Round', sans-serif;
+    font-size:14px;
+}
+
 .about-card small {
-    font-family:'Dongle', sans-serif;
-    font-size:14px;
+    font-family:'Varela Round', sans-serif;
+    font-size:13px;
 }
 
-.value-row b {
-    font-family:'Dongle', sans-serif;
-    font-size:14px;
-}
-
+.value-row b,
 .value-row span {
-    font-family:'Dongle', sans-serif;
+    font-family:'Varela Round', sans-serif;
     font-size:14px;
 }
 
 .text-link {
-    font-family:'Dongle', sans-serif;
-    font-size:17px;
+    font-family:'Varela Round', sans-serif;
+    font-size:15px;
 }
 
 .program-image small {
-    font-family:'Dongle', sans-serif;
-    font-size:13px;
+    font-family:'Varela Round', sans-serif;
+    font-size:12px;
 }
 
 .number {
-    font-family:'Dongle', sans-serif;
-    font-size:14px;
+    font-family:'Varela Round', sans-serif;
+    font-size:13px;
 }
 
 .program-body p {
-    font-family:'Dongle', sans-serif;
-    font-size:16px;
+    font-family:'Varela Round', sans-serif;
+    font-size:15px;
 }
 
 .program-body a {
-    font-family:'Dongle', sans-serif;
-    font-size:16px;
+    font-family:'Varela Round', sans-serif;
+    font-size:15px;
 }
 
-.why-card p {
-    font-family:'Dongle', sans-serif;
-    font-size:16px;
-}
-
+.why-card p,
 .teacher-card p {
-    font-family:'Dongle', sans-serif;
-    font-size:16px;
+    font-family:'Varela Round', sans-serif;
+    font-size:15px;
 }
 
-.info-box p {
-    font-family:'Dongle', sans-serif;
-    font-size:16px;
-}
-
-.info-placeholder {
-    font-family:'Dongle', sans-serif;
-    font-size:16px;
-}
-
+.info-box p,
+.info-placeholder,
 .price-placeholder {
-    font-family:'Dongle', sans-serif;
-    font-size:16px;
+    font-family:'Varela Round', sans-serif;
+    font-size:15px;
 }
 
 .price-placeholder span {
-    font-family:'Dongle', sans-serif;
-    font-size:15px;
+    font-family:'Varela Round', sans-serif;
+    font-size:14px;
 }
 
 .register-copy > p {
-    font-family:'Dongle', sans-serif;
-    font-size:17px;
-}
-
-.register-points {
-    font-family:'Dongle', sans-serif;
+    font-family:'Varela Round', sans-serif;
     font-size:16px;
 }
 
-.registration-form label {
-    font-family:'Dongle', sans-serif;
+.register-points {
+    font-family:'Varela Round', sans-serif;
     font-size:15px;
+}
+
+.registration-form label {
+    font-family:'Varela Round', sans-serif;
+    font-size:14px;
 }
 
 .registration-form input,
 .registration-form select,
 .registration-form textarea {
-    font-family:'Dongle', sans-serif;
-    font-size:17px;
+    font-family:'Varela Round', sans-serif;
+    font-size:15px;
 }
 
 .form-message {
-    font-family:'Dongle', sans-serif;
-    font-size:15px;
+    font-family:'Varela Round', sans-serif;
+    font-size:14px;
 }
 
 .contact p {
-    font-family:'Dongle', sans-serif;
-    font-size:17px;
-}
-
-.contact-list small {
-    font-family:'Dongle', sans-serif;
-    font-size:13px;
-}
-
-.contact-list strong {
-    font-family:'Dongle', sans-serif;
+    font-family:'Varela Round', sans-serif;
     font-size:16px;
 }
 
-.footer-wrap p {
-    font-family:'Dongle', sans-serif;
+.contact-list small {
+    font-family:'Varela Round', sans-serif;
+    font-size:12px;
+}
+
+.contact-list strong {
+    font-family:'Varela Round', sans-serif;
     font-size:15px;
 }
 
+.footer-wrap p {
+    font-family:'Varela Round', sans-serif;
+    font-size:14px;
+}
+
 .copyright {
-    font-family:'Dongle', sans-serif;
-    font-size:13px;
+    font-family:'Varela Round', sans-serif;
+    font-size:12px;
 }
 
 .scroll-hint {
-    font-family:'Dongle', sans-serif;
-    font-size:13px;
+    font-family:'Varela Round', sans-serif;
+    font-size:12px;
 }
