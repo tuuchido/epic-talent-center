@@ -6,8 +6,7 @@ Website landing page cho EPIC, phong cách nghệ thuật – sáng tạo – d�
 - index.html
 - style.css
 - script.js
-- assets/
-└── logo1A.png
+- logo1A.png
 
 ## GitHub Pages
 Upload `index.html`, `style.css`, `script.js` và thư mục `assets` vào thư mục gốc repository. Sau đó Settings → Pages → Deploy from a branch → `main` → `/(root)` → Save.
