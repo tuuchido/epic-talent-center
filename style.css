@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Fredoka:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap');
-
 :root{--blue:#102576;--blue2:#2147A8;--red:#C9182B;--yellow:#E7C84A;--pink:#F6B7C9;--sky:#DFF0FF;--cream:#FFF8DE;--mint:#E7F6E6;--ink:#172044;--muted:#68708A;--line:#E9EAF1;--white:#fff;--shadow:0 20px 55px rgba(16,37,118,.13);--soft-shadow:0 10px 28px rgba(16,37,118,.08);--radius:28px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:'Nunito',sans-serif;color:var(--ink);background:#fff;overflow-x:hidden}a{text-decoration:none;color:inherit}button,input,select,textarea{font:inherit}.container{width:min(1160px,calc(100% - 40px));margin:auto}.section{padding:100px 0;position:relative;z-index:1}h1,
 h2,
