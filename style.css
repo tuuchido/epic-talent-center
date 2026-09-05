@@ -3,18 +3,9 @@
 h2,
 h3 {
     margin: 0;
-    line-height: .98;
-}
-
-h1 {
-    font-family: 'Baloo 2', sans-serif;
+    font-family: 'Nunito', Arial, sans-serif;
     font-weight: 800;
-}
-
-h2,
-h3 {
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 600;
+    line-height: 1.05;
 }h1{font-size:clamp(48px,6vw,78px);letter-spacing:-1.8px}h2{font-size:clamp(38px,4vw,58px);letter-spacing:-1px}h2 em,h1 em{font-style:normal;color:var(--red)}p{line-height:1.75}.section-label,.eyebrow{font-family:'Nunito',sans-serif;font-weight:800;letter-spacing:1.7px;font-size:11px;color:var(--blue);display:inline-flex;align-items:center;gap:8px}.section-label span,.eyebrow span{color:var(--yellow);font-size:17px}.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:42px}.section-head>p{max-width:410px;color:var(--muted);font-size:14px;margin:0}.center-head{text-align:center;margin-bottom:45px}.center-head p{max-width:600px;margin:14px auto 0;color:var(--muted);font-size:14px}
 
 /* header */
