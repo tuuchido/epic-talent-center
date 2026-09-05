@@ -1752,7 +1752,7 @@ small,
 strong,
 b,
 label {
-    font-family: 'Dongle', sans-serif;
+    font-family:'Dongle', sans-serif;
 }
 
 /* Font tiêu đề */
@@ -1762,68 +1762,177 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Cherry Bomb One', cursive;
-    font-weight: 400;
+    font-family:'Cherry Bomb One', cursive;
+    font-weight:400;
 }
 
 /* Logo chữ dự phòng */
 .brand-fallback,
 .footer-brand {
-    font-family: 'Cherry Bomb One', cursive;
+    font-family:'Cherry Bomb One', cursive;
 }
 
 /* Chữ phụ của logo */
 .brand-fallback span,
 .footer-brand span {
-    font-family: 'Dongle', sans-serif;
+    font-family:'Dongle', sans-serif;
+    font-size:12px;
 }
 
 /* Menu */
 .main-nav a,
 .nav-cta {
-    font-family: 'Dongle', sans-serif;
+    font-family:'Dongle', sans-serif;
+    font-size:16px;
 }
 
 /* Nhãn */
 .section-label,
 .eyebrow {
-    font-family: 'Dongle', sans-serif;
+    font-family:'Dongle', sans-serif;
+    font-size:16px;
 }
 
 /* Nút */
 .btn {
-    font-family: 'Dongle', sans-serif;
+    font-family:'Dongle', sans-serif;
+    font-size:17px;
 }
 
 /* Các phần nội dung */
-.hero-note,
-.hero-placeholder span,
-.about-card small,
-.value-row b,
-.value-row span,
-.text-link,
-.program-image small,
-.number,
-.program-body p,
-.program-body a,
-.why-card p,
-.teacher-card p,
-.info-box p,
-.info-placeholder,
-.price-placeholder,
-.price-placeholder span,
-.register-copy > p,
-.register-points,
-.registration-form label,
+.hero-note {
+    font-family:'Dongle', sans-serif;
+    font-size:17px;
+}
+
+.hero-placeholder span {
+    font-family:'Dongle', sans-serif;
+    font-size:15px;
+}
+
+.about-card small {
+    font-family:'Dongle', sans-serif;
+    font-size:14px;
+}
+
+.value-row b {
+    font-family:'Dongle', sans-serif;
+    font-size:14px;
+}
+
+.value-row span {
+    font-family:'Dongle', sans-serif;
+    font-size:14px;
+}
+
+.text-link {
+    font-family:'Dongle', sans-serif;
+    font-size:17px;
+}
+
+.program-image small {
+    font-family:'Dongle', sans-serif;
+    font-size:13px;
+}
+
+.number {
+    font-family:'Dongle', sans-serif;
+    font-size:14px;
+}
+
+.program-body p {
+    font-family:'Dongle', sans-serif;
+    font-size:16px;
+}
+
+.program-body a {
+    font-family:'Dongle', sans-serif;
+    font-size:16px;
+}
+
+.why-card p {
+    font-family:'Dongle', sans-serif;
+    font-size:16px;
+}
+
+.teacher-card p {
+    font-family:'Dongle', sans-serif;
+    font-size:16px;
+}
+
+.info-box p {
+    font-family:'Dongle', sans-serif;
+    font-size:16px;
+}
+
+.info-placeholder {
+    font-family:'Dongle', sans-serif;
+    font-size:16px;
+}
+
+.price-placeholder {
+    font-family:'Dongle', sans-serif;
+    font-size:16px;
+}
+
+.price-placeholder span {
+    font-family:'Dongle', sans-serif;
+    font-size:15px;
+}
+
+.register-copy > p {
+    font-family:'Dongle', sans-serif;
+    font-size:17px;
+}
+
+.register-points {
+    font-family:'Dongle', sans-serif;
+    font-size:16px;
+}
+
+.registration-form label {
+    font-family:'Dongle', sans-serif;
+    font-size:15px;
+}
+
 .registration-form input,
 .registration-form select,
-.registration-form textarea,
-.form-message,
-.contact p,
-.contact-list small,
-.contact-list strong,
-.footer-wrap p,
-.copyright,
+.registration-form textarea {
+    font-family:'Dongle', sans-serif;
+    font-size:17px;
+}
+
+.form-message {
+    font-family:'Dongle', sans-serif;
+    font-size:15px;
+}
+
+.contact p {
+    font-family:'Dongle', sans-serif;
+    font-size:17px;
+}
+
+.contact-list small {
+    font-family:'Dongle', sans-serif;
+    font-size:13px;
+}
+
+.contact-list strong {
+    font-family:'Dongle', sans-serif;
+    font-size:16px;
+}
+
+.footer-wrap p {
+    font-family:'Dongle', sans-serif;
+    font-size:15px;
+}
+
+.copyright {
+    font-family:'Dongle', sans-serif;
+    font-size:13px;
+}
+
 .scroll-hint {
-    font-family: 'Dongle', sans-serif;
+    font-family:'Dongle', sans-serif;
+    font-size:13px;
 }
