@@ -158,15 +158,95 @@
     <section class="section register" id="dang-ky">
       <div class="container register-card reveal">
         <div class="register-copy"><div class="section-label">ĐĂNG KÝ HỌC THỬ <span>✦</span></div><h2>Cho con một cơ hội<br><em>thử sức & tỏa sáng.</em></h2><p>Điền thông tin cơ bản, EPIC sẽ liên hệ để tư vấn lớp phù hợp.</p><div class="register-points"><span>✓ Tư vấn chương trình</span><span>✓ Chọn lớp phù hợp độ tuổi</span><span>✓ Hẹn lịch học thử</span></div></div>
-        <form class="registration-form" id="registrationForm">
-          <label>Họ tên phụ huynh<input name="parentName" required placeholder="Nhập họ tên"></label>
-          <label>Số điện thoại<input name="phone" required type="tel" placeholder="Nhập số điện thoại"></label>
-          <label>Tên học viên<input name="studentName" required placeholder="Nhập tên bé"></label>
-          <div class="form-row"><label>Độ tuổi<select name="age" required><option value="">Chọn tuổi</option><option>4–6 tuổi</option><option>7–10 tuổi</option><option>11–14 tuổi</option><option>15–18 tuổi</option></select></label><label>Môn quan tâm<select name="program" required><option value="">Chọn môn</option><option>Mỹ thuật</option><option>Piano</option><option>Dance</option></select></label></div>
-          <label>Ghi chú<textarea name="note" rows="3" placeholder="Khung giờ mong muốn hoặc điều EPIC cần biết..."></textarea></label>
-          <button class="btn btn-primary full" type="submit">Gửi đăng ký học thử <span>↗</span></button>
-          <div class="form-message" id="formMessage" aria-live="polite"></div>
-        </form>
+       <form class="registration-form" id="registrationForm">
+
+    <label>
+        Họ tên phụ huynh *
+        <input
+            name="parentName"
+            required
+            placeholder="Nhập họ tên phụ huynh"
+        >
+    </label>
+
+    <label>
+        Số điện thoại *
+        <input
+            name="phone"
+            required
+            type="tel"
+            placeholder="Nhập số điện thoại"
+        >
+    </label>
+
+    <label>
+        Tên học viên *
+        <input
+            name="studentName"
+            required
+            placeholder="Nhập tên học viên"
+        >
+    </label>
+
+    <div class="form-row">
+
+        <label>
+            Độ tuổi *
+            <select name="age" required>
+                <option value="">Chọn độ tuổi</option>
+                <option>4–6 tuổi</option>
+                <option>7–10 tuổi</option>
+                <option>11–14 tuổi</option>
+                <option>15–18 tuổi</option>
+            </select>
+        </label>
+
+        <label>
+            Môn học *
+            <select name="program" required>
+                <option value="">Chọn môn</option>
+                <option>Mỹ thuật</option>
+                <option>Piano</option>
+                <option>Dance</option>
+            </select>
+        </label>
+
+    </div>
+
+    <label>
+        Khung giờ mong muốn
+        <select name="time">
+            <option value="">Chọn khung giờ</option>
+            <option>Sáng</option>
+            <option>Chiều</option>
+            <option>Tối</option>
+            <option>Cuối tuần</option>
+        </select>
+    </label>
+
+    <label>
+        Ghi chú
+        <textarea
+            name="note"
+            rows="3"
+            placeholder="Khung giờ mong muốn hoặc điều EPIC cần biết..."
+        ></textarea>
+    </label>
+
+    <button
+        class="btn btn-primary full"
+        type="submit"
+    >
+        Gửi đăng ký học thử <span>↗</span>
+    </button>
+
+    <div
+        class="form-message"
+        id="formMessage"
+        aria-live="polite"
+    ></div>
+
+</form>
       </div>
     </section>
 
