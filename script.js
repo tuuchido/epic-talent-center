@@ -90,7 +90,7 @@ const formMessage =
     document.getElementById("formMessage");
 
 const GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbzhr4osD2RWtW3oB82U1Mwke_dHi3OvuUuLGuyk13aycPc0Ze3qOwilZoyW8gOeYT0FZA/exec";
+    "https://script.google.com/macros/s/AKfycbzUNa7EmhEKtg-suA3zi-9FJ-3vNdAh8tuhWoS4JVKcbgpzzF5HY9x7_6j0-_FyMSWRaw/exec";
 
 
 if (registrationForm) {
