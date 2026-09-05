@@ -1733,3 +1733,97 @@ footer{
         transform:none;
     }
 }
+/* =========================================
+   EPIC FONT OVERRIDE
+   Title: Cherry Bomb One
+   Other text: Dongle
+========================================= */
+
+/* Font chung */
+body,
+button,
+input,
+select,
+textarea,
+a,
+p,
+span,
+small,
+strong,
+b,
+label {
+    font-family: 'Dongle', sans-serif;
+}
+
+/* Font tiêu đề */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Cherry Bomb One', cursive;
+    font-weight: 400;
+}
+
+/* Logo chữ dự phòng */
+.brand-fallback,
+.footer-brand {
+    font-family: 'Cherry Bomb One', cursive;
+}
+
+/* Chữ phụ của logo */
+.brand-fallback span,
+.footer-brand span {
+    font-family: 'Dongle', sans-serif;
+}
+
+/* Menu */
+.main-nav a,
+.nav-cta {
+    font-family: 'Dongle', sans-serif;
+}
+
+/* Nhãn */
+.section-label,
+.eyebrow {
+    font-family: 'Dongle', sans-serif;
+}
+
+/* Nút */
+.btn {
+    font-family: 'Dongle', sans-serif;
+}
+
+/* Các phần nội dung */
+.hero-note,
+.hero-placeholder span,
+.about-card small,
+.value-row b,
+.value-row span,
+.text-link,
+.program-image small,
+.number,
+.program-body p,
+.program-body a,
+.why-card p,
+.teacher-card p,
+.info-box p,
+.info-placeholder,
+.price-placeholder,
+.price-placeholder span,
+.register-copy > p,
+.register-points,
+.registration-form label,
+.registration-form input,
+.registration-form select,
+.registration-form textarea,
+.form-message,
+.contact p,
+.contact-list small,
+.contact-list strong,
+.footer-wrap p,
+.copyright,
+.scroll-hint {
+    font-family: 'Dongle', sans-serif;
+}
