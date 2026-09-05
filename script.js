@@ -1,367 +1,85 @@
-/* =====================================================
-   EPIC TALENT CENTER
-   INTERACTIONS & ANIMATIONS
-===================================================== */
+document.addEventListener('DOMContentLoaded',()=>{
+  const toggle=document.querySelector('.menu-toggle');
+  const nav=document.querySelector('.main-nav');
+  const links=document.querySelectorAll('.main-nav a');
+  const sections=document.querySelectorAll('main section[id]');
+  const items=document.querySelectorAll('.reveal');
+  const form=document.getElementById('registrationForm');
+  const msg=document.getElementById('formMessage');
+  const year=document.getElementById('year');
 
-document.addEventListener("DOMContentLoaded", () => {
+  if(year) year.textContent=new Date().getFullYear();
 
+  toggle?.addEventListener('click',()=>{
+    const open=nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+  });
 
-    /* =================================================
-       MOBILE MENU
-    ================================================= */
+  links.forEach(link=>link.addEventListener('click',()=>{
+    nav.classList.remove('open');
+    toggle?.setAttribute('aria-expanded','false');
+  }));
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const nav = document.querySelector(".nav");
+  const revealObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:.12});
+  items.forEach(item=>revealObserver.observe(item));
 
-    if (menuToggle && nav) {
+  const sectionObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        links.forEach(link=>link.classList.remove('active'));
+        document.querySelector(`.main-nav a[href="#${entry.target.id}"]`)?.classList.add('active');
+      }
+    });
+  },{rootMargin:'-35% 0px -55% 0px'});
+  sections.forEach(section=>sectionObserver.observe(section));
 
-        menuToggle.addEventListener("click", () => {
-            nav.classList.toggle("open");
-        });
+  // 3D tilt nhẹ cho card lớp học trên desktop
+  document.querySelectorAll('.program-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      if(window.innerWidth<=800)return;
+      const rect=card.getBoundingClientRect();
+      const x=(e.clientX-rect.left)/rect.width-.5;
+      const y=(e.clientY-rect.top)/rect.height-.5;
+      card.style.transform=`perspective(900px) translateY(-14px) rotateX(${y*-3}deg) rotateY(${x*3}deg)`;
+    });
+    card.addEventListener('mouseleave',()=>{card.style.transform='';});
+  });
 
-        document.querySelectorAll(".nav-link").forEach(link => {
+  // Hiệu ứng nhún nhẹ cho tiêu đề khi xuất hiện
+  document.querySelectorAll('.section-head h2,.center-head h2,.about-copy h2').forEach(title=>{
+    title.addEventListener('mouseenter',()=>title.classList.add('title-wiggle'));
+    title.addEventListener('animationend',()=>title.classList.remove('title-wiggle'));
+  });
 
-            link.addEventListener("click", () => {
-                nav.classList.remove("open");
-            });
-
-        });
-
+  form?.addEventListener('submit',e=>{
+    e.preventDefault();
+    const data=Object.fromEntries(new FormData(form).entries());
+    data.createdAt=new Date().toISOString();
+    try{
+      localStorage.setItem('epic_latest_registration',JSON.stringify(data));
+      msg.textContent='🎉 Đã nhận thông tin! Đây là bản demo, dữ liệu đang được lưu trên trình duyệt.';
+      form.reset();
+    }catch{
+      msg.textContent='Form đang ở chế độ demo. Hãy kết nối Google Forms hoặc dịch vụ nhận dữ liệu để dùng thật.';
     }
+  });
 
-
-    /* =================================================
-       SCROLL REVEAL
-    ================================================= */
-
-    const revealElements = document.querySelectorAll(".reveal");
-
-    const revealObserver = new IntersectionObserver(
-
-        entries => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add("show");
-
-                    revealObserver.unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold: 0.12
-        }
-
-    );
-
-    revealElements.forEach(element => {
-        revealObserver.observe(element);
+  // Parallax rất nhẹ cho doodle khi di chuyển chuột
+  const doodles=document.querySelectorAll('.doodle');
+  window.addEventListener('mousemove',e=>{
+    if(window.innerWidth<=800)return;
+    const x=(e.clientX/window.innerWidth-.5)*12;
+    const y=(e.clientY/window.innerHeight-.5)*12;
+    doodles.forEach((d,i)=>{
+      d.style.marginLeft=`${x*(i%2?-.45:.45)}px`;
+      d.style.marginTop=`${y*(i%2?.35:-.35)}px`;
     });
-
-
-    /* =================================================
-       ACTIVE NAVIGATION
-    ================================================= */
-
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll(".nav-link");
-
-    function updateActiveNav() {
-
-        let current = "";
-
-        sections.forEach(section => {
-
-            const sectionTop = section.offsetTop - 150;
-            const sectionHeight = section.offsetHeight;
-
-            if (
-                window.scrollY >= sectionTop &&
-                window.scrollY < sectionTop + sectionHeight
-            ) {
-
-                current = section.getAttribute("id");
-
-            }
-
-        });
-
-        navLinks.forEach(link => {
-
-            link.classList.remove("active");
-
-            const href = link.getAttribute("href");
-
-            if (href === "#" + current) {
-                link.classList.add("active");
-            }
-
-        });
-
-    }
-
-    window.addEventListener("scroll", updateActiveNav);
-
-    updateActiveNav();
-
-
-    /* =================================================
-       PROGRAM CARD 3D TILT
-    ================================================= */
-
-    const cards = document.querySelectorAll(".program-card");
-
-    cards.forEach(card => {
-
-        card.addEventListener("mousemove", event => {
-
-            if (window.innerWidth <= 800) return;
-
-            const rect = card.getBoundingClientRect();
-
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX =
-                ((y - centerY) / centerY) * -2.5;
-
-            const rotateY =
-                ((x - centerX) / centerX) * 2.5;
-
-            card.style.transform =
-                `translateY(-14px) scale(1.025)
-                 rotateX(${rotateX}deg)
-                 rotateY(${rotateY}deg)`;
-
-        });
-
-
-        card.addEventListener("mouseleave", () => {
-
-            card.style.transform = "";
-
-        });
-
-    });
-
-
-    /* =================================================
-       TITLE WIGGLE
-    ================================================= */
-
-    const titles = document.querySelectorAll(
-        ".section-heading h2, .why-content h2, .register-copy h2"
-    );
-
-    titles.forEach(title => {
-
-        title.addEventListener("mouseenter", () => {
-
-            title.classList.remove("title-wiggle");
-
-            void title.offsetWidth;
-
-            title.classList.add("title-wiggle");
-
-        });
-
-    });
-
-
-    /* =================================================
-       PARALLAX DOODLES
-    ================================================= */
-
-    const doodles = document.querySelectorAll(
-        ".hero-doodle, .visual-decoration, .section-doodles span"
-    );
-
-    window.addEventListener("mousemove", event => {
-
-        if (window.innerWidth <= 800) return;
-
-        const x = (event.clientX / window.innerWidth - .5);
-        const y = (event.clientY / window.innerHeight - .5);
-
-        doodles.forEach((doodle, index) => {
-
-            const strength = 4 + (index % 4);
-
-            doodle.style.marginLeft =
-                `${x * strength}px`;
-
-            doodle.style.marginTop =
-                `${y * strength}px`;
-
-        });
-
-    });
-
-
-    /* =================================================
-       REGISTER FORM
-    ================================================= */
-
-    const form = document.getElementById("registerForm");
-    const message = document.getElementById("formMessage");
-
-    if (form) {
-
-        form.addEventListener("submit", event => {
-
-            event.preventDefault();
-
-            const formData = new FormData(form);
-
-            const parent = formData.get("parent");
-            const phone = formData.get("phone");
-            const age = formData.get("age");
-            const program = formData.get("program");
-
-            if (!parent || !phone || !age || !program) {
-
-                message.textContent =
-                    "Vui lòng điền đầy đủ thông tin nhé ✨";
-
-                return;
-
-            }
-
-
-            /*
-                DEMO:
-                Lưu thông tin tạm thời trên trình duyệt.
-
-                Khi website chính thức có backend,
-                có thể thay đoạn này bằng Google Forms,
-                Formspree hoặc hệ thống quản lý đăng ký.
-            */
-
-            const registration = {
-
-                parent,
-                phone,
-                age,
-                program,
-
-                message:
-                    formData.get("message"),
-
-                createdAt:
-                    new Date().toISOString()
-
-            };
-
-
-            const oldData =
-                JSON.parse(
-                    localStorage.getItem("epicRegistrations") || "[]"
-                );
-
-
-            oldData.push(registration);
-
-
-            localStorage.setItem(
-                "epicRegistrations",
-                JSON.stringify(oldData)
-            );
-
-
-            message.textContent =
-                "Đăng ký thành công! EPIC sẽ liên hệ với bạn sớm nhé 💖";
-
-
-            form.reset();
-
-        });
-
-    }
-
-
-    /* =================================================
-       BUTTON RIPPLE EFFECT
-    ================================================= */
-
-    document.querySelectorAll(".btn").forEach(button => {
-
-        button.addEventListener("click", function(event) {
-
-            const ripple =
-                document.createElement("span");
-
-            ripple.classList.add("ripple");
-
-            const rect =
-                this.getBoundingClientRect();
-
-            ripple.style.left =
-                `${event.clientX - rect.left}px`;
-
-            ripple.style.top =
-                `${event.clientY - rect.top}px`;
-
-            this.appendChild(ripple);
-
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-
-        });
-
-    });
-
-
-    /* =================================================
-       SMOOTH SCROLL
-    ================================================= */
-
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-
-        link.addEventListener("click", event => {
-
-            const targetId =
-                link.getAttribute("href");
-
-            if (
-                targetId === "#" ||
-                !document.querySelector(targetId)
-            ) {
-                return;
-            }
-
-            event.preventDefault();
-
-            const target =
-                document.querySelector(targetId);
-
-            const headerHeight = 80;
-
-            const targetPosition =
-                target.getBoundingClientRect().top +
-                window.scrollY -
-                headerHeight;
-
-            window.scrollTo({
-
-                top: targetPosition,
-
-                behavior: "smooth"
-
-            });
-
-        });
-
-    });
-
-
+  });
 });
