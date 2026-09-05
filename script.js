@@ -1,162 +1,85 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded',()=>{
+  const toggle=document.querySelector('.menu-toggle');
+  const nav=document.querySelector('.main-nav');
+  const links=document.querySelectorAll('.main-nav a');
+  const sections=document.querySelectorAll('main section[id]');
+  const items=document.querySelectorAll('.reveal');
+  const form=document.getElementById('registrationForm');
+  const msg=document.getElementById('formMessage');
+  const year=document.getElementById('year');
 
-  /* =========================
-     MOBILE MENU
-  ========================= */
+  if(year) year.textContent=new Date().getFullYear();
 
-  const menuBtn = document.getElementById("menuBtn");
-  const navMenu = document.getElementById("navMenu");
-
-  menuBtn.addEventListener("click", function () {
-
-    navMenu.classList.toggle("open");
-
+  toggle?.addEventListener('click',()=>{
+    const open=nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded',open?'true':'false');
   });
 
+  links.forEach(link=>link.addEventListener('click',()=>{
+    nav.classList.remove('open');
+    toggle?.setAttribute('aria-expanded','false');
+  }));
 
-  /* Đóng menu khi bấm link */
-
-  document.querySelectorAll("#navMenu a").forEach(function (link) {
-
-    link.addEventListener("click", function () {
-
-      navMenu.classList.remove("open");
-
+  const revealObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
     });
+  },{threshold:.12});
+  items.forEach(item=>revealObserver.observe(item));
 
-  });
-
-
-  /* =========================
-     SCROLL ANIMATION
-  ========================= */
-
-  const revealElements =
-    document.querySelectorAll(".reveal");
-
-  const revealObserver =
-    new IntersectionObserver(function (entries) {
-
-      entries.forEach(function (entry) {
-
-        if (entry.isIntersecting) {
-
-          entry.target.classList.add("show");
-
-          revealObserver.unobserve(entry.target);
-
-        }
-
-      });
-
-    }, {
-      threshold: 0.15
+  const sectionObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        links.forEach(link=>link.classList.remove('active'));
+        document.querySelector(`.main-nav a[href="#${entry.target.id}"]`)?.classList.add('active');
+      }
     });
+  },{rootMargin:'-35% 0px -55% 0px'});
+  sections.forEach(section=>sectionObserver.observe(section));
 
-
-  revealElements.forEach(function (element) {
-
-    revealObserver.observe(element);
-
-  });
-
-
-  /* =========================
-     PROGRAM CARD 3D EFFECT
-  ========================= */
-
-  document.querySelectorAll(".program-card")
-    .forEach(function (card) {
-
-      card.addEventListener("mousemove", function (event) {
-
-        const rect =
-          card.getBoundingClientRect();
-
-        const x =
-          event.clientX - rect.left;
-
-        const y =
-          event.clientY - rect.top;
-
-        const rotateX =
-          ((y / rect.height) - 0.5) * -6;
-
-        const rotateY =
-          ((x / rect.width) - 0.5) * 6;
-
-        card.style.transform =
-          `translateY(-10px)
-           rotateX(${rotateX}deg)
-           rotateY(${rotateY}deg)`;
-
-      });
-
-
-      card.addEventListener("mouseleave", function () {
-
-        card.style.transform = "";
-
-      });
-
+  // 3D tilt nhẹ cho card lớp học trên desktop
+  document.querySelectorAll('.program-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      if(window.innerWidth<=800)return;
+      const rect=card.getBoundingClientRect();
+      const x=(e.clientX-rect.left)/rect.width-.5;
+      const y=(e.clientY-rect.top)/rect.height-.5;
+      card.style.transform=`perspective(900px) translateY(-14px) rotateX(${y*-3}deg) rotateY(${x*3}deg)`;
     });
-
-
-  /* =========================
-     FORM DEMO
-  ========================= */
-
-  const form =
-    document.getElementById("registerForm");
-
-  const message =
-    document.getElementById("formMessage");
-
-
-  form.addEventListener("submit", function (event) {
-
-    event.preventDefault();
-
-    const formData =
-      new FormData(form);
-
-    const data =
-      Object.fromEntries(formData.entries());
-
-    localStorage.setItem(
-      "EPIC_registration",
-      JSON.stringify(data)
-    );
-
-    message.innerHTML =
-      "✓ EPIC đã nhận thông tin đăng ký của bạn!";
-
-    form.reset();
-
+    card.addEventListener('mouseleave',()=>{card.style.transform='';});
   });
 
-
-  /* =========================
-     PARALLAX DECORATION
-  ========================= */
-
-  window.addEventListener("scroll", function () {
-
-    const scroll =
-      window.scrollY;
-
-    document.querySelector(".star")
-      ?.style.setProperty(
-        "transform",
-        `translateY(${scroll * 0.08}px)`
-      );
-
-    document.querySelector(".music")
-      ?.style.setProperty(
-        "transform",
-        `translateY(${scroll * -0.05}px)`
-      );
-
+  // Hiệu ứng nhún nhẹ cho tiêu đề khi xuất hiện
+  document.querySelectorAll('.section-head h2,.center-head h2,.about-copy h2').forEach(title=>{
+    title.addEventListener('mouseenter',()=>title.classList.add('title-wiggle'));
+    title.addEventListener('animationend',()=>title.classList.remove('title-wiggle'));
   });
 
+  form?.addEventListener('submit',e=>{
+    e.preventDefault();
+    const data=Object.fromEntries(new FormData(form).entries());
+    data.createdAt=new Date().toISOString();
+    try{
+      localStorage.setItem('epic_latest_registration',JSON.stringify(data));
+      msg.textContent='🎉 Đã nhận thông tin! Đây là bản demo, dữ liệu đang được lưu trên trình duyệt.';
+      form.reset();
+    }catch{
+      msg.textContent='Form đang ở chế độ demo. Hãy kết nối Google Forms hoặc dịch vụ nhận dữ liệu để dùng thật.';
+    }
+  });
+
+  // Parallax rất nhẹ cho doodle khi di chuyển chuột
+  const doodles=document.querySelectorAll('.doodle');
+  window.addEventListener('mousemove',e=>{
+    if(window.innerWidth<=800)return;
+    const x=(e.clientX/window.innerWidth-.5)*12;
+    const y=(e.clientY/window.innerHeight-.5)*12;
+    doodles.forEach((d,i)=>{
+      d.style.marginLeft=`${x*(i%2?-.45:.45)}px`;
+      d.style.marginTop=`${y*(i%2?.35:-.35)}px`;
+    });
+  });
 });
