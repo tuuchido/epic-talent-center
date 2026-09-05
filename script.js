@@ -83,3 +83,76 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
   });
 });
+const registrationForm =
+    document.getElementById("registrationForm");
+
+const formMessage =
+    document.getElementById("formMessage");
+
+const GOOGLE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbzhr4osD2RWtW3oB82U1Mwke_dHi3OvuUuLGuyk13aycPc0Ze3qOwilZoyW8gOeYT0FZA/exec";
+
+
+if (registrationForm) {
+
+    registrationForm.addEventListener("submit", async function (event) {
+
+        event.preventDefault();
+
+        const submitButton =
+            registrationForm.querySelector("button[type='submit']");
+
+        submitButton.disabled = true;
+        submitButton.innerHTML = "Đang gửi...";
+
+        formMessage.textContent = "";
+        formMessage.className = "form-message";
+
+        const formData =
+            new FormData(registrationForm);
+
+        const data = {
+            parentName: formData.get("parentName"),
+            phone: formData.get("phone"),
+            studentName: formData.get("studentName"),
+            age: formData.get("age"),
+            program: formData.get("program"),
+            time: formData.get("time"),
+            note: formData.get("note")
+        };
+
+        try {
+
+            await fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8"
+                },
+                body: JSON.stringify(data)
+            });
+
+            formMessage.textContent =
+                "🎉 Đăng ký thành công! EPIC sẽ liên hệ với bạn sớm nhất.";
+
+            formMessage.classList.add("success");
+
+            registrationForm.reset();
+
+        } catch (error) {
+
+            formMessage.textContent =
+                "❌ Có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ EPIC.";
+
+            formMessage.classList.add("error");
+
+        } finally {
+
+            submitButton.disabled = false;
+
+            submitButton.innerHTML =
+                'Gửi đăng ký học thử <span>↗</span>';
+        }
+
+    });
+}
