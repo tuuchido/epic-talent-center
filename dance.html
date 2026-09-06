@@ -3,2177 +3,1327 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Dance | EPIC Talent Center</title>
+<title>Dance – EPIC Talent Center</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cherry+Bomb+One&family=Varela+Round&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
-    --navy:#102576;
-    --red:#C9182B;
-    --yellow:#E7C84A;
-    --cream:#FFFDF7;
-    --blue:#EEF3FF;
-    --pink:#FFE8EC;
-    --text:#17204A;
-    --muted:#68708D;
-    --white:#FFFFFF;
-    --shadow:0 18px 45px rgba(16,37,118,.12);
+  --navy:#102576;
+  --red:#C9182B;
+  --yellow:#E7C84A;
+  --cream:#FFF9E9;
+  --white:#fff;
+  --black:#111;
 }
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-    font-family:"Fredoka",sans-serif;
-    color:var(--text);
-    background:var(--cream);
-    overflow-x:hidden;
+  font-family:"Varela Round",sans-serif;
+  background:var(--cream);
+  color:var(--black);
+  overflow-x:hidden;
 }
 
 a{
-    text-decoration:none;
-    color:inherit;
+  text-decoration:none;
+  color:inherit;
 }
 
-.container{
-    width:min(1180px,92%);
-    margin:auto;
+img{
+  max-width:100%;
+  display:block;
 }
 
-/* =========================
-HEADER
-========================= */
+/* ================= HEADER ================= */
 
-header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:100;
-    padding:15px 0;
-    background:rgba(255,253,247,.92);
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid rgba(16,37,118,.08);
+.header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  padding:16px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(255,249,233,.9);
+  backdrop-filter:blur(12px);
+  border-bottom:2px solid var(--black);
 }
 
-.nav{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.logo img{
-    width:95px;
-    display:block;
+.logo{
+  height:52px;
 }
 
 .back{
-    font-weight:700;
-    color:var(--navy);
-    transition:.3s;
+  background:var(--navy);
+  color:white;
+  padding:12px 22px;
+  border-radius:30px;
+  font-weight:bold;
+  transition:.25s;
 }
 
 .back:hover{
-    transform:translateX(-5px);
+  background:var(--red);
+  transform:rotate(-3deg) scale(1.05);
 }
 
-/* =========================
-FLOATING ELEMENTS
-========================= */
-
-.float{
-    position:absolute;
-    pointer-events:none;
-    z-index:1;
-    animation:float 5s ease-in-out infinite;
-}
-
-.f1{
-    top:18%;
-    left:5%;
-    font-size:45px;
-}
-
-.f2{
-    top:35%;
-    right:5%;
-    font-size:38px;
-    animation-delay:1s;
-}
-
-.f3{
-    bottom:18%;
-    left:8%;
-    font-size:30px;
-    animation-delay:2s;
-}
-
-.f4{
-    bottom:25%;
-    right:10%;
-    font-size:45px;
-    animation-delay:3s;
-}
-
-@keyframes float{
-
-    0%,100%{
-        transform:translateY(0) rotate(-5deg);
-    }
-
-    50%{
-        transform:translateY(-25px) rotate(8deg);
-    }
-
-}
-
-/* =========================
-HERO
-========================= */
+/* ================= HERO ================= */
 
 .hero{
-    min-height:850px;
-    padding:145px 0 100px;
-    position:relative;
-    overflow:hidden;
-
-    background:
-        radial-gradient(circle at 10% 20%,rgba(231,200,74,.18),transparent 22%),
-        radial-gradient(circle at 90% 30%,rgba(201,24,43,.13),transparent 25%),
-        linear-gradient(135deg,#fffdf7,#f1f5ff);
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+  padding:130px 6% 70px;
+  display:flex;
+  align-items:center;
+  background:
+    radial-gradient(circle at 80% 25%,rgba(231,200,74,.65),transparent 20%),
+    var(--cream);
 }
 
-.hero-content{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
-    align-items:center;
-    position:relative;
-    z-index:3;
+.hero-grid{
+  width:100%;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:40px;
+  align-items:center;
+  position:relative;
+  z-index:2;
 }
 
-.eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    padding:9px 17px;
-    border-radius:50px;
-    background:white;
-    box-shadow:0 8px 25px rgba(16,37,118,.08);
-    color:var(--red);
-    font-weight:700;
-    font-size:14px;
-    margin-bottom:22px;
-}
-
-.eyebrow span{
-    width:9px;
-    height:9px;
-    background:var(--red);
-    border-radius:50%;
-    animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-    50%{
-        transform:scale(1.5);
-    }
+.hero-small{
+  font-weight:bold;
+  color:var(--red);
+  letter-spacing:4px;
+  font-size:15px;
+  margin-bottom:15px;
 }
 
 .hero h1{
-    font-family:"Cherry Bomb One",cursive;
-    font-size:clamp(65px,8vw,110px);
-    line-height:.88;
-    letter-spacing:-4px;
-    color:var(--navy);
+  font-family:"Anton",sans-serif;
+  font-size:clamp(100px,17vw,260px);
+  line-height:.75;
+  letter-spacing:-7px;
+  color:var(--navy);
+  transform:skew(-7deg);
+  margin-left:-8px;
 }
 
-.hero h1 em{
-    display:block;
-    color:var(--red);
-    font-style:normal;
+.hero h1 span{
+  display:block;
+  color:var(--red);
+  margin-left:8vw;
 }
 
 .hero-desc{
-    max-width:520px;
-    margin:28px 0;
-    font-size:18px;
-    line-height:1.7;
-    color:var(--muted);
+  max-width:520px;
+  margin-top:35px;
+  font-size:18px;
+  line-height:1.7;
 }
 
 .hero-buttons{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
+  display:flex;
+  gap:15px;
+  margin-top:30px;
+  flex-wrap:wrap;
 }
 
 .btn{
-    padding:15px 25px;
-    border-radius:50px;
-    font-weight:700;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    transition:.3s;
+  padding:15px 25px;
+  border:3px solid var(--black);
+  font-weight:bold;
+  border-radius:50px;
+  transition:.25s;
 }
 
-.primary{
-    color:white;
-    background:var(--red);
-    box-shadow:0 12px 25px rgba(201,24,43,.25);
+.btn-main{
+  background:var(--red);
+  color:white;
 }
 
-.primary:hover{
-    transform:translateY(-5px) rotate(-1deg);
+.btn:hover{
+  transform:translate(-4px,-4px);
+  box-shadow:6px 6px 0 var(--black);
 }
 
-.secondary{
-    background:white;
-    color:var(--navy);
-    border:2px solid rgba(16,37,118,.1);
+/* dancer area */
+
+.dance-stage{
+  min-height:570px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-.secondary:hover{
-    transform:translateY(-5px);
+.stage-circle{
+  width:min(480px,75vw);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:var(--yellow);
+  border:5px solid var(--black);
+  position:absolute;
+  animation:breathe 3s ease-in-out infinite;
 }
 
-/* =========================
-DANCER VISUAL
-========================= */
-
-.dance-visual{
-    height:520px;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.energy-circle{
-    position:absolute;
-    width:450px;
-    height:450px;
-    border-radius:50%;
-    border:35px solid rgba(231,200,74,.35);
-    animation:spin 16s linear infinite;
-}
-
-.energy-circle:before,
-.energy-circle:after{
-    content:"";
-    position:absolute;
-    width:30px;
-    height:30px;
-    border-radius:50%;
-    background:var(--red);
-}
-
-.energy-circle:before{
-    top:-32px;
-    left:90px;
-}
-
-.energy-circle:after{
-    bottom:-32px;
-    right:70px;
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-.dancer-card{
-    width:350px;
-    height:430px;
-    border-radius:45% 45% 30px 30px;
-    background:var(--red);
-    position:relative;
-    z-index:3;
-    transform:rotate(4deg);
-    box-shadow:0 30px 60px rgba(16,37,118,.22);
-    overflow:hidden;
-}
-
-.dancer-card:before{
-    content:"";
-    position:absolute;
-    width:280px;
-    height:280px;
-    background:var(--yellow);
-    border-radius:50%;
-    top:-70px;
-    left:35px;
+.stage-word{
+  position:absolute;
+  font-family:"Anton",sans-serif;
+  font-size:100px;
+  line-height:.8;
+  color:white;
+  transform:rotate(-8deg);
+  text-shadow:
+    5px 5px 0 var(--red),
+    10px 10px 0 var(--navy);
+  z-index:2;
 }
 
 .dancer{
-    position:absolute;
-    z-index:2;
-    width:190px;
-    height:320px;
-    left:80px;
-    bottom:25px;
-    animation:danceMove 3s ease-in-out infinite;
-}
-
-.head{
-    width:65px;
-    height:65px;
-    border-radius:50%;
-    background:#F3C6A5;
-    position:absolute;
-    left:65px;
-    top:10px;
-}
-
-.hair{
-    position:absolute;
-    width:75px;
-    height:55px;
-    background:#17204A;
-    border-radius:50% 50% 35% 40%;
-    left:58px;
-    top:0;
-}
-
-.body{
-    position:absolute;
-    width:70px;
-    height:105px;
-    background:#102576;
-    border-radius:40px 40px 25px 25px;
-    top:72px;
-    left:62px;
-}
-
-.arm{
-    position:absolute;
-    width:22px;
-    height:125px;
-    background:#F3C6A5;
-    border-radius:20px;
-    transform-origin:top;
-}
-
-.arm.left{
-    top:78px;
-    left:55px;
-    transform:rotate(48deg);
-}
-
-.arm.right{
-    top:78px;
-    left:118px;
-    transform:rotate(-65deg);
-}
-
-.leg{
-    position:absolute;
-    width:25px;
-    height:155px;
-    background:#F3C6A5;
-    border-radius:20px;
-    transform-origin:top;
-}
-
-.leg.left{
-    left:72px;
-    top:165px;
-    transform:rotate(28deg);
-}
-
-.leg.right{
-    left:105px;
-    top:165px;
-    transform:rotate(-48deg);
-}
-
-.shoe{
-    position:absolute;
-    width:55px;
-    height:20px;
-    background:#102576;
-    border-radius:50%;
-}
-
-.shoe.l{
-    left:35px;
-    bottom:-4px;
-    transform:rotate(-15deg);
-}
-
-.shoe.r{
-    right:20px;
-    bottom:28px;
-    transform:rotate(15deg);
-}
-
-@keyframes danceMove{
-
-    0%,100%{
-        transform:rotate(-3deg) translateY(0);
-    }
-
-    25%{
-        transform:rotate(4deg) translateY(-10px);
-    }
-
-    50%{
-        transform:rotate(-5deg) translateY(3px);
-    }
-
-    75%{
-        transform:rotate(5deg) translateY(-8px);
-    }
-
+  position:relative;
+  z-index:3;
+  font-size:210px;
+  filter:drop-shadow(8px 12px 0 var(--navy));
+  animation:danceJump 1.7s ease-in-out infinite;
 }
 
 .sticker{
-    position:absolute;
-    z-index:5;
-    padding:12px 18px;
-    border-radius:16px;
-    background:white;
-    box-shadow:var(--shadow);
-    font-weight:700;
+  position:absolute;
+  z-index:5;
+  padding:12px 18px;
+  border:3px solid var(--black);
+  font-weight:bold;
+  background:white;
+  box-shadow:5px 5px 0 var(--black);
 }
 
-.sticker1{
-    top:5%;
-    right:3%;
-    color:var(--red);
-    transform:rotate(8deg);
+.s1{
+  top:12%;
+  right:4%;
+  transform:rotate(9deg);
 }
 
-.sticker2{
-    bottom:10%;
-    left:0;
-    background:var(--navy);
-    color:white;
-    transform:rotate(-8deg);
+.s2{
+  bottom:13%;
+  left:4%;
+  background:var(--red);
+  color:white;
+  transform:rotate(-8deg);
 }
 
-.sticker3{
-    bottom:2%;
-    right:4%;
-    background:var(--yellow);
-    color:var(--navy);
-    transform:rotate(5deg);
+.s3{
+  top:38%;
+  left:0;
+  background:var(--navy);
+  color:white;
+  transform:rotate(-12deg);
 }
 
-.star{
-    position:absolute;
-    font-size:45px;
-    color:var(--red);
-    animation:star 3s infinite ease-in-out;
+/* motion lines */
+
+.motion{
+  position:absolute;
+  width:160px;
+  height:15px;
+  border-radius:20px;
+  background:var(--red);
+  transform:rotate(-25deg);
+  opacity:.8;
 }
 
-.star1{
-    top:12%;
-    left:10%;
-}
+.m1{top:20%;left:5%;animation:slide 2s infinite;}
+.m2{top:27%;left:1%;width:100px;animation:slide 2.4s infinite;}
+.m3{bottom:22%;right:2%;background:var(--navy);animation:slide 1.8s infinite;}
 
-.star2{
-    bottom:25%;
-    right:4%;
-    animation-delay:1s;
-}
-
-@keyframes star{
-    50%{
-        transform:scale(1.25) rotate(15deg);
-    }
-}
-
-/* =========================
-MARQUEE
-========================= */
+/* ================= MARQUEE ================= */
 
 .marquee{
-    background:var(--navy);
-    color:white;
-    padding:18px 0;
-    transform:rotate(1deg) scale(1.04);
-    overflow:hidden;
+  overflow:hidden;
+  border-top:4px solid var(--black);
+  border-bottom:4px solid var(--black);
+  background:var(--red);
+  color:white;
+  white-space:nowrap;
 }
 
 .marquee-track{
-    display:flex;
-    width:max-content;
-    animation:marquee 22s linear infinite;
+  display:inline-block;
+  padding:18px 0;
+  font-family:"Anton",sans-serif;
+  font-size:42px;
+  animation:marquee 18s linear infinite;
 }
 
-.marquee span{
-    padding:0 30px;
-    white-space:nowrap;
-    font-weight:700;
-    font-size:20px;
+/* ================= BEAT ================= */
+
+.beat-section{
+  background:var(--navy);
+  color:white;
+  padding:100px 6%;
+  position:relative;
+  overflow:hidden;
 }
 
-.marquee b{
-    color:var(--yellow);
+.beat-title{
+  text-align:center;
+  font-family:"Anton",sans-serif;
+  font-size:clamp(60px,10vw,150px);
+  line-height:.85;
+  color:var(--yellow);
 }
 
-@keyframes marquee{
-    to{
-        transform:translateX(-50%);
-    }
+.beat-sub{
+  text-align:center;
+  margin:25px auto 60px;
+  max-width:550px;
+  line-height:1.7;
 }
 
-/* =========================
-SECTION
-========================= */
-
-.section{
-    padding:110px 0;
+.countdown{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
 }
 
-.center-title{
-    text-align:center;
-    max-width:720px;
-    margin:0 auto 60px;
+.count{
+  width:130px;
+  height:130px;
+  border:4px solid white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:"Anton",sans-serif;
+  font-size:65px;
+  transform:rotate(var(--r));
+  transition:.2s;
 }
 
-.tag{
-    color:var(--red);
-    letter-spacing:2px;
-    font-size:13px;
-    font-weight:700;
-    margin-bottom:15px;
+.count:hover{
+  background:var(--red);
+  transform:scale(1.12) rotate(0);
 }
 
-.center-title h2{
-    font-family:"Cherry Bomb One",cursive;
-    font-size:clamp(43px,5vw,67px);
-    line-height:1;
-    color:var(--navy);
+.beat-line{
+  height:10px;
+  max-width:850px;
+  margin:60px auto 0;
+  display:flex;
+  gap:10px;
 }
 
-.center-title p{
-    color:var(--muted);
-    line-height:1.7;
-    margin-top:18px;
+.beat-line span{
+  flex:1;
+  height:100%;
+  background:white;
+  animation:beat 1s infinite alternate;
 }
 
-/* =========================
-DANCE STORY
-========================= */
+.beat-line span:nth-child(2){animation-delay:.1s}
+.beat-line span:nth-child(3){animation-delay:.2s}
+.beat-line span:nth-child(4){animation-delay:.3s}
+.beat-line span:nth-child(5){animation-delay:.4s}
+.beat-line span:nth-child(6){animation-delay:.5s}
+.beat-line span:nth-child(7){animation-delay:.6s}
+.beat-line span:nth-child(8){animation-delay:.7s}
+
+/* ================= STORY ================= */
 
 .story{
-    background:white;
+  padding:110px 6%;
+  position:relative;
 }
 
 .story-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:80px;
-    align-items:center;
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:70px;
+  align-items:center;
 }
 
-.story-title{
-    font-family:"Cherry Bomb One",cursive;
-    font-size:clamp(42px,5vw,65px);
-    line-height:1;
-    color:var(--navy);
+.vertical-text{
+  font-family:"Anton",sans-serif;
+  font-size:clamp(80px,12vw,180px);
+  line-height:.75;
+  color:var(--red);
+  transform:rotate(-90deg);
+  white-space:nowrap;
 }
 
-.story-title span{
-    color:var(--red);
+.story h2{
+  font-family:"Anton",sans-serif;
+  color:var(--navy);
+  font-size:clamp(55px,8vw,110px);
+  line-height:.9;
+  margin-bottom:30px;
 }
 
-.story-text{
-    margin-top:25px;
-    color:var(--muted);
-    font-size:18px;
-    line-height:1.8;
+.story p{
+  font-size:18px;
+  line-height:1.8;
+  max-width:650px;
 }
 
-.story-quote{
-    margin-top:25px;
-    padding:22px;
-    background:#FFF7D4;
-    border-radius:20px;
-    font-weight:700;
-    color:var(--navy);
-    transform:rotate(-1deg);
+.highlight{
+  display:inline-block;
+  background:var(--yellow);
+  padding:3px 10px;
+  transform:rotate(-2deg);
 }
 
-/* MOVEMENT WORDS */
-
-.movement{
-    height:400px;
-    position:relative;
-}
-
-.movement-word{
-    position:absolute;
-    font-family:"Cherry Bomb One",cursive;
-    font-size:60px;
-    color:var(--navy);
-    opacity:.08;
-    transform:rotate(-15deg);
-}
-
-.movement-word:nth-child(1){
-    top:0;
-    left:0;
-}
-
-.movement-word:nth-child(2){
-    top:100px;
-    right:0;
-}
-
-.movement-word:nth-child(3){
-    bottom:10px;
-    left:80px;
-}
-
-.move-card{
-    position:absolute;
-    width:190px;
-    height:190px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:75px;
-    box-shadow:var(--shadow);
-}
-
-.move1{
-    background:#FFF2B9;
-    top:30px;
-    left:100px;
-    animation:move 4s infinite ease-in-out;
-}
-
-.move2{
-    background:#FFE5EA;
-    right:60px;
-    top:100px;
-    animation:move 4s infinite ease-in-out 1s;
-}
-
-.move3{
-    background:#E6EDFF;
-    left:220px;
-    bottom:0;
-    animation:move 4s infinite ease-in-out 2s;
-}
-
-@keyframes move{
-    50%{
-        transform:translateY(-18px) rotate(8deg);
-    }
-}
-
-/* =========================
-STYLE DANCE
-========================= */
+/* ================= STYLES ================= */
 
 .styles{
-    background:#F2F5FF;
+  background:white;
+  padding:100px 6%;
+  border-top:4px solid var(--black);
 }
 
-.style-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+.section-tag{
+  color:var(--red);
+  font-weight:bold;
+  letter-spacing:4px;
 }
 
-.style-card{
-    min-height:300px;
-    border-radius:30px;
-    padding:30px;
-    position:relative;
-    overflow:hidden;
-    transition:.35s;
+.section-title{
+  font-family:"Anton",sans-serif;
+  font-size:clamp(60px,9vw,130px);
+  color:var(--navy);
+  line-height:.85;
+  margin:15px 0 60px;
 }
 
-.style-card:hover{
-    transform:translateY(-10px) rotate(1deg);
-    box-shadow:var(--shadow);
+.style-wall{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
 }
 
-.style-card:nth-child(1){
-    background:#FFF3C1;
+.style-item{
+  min-height:330px;
+  padding:25px;
+  border:4px solid var(--black);
+  position:relative;
+  overflow:hidden;
+  transition:.3s;
 }
 
-.style-card:nth-child(2){
-    background:#FFE8EC;
+.style-item:nth-child(1){background:var(--yellow);transform:rotate(-2deg)}
+.style-item:nth-child(2){background:var(--navy);color:white;transform:rotate(2deg)}
+.style-item:nth-child(3){background:var(--red);color:white;transform:rotate(-1deg)}
+.style-item:nth-child(4){background:#eee;transform:rotate(3deg)}
+
+.style-item:hover{
+  transform:translateY(-12px) rotate(0);
 }
 
-.style-card:nth-child(3){
-    background:#E8EEFF;
+.style-number{
+  font-family:"Anton",sans-serif;
+  font-size:70px;
+  opacity:.5;
 }
 
-.style-card:nth-child(4){
-    background:#E7F7EF;
+.style-item h3{
+  position:absolute;
+  bottom:25px;
+  left:25px;
+  font-family:"Anton",sans-serif;
+  font-size:48px;
+  line-height:.9;
 }
 
-.style-card:nth-child(5){
-    background:#F3E9FF;
+.style-item p{
+  position:absolute;
+  bottom:25px;
+  right:25px;
+  max-width:100px;
+  text-align:right;
+  font-size:13px;
 }
 
-.style-card:nth-child(6){
-    background:#FFEEDB;
+/* ================= AGE JOURNEY ================= */
+
+.journey{
+  padding:110px 6%;
+  background:var(--yellow);
+  overflow:hidden;
 }
 
-.style-icon{
-    font-size:58px;
-    margin-bottom:25px;
+.journey-title{
+  font-family:"Anton",sans-serif;
+  color:var(--navy);
+  font-size:clamp(65px,10vw,145px);
+  line-height:.8;
 }
 
-.style-card h3{
-    font-size:24px;
-    color:var(--navy);
-    margin-bottom:10px;
+.journey-intro{
+  margin:25px 0 70px;
+  max-width:550px;
+  line-height:1.7;
 }
 
-.style-card p{
-    color:#626A80;
-    line-height:1.6;
-    font-size:14px;
+.path{
+  display:flex;
+  align-items:flex-start;
+  gap:0;
+  min-width:900px;
+  position:relative;
 }
 
-.style-card:after{
-    content:"✦";
-    position:absolute;
-    right:-15px;
-    bottom:-35px;
-    font-size:130px;
-    color:var(--navy);
-    opacity:.06;
+.path:before{
+  content:"";
+  position:absolute;
+  top:48px;
+  left:50px;
+  right:50px;
+  height:8px;
+  background:var(--navy);
 }
-
-/* =========================
-AGE
-========================= */
 
 .age{
-    background:white;
+  width:25%;
+  position:relative;
+  z-index:2;
 }
 
-.age-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
+.age-dot{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:var(--red);
+  color:white;
+  border:5px solid var(--black);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:"Anton",sans-serif;
+  font-size:25px;
+  margin:auto;
 }
 
-.age-card{
-    padding:30px 25px;
-    min-height:320px;
-    border-radius:28px;
-    position:relative;
-    overflow:hidden;
-    transition:.35s;
+.age-content{
+  margin:25px 12px 0;
+  padding:25px;
+  background:white;
+  border:4px solid var(--black);
+  min-height:180px;
 }
 
-.age-card:hover{
-    transform:translateY(-10px);
+.age-content h3{
+  font-family:"Anton",sans-serif;
+  color:var(--navy);
+  font-size:35px;
+  margin-bottom:10px;
 }
 
-.age-card:nth-child(1){
-    background:#FFF5C8;
-}
-
-.age-card:nth-child(2){
-    background:#EAF0FF;
-}
-
-.age-card:nth-child(3){
-    background:#FFE9EC;
-}
-
-.age-card:nth-child(4){
-    background:#E9F7F1;
-}
-
-.age-number{
-    font-weight:700;
-    opacity:.5;
-}
-
-.age-icon{
-    font-size:60px;
-    margin:35px 0 20px;
-}
-
-.age-card h3{
-    color:var(--navy);
-    font-size:22px;
-    margin-bottom:10px;
-}
-
-.age-card p{
-    color:#5F677D;
-    font-size:14px;
-    line-height:1.6;
-}
-
-/* =========================
-DANCE PLAYGROUND
-========================= */
+/* ================= PLAYGROUND ================= */
 
 .playground{
-    background:var(--navy);
-    color:white;
-    position:relative;
-    overflow:hidden;
+  padding:110px 6%;
+  background:var(--navy);
+  color:white;
+  overflow:hidden;
 }
 
-.playground:before{
-    content:"DANCE";
-    position:absolute;
-    font-family:"Cherry Bomb One";
-    font-size:250px;
-    right:-50px;
-    bottom:-80px;
-    opacity:.04;
+.playground-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
 }
 
-.play-content{
-    position:relative;
-    z-index:2;
+.playground .section-title{
+  color:var(--yellow);
+  margin-bottom:0;
 }
 
-.play-title{
-    text-align:center;
-    margin-bottom:55px;
+.play-note{
+  max-width:320px;
+  line-height:1.6;
 }
 
-.play-title .tag{
-    color:var(--yellow);
+.challenge{
+  margin-top:70px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
 }
 
-.play-title h2{
-    font-family:"Cherry Bomb One",cursive;
-    font-size:clamp(45px,6vw,70px);
+.challenge-box{
+  min-height:300px;
+  border:4px solid white;
+  padding:30px;
+  position:relative;
+  overflow:hidden;
 }
 
-.play-title p{
-    color:#C9D2FF;
-    margin-top:15px;
+.challenge-box:nth-child(1){
+  background:var(--red);
 }
 
-.energy{
-    max-width:900px;
-    margin:auto;
-    height:300px;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.challenge-box:nth-child(2){
+  background:var(--yellow);
+  color:var(--black);
 }
 
-.energy-text{
-    width:190px;
-    height:190px;
-    background:var(--red);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    font-family:"Cherry Bomb One";
-    font-size:38px;
-    transform:rotate(-8deg);
-    box-shadow:0 20px 40px rgba(0,0,0,.25);
-    animation:bounce 2.5s infinite ease-in-out;
+.challenge-box h3{
+  font-family:"Anton",sans-serif;
+  font-size:70px;
+  line-height:.8;
 }
 
-@keyframes bounce{
-    50%{
-        transform:rotate(8deg) scale(1.08);
-    }
+.challenge-box p{
+  margin-top:30px;
+  max-width:300px;
+  line-height:1.6;
 }
 
-.energy-word{
-    position:absolute;
-    padding:15px 25px;
-    border-radius:50px;
-    background:white;
-    color:var(--navy);
-    font-weight:700;
-    box-shadow:0 10px 30px rgba(0,0,0,.15);
+.challenge-big{
+  position:absolute;
+  right:-20px;
+  bottom:-50px;
+  font-family:"Anton",sans-serif;
+  font-size:180px;
+  opacity:.2;
+  transform:rotate(-10deg);
 }
 
-.energy-word:nth-child(1){
-    top:10px;
-    left:15%;
-}
-
-.energy-word:nth-child(2){
-    top:60px;
-    right:12%;
-}
-
-.energy-word:nth-child(3){
-    bottom:25px;
-    left:10%;
-}
-
-.energy-word:nth-child(4){
-    bottom:40px;
-    right:18%;
-}
-
-.energy-dot{
-    position:absolute;
-    width:18px;
-    height:18px;
-    border-radius:50%;
-    background:var(--yellow);
-    animation:dot 3s infinite ease-in-out;
-}
-
-.d1{
-    top:20%;
-    left:8%;
-}
-
-.d2{
-    top:30%;
-    right:5%;
-    animation-delay:1s;
-}
-
-.d3{
-    bottom:15%;
-    left:45%;
-    animation-delay:2s;
-}
-
-@keyframes dot{
-    50%{
-        transform:translateY(-30px) scale(1.3);
-    }
-}
-
-/* =========================
-TIMELINE
-========================= */
-
-.lesson{
-    background:#FFFDF7;
-}
-
-.timeline{
-    max-width:900px;
-    margin:auto;
-    position:relative;
-}
-
-.timeline:before{
-    content:"";
-    position:absolute;
-    left:35px;
-    top:20px;
-    bottom:20px;
-    width:3px;
-    background:var(--yellow);
-}
-
-.lesson-row{
-    display:grid;
-    grid-template-columns:70px 1fr;
-    gap:25px;
-    margin-bottom:28px;
-    position:relative;
-}
-
-.lesson-number{
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:var(--red);
-    color:white;
-    font-family:"Cherry Bomb One";
-    font-size:22px;
-    position:relative;
-    z-index:2;
-}
-
-.lesson-box{
-    background:white;
-    padding:25px 28px;
-    border-radius:23px;
-    box-shadow:0 8px 25px rgba(16,37,118,.07);
-}
-
-.lesson-box h3{
-    color:var(--navy);
-    margin-bottom:8px;
-}
-
-.lesson-box p{
-    color:var(--muted);
-    line-height:1.6;
-}
-
-/* =========================
-GALLERY
-========================= */
+/* ================= GALLERY ================= */
 
 .gallery{
-    background:#F2F5FF;
+  padding:110px 6%;
 }
 
 .gallery-grid{
-    display:grid;
-    grid-template-columns:1.2fr .8fr .8fr;
-    grid-template-rows:230px 230px;
-    gap:16px;
+  display:grid;
+  grid-template-columns:1.4fr .8fr .8fr;
+  grid-template-rows:230px 230px;
+  gap:15px;
 }
 
 .gallery-box{
-    border-radius:25px;
-    border:3px dashed rgba(16,37,118,.12);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:.35s;
+  border:4px solid var(--black);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  background:#eee;
+  font-family:"Anton",sans-serif;
+  font-size:30px;
+  color:var(--navy);
 }
 
-.gallery-box:hover{
-    transform:scale(.98) rotate(-1deg);
-}
-
-.gallery-box.big{
-    grid-row:span 2;
-    background:#FFF3C1;
+.gallery-box:first-child{
+  grid-row:span 2;
+  background:var(--yellow);
 }
 
 .gallery-box:nth-child(2){
-    background:#FFE8EC;
+  background:var(--red);
+  color:white;
 }
 
 .gallery-box:nth-child(3){
-    background:#E8EEFF;
+  background:#ddd;
 }
 
 .gallery-box:nth-child(4){
-    background:#E9F7F1;
+  background:var(--navy);
+  color:white;
 }
 
 .gallery-box:nth-child(5){
-    background:#F3E9FF;
+  background:white;
 }
 
-.placeholder{
-    text-align:center;
-    color:var(--navy);
+.gallery-box span{
+  transform:rotate(-8deg);
 }
 
-.placeholder div{
-    font-size:55px;
-    margin-bottom:10px;
-}
-
-.placeholder span{
-    font-size:13px;
-    font-weight:700;
-}
-
-/* =========================
-CTA
-========================= */
+/* ================= CTA ================= */
 
 .cta{
-    padding:120px 0;
-    background:var(--red);
-    color:white;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-}
-
-.cta:before{
-    content:"✦";
-    position:absolute;
-    left:-20px;
-    top:-80px;
-    font-size:250px;
-    opacity:.08;
-}
-
-.cta:after{
-    content:"DANCE";
-    position:absolute;
-    right:-60px;
-    bottom:-80px;
-    font-family:"Cherry Bomb One";
-    font-size:180px;
-    opacity:.08;
-}
-
-.cta-content{
-    position:relative;
-    z-index:2;
+  padding:120px 6%;
+  background:var(--red);
+  color:white;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
 }
 
 .cta h2{
-    font-family:"Cherry Bomb One",cursive;
-    font-size:clamp(50px,7vw,85px);
-    line-height:1;
+  font-family:"Anton",sans-serif;
+  font-size:clamp(70px,12vw,180px);
+  line-height:.8;
+  transform:skew(-7deg);
 }
 
 .cta p{
-    max-width:600px;
-    margin:22px auto 32px;
-    color:#FFE8EC;
-    line-height:1.7;
-    font-size:18px;
+  max-width:550px;
+  margin:35px auto;
+  line-height:1.7;
 }
 
-.cta .btn{
-    background:white;
-    color:var(--red);
+.cta-btn{
+  display:inline-block;
+  padding:18px 35px;
+  background:var(--yellow);
+  color:var(--black);
+  border:4px solid var(--black);
+  font-weight:bold;
+  box-shadow:7px 7px 0 var(--black);
+  transition:.25s;
 }
 
-/* =========================
-FOOTER
-========================= */
+.cta-btn:hover{
+  transform:translate(7px,7px);
+  box-shadow:none;
+}
+
+/* ================= FOOTER ================= */
 
 footer{
-    background:#0B1850;
-    color:white;
-    padding:35px 0;
+  background:var(--black);
+  color:white;
+  padding:30px 6%;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  font-size:14px;
 }
 
-.footer{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
+/* ================= ANIMATION ================= */
+
+@keyframes breathe{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.06)}
 }
 
-.footer img{
-    width:90px;
+@keyframes danceJump{
+  0%,100%{transform:translateY(0) rotate(-4deg)}
+  50%{transform:translateY(-25px) rotate(5deg)}
 }
 
-.footer p{
-    color:#AEB7E0;
-    font-size:14px;
+@keyframes slide{
+  0%{transform:translateX(-30px) rotate(-25deg);opacity:0}
+  50%{opacity:1}
+  100%{transform:translateX(100px) rotate(-25deg);opacity:0}
 }
 
-/* =========================
-REVEAL
-========================= */
+@keyframes marquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+@keyframes beat{
+  from{transform:scaleY(.3)}
+  to{transform:scaleY(1)}
+}
+
+/* reveal */
 
 .reveal{
-    opacity:0;
-    transform:translateY(35px);
-    transition:1s ease;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
 }
 
 .reveal.show{
-    opacity:1;
-    transform:translateY(0);
+  opacity:1;
+  transform:translateY(0);
 }
 
-/* =========================
-RESPONSIVE
-========================= */
+/* ================= MOBILE ================= */
 
-@media(max-width:950px){
+@media(max-width:900px){
 
-    .hero-content,
-    .story-grid{
-        grid-template-columns:1fr;
-    }
+  .hero-grid,
+  .story-grid,
+  .challenge{
+    grid-template-columns:1fr;
+  }
 
-    .hero{
-        min-height:auto;
-    }
+  .hero{
+    padding-top:120px;
+  }
 
-    .dance-visual{
-        height:470px;
-    }
+  .hero h1{
+    font-size:110px;
+  }
 
-    .style-grid{
-        grid-template-columns:1fr 1fr;
-    }
+  .dance-stage{
+    min-height:420px;
+  }
 
-    .age-grid{
-        grid-template-columns:1fr 1fr;
-    }
+  .dancer{
+    font-size:150px;
+  }
+
+  .stage-word{
+    font-size:70px;
+  }
+
+  .vertical-text{
+    display:none;
+  }
+
+  .style-wall{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .playground-header{
+    display:block;
+  }
+
+  .play-note{
+    margin-top:25px;
+  }
+
+  .gallery-grid{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:200px 200px 200px;
+  }
+
+  .gallery-box:first-child{
+    grid-row:span 2;
+  }
 
 }
 
 @media(max-width:600px){
 
-    header{
-        padding:10px 0;
-    }
+  .header{
+    padding:12px 4%;
+  }
 
-    .logo img{
-        width:75px;
-    }
+  .logo{
+    height:42px;
+  }
 
-    .back{
-        font-size:13px;
-    }
+  .back{
+    padding:10px 15px;
+    font-size:13px;
+  }
 
-    .hero{
-        padding-top:115px;
-    }
+  .hero{
+    padding-left:5%;
+    padding-right:5%;
+  }
 
-    .hero h1{
-        font-size:63px;
-    }
+  .hero h1{
+    font-size:90px;
+    letter-spacing:-3px;
+  }
 
-    .hero-desc{
-        font-size:16px;
-    }
+  .hero-desc{
+    font-size:15px;
+  }
 
-    .dance-visual{
-        height:400px;
-    }
+  .dance-stage{
+    min-height:350px;
+  }
 
-    .energy-circle{
-        width:320px;
-        height:320px;
-        border-width:25px;
-    }
+  .stage-circle{
+    width:300px;
+  }
 
-    .dancer-card{
-        width:285px;
-        height:350px;
-    }
+  .dancer{
+    font-size:120px;
+  }
 
-    .dancer{
-        transform:scale(.82);
-        transform-origin:center bottom;
-        left:48px;
-        bottom:5px;
-    }
+  .sticker{
+    font-size:11px;
+    padding:8px 10px;
+  }
 
-    .style-grid,
-    .age-grid{
-        grid-template-columns:1fr;
-    }
+  .s3{
+    left:0;
+  }
 
-    .section{
-        padding:75px 0;
-    }
+  .count{
+    width:70px;
+    height:70px;
+    font-size:38px;
+  }
 
-    .movement{
-        height:330px;
-    }
+  .style-wall{
+    grid-template-columns:1fr;
+  }
 
-    .move-card{
-        width:130px;
-        height:130px;
-        font-size:55px;
-    }
+  .style-item{
+    min-height:240px;
+  }
 
-    .move1{
-        left:20px;
-    }
+  .path{
+    min-width:850px;
+  }
 
-    .move2{
-        right:10px;
-    }
+  .gallery-grid{
+    grid-template-columns:1fr;
+    grid-template-rows:repeat(5,200px);
+  }
 
-    .move3{
-        left:110px;
-    }
+  .gallery-box:first-child{
+    grid-row:auto;
+  }
 
-    .energy{
-        height:350px;
-    }
-
-    .energy-word{
-        font-size:13px;
-        padding:11px 17px;
-    }
-
-    .gallery-grid{
-        grid-template-columns:1fr 1fr;
-        grid-template-rows:180px 180px 180px;
-    }
-
-    .gallery-box.big{
-        grid-row:span 2;
-    }
-
-    .footer{
-        flex-direction:column;
-        text-align:center;
-    }
-
+  footer{
+    text-align:center;
+    justify-content:center;
+  }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- FLOATING DECOR -->
-<div class="float f1">✦</div>
-<div class="float f2">★</div>
-<div class="float f3">✦</div>
-<div class="float f4">★</div>
+<header class="header">
+  <a href="index.html">
+    <img src="assets/logo1A.png" class="logo" alt="EPIC">
+  </a>
 
-
-<!-- HEADER -->
-<header>
-
-    <div class="container nav">
-
-        <a href="index.html" class="logo">
-            <img src="assets/logo1A.png" alt="EPIC Talent Center">
-        </a>
-
-        <a href="index.html#chuong-trinh" class="back">
-            ← Các lớp EPIC
-        </a>
-
-    </div>
-
+  <a href="index.html#chuong-trinh" class="back">
+    ← Về EPIC
+  </a>
 </header>
 
 
 <!-- HERO -->
+
 <section class="hero">
 
-    <div class="container hero-content">
+  <div class="hero-grid">
 
-        <div class="reveal">
+    <div>
+      <div class="hero-small">EPIC DANCE PROGRAM / 04–18 TUỔI</div>
 
-            <div class="eyebrow">
-                <span></span>
-                LỚP DANCE EPIC
-            </div>
+      <h1>
+        MOVE
+        <span>IT!</span>
+      </h1>
 
-            <h1>
-                Move
-                <em>your way.</em>
-            </h1>
+      <p class="hero-desc">
+        Dance tại EPIC không chỉ là học những động tác.
+        Đó là nơi trẻ được <b>chuyển động, khám phá cá tính
+        và tự tin thể hiện chính mình.</b>
+      </p>
 
-            <p class="hero-desc">
-                Dance không chỉ là những bước nhảy.
-                Đó là cách trẻ khám phá cơ thể,
-                giải phóng năng lượng và tự tin thể hiện chính mình.
-            </p>
+      <div class="hero-buttons">
+        <a href="index.html#dang-ky" class="btn btn-main">
+          ĐĂNG KÝ HỌC THỬ →
+        </a>
 
-            <div class="hero-buttons">
-
-                <a href="index.html#dang-ky" class="btn primary">
-                    Đăng ký học thử 💃
-                </a>
-
-                <a href="#chuong-trinh" class="btn secondary">
-                    Khám phá lớp →
-                </a>
-
-            </div>
-
-        </div>
+        <a href="#styles" class="btn">
+          XEM PHONG CÁCH
+        </a>
+      </div>
+    </div>
 
 
-        <div class="dance-visual reveal">
+    <div class="dance-stage">
 
-            <div class="energy-circle"></div>
+      <div class="stage-circle"></div>
 
-            <div class="star star1">✦</div>
-            <div class="star star2">★</div>
+      <div class="stage-word">
+        MOVE<br>
+        GROOVE<br>
+        FUN
+      </div>
 
-            <div class="sticker sticker1">
-                LET'S DANCE! 💃
-            </div>
+      <div class="dancer">💃</div>
 
-            <div class="sticker sticker2">
-                MOVE ✦ FEEL
-            </div>
+      <div class="sticker s1">LET'S GO! ↗</div>
+      <div class="sticker s2">EPIC CREW</div>
+      <div class="sticker s3">5, 6, 7, 8!</div>
 
-            <div class="sticker sticker3">
-                4 — 18 TUỔI
-            </div>
-
-
-            <div class="dancer-card">
-
-                <div class="dancer">
-
-                    <div class="hair"></div>
-                    <div class="head"></div>
-
-                    <div class="body"></div>
-
-                    <div class="arm left"></div>
-                    <div class="arm right"></div>
-
-                    <div class="leg left"></div>
-                    <div class="leg right"></div>
-
-                    <div class="shoe l"></div>
-                    <div class="shoe r"></div>
-
-                </div>
-
-            </div>
-
-        </div>
+      <div class="motion m1"></div>
+      <div class="motion m2"></div>
+      <div class="motion m3"></div>
 
     </div>
+
+  </div>
 
 </section>
 
 
 <!-- MARQUEE -->
+
 <div class="marquee">
-
-    <div class="marquee-track">
-
-        <span>💃 <b>MOVE</b> YOUR BODY</span>
-        <span>⭐ <b>FEEL</b> THE RHYTHM</span>
-        <span>🔥 <b>SHOW</b> YOUR ENERGY</span>
-        <span>✨ <b>BE</b> YOURSELF</span>
-
-        <span>💃 <b>MOVE</b> YOUR BODY</span>
-        <span>⭐ <b>FEEL</b> THE RHYTHM</span>
-        <span>🔥 <b>SHOW</b> YOUR ENERGY</span>
-        <span>✨ <b>BE</b> YOURSELF</span>
-
-    </div>
-
+  <div class="marquee-track">
+    MOVE • GROOVE • ENERGY • FUN • CONFIDENCE • EPIC DANCE • MOVE • GROOVE • ENERGY • FUN • CONFIDENCE • EPIC DANCE •
+  </div>
 </div>
 
 
+<!-- BEAT -->
+
+<section class="beat-section">
+
+  <div class="beat-title">
+    FEEL<br>THE BEAT.
+  </div>
+
+  <p class="beat-sub">
+    Một lớp Dance tại EPIC bắt đầu bằng nhịp điệu,
+    tiếp nối bằng chuyển động và kết thúc bằng một
+    phiên bản tự tin hơn của chính mình.
+  </p>
+
+  <div class="countdown">
+    <div class="count" style="--r:-5deg">5</div>
+    <div class="count" style="--r:3deg">6</div>
+    <div class="count" style="--r:-3deg">7</div>
+    <div class="count" style="--r:6deg">8</div>
+  </div>
+
+  <div class="beat-line">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+</section>
+
+
 <!-- STORY -->
-<section class="section story">
 
-    <div class="container story-grid">
+<section class="story">
 
-        <div class="movement reveal">
+  <div class="story-grid">
 
-            <div class="movement-word">MOVE</div>
-            <div class="movement-word">FEEL</div>
-            <div class="movement-word">SHINE</div>
-
-            <div class="move-card move1">💃</div>
-            <div class="move-card move2">🔥</div>
-            <div class="move-card move3">⭐</div>
-
-        </div>
-
-
-        <div class="reveal">
-
-            <div class="tag">
-                DANCE × CONFIDENCE
-            </div>
-
-            <h2 class="story-title">
-                Cơ thể biết
-                <span>kể chuyện.</span>
-            </h2>
-
-            <p class="story-text">
-                Một bước chân, một nhịp beat,
-                một khoảnh khắc tự tin trước mọi người.
-                Tại EPIC, trẻ được khuyến khích chuyển động,
-                khám phá và thể hiện cá tính theo cách riêng.
-            </p>
-
-            <div class="story-quote">
-                “Không cần nhảy giống ai cả. Hãy nhảy theo cách của mình.” 💛
-            </div>
-
-        </div>
-
+    <div class="vertical-text">
+      DANCE<br>YOUR<br>WAY
     </div>
+
+    <div>
+      <div class="section-tag">WHY DANCE AT EPIC?</div>
+
+      <h2>
+        KHÔNG CẦN<br>
+        <span class="highlight">HOÀN HẢO.</span><br>
+        CHỈ CẦN<br>
+        DÁM NHẢY.
+      </h2>
+
+      <p>
+        Mỗi bạn nhỏ có một nhịp điệu riêng.
+        EPIC tạo ra môi trường để các em được
+        vận động, thử nghiệm và thể hiện cá tính
+        mà không sợ sai.
+        <br><br>
+        Từ những bước cơ bản đến các bài biểu diễn,
+        học viên từng bước phát triển <b>nhịp điệu,
+        khả năng phối hợp, sự tự tin và tinh thần
+        làm việc nhóm.</b>
+      </p>
+    </div>
+
+  </div>
 
 </section>
 
 
 <!-- DANCE STYLES -->
-<section class="section styles" id="chuong-trinh">
 
-    <div class="container">
+<section class="styles" id="styles">
 
-        <div class="center-title reveal">
+  <div class="section-tag">FIND YOUR GROOVE</div>
 
-            <div class="tag">
-                DANCE WORLD
-            </div>
+  <div class="section-title">
+    CHOOSE<br>
+    YOUR STYLE.
+  </div>
 
-            <h2>
-                Khám phá thế giới
-                <br>của những bước nhảy.
-            </h2>
+  <div class="style-wall">
 
-            <p>
-                Những phong cách được lựa chọn để trẻ
-                có thể khám phá nhiều màu sắc chuyển động khác nhau.
-            </p>
-
-        </div>
-
-
-        <div class="style-grid">
-
-            <div class="style-card reveal">
-
-                <div class="style-icon">🔥</div>
-
-                <h3>Hip Hop</h3>
-
-                <p>
-                    Năng lượng, cá tính và tự do.
-                    Phù hợp với những bạn nhỏ yêu thích nhịp điệu mạnh.
-                </p>
-
-            </div>
-
-
-            <div class="style-card reveal">
-
-                <div class="style-icon">💗</div>
-
-                <h3>K-Pop Dance</h3>
-
-                <p>
-                    Những choreography vui nhộn,
-                    hiện đại và đầy năng lượng.
-                </p>
-
-            </div>
-
-
-            <div class="style-card reveal">
-
-                <div class="style-icon">✨</div>
-
-                <h3>Jazz Dance</h3>
-
-                <p>
-                    Kết hợp kỹ thuật, biểu cảm
-                    và sự mềm mại trong chuyển động.
-                </p>
-
-            </div>
-
-
-            <div class="style-card reveal">
-
-                <div class="style-icon">🌸</div>
-
-                <h3>Creative Dance</h3>
-
-                <p>
-                    Tự do khám phá chuyển động
-                    và phát triển trí tưởng tượng.
-                </p>
-
-            </div>
-
-
-            <div class="style-card reveal">
-
-                <div class="style-icon">⭐</div>
-
-                <h3>Performance</h3>
-
-                <p>
-                    Học cách làm chủ sân khấu,
-                    biểu cảm và trình diễn trước khán giả.
-                </p>
-
-            </div>
-
-
-            <div class="style-card reveal">
-
-                <div class="style-icon">🎶</div>
-
-                <h3>Rhythm</h3>
-
-                <p>
-                    Cảm nhận beat, nhịp và âm nhạc
-                    thông qua các trò chơi vận động.
-                </p>
-
-            </div>
-
-        </div>
-
+    <div class="style-item">
+      <div class="style-number">01</div>
+      <h3>HIP<br>HOP</h3>
+      <p>Nhịp điệu<br>cá tính<br>năng lượng</p>
     </div>
+
+    <div class="style-item">
+      <div class="style-number">02</div>
+      <h3>JAZZ<br>FUNK</h3>
+      <p>Biểu cảm<br>mạnh mẽ<br>cuốn hút</p>
+    </div>
+
+    <div class="style-item">
+      <div class="style-number">03</div>
+      <h3>K-POP<br>DANCE</h3>
+      <p>Hiện đại<br>vui nhộn<br>trình diễn</p>
+    </div>
+
+    <div class="style-item">
+      <div class="style-number">04</div>
+      <h3>FREE<br>STYLE</h3>
+      <p>Tự do<br>sáng tạo<br>khám phá</p>
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- AGE -->
-<section class="section age">
+<!-- JOURNEY -->
 
-    <div class="container">
+<section class="journey">
 
-        <div class="center-title reveal">
+  <div class="journey-title">
+    GROW<br>
+    WITH<br>
+    DANCE.
+  </div>
 
-            <div class="tag">
-                LEARNING JOURNEY
-            </div>
+  <p class="journey-intro">
+    Chương trình được xây dựng theo từng độ tuổi,
+    giúp học viên phát triển phù hợp với khả năng
+    vận động và tâm lý của từng giai đoạn.
+  </p>
 
-            <h2>
-                Mỗi độ tuổi,
-                <br>một cách chuyển động.
-            </h2>
+  <div class="path">
 
-            <p>
-                Chương trình được điều chỉnh theo khả năng
-                vận động và sự phát triển của từng nhóm tuổi.
-            </p>
+    <div class="age">
+      <div class="age-dot">4–6</div>
 
-        </div>
-
-
-        <div class="age-grid">
-
-            <div class="age-card reveal">
-
-                <div class="age-number">
-                    01 / 04
-                </div>
-
-                <div class="age-icon">🌱</div>
-
-                <h3>Little Movers</h3>
-
-                <p>
-                    4–6 tuổi<br>
-                    Làm quen với nhịp điệu,
-                    vận động và âm nhạc thông qua trò chơi.
-                </p>
-
-            </div>
-
-
-            <div class="age-card reveal">
-
-                <div class="age-number">
-                    02 / 04
-                </div>
-
-                <div class="age-icon">💃</div>
-
-                <h3>Dance Explorer</h3>
-
-                <p>
-                    7–10 tuổi<br>
-                    Khám phá các bước nhảy cơ bản
-                    và xây dựng sự tự tin.
-                </p>
-
-            </div>
-
-
-            <div class="age-card reveal">
-
-                <div class="age-number">
-                    03 / 04
-                </div>
-
-                <div class="age-icon">🔥</div>
-
-                <h3>Dance Maker</h3>
-
-                <p>
-                    11–14 tuổi<br>
-                    Phát triển kỹ thuật,
-                    musicality và cá tính biểu diễn.
-                </p>
-
-            </div>
-
-
-            <div class="age-card reveal">
-
-                <div class="age-number">
-                    04 / 04
-                </div>
-
-                <div class="age-icon">⭐</div>
-
-                <h3>Young Performer</h3>
-
-                <p>
-                    15–18 tuổi<br>
-                    Nâng cao kỹ năng,
-                    biểu diễn và làm chủ sân khấu.
-                </p>
-
-            </div>
-
-        </div>
-
+      <div class="age-content">
+        <h3>START</h3>
+        <p>
+          Làm quen với nhịp điệu,
+          vận động cơ bản và cảm nhận âm nhạc.
+        </p>
+      </div>
     </div>
+
+
+    <div class="age">
+      <div class="age-dot">7–10</div>
+
+      <div class="age-content">
+        <h3>GROOVE</h3>
+        <p>
+          Phát triển kỹ thuật,
+          khả năng phối hợp và ghi nhớ động tác.
+        </p>
+      </div>
+    </div>
+
+
+    <div class="age">
+      <div class="age-dot">11–14</div>
+
+      <div class="age-content">
+        <h3>STYLE</h3>
+        <p>
+          Khám phá phong cách,
+          biểu cảm và cá tính trình diễn.
+        </p>
+      </div>
+    </div>
+
+
+    <div class="age">
+      <div class="age-dot">15–18</div>
+
+      <div class="age-content">
+        <h3>PERFORM</h3>
+        <p>
+          Nâng cao kỹ thuật,
+          biểu diễn và xây dựng phong thái riêng.
+        </p>
+      </div>
+    </div>
+
+  </div>
 
 </section>
 
 
 <!-- PLAYGROUND -->
-<section class="section playground">
 
-    <div class="container play-content">
+<section class="playground">
 
-        <div class="play-title reveal">
+  <div class="playground-header">
 
-            <div class="tag">
-                DANCE PLAYGROUND
-            </div>
+    <div>
+      <div class="section-tag">EPIC PLAYGROUND</div>
 
-            <h2>
-                MOVE. FEEL. SHINE.
-            </h2>
-
-            <p>
-                Dance bắt đầu từ một chuyển động nhỏ.
-                Còn năng lượng thì cứ để EPIC lo! 🔥
-            </p>
-
-        </div>
-
-
-        <div class="energy reveal">
-
-            <div class="energy-dot d1"></div>
-            <div class="energy-dot d2"></div>
-            <div class="energy-dot d3"></div>
-
-            <div class="energy-word">
-                🎵 RHYTHM
-            </div>
-
-            <div class="energy-word">
-                💃 MOVEMENT
-            </div>
-
-            <div class="energy-word">
-                ❤️ FEEL
-            </div>
-
-            <div class="energy-word">
-                ⭐ CONFIDENCE
-            </div>
-
-            <div class="energy-text">
-                LET'S<br>DANCE!
-            </div>
-
-        </div>
-
+      <div class="section-title">
+        DANCE<br>
+        CHALLENGE.
+      </div>
     </div>
 
-</section>
+    <p class="play-note">
+      Không chỉ đứng trong lớp.
+      Học viên còn được tham gia các hoạt động,
+      showcase và thử thách để biến kỹ năng
+      thành trải nghiệm thực tế.
+    </p>
+
+  </div>
 
 
-<!-- LESSON -->
-<section class="section lesson">
+  <div class="challenge">
 
-    <div class="container">
+    <div class="challenge-box">
+      <h3>SHOW<br>TIME!</h3>
 
-        <div class="center-title reveal">
+      <p>
+        Tự tin bước lên sân khấu,
+        trình diễn cùng bạn bè
+        và lưu lại những khoảnh khắc
+        đáng nhớ.
+      </p>
 
-            <div class="tag">
-                A DAY AT EPIC
-            </div>
-
-            <h2>
-                Một buổi học Dance
-                <br>có gì vui?
-            </h2>
-
-        </div>
-
-
-        <div class="timeline">
-
-            <div class="lesson-row reveal">
-
-                <div class="lesson-number">
-                    01
-                </div>
-
-                <div class="lesson-box">
-
-                    <h3>🎵 Warm Up</h3>
-
-                    <p>
-                        Khởi động cơ thể và làm nóng
-                        bằng những chuyển động vui nhộn.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="lesson-row reveal">
-
-                <div class="lesson-number">
-                    02
-                </div>
-
-                <div class="lesson-box">
-
-                    <h3>💃 Learn</h3>
-
-                    <p>
-                        Làm quen với các bước nhảy,
-                        kỹ thuật và choreography.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="lesson-row reveal">
-
-                <div class="lesson-number">
-                    03
-                </div>
-
-                <div class="lesson-box">
-
-                    <h3>🔥 Practice</h3>
-
-                    <p>
-                        Luyện tập theo nhóm,
-                        phối hợp chuyển động và âm nhạc.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="lesson-row reveal">
-
-                <div class="lesson-number">
-                    04
-                </div>
-
-                <div class="lesson-box">
-
-                    <h3>🎭 Perform</h3>
-
-                    <p>
-                        Thử sức với một đoạn choreography
-                        và thể hiện cá tính của riêng mình.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="lesson-row reveal">
-
-                <div class="lesson-number">
-                    05
-                </div>
-
-                <div class="lesson-box">
-
-                    <h3>⭐ Shine!</h3>
-
-                    <p>
-                        Cùng nhìn lại những gì đã làm được
-                        và kết thúc buổi học bằng thật nhiều năng lượng.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
+      <div class="challenge-big">01</div>
     </div>
+
+
+    <div class="challenge-box">
+      <h3>CREW<br>MODE.</h3>
+
+      <p>
+        Học cách phối hợp,
+        lắng nghe beat và cùng nhau
+        tạo nên một tiết mục hoàn chỉnh.
+      </p>
+
+      <div class="challenge-big">02</div>
+    </div>
+
+  </div>
 
 </section>
 
 
 <!-- GALLERY -->
-<section class="section gallery">
 
-    <div class="container">
+<section class="gallery">
 
-        <div class="center-title reveal">
+  <div class="section-tag">EPIC MOMENTS</div>
 
-            <div class="tag">
-                EPIC DANCE MOMENTS
-            </div>
+  <div class="section-title">
+    DANCE.<br>
+    PLAY.<br>
+    REPEAT.
+  </div>
 
-            <h2>
-                Let the pictures
-                <br>tell the story.
-            </h2>
+  <div class="gallery-grid">
 
-            <p>
-                Sau này bạn có thể thay những ô này
-                bằng ảnh lớp Dance thực tế của EPIC.
-            </p>
-
-        </div>
-
-
-        <div class="gallery-grid">
-
-            <div class="gallery-box big reveal">
-
-                <div class="placeholder">
-
-                    <div>💃</div>
-
-                    <span>
-                        ẢNH LỚP DANCE
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="gallery-box reveal">
-
-                <div class="placeholder">
-
-                    <div>🔥</div>
-
-                    <span>
-                        DANCE CLASS
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="gallery-box reveal">
-
-                <div class="placeholder">
-
-                    <div>👟</div>
-
-                    <span>
-                        PRACTICE
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="gallery-box reveal">
-
-                <div class="placeholder">
-
-                    <div>⭐</div>
-
-                    <span>
-                        PERFORMANCE
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="gallery-box reveal">
-
-                <div class="placeholder">
-
-                    <div>💛</div>
-
-                    <span>
-                        EPIC MOMENT
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
+    <div class="gallery-box">
+      <span>ẢNH LỚP DANCE</span>
     </div>
+
+    <div class="gallery-box">
+      <span>SHOWCASE</span>
+    </div>
+
+    <div class="gallery-box">
+      <span>TRAINING</span>
+    </div>
+
+    <div class="gallery-box">
+      <span>EPIC CREW</span>
+    </div>
+
+    <div class="gallery-box">
+      <span>COMING SOON</span>
+    </div>
+
+  </div>
 
 </section>
 
 
 <!-- CTA -->
+
 <section class="cta">
 
-    <div class="container cta-content reveal">
+  <h2>
+    5, 6, 7, 8!<br>
+    LET'S MOVE.
+  </h2>
 
-        <h2>
-            LET'S DANCE!
-        </h2>
+  <p>
+    Sẵn sàng bật nhạc, bước lên sàn
+    và khám phá phiên bản năng động nhất của mình?
+  </p>
 
-        <p>
-            Một bước nhảy nhỏ hôm nay
-            có thể tạo nên một phiên bản tự tin hơn của con ngày mai.
-        </p>
-
-        <a href="index.html#dang-ky" class="btn">
-            Đăng ký học thử 💃 →
-        </a>
-
-    </div>
+  <a href="index.html#dang-ky" class="cta-btn">
+    ĐĂNG KÝ HỌC THỬ →
+  </a>
 
 </section>
 
 
-<!-- FOOTER -->
 <footer>
 
-    <div class="container footer">
+  <div>
+    © 2026 EPIC Talent Center
+  </div>
 
-        <a href="index.html">
-
-            <img src="assets/logo1A.png" alt="EPIC">
-
-        </a>
-
-        <p>
-            EPIC – Thỏa sức đam mê, khơi nguồn sáng tạo.
-        </p>
-
-        <a href="index.html">
-            ← Về trang chủ
-        </a>
-
-    </div>
+  <div>
+    Nghệ thuật • Sáng tạo • Tự tin
+  </div>
 
 </footer>
 
 
 <script>
 
-/* =========================
-SCROLL ANIMATION
-========================= */
-
 const reveals = document.querySelectorAll(".reveal");
 
-const observer = new IntersectionObserver(
-
-    entries => {
-
-        entries.forEach(entry => {
-
-            if(entry.isIntersecting){
-
-                entry.target.classList.add("show");
-
-            }
-
-        });
-
-    },
-
-    {
-        threshold:.12
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
     }
-
-);
-
-reveals.forEach(el => observer.observe(el));
-
-
-/* =========================
-DANCE PLAYGROUND INTERACTION
-========================= */
-
-const energyWords =
-document.querySelectorAll(".energy-word");
-
-const messages = [
-
-    "🎵 Feel the rhythm!",
-    "💃 Move your body!",
-    "❤️ Feel the music!",
-    "⭐ Shine your way!"
-
-];
-
-energyWords.forEach((word,index) => {
-
-    word.addEventListener("click",()=>{
-
-        word.style.transform="scale(1.12) rotate(-3deg)";
-
-        setTimeout(()=>{
-
-            word.style.transform="";
-
-        },250);
-
-    });
-
+  });
+},{
+  threshold:.12
 });
 
-
-/* =========================
-DANCER INTERACTION
-========================= */
-
-const dancer =
-document.querySelector(".dancer");
-
-const dancerCard =
-document.querySelector(".dancer-card");
-
-dancerCard.addEventListener("click",()=>{
-
-    dancer.style.animation="none";
-
-    setTimeout(()=>{
-
-        dancer.style.animation=
-        "danceMove .8s ease-in-out 3";
-
-    },20);
-
-});
+reveals.forEach(el=>observer.observe(el));
 
 
-/* =========================
-MOUSE MOVEMENT
-========================= */
+/* beat interaction */
 
-document.addEventListener("mousemove",(e)=>{
+const counts = document.querySelectorAll(".count");
 
-    const x =
-    (e.clientX / window.innerWidth - .5) * 10;
+counts.forEach((item,index)=>{
+  item.addEventListener("mouseenter",()=>{
+    counts.forEach(x=>x.style.opacity=".35");
+    item.style.opacity="1";
+  });
 
-    const y =
-    (e.clientY / window.innerHeight - .5) * 10;
-
-    document.querySelector(".star1").style.transform=
-    `translate(${x}px,${y}px)`;
-
+  item.addEventListener("mouseleave",()=>{
+    counts.forEach(x=>x.style.opacity="1");
+  });
 });
 
 </script>
