@@ -20,6 +20,419 @@
     >
 
     <link rel="stylesheet" href="style.css">
+
+<style>
+
+/* =========================================================
+   EPIC ART CANVAS
+========================================================= */
+
+.art-canvas-frame {
+    position: relative;
+    width: 100%;
+    max-width: 570px;
+    margin: 0 auto;
+
+    background: #fffaf0;
+    border: 5px solid #102576;
+    border-radius: 35px;
+
+    box-shadow:
+        10px 10px 0 #102576,
+        inset 0 0 0 3px rgba(255,255,255,.8);
+
+    overflow: hidden;
+    transform: rotate(1deg);
+}
+
+/* giấy */
+
+.art-canvas-paper {
+    position: relative;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(231,200,74,.12) 0 4px, transparent 5px),
+        radial-gradient(circle at 75% 65%, rgba(201,27,43,.08) 0 5px, transparent 6px),
+        #fffdf7;
+    background-size: 45px 45px, 70px 70px, auto;
+}
+
+/* thanh trên */
+
+.canvas-top {
+    min-height: 76px;
+    padding: 13px 16px;
+
+    background: #e7c84f;
+    border-bottom: 4px solid #102576;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.canvas-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.canvas-title-icon {
+    width: 43px;
+    height: 43px;
+
+    display: grid;
+    place-items: center;
+
+    background: white;
+    border: 3px solid #102576;
+    border-radius: 14px;
+
+    font-size: 23px;
+
+    box-shadow: 3px 3px 0 #102576;
+}
+
+.canvas-title-text strong {
+    display: block;
+    color: #102576;
+    font-family: "Cherry Bomb One", cursive;
+    font-size: 22px;
+    line-height: 1;
+}
+
+.canvas-title-text small {
+    display: block;
+    margin-top: 3px;
+    color: #102576;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* sticker */
+
+.canvas-sticker {
+    padding: 7px 11px;
+
+    background: #c9182b;
+    color: white;
+
+    border: 3px solid #102576;
+    border-radius: 18px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    transform: rotate(4deg);
+    box-shadow: 3px 3px 0 #102576;
+}
+
+/* canvas */
+
+#artCanvas {
+    display: block;
+
+    width: 100%;
+    height: 295px;
+
+    background: transparent;
+
+    cursor: crosshair;
+
+    touch-action: none;
+}
+
+/* toolbar */
+
+.canvas-toolbar {
+    padding: 13px;
+
+    background: white;
+    border-top: 4px solid #102576;
+
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+/* màu */
+
+.canvas-tools-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.canvas-tools-label {
+    color: #102576;
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 2px;
+}
+
+.color-btn {
+    width: 27px;
+    height: 27px;
+
+    border-radius: 50%;
+    border: 3px solid #102576;
+
+    cursor: pointer;
+
+    transition: .15s;
+
+    box-shadow: 2px 2px 0 rgba(16,37,118,.2);
+}
+
+.color-btn:hover {
+    transform: translateY(-3px) scale(1.08);
+}
+
+.color-btn.active {
+    transform: scale(1.16);
+    box-shadow:
+        0 0 0 3px white,
+        0 0 0 5px #102576;
+}
+
+/* cỡ nét */
+
+.size-btn {
+    min-width: 39px;
+    height: 31px;
+
+    padding: 0 8px;
+
+    background: #fffaf0;
+
+    border: 2px solid #102576;
+    border-radius: 12px;
+
+    color: #102576;
+
+    cursor: pointer;
+    font-weight: 700;
+
+    transition: .15s;
+}
+
+.size-btn:hover {
+    background: #ffd8de;
+}
+
+.size-btn.active {
+    background: #102576;
+    color: white;
+}
+
+/* action */
+
+.canvas-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+}
+
+.canvas-action {
+    min-height: 37px;
+
+    border: 2px solid #102576;
+    border-radius: 13px;
+
+    background: #fffaf0;
+    color: #102576;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: 3px 3px 0 #102576;
+
+    transition: .12s;
+}
+
+.canvas-action:hover {
+    transform: translate(2px,2px);
+    box-shadow: 1px 1px 0 #102576;
+}
+
+.canvas-action.erase {
+    background: #ffd8de;
+}
+
+.canvas-action.clear {
+    background: #c9182b;
+    color: white;
+}
+
+.canvas-action.save {
+    background: #e7c84f;
+}
+
+/* dòng hướng dẫn */
+
+.canvas-hint {
+    text-align: center;
+
+    color: #102576;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    opacity: .75;
+}
+
+/* doodle quanh bảng */
+
+.canvas-doodle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 5;
+
+    font-size: 27px;
+}
+
+.canvas-doodle-one {
+    top: 92px;
+    right: -8px;
+    color: #c9182b;
+    transform: rotate(15deg);
+}
+
+.canvas-doodle-two {
+    bottom: 85px;
+    left: -12px;
+    color: #102576;
+    transform: rotate(-15deg);
+}
+
+/* nút bắt đầu */
+
+.canvas-start-message {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%,-50%);
+
+    pointer-events: none;
+
+    padding: 9px 15px;
+
+    background: rgba(255,255,255,.92);
+
+    border: 3px solid #102576;
+    border-radius: 18px;
+
+    color: #c9182b;
+
+    font-family: "Cherry Bomb One", cursive;
+    font-size: 20px;
+
+    box-shadow: 4px 4px 0 #102576;
+
+    transition: .25s;
+}
+
+.canvas-start-message.hide {
+    opacity: 0;
+    transform: translate(-50%,-50%) scale(.8);
+}
+
+/* responsive */
+
+@media (max-width: 700px) {
+
+    .art-canvas-frame {
+        width: calc(100% - 15px);
+        box-shadow: 7px 7px 0 #102576;
+    }
+
+    #artCanvas {
+        height: 250px;
+    }
+
+    .canvas-top {
+        padding: 11px;
+    }
+
+    .canvas-title-text strong {
+        font-size: 18px;
+    }
+
+    .canvas-sticker {
+        font-size: 10px;
+        padding: 6px 8px;
+    }
+
+}
+
+@media (max-width: 430px) {
+
+    #artCanvas {
+        height: 220px;
+    }
+
+    .canvas-actions {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .color-btn {
+        width: 25px;
+        height: 25px;
+    }
+
+}
+
+
+/* =========================================================
+   DRAWING POP ANIMATION
+========================================================= */
+
+@keyframes canvasPop {
+
+    0% {
+        transform: scale(1) rotate(1deg);
+    }
+
+    50% {
+        transform: scale(1.015) rotate(-1deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(1deg);
+    }
+
+}
+
+.art-canvas-frame.drawing {
+    animation: canvasPop .45s ease;
+}
+
+
+/* =========================================================
+   ART HERO OVERRIDE
+========================================================= */
+
+.art-photo-frame {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+
+/* tránh CSS cũ của placeholder ảnh ảnh hưởng */
+
+.art-photo-placeholder {
+    display: none !important;
+}
+
+</style>
+
 </head>
 
 <body class="art-page">
@@ -69,7 +482,6 @@
 
     <div class="art-sky-shape"></div>
 
-    <!-- doodle -->
     <span class="art-doodle art-star star-one">✦</span>
     <span class="art-doodle art-star star-two">★</span>
     <span class="art-doodle art-spark spark-one">✧</span>
@@ -139,25 +551,201 @@
                 <div class="art-paint-blob blob-red"></div>
                 <div class="art-paint-blob blob-blue"></div>
 
-                <div class="art-photo-frame">
 
-                    <div class="art-photo-placeholder">
+                <!-- =========================
+                     EPIC ART CANVAS
+                ========================= -->
 
-                        <div class="art-photo-icon">
-                            🎨
+                <div class="art-canvas-frame" id="canvasFrame">
+
+                    <div class="canvas-top">
+
+                        <div class="canvas-title">
+
+                            <div class="canvas-title-icon">
+                                🎨
+                            </div>
+
+                            <div class="canvas-title-text">
+                                <strong>VẼ ĐI NÈ!</strong>
+                                <small>Tạo tác phẩm của riêng bạn</small>
+                            </div>
+
                         </div>
 
-                        <strong>
-                            KHOẢNH KHẮC SÁNG TẠO
-                        </strong>
-
-                        <span>
-                            Ảnh lớp Mỹ thuật
-                        </span>
+                        <div class="canvas-sticker">
+                            LITTLE ARTIST ✦
+                        </div>
 
                     </div>
 
+
+                    <div class="art-canvas-paper">
+
+                        <canvas id="artCanvas"></canvas>
+
+                        <div class="canvas-start-message" id="canvasMessage">
+                            ✏️ Bắt đầu vẽ nhé!
+                        </div>
+
+                    </div>
+
+
+                    <!-- TOOLBAR -->
+
+                    <div class="canvas-toolbar">
+
+                        <!-- MÀU -->
+
+                        <div class="canvas-tools-row">
+
+                            <span class="canvas-tools-label">
+                                MÀU:
+                            </span>
+
+                            <button
+                                class="color-btn active"
+                                data-color="#102576"
+                                style="background:#102576"
+                                aria-label="Xanh navy">
+                            </button>
+
+                            <button
+                                class="color-btn"
+                                data-color="#C9182B"
+                                style="background:#C9182B"
+                                aria-label="Đỏ">
+                            </button>
+
+                            <button
+                                class="color-btn"
+                                data-color="#E7C84A"
+                                style="background:#E7C84A"
+                                aria-label="Vàng">
+                            </button>
+
+                            <button
+                                class="color-btn"
+                                data-color="#FF8FA3"
+                                style="background:#FF8FA3"
+                                aria-label="Hồng">
+                            </button>
+
+                            <button
+                                class="color-btn"
+                                data-color="#6FA8FF"
+                                style="background:#6FA8FF"
+                                aria-label="Xanh">
+                            </button>
+
+                            <button
+                                class="color-btn"
+                                data-color="#6BCB77"
+                                style="background:#6BCB77"
+                                aria-label="Xanh lá">
+                            </button>
+
+                            <button
+                                class="color-btn"
+                                data-color="#9B6BFF"
+                                style="background:#9B6BFF"
+                                aria-label="Tím">
+                            </button>
+
+                            <button
+                                class="color-btn"
+                                data-color="#111111"
+                                style="background:#111111"
+                                aria-label="Đen">
+                            </button>
+
+                        </div>
+
+
+                        <!-- SIZE -->
+
+                        <div class="canvas-tools-row">
+
+                            <span class="canvas-tools-label">
+                                NÉT:
+                            </span>
+
+                            <button
+                                class="size-btn"
+                                data-size="3">
+                                Nhỏ
+                            </button>
+
+                            <button
+                                class="size-btn active"
+                                data-size="7">
+                                Vừa
+                            </button>
+
+                            <button
+                                class="size-btn"
+                                data-size="13">
+                                To
+                            </button>
+
+                            <button
+                                class="size-btn"
+                                data-size="22">
+                                Siêu to
+                            </button>
+
+                        </div>
+
+
+                        <!-- ACTIONS -->
+
+                        <div class="canvas-actions">
+
+                            <button
+                                class="canvas-action"
+                                id="undoBtn">
+                                ↩️ Hoàn tác
+                            </button>
+
+                            <button
+                                class="canvas-action erase"
+                                id="eraseBtn">
+                                🧽 Tẩy
+                            </button>
+
+                            <button
+                                class="canvas-action clear"
+                                id="clearBtn">
+                                🗑️ Xóa
+                            </button>
+
+                            <button
+                                class="canvas-action save"
+                                id="saveBtn"
+                                style="grid-column:1/-1;">
+                                💾 Lưu tác phẩm
+                            </button>
+
+                        </div>
+
+
+                        <div class="canvas-hint">
+                            🖱️ Vẽ bằng chuột · 📱 Vẽ bằng tay · ✨ Thỏa sức sáng tạo!
+                        </div>
+
+                    </div>
+
+
+                    <span class="canvas-doodle canvas-doodle-one">
+                        ✦
+                    </span>
+
+                    <span class="canvas-doodle canvas-doodle-two">
+                        ✧
+                    </span>
+
                 </div>
+
 
                 <div class="art-sticker sticker-top">
                     WOW!
@@ -712,28 +1300,46 @@
 
 <script>
 
+/* =========================================================
+   MENU + REVEAL
+========================================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const items = document.querySelectorAll(".reveal-art");
 
-    const observer = new IntersectionObserver(
-        entries => {
+    if ("IntersectionObserver" in window) {
 
-            entries.forEach(entry => {
+        const observer = new IntersectionObserver(
+            entries => {
 
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("show-art");
-                }
+                entries.forEach(entry => {
 
-            });
+                    if (entry.isIntersecting) {
 
-        },
-        {
-            threshold: 0.12
-        }
-    );
+                        entry.target.classList.add("show-art");
 
-    items.forEach(item => observer.observe(item));
+                        observer.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+        items.forEach(item => observer.observe(item));
+
+    } else {
+
+        items.forEach(item => {
+            item.classList.add("show-art");
+        });
+
+    }
 
 
     const menuButton = document.querySelector(".menu-toggle");
@@ -744,7 +1350,6 @@ document.addEventListener("DOMContentLoaded", () => {
         menuButton.addEventListener("click", () => {
 
             nav.classList.toggle("open");
-
             menuButton.classList.toggle("active");
 
         });
@@ -752,6 +1357,684 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+
+/* =========================================================
+   EPIC ART CANVAS
+========================================================= */
+
+const canvas = document.getElementById("artCanvas");
+const ctx = canvas.getContext("2d");
+
+const canvasFrame = document.getElementById("canvasFrame");
+const canvasMessage = document.getElementById("canvasMessage");
+
+const colorButtons =
+    document.querySelectorAll(".color-btn");
+
+const sizeButtons =
+    document.querySelectorAll(".size-btn");
+
+const undoBtn =
+    document.getElementById("undoBtn");
+
+const eraseBtn =
+    document.getElementById("eraseBtn");
+
+const clearBtn =
+    document.getElementById("clearBtn");
+
+const saveBtn =
+    document.getElementById("saveBtn");
+
+
+/* =========================================================
+   DRAW SETTINGS
+========================================================= */
+
+let currentColor = "#102576";
+let currentSize = 7;
+
+let drawing = false;
+let lastX = 0;
+let lastY = 0;
+
+let isEraser = false;
+
+let history = [];
+
+let hasDrawn = false;
+
+
+/* =========================================================
+   CANVAS SIZE
+========================================================= */
+
+function resizeCanvas(keepDrawing = true) {
+
+    const oldCanvas = document.createElement("canvas");
+
+    if (keepDrawing && canvas.width > 0 && canvas.height > 0) {
+
+        oldCanvas.width = canvas.width;
+        oldCanvas.height = canvas.height;
+
+        const oldCtx = oldCanvas.getContext("2d");
+
+        oldCtx.drawImage(canvas,0,0);
+
+    }
+
+
+    const rect = canvas.getBoundingClientRect();
+
+    const dpr =
+        Math.max(
+            1,
+            Math.min(
+                window.devicePixelRatio || 1,
+                2
+            )
+        );
+
+
+    canvas.width =
+        Math.round(rect.width * dpr);
+
+    canvas.height =
+        Math.round(rect.height * dpr);
+
+
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+
+
+    if (
+        keepDrawing &&
+        oldCanvas.width &&
+        oldCanvas.height
+    ) {
+
+        ctx.drawImage(
+            oldCanvas,
+            0,
+            0,
+            oldCanvas.width,
+            oldCanvas.height,
+            0,
+            0,
+            rect.width,
+            rect.height
+        );
+
+    }
+
+}
+
+
+resizeCanvas(false);
+
+
+window.addEventListener(
+    "resize",
+    () => resizeCanvas(true)
+);
+
+
+/* =========================================================
+   SAVE HISTORY
+========================================================= */
+
+function saveHistory() {
+
+    history.push(
+        canvas.toDataURL("image/png")
+    );
+
+
+    if (history.length > 20) {
+        history.shift();
+    }
+
+}
+
+
+/* =========================================================
+   GET POSITION
+========================================================= */
+
+function getPosition(event) {
+
+    const rect =
+        canvas.getBoundingClientRect();
+
+
+    return {
+
+        x:
+            event.clientX - rect.left,
+
+        y:
+            event.clientY - rect.top
+
+    };
+
+}
+
+
+/* =========================================================
+   START DRAW
+========================================================= */
+
+function startDrawing(event) {
+
+    event.preventDefault();
+
+    drawing = true;
+
+    const pos =
+        getPosition(event);
+
+    lastX = pos.x;
+    lastY = pos.y;
+
+
+    saveHistory();
+
+
+    canvasMessage.classList.add("hide");
+
+    canvasFrame.classList.remove("drawing");
+
+    void canvasFrame.offsetWidth;
+
+    canvasFrame.classList.add("drawing");
+
+
+    /*
+       Chấm đầu tiên khi người dùng chỉ click
+    */
+
+    ctx.beginPath();
+
+    ctx.fillStyle =
+        isEraser
+            ? "#fffdf7"
+            : currentColor;
+
+    ctx.arc(
+        lastX,
+        lastY,
+        currentSize / 2,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+}
+
+
+/* =========================================================
+   DRAW
+========================================================= */
+
+function draw(event) {
+
+    if (!drawing) return;
+
+    event.preventDefault();
+
+
+    const pos =
+        getPosition(event);
+
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        lastX,
+        lastY
+    );
+
+    ctx.lineTo(
+        pos.x,
+        pos.y
+    );
+
+
+    ctx.lineWidth =
+        currentSize;
+
+
+    /*
+       Tẩy
+    */
+
+    if (isEraser) {
+
+        ctx.strokeStyle = "#fffdf7";
+
+    } else {
+
+        ctx.strokeStyle =
+            currentColor;
+
+    }
+
+
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+
+    ctx.stroke();
+
+
+    lastX = pos.x;
+    lastY = pos.y;
+
+
+    if (!hasDrawn) {
+
+        hasDrawn = true;
+
+        canvasMessage.classList.add("hide");
+
+    }
+
+}
+
+
+/* =========================================================
+   STOP
+========================================================= */
+
+function stopDrawing(event) {
+
+    if (!drawing) return;
+
+    if (event) {
+        event.preventDefault();
+    }
+
+    drawing = false;
+
+    ctx.closePath();
+
+}
+
+
+/* =========================================================
+   POINTER EVENTS
+========================================================= */
+
+canvas.addEventListener(
+    "pointerdown",
+    startDrawing
+);
+
+canvas.addEventListener(
+    "pointermove",
+    draw
+);
+
+canvas.addEventListener(
+    "pointerup",
+    stopDrawing
+);
+
+canvas.addEventListener(
+    "pointercancel",
+    stopDrawing
+);
+
+canvas.addEventListener(
+    "pointerleave",
+    stopDrawing
+);
+
+
+/* =========================================================
+   COLORS
+========================================================= */
+
+colorButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            colorButtons.forEach(btn =>
+                btn.classList.remove("active")
+            );
+
+
+            button.classList.add("active");
+
+
+            currentColor =
+                button.dataset.color;
+
+
+            isEraser = false;
+
+
+            eraseBtn.textContent =
+                "🧽 Tẩy";
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   BRUSH SIZE
+========================================================= */
+
+sizeButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            sizeButtons.forEach(btn =>
+                btn.classList.remove("active")
+            );
+
+
+            button.classList.add("active");
+
+
+            currentSize =
+                Number(button.dataset.size);
+
+
+            isEraser = false;
+
+
+            eraseBtn.textContent =
+                "🧽 Tẩy";
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   ERASER
+========================================================= */
+
+eraseBtn.addEventListener(
+    "click",
+    () => {
+
+        isEraser =
+            !isEraser;
+
+
+        if (isEraser) {
+
+            eraseBtn.textContent =
+                "🎨 Vẽ lại";
+
+            eraseBtn.style.background =
+                "#e7c84f";
+
+        } else {
+
+            eraseBtn.textContent =
+                "🧽 Tẩy";
+
+            eraseBtn.style.background =
+                "";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   UNDO
+========================================================= */
+
+undoBtn.addEventListener(
+    "click",
+    () => {
+
+        if (!history.length) return;
+
+
+        const previous =
+            history.pop();
+
+
+        const image =
+            new Image();
+
+
+        image.onload = () => {
+
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+
+            const rect =
+                canvas.getBoundingClientRect();
+
+
+            ctx.drawImage(
+                image,
+                0,
+                0,
+                rect.width,
+                rect.height
+            );
+
+        };
+
+
+        image.src = previous;
+
+    }
+);
+
+
+/* =========================================================
+   CLEAR
+========================================================= */
+
+clearBtn.addEventListener(
+    "click",
+    () => {
+
+        if (
+            !confirm(
+                "Xóa toàn bộ tranh và vẽ lại nhé? 🎨"
+            )
+        ) {
+            return;
+        }
+
+
+        saveHistory();
+
+
+        ctx.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+        hasDrawn = false;
+
+        canvasMessage.classList.remove(
+            "hide"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   SAVE IMAGE
+========================================================= */
+
+saveBtn.addEventListener(
+    "click",
+    () => {
+
+        /*
+           Tạo canvas trắng để tranh lưu xuống
+           không bị trong suốt.
+        */
+
+        const exportCanvas =
+            document.createElement("canvas");
+
+
+        const rect =
+            canvas.getBoundingClientRect();
+
+
+        const scale = 2;
+
+
+        exportCanvas.width =
+            rect.width * scale;
+
+
+        exportCanvas.height =
+            rect.height * scale;
+
+
+        const exportCtx =
+            exportCanvas.getContext("2d");
+
+
+        exportCtx.fillStyle =
+            "#fffdf7";
+
+
+        exportCtx.fillRect(
+            0,
+            0,
+            exportCanvas.width,
+            exportCanvas.height
+        );
+
+
+        exportCtx.drawImage(
+            canvas,
+            0,
+            0,
+            canvas.width,
+            canvas.height,
+            0,
+            0,
+            exportCanvas.width,
+            exportCanvas.height
+        );
+
+
+        const link =
+            document.createElement("a");
+
+
+        link.download =
+            "EPIC-Art-" +
+            new Date()
+                .toISOString()
+                .slice(0,10) +
+            ".png";
+
+
+        link.href =
+            exportCanvas.toDataURL(
+                "image/png"
+            );
+
+
+        link.click();
+
+
+        saveBtn.textContent =
+            "✓ Đã lưu tranh!";
+
+
+        setTimeout(
+            () => {
+
+                saveBtn.textContent =
+                    "💾 Lưu tác phẩm";
+
+            },
+            1800
+        );
+
+    }
+);
+
+
+/* =========================================================
+   KEYBOARD SHORTCUTS
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        /*
+           Không chạy shortcut khi người dùng
+           đang ở input/textarea.
+        */
+
+        const tag =
+            event.target.tagName.toLowerCase();
+
+
+        if (
+            tag === "input" ||
+            tag === "textarea"
+        ) {
+            return;
+        }
+
+
+        /*
+           Ctrl + Z
+        */
+
+        if (
+            (event.ctrlKey || event.metaKey) &&
+            event.key.toLowerCase() === "z"
+        ) {
+
+            event.preventDefault();
+
+            undoBtn.click();
+
+        }
+
+    }
+);
 
 </script>
 
