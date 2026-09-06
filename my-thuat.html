@@ -547,223 +547,219 @@
 
             <div class="art-hero-visual">
 
-                <div class="art-paint-blob blob-yellow"></div>
-                <div class="art-paint-blob blob-red"></div>
-                <div class="art-paint-blob blob-blue"></div>
+    <!-- Các mảng màu nằm phía sau -->
+    <div class="art-paint-blob blob-yellow"></div>
+    <div class="art-paint-blob blob-red"></div>
+    <div class="art-paint-blob blob-blue"></div>
 
 
-                <!-- =========================
-                     EPIC ART CANVAS
-                ========================= -->
+    <!-- ⭐ NGÔI SAO BÊN NGOÀI -->
+    <div class="art-outside-star star-left">
+        ✦
+    </div>
 
-                <div class="art-canvas-frame" id="canvasFrame">
-
-                    <div class="canvas-top">
-
-                        <div class="canvas-title">
-
-                            <div class="canvas-title-icon">
-                                🎨
-                            </div>
-
-                            <div class="canvas-title-text">
-                                <strong>VẼ ĐI NÈ!</strong>
-                                <small>Tạo tác phẩm của riêng bạn</small>
-                            </div>
-
-                        </div>
-
-                        <div class="canvas-sticker">
-                            LITTLE ARTIST ✦
-                        </div>
-
-                    </div>
+    <div class="art-outside-star star-right">
+        ★
+    </div>
 
 
-                    <div class="art-canvas-paper">
+    <!-- 🎨 KHUNG BẢNG VẼ -->
+    <div class="art-canvas-frame" id="canvasFrame">
 
-                        <canvas id="artCanvas"></canvas>
+        <div class="canvas-top">
 
-                        <div class="canvas-start-message" id="canvasMessage">
-                            ✏️ Bắt đầu vẽ nhé!
-                        </div>
+            <div class="canvas-title">
 
-                    </div>
-
-
-                    <!-- TOOLBAR -->
-
-                    <div class="canvas-toolbar">
-
-                        <!-- MÀU -->
-
-                        <div class="canvas-tools-row">
-
-                            <span class="canvas-tools-label">
-                                MÀU:
-                            </span>
-
-                            <button
-                                class="color-btn active"
-                                data-color="#102576"
-                                style="background:#102576"
-                                aria-label="Xanh navy">
-                            </button>
-
-                            <button
-                                class="color-btn"
-                                data-color="#C9182B"
-                                style="background:#C9182B"
-                                aria-label="Đỏ">
-                            </button>
-
-                            <button
-                                class="color-btn"
-                                data-color="#E7C84A"
-                                style="background:#E7C84A"
-                                aria-label="Vàng">
-                            </button>
-
-                            <button
-                                class="color-btn"
-                                data-color="#FF8FA3"
-                                style="background:#FF8FA3"
-                                aria-label="Hồng">
-                            </button>
-
-                            <button
-                                class="color-btn"
-                                data-color="#6FA8FF"
-                                style="background:#6FA8FF"
-                                aria-label="Xanh">
-                            </button>
-
-                            <button
-                                class="color-btn"
-                                data-color="#6BCB77"
-                                style="background:#6BCB77"
-                                aria-label="Xanh lá">
-                            </button>
-
-                            <button
-                                class="color-btn"
-                                data-color="#9B6BFF"
-                                style="background:#9B6BFF"
-                                aria-label="Tím">
-                            </button>
-
-                            <button
-                                class="color-btn"
-                                data-color="#111111"
-                                style="background:#111111"
-                                aria-label="Đen">
-                            </button>
-
-                        </div>
-
-
-                        <!-- SIZE -->
-
-                        <div class="canvas-tools-row">
-
-                            <span class="canvas-tools-label">
-                                NÉT:
-                            </span>
-
-                            <button
-                                class="size-btn"
-                                data-size="3">
-                                Nhỏ
-                            </button>
-
-                            <button
-                                class="size-btn active"
-                                data-size="7">
-                                Vừa
-                            </button>
-
-                            <button
-                                class="size-btn"
-                                data-size="13">
-                                To
-                            </button>
-
-                            <button
-                                class="size-btn"
-                                data-size="22">
-                                Siêu to
-                            </button>
-
-                        </div>
-
-
-                        <!-- ACTIONS -->
-
-                        <div class="canvas-actions">
-
-                            <button
-                                class="canvas-action"
-                                id="undoBtn">
-                                ↩️ Hoàn tác
-                            </button>
-
-                            <button
-                                class="canvas-action erase"
-                                id="eraseBtn">
-                                🧽 Tẩy
-                            </button>
-
-                            <button
-                                class="canvas-action clear"
-                                id="clearBtn">
-                                🗑️ Xóa
-                            </button>
-
-                            <button
-                                class="canvas-action save"
-                                id="saveBtn"
-                                style="grid-column:1/-1;">
-                                💾 Lưu tác phẩm
-                            </button>
-
-                        </div>
-
-
-                        <div class="canvas-hint">
-                            🖱️ Vẽ bằng chuột · 📱 Vẽ bằng tay · ✨ Thỏa sức sáng tạo!
-                        </div>
-
-                    </div>
-
-
-                    <span class="canvas-doodle canvas-doodle-one">
-                        ✦
-                    </span>
-
-                    <span class="canvas-doodle canvas-doodle-two">
-                        ✧
-                    </span>
-
+                <div class="canvas-title-icon">
+                    🎨
                 </div>
 
-
-                <div class="art-sticker sticker-top">
-                    WOW!
-                </div>
-
-                <div class="art-sticker sticker-bottom">
-                    LOVE ART ♡
-                </div>
-
-                <div class="art-mini-card">
-                    <span>★</span>
-                    <div>
-                        <strong>4–18</strong>
-                        <small>tuổi</small>
-                    </div>
+                <div class="canvas-title-text">
+                    <strong>VẼ ĐI NÈ!</strong>
+                    <small>Tạo tác phẩm của riêng bạn</small>
                 </div>
 
             </div>
+
+            <div class="canvas-sticker">
+                LITTLE ARTIST ✦
+            </div>
+
+        </div>
+
+
+        <div class="art-canvas-paper">
+
+            <canvas id="artCanvas"></canvas>
+
+            <div
+                class="canvas-start-message"
+                id="canvasMessage">
+                ✏️ Bắt đầu vẽ nhé!
+            </div>
+
+        </div>
+
+
+        <div class="canvas-toolbar">
+
+            <div class="canvas-tools-row">
+
+                <span class="canvas-tools-label">
+                    MÀU:
+                </span>
+
+                <button
+                    class="color-btn active"
+                    data-color="#102576"
+                    style="background:#102576">
+                </button>
+
+                <button
+                    class="color-btn"
+                    data-color="#C9182B"
+                    style="background:#C9182B">
+                </button>
+
+                <button
+                    class="color-btn"
+                    data-color="#E7C84A"
+                    style="background:#E7C84A">
+                </button>
+
+                <button
+                    class="color-btn"
+                    data-color="#FF8FA3"
+                    style="background:#FF8FA3">
+                </button>
+
+                <button
+                    class="color-btn"
+                    data-color="#6FA8FF"
+                    style="background:#6FA8FF">
+                </button>
+
+                <button
+                    class="color-btn"
+                    data-color="#6BCB77"
+                    style="background:#6BCB77">
+                </button>
+
+                <button
+                    class="color-btn"
+                    data-color="#9B6BFF"
+                    style="background:#9B6BFF">
+                </button>
+
+                <button
+                    class="color-btn"
+                    data-color="#111111"
+                    style="background:#111111">
+                </button>
+
+            </div>
+
+
+            <div class="canvas-tools-row">
+
+                <span class="canvas-tools-label">
+                    NÉT:
+                </span>
+
+                <button
+                    class="size-btn"
+                    data-size="3">
+                    Nhỏ
+                </button>
+
+                <button
+                    class="size-btn active"
+                    data-size="7">
+                    Vừa
+                </button>
+
+                <button
+                    class="size-btn"
+                    data-size="13">
+                    To
+                </button>
+
+                <button
+                    class="size-btn"
+                    data-size="22">
+                    Siêu to
+                </button>
+
+            </div>
+
+
+            <div class="canvas-actions">
+
+                <button
+                    class="canvas-action"
+                    id="undoBtn">
+                    ↩️ Hoàn tác
+                </button>
+
+                <button
+                    class="canvas-action erase"
+                    id="eraseBtn">
+                    🧽 Tẩy
+                </button>
+
+                <button
+                    class="canvas-action clear"
+                    id="clearBtn">
+                    🗑️ Xóa
+                </button>
+
+                <button
+                    class="canvas-action save"
+                    id="saveBtn"
+                    style="grid-column:1/-1;">
+                    💾 Lưu tác phẩm
+                </button>
+
+            </div>
+
+
+            <div class="canvas-hint">
+                🖱️ Vẽ bằng chuột · 📱 Vẽ bằng tay · ✨ Thỏa sức sáng tạo!
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ⭐ ELEMENT PHÍA NGOÀI BẢNG VẼ -->
+
+    <div class="art-outside-element wow-element">
+        WOW!
+    </div>
+
+    <div class="art-outside-element love-element">
+        LOVE ART ♡
+    </div>
+
+
+    <div class="art-outside-age">
+
+        <span>★</span>
+
+        <div>
+            <strong>4–18</strong>
+            <small>tuổi</small>
+        </div>
+
+    </div>
+
+
+    <div class="art-outside-pencil">
+        ✏️
+    </div>
+
+</div>
 
         </div>
 
