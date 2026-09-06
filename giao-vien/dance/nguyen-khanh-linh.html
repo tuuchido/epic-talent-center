@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nguyễn Khánh Linh – Giáo viên Dance | EPIC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Varela+Round&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #102576;
+      --red: #c9182b;
+      --gold: #e7c84a;
+      --light: #f5f7ff;
+      --text: #20243a;
+      --muted: #68708a;
+      --white: #ffffff;
+      --shadow: 0 18px 50px rgba(16, 37, 118, .12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Varela Round", sans-serif;
+      color: var(--text);
+      background: white;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #edf0f7;
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo img {
+      width: 110px;
+    }
+
+    .back-home {
+      color: var(--navy);
+      font-weight: bold;
+      padding: 10px 18px;
+      border: 2px solid var(--navy);
+      border-radius: 30px;
+      transition: .3s;
+    }
+
+    .back-home:hover {
+      background: var(--navy);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 75px 0 85px;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(201,24,43,.13), transparent 27%),
+        radial-gradient(circle at 10% 85%, rgba(231,200,74,.23), transparent 25%),
+        linear-gradient(135deg,#f5f7ff,#fff);
+    }
+
+    .breadcrumb {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 35px;
+    }
+
+    .breadcrumb a {
+      color: var(--navy);
+      font-weight: bold;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .teacher-image {
+      position: relative;
+    }
+
+    .portrait {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: 35px;
+      background:
+        linear-gradient(145deg,#ffe0e5,#fff7d6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 120px;
+      border: 8px solid white;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .portrait::after {
+      content: "ẢNH GIÁO VIÊN";
+      position: absolute;
+      bottom: 20px;
+      background: rgba(16,37,118,.9);
+      color: white;
+      padding: 7px 18px;
+      border-radius: 30px;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .floating-star {
+      position: absolute;
+      right: -25px;
+      top: 25px;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+      box-shadow: 0 12px 25px rgba(231,200,74,.35);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% {
+        transform: translateY(0) rotate(-5deg);
+      }
+
+      50% {
+        transform: translateY(-12px) rotate(5deg);
+      }
+    }
+
+    .eyebrow {
+      color: var(--red);
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: "Cherry Bomb One", cursive;
+      color: var(--navy);
+      font-size: clamp(45px,6vw,70px);
+      line-height: 1.05;
+      margin-bottom: 15px;
+    }
+
+    .position {
+      color: var(--red);
+      font-size: 21px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 620px;
+      margin-bottom: 30px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 9px 15px;
+      border-radius: 30px;
+      background: white;
+      color: var(--navy);
+      border: 1px solid #dfe4f5;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* INFO */
+
+    .quick-info {
+      padding: 55px 0;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 18px;
+    }
+
+    .info-card {
+      background: var(--light);
+      padding: 25px;
+      border-radius: 22px;
+      border: 1px solid #e7eaf5;
+    }
+
+    .info-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .info-card small {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .info-card strong {
+      color: var(--navy);
+    }
+
+    /* SECTION */
+
+    .section {
+      padding: 85px 0;
+      background: var(--light);
+    }
+
+    .section:nth-of-type(odd) {
+      background: white;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title span {
+      color: var(--red);
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .section-title h2 {
+      font-family: "Cherry Bomb One", cursive;
+      color: var(--navy);
+      font-size: 43px;
+      margin-top: 5px;
+    }
+
+    .section-title p {
+      max-width: 650px;
+      margin: 12px auto 0;
+      color: var(--muted);
+    }
+
+    /* PHILOSOPHY */
+
+    .philosophy {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .quote-box {
+      background: var(--red);
+      color: white;
+      padding: 45px;
+      border-radius: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-box::before {
+      content: "✦";
+      position: absolute;
+      right: 20px;
+      top: -25px;
+      font-size: 150px;
+      opacity: .1;
+    }
+
+    .quote-box h3 {
+      font-family: "Cherry Bomb One", cursive;
+      font-size: 30px;
+      margin-bottom: 18px;
+    }
+
+    .quote-box p {
+      opacity: .9;
+    }
+
+    .philosophy-text p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    /* TIMELINE */
+
+    .timeline {
+      max-width: 800px;
+      margin: auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 90px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #dce2f4;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 30px;
+      margin-bottom: 35px;
+      position: relative;
+    }
+
+    .timeline-year {
+      color: var(--red);
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .timeline-content {
+      background: white;
+      padding: 23px 28px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(16,37,118,.06);
+      border: 1px solid #e8ebf5;
+      position: relative;
+    }
+
+    .timeline-content::before {
+      content: "";
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--gold);
+      position: absolute;
+      left: -37px;
+      top: 27px;
+      border: 4px solid var(--light);
+    }
+
+    .timeline-content h3 {
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+
+    .timeline-content p {
+      color: var(--muted);
+    }
+
+    /* STYLE */
+
+    .style-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 22px;
+    }
+
+    .style-card {
+      background: white;
+      padding: 30px;
+      border-radius: 25px;
+      border: 1px solid #e7eaf5;
+      transition: .3s;
+    }
+
+    .style-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+
+    .style-card .icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .style-card h3 {
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .style-card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* PORTFOLIO */
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+
+    .work {
+      aspect-ratio: 1 / 1;
+      border-radius: 25px;
+      background: linear-gradient(135deg,#ffe5e8,#fff6d2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 55px;
+      border: 1px solid #e4e7f1;
+      transition: .3s;
+      cursor: pointer;
+    }
+
+    .work:hover {
+      transform: scale(1.025);
+      box-shadow: var(--shadow);
+    }
+
+    .work span {
+      display: block;
+      font-size: 14px;
+      color: var(--navy);
+      margin-top: 8px;
+      font-weight: bold;
+    }
+
+    /* CTA */
+
+    .cta {
+      padding: 80px 0;
+      background: var(--navy);
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-family: "Cherry Bomb One", cursive;
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      opacity: .85;
+      margin-bottom: 30px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 25px rgba(0,0,0,.2);
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 35px 0;
+      background: #0b1954;
+      color: white;
+      text-align: center;
+    }
+
+    footer img {
+      width: 85px;
+      margin: 0 auto 12px;
+      filter: brightness(0) invert(1);
+    }
+
+    footer p {
+      font-size: 14px;
+      opacity: .75;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:850px) {
+
+      .hero-grid,
+      .philosophy {
+        grid-template-columns: 1fr;
+      }
+
+      .teacher-image {
+        max-width: 380px;
+        margin: auto;
+      }
+
+      .info-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .style-grid,
+      .portfolio-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width:550px) {
+
+      .container {
+        width: min(100% - 28px,1120px);
+      }
+
+      .logo img {
+        width: 90px;
+      }
+
+      .back-home {
+        font-size: 13px;
+        padding: 8px 12px;
+      }
+
+      .hero {
+        padding: 45px 0 60px;
+      }
+
+      .info-grid,
+      .style-grid,
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .section-title h2 {
+        font-size: 34px;
+      }
+
+      .timeline::before {
+        left: 60px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 60px 1fr;
+        gap: 20px;
+      }
+
+      .timeline-content::before {
+        left: -29px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+<header>
+
+  <div class="container nav">
+
+    <a href="../../index.html" class="logo">
+      <img src="../../assets/logo1A.png" alt="EPIC">
+    </a>
+
+    <a href="../../index.html#giao-vien" class="back-home">
+      ← Đội ngũ giáo viên
+    </a>
+
+  </div>
+
+</header>
+
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container">
+
+      <div class="breadcrumb">
+        <a href="../../index.html">EPIC</a>
+        &nbsp; / &nbsp;
+        <a href="../../index.html#giao-vien">Giáo viên</a>
+        &nbsp; / &nbsp;
+        Dance
+      </div>
+
+
+      <div class="hero-grid">
+
+        <div class="teacher-image">
+
+          <div class="portrait">
+            💃
+          </div>
+
+          <div class="floating-star">
+            ✦
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <div class="eyebrow">
+            GIÁO VIÊN DANCE
+          </div>
+
+          <h1>
+            Nguyễn Khánh Linh
+          </h1>
+
+          <div class="position">
+            Giáo viên Dance · Vũ đạo
+          </div>
+
+          <p class="intro">
+            Truyền cảm hứng để học viên tự tin chuyển động,
+            cảm nhận âm nhạc và khám phá cá tính của mình
+            thông qua nghệ thuật nhảy múa.
+          </p>
+
+          <div class="tags">
+            <span class="tag">💃 Dance</span>
+            <span class="tag">🎵 Choreography</span>
+            <span class="tag">🔥 Performance</span>
+            <span class="tag">👧 Dance thiếu nhi</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- QUICK INFO -->
+
+  <section class="quick-info">
+
+    <div class="container">
+
+      <div class="info-grid">
+
+        <div class="info-card">
+          <div class="info-icon">🎂</div>
+          <small>Năm sinh</small>
+          <strong>1998</strong>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">🎓</div>
+          <small>Ngành học</small>
+          <strong>Nghệ thuật biểu diễn</strong>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">🏫</div>
+          <small>Trường học</small>
+          <strong>Tên trường đại học</strong>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">⭐</div>
+          <small>Kinh nghiệm</small>
+          <strong>6+ năm</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHILOSOPHY -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>PHƯƠNG PHÁP GIẢNG DẠY</span>
+
+        <h2>Chuyển động để tự tin</h2>
+
+        <p>
+          Dance là không gian để trẻ vận động,
+          sáng tạo và thể hiện bản thân.
+        </p>
+
+      </div>
+
+
+      <div class="philosophy">
+
+        <div class="quote-box">
+
+          <h3>
+            "Mỗi chuyển động đều kể một câu chuyện."
+          </h3>
+
+          <p>
+            Khi trẻ được tự do thể hiện mình qua âm nhạc
+            và chuyển động, sự tự tin cũng lớn lên từng ngày.
+          </p>
+
+        </div>
+
+
+        <div class="philosophy-text">
+
+          <p>
+            Giáo viên xây dựng bài học dựa trên độ tuổi,
+            khả năng vận động và mức độ tự tin của từng học viên.
+          </p>
+
+          <p>
+            Học viên được làm quen với nhịp điệu,
+            kỹ thuật cơ bản, biểu cảm cơ thể và khả năng phối hợp.
+          </p>
+
+          <p>
+            Quan trọng nhất, lớp học tạo ra một môi trường
+            vui vẻ để trẻ có thể vận động và sáng tạo.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TIMELINE -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>HÀNH TRÌNH CHUYÊN MÔN</span>
+
+        <h2>Kinh nghiệm</h2>
+
+      </div>
+
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+
+          <div class="timeline-year">
+            2018
+          </div>
+
+          <div class="timeline-content">
+
+            <h3>Bắt đầu đào tạo chuyên sâu</h3>
+
+            <p>
+              Tập trung phát triển kỹ thuật nhảy,
+              cảm nhạc và biểu diễn.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+          <div class="timeline-year">
+            2020
+          </div>
+
+          <div class="timeline-content">
+
+            <h3>Tham gia giảng dạy</h3>
+
+            <p>
+              Bắt đầu hướng dẫn các lớp Dance dành cho
+              trẻ em và học viên mới.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+          <div class="timeline-year">
+            2023
+          </div>
+
+          <div class="timeline-content">
+
+            <h3>Biên đạo và biểu diễn</h3>
+
+            <p>
+              Tham gia xây dựng tiết mục,
+              hỗ trợ học viên chuẩn bị cho các chương trình biểu diễn.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+          <div class="timeline-year">
+            2026
+          </div>
+
+          <div class="timeline-content">
+
+            <h3>Đồng hành cùng EPIC</h3>
+
+            <p>
+              Cùng EPIC xây dựng môi trường Dance
+              năng động, sáng tạo và phù hợp với trẻ em.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STYLE -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>PHONG CÁCH GIẢNG DẠY</span>
+
+        <h2>3 điều EPIC đề cao</h2>
+
+      </div>
+
+
+      <div class="style-grid">
+
+        <div class="style-card">
+
+          <div class="icon">
+            🌟
+          </div>
+
+          <h3>Tự tin thể hiện</h3>
+
+          <p>
+            Khuyến khích học viên mạnh dạn thể hiện
+            cá tính và cảm xúc của mình.
+          </p>
+
+        </div>
+
+
+        <div class="style-card">
+
+          <div class="icon">
+            🎵
+          </div>
+
+          <h3>Cảm nhạc</h3>
+
+          <p>
+            Giúp học viên cảm nhận nhịp điệu,
+            tiết tấu và kết nối chuyển động với âm nhạc.
+          </p>
+
+        </div>
+
+
+        <div class="style-card">
+
+          <div class="icon">
+            💫
+          </div>
+
+          <h3>Vận động sáng tạo</h3>
+
+          <p>
+            Kết hợp kỹ thuật với các hoạt động sáng tạo
+            để mỗi buổi học luôn sinh động.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PORTFOLIO -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>TÁC PHẨM & HOẠT ĐỘNG</span>
+
+        <h2>Những bước nhảy của EPIC</h2>
+
+        <p>
+          Khu vực dành cho hình ảnh tiết mục,
+          lớp học và các hoạt động biểu diễn.
+        </p>
+
+      </div>
+
+
+      <div class="portfolio-grid">
+
+        <div class="work">
+          💃
+          <span>Tiết mục biểu diễn</span>
+        </div>
+
+        <div class="work">
+          🔥
+          <span>Dance Performance</span>
+        </div>
+
+        <div class="work">
+          🎵
+          <span>Hoạt động lớp học</span>
+        </div>
+
+        <div class="work">
+          ⭐
+          <span>Sân khấu EPIC</span>
+        </div>
+
+        <div class="work">
+          🕺
+          <span>Choreography</span>
+        </div>
+
+        <div class="work">
+          📸
+          <span>Khoảnh khắc học viên</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <div class="container">
+
+      <h2>
+        Để con tự tin tỏa sáng
+      </h2>
+
+      <p>
+        Cùng EPIC khám phá niềm vui trong từng chuyển động.
+      </p>
+
+      <a href="../../index.html#dang-ky" class="cta-btn">
+        Đăng ký học thử →
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <img src="../../assets/logo1A.png" alt="EPIC">
+
+  <p>
+    EPIC – Thỏa sức đam mê, khơi nguồn sáng tạo
+  </p>
+
+  <p>
+    Trung tâm đào tạo năng khiếu dành cho trẻ em
+  </p>
+
+</footer>
+
+</body>
+</html>
