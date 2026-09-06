@@ -8,10 +8,9 @@
 
     <meta
         name="description"
-        content="Chương trình Mỹ thuật tại EPIC Talent Center dành cho trẻ em từ 4–18 tuổi."
+        content="Lớp Mỹ thuật EPIC – nơi trẻ khám phá màu sắc, phát triển tư duy sáng tạo và tự tin thể hiện cá tính."
     >
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -20,36 +19,32 @@
         rel="stylesheet"
     >
 
-    <!-- Dùng CSS chung của EPIC -->
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="art-page">
 
-<!-- ================= HEADER ================= -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header class="site-header">
     <div class="container nav-wrap">
 
-        <a class="brand" href="index.html" aria-label="EPIC Talent Center">
-            <img
-                src="assets/logo1A.png"
-                alt="EPIC Talent Center"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
-            >
-
-            <span class="brand-fallback">
-                EPIC
-                <span>TALENT CENTER</span>
-            </span>
+        <a class="brand" href="index.html">
+            <img src="assets/logo1A.png" alt="EPIC Talent Center">
         </a>
 
-        <nav class="main-nav" aria-label="Điều hướng chính">
+        <button class="menu-toggle" aria-label="Mở menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="main-nav">
             <a href="index.html">TRANG CHỦ</a>
             <a href="index.html#epic">EPIC</a>
-            <a class="active" href="index.html#chuong-trinh">
-                CHƯƠNG TRÌNH
-            </a>
+            <a class="active" href="index.html#chuong-trinh">CHƯƠNG TRÌNH</a>
             <a href="index.html#giao-vien">GIÁO VIÊN</a>
             <a href="index.html#hoat-dong">HOẠT ĐỘNG</a>
             <a href="index.html#dang-ky">ĐĂNG KÝ</a>
@@ -66,75 +61,119 @@
 
 <main>
 
-<!-- ================= HERO ================= -->
+<!-- =========================
+     HERO
+========================= -->
 
-<section class="section program-detail-hero">
+<section class="art-wow-hero">
 
-    <div class="doodle-layer" aria-hidden="true">
-        <span class="doodle star dd1">✦</span>
-        <span class="doodle note dd2">♪</span>
-        <span class="doodle star dd4">★</span>
-    </div>
+    <div class="art-sky-shape"></div>
+
+    <!-- doodle -->
+    <span class="art-doodle art-star star-one">✦</span>
+    <span class="art-doodle art-star star-two">★</span>
+    <span class="art-doodle art-spark spark-one">✧</span>
+    <span class="art-doodle art-spark spark-two">✦</span>
+
+    <span class="art-doodle art-pencil">✏️</span>
+    <span class="art-doodle art-palette">🎨</span>
+    <span class="art-doodle art-crayon">🖍️</span>
 
     <div class="container">
 
-        <a
-            href="index.html#chuong-trinh"
-            class="back-link"
-        >
+        <a href="index.html#chuong-trinh" class="art-back">
             ← Quay lại chương trình
         </a>
 
-        <div class="program-detail-grid">
+        <div class="art-hero-grid">
 
-            <div class="program-detail-copy">
+            <!-- LEFT -->
 
-                <div class="section-label">
-                    EPIC ART <span>✦</span>
+            <div class="art-hero-copy">
+
+                <div class="art-mini-label">
+                    🎨 EPIC ART CLUB
+                </div>
+
+                <div class="art-big-number">
+                    01
                 </div>
 
                 <h1>
-                    Lớp <em>Mỹ thuật</em>
+                    Mỹ thuật
+                    <span>cho những</span>
+                    <em>ý tưởng thật lớn.</em>
                 </h1>
 
-                <p class="lead">
-                    Nơi trẻ tự do khám phá màu sắc, hình khối
-                    và biến những ý tưởng nhỏ thành những tác phẩm
-                    mang dấu ấn riêng.
+                <p class="art-hero-text">
+                    Một không gian nhỏ để những đôi tay bé xinh
+                    tự do vẽ nên thế giới của riêng mình.
                 </p>
 
-                <div class="program-tags">
-                    <span>🎨 4–18 tuổi</span>
-                    <span>✦ Sáng tạo</span>
-                    <span>✦ Nghệ thuật</span>
+                <div class="art-tags">
+                    <span>🖍️ Sáng tạo</span>
+                    <span>🌈 Màu sắc</span>
+                    <span>💡 Tư duy</span>
                 </div>
 
-                <a
-                    href="index.html#dang-ky"
-                    class="btn btn-primary"
-                >
-                    Đăng ký học thử <span>↗</span>
-                </a>
+                <div class="art-hero-buttons">
+                    <a href="index.html#dang-ky" class="art-btn art-btn-primary">
+                        Đăng ký học thử
+                        <span>↗</span>
+                    </a>
+
+                    <a href="#art-roadmap" class="art-btn art-btn-white">
+                        Xem chương trình
+                        <span>↓</span>
+                    </a>
+                </div>
 
             </div>
 
 
-            <div class="program-detail-image">
+            <!-- RIGHT -->
 
-                <div class="paint paint-a"></div>
-                <div class="paint paint-b"></div>
-                <div class="paint paint-c"></div>
+            <div class="art-hero-visual">
 
-                <div class="detail-placeholder">
-                    <div>🎨</div>
-                    <strong>HÌNH ẢNH LỚP MỸ THUẬT</strong>
-                    <span>
-                        Ảnh học viên và lớp học sẽ được cập nhật
-                    </span>
+                <div class="art-paint-blob blob-yellow"></div>
+                <div class="art-paint-blob blob-red"></div>
+                <div class="art-paint-blob blob-blue"></div>
+
+                <div class="art-photo-frame">
+
+                    <div class="art-photo-placeholder">
+
+                        <div class="art-photo-icon">
+                            🎨
+                        </div>
+
+                        <strong>
+                            KHOẢNH KHẮC SÁNG TẠO
+                        </strong>
+
+                        <span>
+                            Ảnh lớp Mỹ thuật
+                        </span>
+
+                    </div>
+
                 </div>
 
-                <div class="sticker sticker-star">★</div>
-                <div class="sticker sticker-music">✦</div>
+                <div class="art-sticker sticker-top">
+                    WOW!
+                </div>
+
+                <div class="art-sticker sticker-bottom">
+                    LOVE ART ♡
+                </div>
+
+                <div class="art-mini-card">
+                    <span>★</span>
+                    <div>
+                        <strong>4–18</strong>
+                        <small>tuổi</small>
+                    </div>
+                </div>
 
             </div>
 
@@ -145,130 +184,108 @@
 </section>
 
 
-<!-- ================= GIỚI THIỆU ================= -->
+<!-- =========================
+     INTRO
+========================= -->
 
-<section class="section detail-intro">
+<section class="art-intro">
 
     <div class="container">
 
-        <div class="center-head">
-            <div class="section-label">
-                KHÁM PHÁ <span>✦</span>
-            </div>
+        <div class="art-section-title">
+
+            <span class="art-label">
+                WHY ART? ✦
+            </span>
 
             <h2>
-                Mỹ thuật tại <em>EPIC</em>
+                Vẽ không chỉ là
+                <em>vẽ.</em>
             </h2>
 
             <p>
-                Không chỉ học vẽ, trẻ được học cách quan sát,
-                cảm nhận và kể câu chuyện của mình thông qua nghệ thuật.
-            </p>
-        </div>
-
-
-        <div class="detail-feature-grid">
-
-            <article class="detail-feature">
-                <span>🎨</span>
-                <h3>Tự do sáng tạo</h3>
-                <p>
-                    Khuyến khích trẻ thể hiện ý tưởng và cá tính
-                    thông qua màu sắc, đường nét và hình ảnh.
-                </p>
-            </article>
-
-            <article class="detail-feature">
-                <span>👀</span>
-                <h3>Phát triển quan sát</h3>
-                <p>
-                    Rèn luyện khả năng quan sát, ghi nhớ hình ảnh
-                    và cảm nhận thế giới xung quanh.
-                </p>
-            </article>
-
-            <article class="detail-feature">
-                <span>💡</span>
-                <h3>Nuôi dưỡng ý tưởng</h3>
-                <p>
-                    Giúp trẻ hình thành tư duy hình ảnh và biến
-                    những ý tưởng trong đầu thành sản phẩm cụ thể.
-                </p>
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= MỤC TIÊU ================= -->
-
-<section class="section detail-goals">
-
-    <div class="container detail-two-column">
-
-        <div>
-
-            <div class="section-label">
-                MỤC TIÊU <span>✦</span>
-            </div>
-
-            <h2>
-                Mỗi bức tranh là một<br>
-                <em>câu chuyện riêng.</em>
-            </h2>
-
-            <p>
-                EPIC hướng đến việc xây dựng nền tảng nghệ thuật
-                phù hợp với từng độ tuổi, giúp trẻ phát triển
-                kỹ năng nhưng vẫn giữ được sự hứng thú và sáng tạo.
+                Đó là cách trẻ quan sát thế giới,
+                kể câu chuyện của mình và học cách
+                tin vào những ý tưởng riêng.
             </p>
 
         </div>
 
 
-        <div class="goal-list">
+        <div class="art-intro-grid">
 
-            <div class="goal-item">
-                <b>01</b>
-                <div>
-                    <strong>Quan sát</strong>
-                    <span>
-                        Nhận biết hình dạng, màu sắc và bố cục.
-                    </span>
+            <div class="art-big-card art-card-yellow reveal-art">
+
+                <div class="card-number">01</div>
+
+                <div class="card-icon">
+                    👀
                 </div>
+
+                <h3>
+                    Quan sát
+                </h3>
+
+                <p>
+                    Nhìn thế giới bằng đôi mắt tò mò
+                    và khám phá những điều thú vị
+                    xung quanh.
+                </p>
+
+                <span class="card-doodle">
+                    ✦
+                </span>
+
             </div>
 
-            <div class="goal-item">
-                <b>02</b>
-                <div>
-                    <strong>Kỹ năng</strong>
-                    <span>
-                        Làm quen với các kỹ thuật và chất liệu mỹ thuật.
-                    </span>
+
+            <div class="art-big-card art-card-blue reveal-art">
+
+                <div class="card-number">02</div>
+
+                <div class="card-icon">
+                    💡
                 </div>
+
+                <h3>
+                    Tưởng tượng
+                </h3>
+
+                <p>
+                    Biến những ý tưởng trong đầu
+                    thành hình ảnh, màu sắc
+                    và câu chuyện.
+                </p>
+
+                <span class="card-doodle">
+                    ★
+                </span>
+
             </div>
 
-            <div class="goal-item">
-                <b>03</b>
-                <div>
-                    <strong>Sáng tạo</strong>
-                    <span>
-                        Phát triển khả năng tưởng tượng và tư duy hình ảnh.
-                    </span>
-                </div>
-            </div>
 
-            <div class="goal-item">
-                <b>04</b>
-                <div>
-                    <strong>Tự tin</strong>
-                    <span>
-                        Tự tin trình bày ý tưởng và sản phẩm của mình.
-                    </span>
+            <div class="art-big-card art-card-red reveal-art">
+
+                <div class="card-number">03</div>
+
+                <div class="card-icon">
+                    💖
                 </div>
+
+                <h3>
+                    Thể hiện
+                </h3>
+
+                <p>
+                    Tự tin tạo ra sản phẩm mang
+                    dấu ấn cá nhân thay vì
+                    chỉ làm theo khuôn mẫu.
+                </p>
+
+                <span class="card-doodle">
+                    ♡
+                </span>
+
             </div>
 
         </div>
@@ -278,135 +295,148 @@
 </section>
 
 
-<!-- ================= NỘI DUNG HỌC ================= -->
+<!-- =========================
+     ROADMAP
+========================= -->
 
-<section class="section curriculum">
-
-    <div class="container">
-
-        <div class="center-head">
-
-            <div class="section-label">
-                NỘI DUNG HỌC <span>✦</span>
-            </div>
-
-            <h2>
-                Bé sẽ được <em>học gì?</em>
-            </h2>
-
-        </div>
-
-
-        <div class="curriculum-grid">
-
-            <article class="curriculum-card">
-                <div class="curriculum-number">01</div>
-                <div class="curriculum-icon">🖍️</div>
-                <h3>Nét & hình</h3>
-                <p>
-                    Làm quen với đường nét, hình khối và cách
-                    xây dựng hình ảnh cơ bản.
-                </p>
-            </article>
-
-
-            <article class="curriculum-card">
-                <div class="curriculum-number">02</div>
-                <div class="curriculum-icon">🌈</div>
-                <h3>Màu sắc</h3>
-                <p>
-                    Khám phá màu cơ bản, phối màu và cách sử dụng
-                    màu để tạo cảm xúc cho tác phẩm.
-                </p>
-            </article>
-
-
-            <article class="curriculum-card">
-                <div class="curriculum-number">03</div>
-                <div class="curriculum-icon">🖌️</div>
-                <h3>Kỹ thuật vẽ</h3>
-                <p>
-                    Thực hành nhiều cách thể hiện bằng bút chì,
-                    màu sáp, màu nước và các chất liệu phù hợp.
-                </p>
-            </article>
-
-
-            <article class="curriculum-card">
-                <div class="curriculum-number">04</div>
-                <div class="curriculum-icon">💭</div>
-                <h3>Ý tưởng & sáng tạo</h3>
-                <p>
-                    Từ một chủ đề đơn giản, trẻ học cách phát triển
-                    thành ý tưởng và tác phẩm của riêng mình.
-                </p>
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= ĐỘ TUỔI ================= -->
-
-<section class="section age-section">
+<section class="art-roadmap" id="art-roadmap">
 
     <div class="container">
 
-        <div class="center-head">
+        <div class="art-section-title light">
 
-            <div class="section-label">
-                LỘ TRÌNH <span>✦</span>
-            </div>
+            <span class="art-label">
+                EPIC ART JOURNEY ✦
+            </span>
 
             <h2>
-                Chương trình theo <em>độ tuổi</em>
+                Hành trình
+                <em>khám phá</em>
             </h2>
+
+            <p>
+                Mỗi độ tuổi là một hành trình
+                với những điều thú vị khác nhau.
+            </p>
 
         </div>
 
 
-        <div class="age-grid">
+        <div class="art-roadmap-line"></div>
 
-            <article class="age-card">
-                <span class="age">4–6</span>
-                <h3>Mỹ thuật khám phá</h3>
+
+        <div class="art-roadmap-grid">
+
+            <article class="art-road-card">
+
+                <div class="road-icon">
+                    🌱
+                </div>
+
+                <span class="road-age">
+                    4–6 TUỔI
+                </span>
+
+                <h3>
+                    Bé làm quen
+                </h3>
+
                 <p>
-                    Làm quen với màu sắc, hình khối và các hoạt động
+                    Làm quen với màu sắc,
+                    hình khối và những hoạt động
                     tạo hình vui nhộn.
                 </p>
+
+                <ul>
+                    <li>✓ Vẽ tự do</li>
+                    <li>✓ Màu nước</li>
+                    <li>✓ Cắt dán</li>
+                </ul>
+
             </article>
 
 
-            <article class="age-card">
-                <span class="age">7–10</span>
-                <h3>Mỹ thuật sáng tạo</h3>
+            <article class="art-road-card">
+
+                <div class="road-icon">
+                    🌈
+                </div>
+
+                <span class="road-age">
+                    7–10 TUỔI
+                </span>
+
+                <h3>
+                    Bé khám phá
+                </h3>
+
                 <p>
-                    Phát triển kỹ năng vẽ, phối màu và khả năng
-                    xây dựng ý tưởng.
+                    Phát triển khả năng quan sát,
+                    phối màu và xây dựng ý tưởng.
                 </p>
+
+                <ul>
+                    <li>✓ Bố cục</li>
+                    <li>✓ Phối màu</li>
+                    <li>✓ Minh họa</li>
+                </ul>
+
             </article>
 
 
-            <article class="age-card">
-                <span class="age">11–14</span>
-                <h3>Mỹ thuật phát triển</h3>
+            <article class="art-road-card">
+
+                <div class="road-icon">
+                    🚀
+                </div>
+
+                <span class="road-age">
+                    11–14 TUỔI
+                </span>
+
+                <h3>
+                    Bé phát triển
+                </h3>
+
                 <p>
-                    Nâng cao tư duy hình ảnh, bố cục và kỹ thuật
-                    thể hiện tác phẩm.
+                    Tìm hiểu sâu hơn về hình họa,
+                    sáng tạo và phong cách cá nhân.
                 </p>
+
+                <ul>
+                    <li>✓ Hình họa</li>
+                    <li>✓ Sáng tác</li>
+                    <li>✓ Digital Art</li>
+                </ul>
+
             </article>
 
 
-            <article class="age-card">
-                <span class="age">15–18</span>
-                <h3>Mỹ thuật định hướng</h3>
+            <article class="art-road-card">
+
+                <div class="road-icon">
+                    ⭐
+                </div>
+
+                <span class="road-age">
+                    15–18 TUỔI
+                </span>
+
+                <h3>
+                    Bé định hình
+                </h3>
+
                 <p>
-                    Phát triển nền tảng nghệ thuật và tư duy hình ảnh
-                    theo định hướng cá nhân.
+                    Xây dựng portfolio và phát triển
+                    tư duy nghệ thuật theo định hướng.
                 </p>
+
+                <ul>
+                    <li>✓ Concept</li>
+                    <li>✓ Portfolio</li>
+                    <li>✓ Định hướng</li>
+                </ul>
+
             </article>
 
         </div>
@@ -416,55 +446,73 @@
 </section>
 
 
-<!-- ================= HÌNH ẢNH ================= -->
+<!-- =========================
+     WHAT CHILDREN LEARN
+========================= -->
 
-<section class="section detail-gallery">
+<section class="art-skills">
 
     <div class="container">
 
-        <div class="center-head">
+        <div class="art-split-title">
 
-            <div class="section-label">
-                EPIC ART MOMENTS <span>✦</span>
+            <div>
+                <span class="art-label">
+                    WHAT WILL THEY LEARN? ✦
+                </span>
+
+                <h2>
+                    Mỗi buổi học
+                    <em>một điều mới.</em>
+                </h2>
             </div>
 
-            <h2>
-                Những khoảnh khắc <em>sáng tạo</em>
-            </h2>
-
             <p>
-                Hình ảnh lớp học và sản phẩm của học viên
-                sẽ được cập nhật tại đây.
+                Không đặt nặng việc tạo ra một
+                “bức tranh hoàn hảo”. EPIC quan tâm
+                đến cách trẻ khám phá và trưởng thành
+                qua từng sản phẩm.
             </p>
 
         </div>
 
 
-        <div class="art-gallery">
+        <div class="art-skill-grid">
 
-            <div class="art-gallery-item large">
-                🎨
-                <span>Lớp học Mỹ thuật</span>
+            <div class="art-skill">
+                <span>🎨</span>
+                <strong>Màu sắc</strong>
+                <small>Phối màu & cảm nhận màu</small>
             </div>
 
-            <div class="art-gallery-item">
-                🖌️
-                <span>Giờ thực hành</span>
+            <div class="art-skill">
+                <span>✏️</span>
+                <strong>Đường nét</strong>
+                <small>Quan sát & thể hiện</small>
             </div>
 
-            <div class="art-gallery-item">
-                🌈
-                <span>Sản phẩm học viên</span>
+            <div class="art-skill">
+                <span>🧠</span>
+                <strong>Tư duy</strong>
+                <small>Ý tưởng & sáng tạo</small>
             </div>
 
-            <div class="art-gallery-item">
-                🖍️
-                <span>Hoạt động sáng tạo</span>
+            <div class="art-skill">
+                <span>🖼️</span>
+                <strong>Bố cục</strong>
+                <small>Sắp xếp hình ảnh</small>
             </div>
 
-            <div class="art-gallery-item">
-                ⭐
-                <span>Khoảnh khắc tại EPIC</span>
+            <div class="art-skill">
+                <span>💭</span>
+                <strong>Ý tưởng</strong>
+                <small>Kể chuyện bằng hình ảnh</small>
+            </div>
+
+            <div class="art-skill">
+                <span>⭐</span>
+                <strong>Tự tin</strong>
+                <small>Dám thể hiện bản thân</small>
             </div>
 
         </div>
@@ -474,38 +522,154 @@
 </section>
 
 
-<!-- ================= CTA ================= -->
+<!-- =========================
+     GALLERY
+========================= -->
 
-<section class="section detail-cta">
+<section class="art-gallery-section">
 
     <div class="container">
 
-        <div class="detail-cta-box">
+        <div class="art-section-title">
 
-            <div>
+            <span class="art-label">
+                LITTLE ARTISTS ✦
+            </span>
 
-                <div class="section-label">
-                    SẴN SÀNG KHÁM PHÁ? <span>✦</span>
-                </div>
+            <h2>
+                Những điều nhỏ bé
+                <em>thật đáng yêu.</em>
+            </h2>
+
+            <p>
+                Khu vực dành cho những khoảnh khắc
+                và sản phẩm đáng nhớ của các học viên EPIC.
+            </p>
+
+        </div>
+
+
+        <div class="art-gallery-grid">
+
+            <div class="art-gallery-box gallery-main">
+                <span>🎨</span>
+                <strong>Khoảnh khắc lớp học</strong>
+                <small>Ảnh sẽ cập nhật</small>
+            </div>
+
+            <div class="art-gallery-box gallery-two">
+                <span>🖍️</span>
+                <strong>Sản phẩm của bé</strong>
+            </div>
+
+            <div class="art-gallery-box gallery-three">
+                <span>🌈</span>
+                <strong>Màu sắc & sáng tạo</strong>
+            </div>
+
+            <div class="art-gallery-box gallery-four">
+                <span>⭐</span>
+                <strong>EPIC moments</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TEACHER
+========================= -->
+
+<section class="art-teacher">
+
+    <div class="container">
+
+        <div class="art-teacher-card">
+
+            <div class="teacher-decoration">
+                ✦
+            </div>
+
+            <div class="art-teacher-photo">
+                👩🏻‍🎨
+                <small>Ảnh giáo viên</small>
+            </div>
+
+            <div class="art-teacher-copy">
+
+                <span class="art-label">
+                    MEET THE TEACHER ✦
+                </span>
 
                 <h2>
-                    Để con tự do<br>
-                    <em>tạo nên điều khác biệt.</em>
+                    Người truyền cảm hứng
+                    <em>cho những đôi tay nhỏ.</em>
                 </h2>
 
                 <p>
-                    Đăng ký học thử để bé trải nghiệm lớp Mỹ thuật
-                    tại EPIC và tìm ra niềm yêu thích của mình.
+                    Giáo viên Mỹ thuật tại EPIC không chỉ
+                    hướng dẫn kỹ thuật mà còn khuyến khích
+                    trẻ tự tìm ra cách thể hiện của riêng mình.
                 </p>
+
+                <div class="teacher-tags">
+                    <span>♡ Tận tâm</span>
+                    <span>✦ Sáng tạo</span>
+                    <span>★ Đồng hành</span>
+                </div>
 
             </div>
 
-            <a
-                href="index.html#dang-ky"
-                class="btn btn-primary"
-            >
-                Đăng ký học thử <span>↗</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FINAL CTA
+========================= -->
+
+<section class="art-final">
+
+    <div class="art-final-stars">
+        ✦　★　✧　♡　✦
+    </div>
+
+    <div class="container">
+
+        <div class="art-final-card">
+
+            <div class="final-sticker">
+                LET'S CREATE!
+            </div>
+
+            <span class="art-label">
+                READY TO CREATE? ✦
+            </span>
+
+            <h2>
+                Sẵn sàng để
+                <em>bé bắt đầu?</em>
+            </h2>
+
+            <p>
+                Một buổi học thử có thể là bước đầu
+                để bé tìm thấy điều mình thật sự yêu thích.
+            </p>
+
+            <a href="index.html#dang-ky" class="art-btn art-btn-primary">
+                Đăng ký học thử
+                <span>↗</span>
             </a>
+
+            <div class="final-note">
+                🎨 Học để vui · Vui để sáng tạo · Sáng tạo để tỏa sáng ✨
+            </div>
 
         </div>
 
@@ -516,7 +680,9 @@
 </main>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -531,11 +697,7 @@
             Thỏa sức đam mê, khơi nguồn sáng tạo.
         </p>
 
-        <a
-            class="to-top"
-            href="#top"
-            aria-label="Về đầu trang"
-        >
+        <a class="to-top" href="#">
             ↑
         </a>
 
@@ -547,6 +709,51 @@
 
 </footer>
 
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const items = document.querySelectorAll(".reveal-art");
+
+    const observer = new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show-art");
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+    items.forEach(item => observer.observe(item));
+
+
+    const menuButton = document.querySelector(".menu-toggle");
+    const nav = document.querySelector(".main-nav");
+
+    if (menuButton && nav) {
+
+        menuButton.addEventListener("click", () => {
+
+            nav.classList.toggle("open");
+
+            menuButton.classList.toggle("active");
+
+        });
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>
