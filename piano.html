@@ -6,40 +6,29 @@
 
 <title>Piano | EPIC Talent Center</title>
 
-<meta
-name="description"
-content="Lớp Piano tại EPIC – Khơi cảm hứng âm nhạc, phát triển khả năng cảm thụ và sự tự tin cho trẻ."
->
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Varela+Round&display=swap"
-rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* =====================================================
-   EPIC PIANO
-   ÂM NHẠC – NĂNG ĐỘNG – DỄ THƯƠNG – HIỆN ĐẠI
-===================================================== */
 
 :root{
     --navy:#102576;
     --red:#C9182B;
-    --gold:#E7C84A;
+    --yellow:#E7C84A;
     --cream:#FFFDF7;
-    --blue:#EAF3FF;
-    --text:#17213F;
-    --white:#ffffff;
+    --blue:#EEF3FF;
+    --text:#17204A;
+    --muted:#68708D;
+    --white:#FFFFFF;
+    --shadow:0 18px 45px rgba(16,37,118,.12);
+    --radius:28px;
 }
 
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 
 html{
@@ -47,7 +36,7 @@ html{
 }
 
 body{
-    font-family:"Varela Round",sans-serif;
+    font-family:"Fredoka",sans-serif;
     color:var(--text);
     background:var(--cream);
     overflow-x:hidden;
@@ -63,119 +52,161 @@ a{
     margin:auto;
 }
 
-/* =====================================================
+/* =========================
    HEADER
-===================================================== */
+========================= */
 
-.piano-header{
-    position:sticky;
+header{
+    position:fixed;
     top:0;
-    z-index:1000;
-    background:rgba(255,253,247,.94);
-    backdrop-filter:blur(14px);
+    left:0;
+    width:100%;
+    z-index:100;
+    padding:15px 0;
+    background:rgba(255,253,247,.9);
+    backdrop-filter:blur(15px);
     border-bottom:1px solid rgba(16,37,118,.08);
 }
 
-.piano-nav{
-    min-height:78px;
+.nav{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:30px;
 }
 
-.piano-logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.piano-logo img{
-    width:100px;
-    height:auto;
+.logo img{
+    width:95px;
     display:block;
 }
 
-.back-home{
+.back{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-weight:600;
     color:var(--navy);
-    font-weight:700;
-    font-size:14px;
-    padding:10px 18px;
-    border:2px solid var(--navy);
-    border-radius:50px;
     transition:.3s;
 }
 
-.back-home:hover{
-    background:var(--navy);
-    color:white;
+.back:hover{
+    transform:translateX(-5px);
 }
 
-/* =====================================================
-   HERO
-===================================================== */
+/* =========================
+   FLOATING MUSIC
+========================= */
 
-.piano-hero{
-    min-height:calc(100vh - 78px);
+.music-note{
+    position:absolute;
+    font-size:30px;
+    color:var(--navy);
+    opacity:.18;
+    animation:floatNote 5s ease-in-out infinite;
+    pointer-events:none;
+}
+
+.note1{top:22%;left:5%;}
+.note2{top:38%;right:6%;animation-delay:1s;}
+.note3{top:72%;left:8%;animation-delay:2s;}
+.note4{top:60%;right:10%;animation-delay:3s;}
+
+@keyframes floatNote{
+    0%,100%{
+        transform:translateY(0) rotate(-8deg);
+    }
+    50%{
+        transform:translateY(-25px) rotate(8deg);
+    }
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:850px;
+    padding:145px 0 90px;
     position:relative;
-    display:flex;
-    align-items:center;
     overflow:hidden;
     background:
-        radial-gradient(circle at 80% 25%,rgba(231,200,74,.18),transparent 25%),
-        radial-gradient(circle at 15% 80%,rgba(201,24,43,.10),transparent 25%),
-        var(--cream);
+        radial-gradient(circle at 8% 20%,rgba(231,200,74,.18),transparent 22%),
+        radial-gradient(circle at 90% 25%,rgba(201,24,43,.10),transparent 25%),
+        linear-gradient(135deg,#fffdf7,#f1f5ff);
+}
+
+.hero:before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:rgba(231,200,74,.12);
+    right:-180px;
+    bottom:-200px;
 }
 
 .hero-content{
     display:grid;
     grid-template-columns:1fr 1fr;
     align-items:center;
-    gap:60px;
+    gap:70px;
     position:relative;
-    z-index:3;
+    z-index:2;
 }
 
-.hero-text{
-    animation:slideLeft 1s ease both;
-}
-
-.label{
+.eyebrow{
     display:inline-flex;
     align-items:center;
-    gap:8px;
+    gap:10px;
+    padding:9px 17px;
+    background:white;
+    border-radius:50px;
+    box-shadow:0 8px 25px rgba(16,37,118,.08);
     color:var(--red);
-    font-weight:900;
-    letter-spacing:2px;
-    font-size:13px;
-    margin-bottom:20px;
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:22px;
 }
 
-.hero-text h1{
+.eyebrow span{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:var(--red);
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.5);}
+}
+
+.hero h1{
     font-family:"Cherry Bomb One",cursive;
+    font-size:clamp(58px,7vw,100px);
+    line-height:.95;
     color:var(--navy);
-    font-size:clamp(48px,7vw,88px);
-    line-height:.98;
-    margin-bottom:24px;
+    letter-spacing:-3px;
 }
 
-.hero-text h1 em{
+.hero h1 em{
     color:var(--red);
     font-style:normal;
+    display:block;
 }
 
-.hero-text p{
-    max-width:580px;
+.hero-desc{
+    max-width:520px;
+    margin:28px 0;
     font-size:18px;
-    line-height:1.8;
-    color:#56617D;
+    line-height:1.7;
+    color:var(--muted);
 }
 
 .hero-buttons{
     display:flex;
+    gap:15px;
     flex-wrap:wrap;
-    gap:14px;
-    margin-top:32px;
 }
 
 .btn{
@@ -183,637 +214,811 @@ a{
     align-items:center;
     justify-content:center;
     gap:10px;
-    padding:15px 25px;
+    padding:15px 24px;
     border-radius:50px;
-    font-weight:800;
+    font-weight:700;
     transition:.3s;
 }
 
 .btn-primary{
-    background:var(--red);
     color:white;
-    box-shadow:0 10px 25px rgba(201,24,43,.22);
+    background:var(--red);
+    box-shadow:0 12px 25px rgba(201,24,43,.25);
 }
 
 .btn-primary:hover{
-    transform:translateY(-4px);
-    box-shadow:0 15px 30px rgba(201,24,43,.3);
+    transform:translateY(-4px) rotate(-1deg);
 }
 
-.btn-outline{
-    border:2px solid var(--navy);
+.btn-secondary{
+    color:var(--navy);
+    background:white;
+    border:2px solid rgba(16,37,118,.1);
+}
+
+.btn-secondary:hover{
+    transform:translateY(-4px);
+}
+
+/* HERO PIANO */
+
+.hero-visual{
+    position:relative;
+    height:500px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.blob{
+    position:absolute;
+    width:440px;
+    height:440px;
+    border-radius:47% 53% 61% 39%;
+    background:var(--yellow);
+    transform:rotate(-8deg);
+    animation:morph 8s ease-in-out infinite;
+}
+
+@keyframes morph{
+    0%,100%{
+        border-radius:47% 53% 61% 39%;
+        transform:rotate(-8deg);
+    }
+    50%{
+        border-radius:57% 43% 39% 61%;
+        transform:rotate(4deg);
+    }
+}
+
+.piano-hero{
+    position:relative;
+    z-index:2;
+    width:440px;
+    height:245px;
+    background:#171C30;
+    border-radius:28px;
+    transform:rotate(-4deg);
+    box-shadow:0 30px 50px rgba(16,37,118,.25);
+    padding:25px;
+}
+
+.piano-top{
+    height:55px;
+    background:#252B40;
+    border-radius:14px 14px 5px 5px;
+    margin-bottom:15px;
+}
+
+.keys{
+    display:flex;
+    height:125px;
+    position:relative;
+}
+
+.white-key{
+    flex:1;
+    background:white;
+    border-right:2px solid #CBD0DC;
+    border-radius:0 0 8px 8px;
+    transition:.15s;
+    cursor:pointer;
+}
+
+.white-key:hover{
+    transform:translateY(7px);
+    background:#f6f6f6;
+}
+
+.black-keys{
+    position:absolute;
+    top:0;
+    left:7%;
+    right:7%;
+    display:flex;
+    justify-content:space-around;
+}
+
+.black-key{
+    width:28px;
+    height:82px;
+    background:#101421;
+    border-radius:0 0 7px 7px;
+    box-shadow:0 5px 8px rgba(0,0,0,.3);
+}
+
+.sticker{
+    position:absolute;
+    z-index:4;
+    padding:11px 17px;
+    border-radius:15px;
+    font-weight:700;
+    background:white;
+    box-shadow:var(--shadow);
+}
+
+.sticker.star{
+    top:5%;
+    right:4%;
+    transform:rotate(8deg);
     color:var(--navy);
 }
 
-.btn-outline:hover{
+.sticker.play{
+    bottom:10%;
+    left:1%;
+    transform:rotate(-8deg);
+    background:var(--red);
+    color:white;
+}
+
+.sticker.age{
+    bottom:4%;
+    right:0;
+    transform:rotate(7deg);
     background:var(--navy);
     color:white;
 }
 
-/* =====================================================
-   PIANO VISUAL
-===================================================== */
-
-.piano-scene{
-    position:relative;
-    min-height:480px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    animation:slideRight 1s ease both;
-}
-
-.music-circle{
-    width:430px;
-    height:430px;
-    border-radius:50%;
-    background:
-        radial-gradient(circle,#ffffff 0 35%,transparent 36%),
-        linear-gradient(135deg,#EAF3FF,#FFF8D7);
-    border:3px dashed rgba(16,37,118,.18);
+.note-pop{
     position:absolute;
-    animation:rotateSlow 20s linear infinite;
-}
-
-.piano-box{
-    width:min(500px,90%);
-    position:relative;
-    z-index:3;
-    filter:drop-shadow(0 25px 25px rgba(16,37,118,.18));
-    animation:floatPiano 4s ease-in-out infinite;
-}
-
-.piano-top{
-    height:115px;
-    background:var(--navy);
-    border-radius:25px 25px 8px 8px;
-    transform:perspective(500px) rotateX(18deg);
-    position:relative;
-}
-
-.piano-top:after{
-    content:"EPIC";
-    position:absolute;
-    top:30px;
-    left:50%;
-    transform:translateX(-50%);
-    color:var(--gold);
-    font-family:"Cherry Bomb One",cursive;
-    font-size:28px;
-}
-
-.piano-keys{
-    display:grid;
-    grid-template-columns:repeat(14,1fr);
-    height:155px;
-    background:white;
-    padding:0 10px 10px;
-    border-radius:0 0 18px 18px;
-    gap:2px;
-}
-
-.white-key{
-    background:#fff;
-    border:1px solid #D9DDE7;
-    border-radius:0 0 6px 6px;
-    position:relative;
-}
-
-.black-key{
-    position:absolute;
-    top:0;
-    right:-8px;
-    width:15px;
-    height:88px;
-    background:#17213F;
-    border-radius:0 0 5px 5px;
-    z-index:2;
-}
-
-.music-note{
-    position:absolute;
-    color:var(--navy);
-    font-size:45px;
-    font-weight:bold;
     z-index:5;
-}
-
-.note1{
-    top:5%;
-    left:0;
-    animation:noteFloat 3s ease-in-out infinite;
-}
-
-.note2{
-    top:20%;
-    right:0;
+    font-size:40px;
     color:var(--red);
-    animation:noteFloat 3.5s ease-in-out infinite .4s;
+    animation:notePop 3s ease-in-out infinite;
 }
 
-.note3{
-    bottom:8%;
-    left:8%;
-    color:var(--gold);
-    animation:noteFloat 4s ease-in-out infinite .8s;
+.pop1{top:12%;left:10%;}
+.pop2{top:20%;right:15%;animation-delay:1s;}
+.pop3{bottom:25%;right:8%;animation-delay:2s;}
+
+@keyframes notePop{
+    0%,100%{
+        transform:translateY(0) rotate(-10deg);
+    }
+    50%{
+        transform:translateY(-18px) rotate(12deg);
+    }
 }
 
-.note4{
-    bottom:5%;
-    right:8%;
-    animation:noteFloat 3.2s ease-in-out infinite 1s;
+/* =========================
+   MARQUEE
+========================= */
+
+.marquee{
+    overflow:hidden;
+    background:var(--navy);
+    color:white;
+    padding:18px 0;
+    transform:rotate(-1deg) scale(1.03);
 }
 
-/* =====================================================
+.marquee-track{
+    display:flex;
+    width:max-content;
+    animation:marquee 22s linear infinite;
+}
+
+.marquee span{
+    font-size:20px;
+    font-weight:700;
+    padding:0 28px;
+    white-space:nowrap;
+}
+
+.marquee b{
+    color:var(--yellow);
+}
+
+@keyframes marquee{
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+/* =========================
    INTRO
-===================================================== */
+========================= */
+
+.section{
+    padding:110px 0;
+}
 
 .intro{
-    padding:110px 0;
     background:white;
+    position:relative;
 }
 
 .intro-grid{
     display:grid;
     grid-template-columns:.9fr 1.1fr;
-    gap:70px;
+    gap:80px;
     align-items:center;
 }
 
-.visual-card{
-    min-height:430px;
-    border-radius:40px;
-    background:
-        linear-gradient(135deg,rgba(16,37,118,.94),rgba(16,37,118,.80)),
-        #102576;
-    position:relative;
-    overflow:hidden;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.visual-card:before{
-    content:"";
-    position:absolute;
-    width:300px;
-    height:300px;
-    border:2px dashed rgba(255,255,255,.3);
-    border-radius:50%;
-    animation:rotateSlow 18s linear infinite;
-}
-
-.big-note{
-    font-size:150px;
-    color:white;
-    position:relative;
-    z-index:2;
-    animation:floatPiano 4s ease-in-out infinite;
-}
-
-.sticker{
-    position:absolute;
-    padding:12px 18px;
-    background:white;
-    border-radius:50px;
-    font-weight:900;
-    box-shadow:0 10px 20px rgba(0,0,0,.12);
-}
-
-.sticker.one{
-    top:35px;
-    left:30px;
+.section-tag{
     color:var(--red);
-    transform:rotate(-8deg);
-}
-
-.sticker.two{
-    right:30px;
-    bottom:35px;
-    color:var(--navy);
-    transform:rotate(7deg);
-}
-
-.section-label{
-    color:var(--red);
-    font-weight:900;
+    font-weight:700;
+    text-transform:uppercase;
     letter-spacing:2px;
     font-size:13px;
     margin-bottom:15px;
 }
 
-.intro h2,
-.section-title{
+.intro h2{
     font-family:"Cherry Bomb One",cursive;
-    font-size:clamp(38px,5vw,60px);
+    font-size:clamp(42px,5vw,65px);
+    line-height:1;
     color:var(--navy);
-    line-height:1.1;
-    margin-bottom:22px;
 }
 
-.intro h2 em,
-.section-title em{
+.intro h2 span{
     color:var(--red);
-    font-style:normal;
 }
 
-.intro p{
-    color:#59647E;
-    line-height:1.9;
-    font-size:17px;
-}
-
-.highlight{
-    margin-top:30px;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:14px;
-}
-
-.highlight div{
-    background:var(--blue);
-    border-radius:20px;
-    padding:18px;
-}
-
-.highlight b{
-    display:block;
-    font-size:25px;
-    color:var(--navy);
-    margin-bottom:5px;
-}
-
-.highlight span{
-    font-size:13px;
-    color:#65708A;
-}
-
-/* =====================================================
-   BENEFITS
-===================================================== */
-
-.benefits{
-    padding:110px 0;
-    background:#F3F7FF;
-}
-
-.center{
-    text-align:center;
-    max-width:700px;
-    margin:0 auto 55px;
-}
-
-.center p{
-    color:#69748D;
+.intro-text{
+    font-size:18px;
     line-height:1.8;
+    color:var(--muted);
 }
 
-.benefit-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
+.quote{
+    margin-top:25px;
+    padding:22px 25px;
+    border-left:5px solid var(--yellow);
+    background:#fff9dc;
+    border-radius:0 18px 18px 0;
+    font-weight:600;
+    color:var(--navy);
 }
 
-.benefit{
-    background:white;
-    border-radius:28px;
-    padding:32px 25px;
-    border:1px solid rgba(16,37,118,.07);
-    transition:.35s;
+/* MUSIC CIRCLES */
+
+.music-orbit{
+    height:360px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.benefit:hover{
-    transform:translateY(-10px) rotate(-1deg);
-    box-shadow:0 20px 40px rgba(16,37,118,.12);
+.orbit-main{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:var(--navy);
+    color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    font-size:65px;
+    box-shadow:0 25px 50px rgba(16,37,118,.2);
 }
 
-.benefit-icon{
-    width:60px;
-    height:60px;
+.orbit-main small{
+    font-size:14px;
+    font-weight:700;
+}
+
+.orbit-item{
+    position:absolute;
+    width:75px;
+    height:75px;
+    border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:18px;
-    background:#FFF5C8;
-    font-size:28px;
-    margin-bottom:22px;
-}
-
-.benefit:nth-child(2) .benefit-icon{
-    background:#FFE8EC;
-}
-
-.benefit:nth-child(3) .benefit-icon{
-    background:#E7F1FF;
-}
-
-.benefit:nth-child(4) .benefit-icon{
-    background:#FFF5C8;
-}
-
-.benefit h3{
-    color:var(--navy);
-    font-size:20px;
-    margin-bottom:10px;
-}
-
-.benefit p{
-    color:#6B748A;
-    line-height:1.7;
-    font-size:14px;
-}
-
-/* =====================================================
-   PROGRAM
-===================================================== */
-
-.learning{
-    padding:110px 0;
+    font-size:30px;
     background:white;
+    box-shadow:var(--shadow);
+    animation:orbitFloat 4s ease-in-out infinite;
 }
 
-.learning-grid{
+.o1{top:20px;left:20px;}
+.o2{top:35px;right:10px;animation-delay:.7s;}
+.o3{bottom:20px;left:60px;animation-delay:1.4s;}
+.o4{bottom:15px;right:60px;animation-delay:2s;}
+
+@keyframes orbitFloat{
+    50%{transform:translateY(-12px) rotate(8deg);}
+}
+
+/* =========================
+   BENEFITS
+========================= */
+
+.benefits{
+    background:#F2F5FF;
+}
+
+.center-title{
+    text-align:center;
+    max-width:700px;
+    margin:0 auto 60px;
+}
+
+.center-title h2{
+    font-family:"Cherry Bomb One",cursive;
+    color:var(--navy);
+    font-size:clamp(42px,5vw,65px);
+    line-height:1;
+}
+
+.center-title p{
+    margin-top:18px;
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.benefit-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:22px;
 }
 
-.lesson{
-    border-radius:30px;
-    padding:32px;
-    background:var(--cream);
-    border-top:7px solid var(--navy);
+.benefit{
+    background:white;
+    padding:35px;
+    border-radius:var(--radius);
+    box-shadow:0 10px 35px rgba(16,37,118,.06);
+    transition:.35s;
     position:relative;
     overflow:hidden;
 }
 
-.lesson:nth-child(2){
-    border-color:var(--red);
+.benefit:hover{
+    transform:translateY(-10px) rotate(-1deg);
+    box-shadow:var(--shadow);
 }
 
-.lesson:nth-child(3){
-    border-color:var(--gold);
+.benefit:nth-child(2){
+    transform:translateY(25px);
 }
 
-.lesson-number{
-    font-size:14px;
-    font-weight:900;
-    color:#9AA2B5;
-    letter-spacing:2px;
+.benefit:nth-child(2):hover{
+    transform:translateY(15px) rotate(1deg);
 }
 
-.lesson h3{
-    margin:18px 0 12px;
-    font-size:25px;
+.benefit-icon{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.benefit h3{
     color:var(--navy);
+    font-size:23px;
+    margin-bottom:12px;
 }
 
-.lesson p{
-    color:#68738B;
+.benefit p{
+    color:var(--muted);
     line-height:1.7;
 }
 
-.lesson ul{
-    list-style:none;
-    margin-top:22px;
+/* =========================
+   AGE PROGRAM
+========================= */
+
+.programs{
+    background:white;
 }
 
-.lesson li{
-    margin:10px 0;
-    color:#4F5B74;
+.age-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.age-card{
+    min-height:310px;
+    padding:28px;
+    border-radius:28px;
+    position:relative;
+    overflow:hidden;
+    transition:.35s;
+}
+
+.age-card:hover{
+    transform:translateY(-10px) rotate(1deg);
+}
+
+.age-card:nth-child(1){
+    background:#FFF5C8;
+}
+
+.age-card:nth-child(2){
+    background:#EAF0FF;
+}
+
+.age-card:nth-child(3){
+    background:#FFE9EC;
+}
+
+.age-card:nth-child(4){
+    background:#E9F7F1;
+}
+
+.age-number{
     font-size:14px;
+    font-weight:700;
+    opacity:.6;
 }
 
-.lesson li:before{
+.age-icon{
+    font-size:60px;
+    margin:35px 0 20px;
+}
+
+.age-card h3{
+    font-size:22px;
+    color:var(--navy);
+    margin-bottom:10px;
+}
+
+.age-card p{
+    font-size:14px;
+    line-height:1.6;
+    color:#59617A;
+}
+
+.age-card:after{
     content:"♪";
-    color:var(--red);
-    font-weight:bold;
-    margin-right:8px;
+    position:absolute;
+    right:-5px;
+    bottom:-25px;
+    font-family:"Cherry Bomb One";
+    font-size:120px;
+    opacity:.08;
 }
 
-/* =====================================================
-   ROADMAP
-===================================================== */
+/* =========================
+   INTERACTIVE PIANO
+========================= */
 
-.roadmap{
-    padding:110px 0;
+.play-section{
     background:var(--navy);
     color:white;
     position:relative;
     overflow:hidden;
 }
 
-.roadmap .section-title{
+.play-section:before{
+    content:"♫";
+    position:absolute;
+    font-size:400px;
+    right:-70px;
+    top:-150px;
+    opacity:.04;
+    font-family:"Cherry Bomb One";
+}
+
+.play-wrap{
+    position:relative;
+    z-index:2;
+}
+
+.play-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.play-title h2{
+    font-family:"Cherry Bomb One",cursive;
+    font-size:clamp(42px,5vw,65px);
     color:white;
 }
 
-.roadmap .section-title em{
-    color:var(--gold);
+.play-title p{
+    color:#CBD4FF;
+    margin-top:15px;
 }
 
-.roadmap .section-label{
-    color:var(--gold);
+.keyboard{
+    max-width:900px;
+    margin:auto;
+    padding:22px;
+    background:#202744;
+    border-radius:28px;
+    box-shadow:0 30px 70px rgba(0,0,0,.25);
 }
 
-.roadmap-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-    margin-top:50px;
-}
-
-.step{
+.keyboard-inner{
+    height:220px;
+    display:flex;
     position:relative;
-    padding:25px;
-    border:1px solid rgba(255,255,255,.18);
+    overflow:hidden;
+    border-radius:15px;
+}
+
+.key{
+    flex:1;
+    background:white;
+    border-right:2px solid #C8CBD5;
+    position:relative;
+    cursor:pointer;
+    transition:.1s;
+}
+
+.key:hover,
+.key.active{
+    transform:translateY(12px);
+    background:#FFF9D8;
+}
+
+.key:last-child{
+    border-right:0;
+}
+
+.key span{
+    position:absolute;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#9AA0B3;
+    font-size:12px;
+}
+
+.play-message{
+    text-align:center;
+    margin-top:25px;
+    min-height:30px;
+    color:var(--yellow);
+    font-weight:700;
+}
+
+.floating-small{
+    position:absolute;
+    font-size:35px;
+    animation:smallFloat 4s infinite ease-in-out;
+}
+
+.fs1{left:10%;top:20%;}
+.fs2{right:12%;bottom:20%;animation-delay:1s;}
+.fs3{left:17%;bottom:10%;animation-delay:2s;}
+
+@keyframes smallFloat{
+    50%{
+        transform:translateY(-20px) rotate(15deg);
+    }
+}
+
+/* =========================
+   LESSON TIMELINE
+========================= */
+
+.lesson{
+    background:#FFFDF7;
+}
+
+.timeline{
+    max-width:900px;
+    margin:auto;
+    position:relative;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:35px;
+    top:20px;
+    bottom:20px;
+    width:3px;
+    background:#E7C84A;
+}
+
+.lesson-row{
+    display:grid;
+    grid-template-columns:70px 1fr;
+    gap:25px;
+    margin-bottom:28px;
+    position:relative;
+}
+
+.lesson-number{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:var(--red);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"Cherry Bomb One";
+    font-size:23px;
+    position:relative;
+    z-index:2;
+    box-shadow:0 10px 20px rgba(201,24,43,.18);
+}
+
+.lesson-box{
+    background:white;
+    border-radius:22px;
+    padding:24px 28px;
+    box-shadow:0 8px 25px rgba(16,37,118,.07);
+}
+
+.lesson-box h3{
+    color:var(--navy);
+    margin-bottom:7px;
+}
+
+.lesson-box p{
+    color:var(--muted);
+    line-height:1.6;
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery{
+    background:#F2F5FF;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:1.2fr .8fr .8fr;
+    grid-template-rows:230px 230px;
+    gap:16px;
+}
+
+.gallery-box{
     border-radius:25px;
-    background:rgba(255,255,255,.06);
-    transition:.3s;
+    overflow:hidden;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:white;
+    border:3px dashed rgba(16,37,118,.12);
+    transition:.35s;
 }
 
-.step:hover{
-    transform:translateY(-8px);
-    background:rgba(255,255,255,.11);
+.gallery-box:hover{
+    transform:scale(.98);
 }
 
-.step b{
-    font-family:"Cherry Bomb One",cursive;
-    font-size:38px;
-    color:var(--gold);
+.gallery-box.big{
+    grid-row:span 2;
+    background:#FFF3C1;
 }
 
-.step h3{
-    margin:10px 0;
-    font-size:19px;
+.gallery-box:nth-child(2){
+    background:#E9F0FF;
 }
 
-.step p{
-    color:rgba(255,255,255,.7);
-    line-height:1.7;
-    font-size:14px;
+.gallery-box:nth-child(3){
+    background:#FFE8EC;
 }
 
-/* =====================================================
+.gallery-box:nth-child(4){
+    background:#EAF8F2;
+}
+
+.gallery-box:nth-child(5){
+    background:#F7ECFF;
+}
+
+.gallery-placeholder{
+    text-align:center;
+    color:var(--navy);
+}
+
+.gallery-placeholder div{
+    font-size:55px;
+    margin-bottom:10px;
+}
+
+.gallery-placeholder span{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+}
+
+/* =========================
    CTA
-===================================================== */
+========================= */
 
 .cta{
-    padding:110px 0;
-    background:
-        radial-gradient(circle at 20% 20%,rgba(231,200,74,.3),transparent 20%),
-        radial-gradient(circle at 85% 80%,rgba(201,24,43,.12),transparent 25%),
-        var(--cream);
-}
-
-.cta-box{
-    background:white;
-    border-radius:45px;
-    padding:70px;
+    padding:120px 0;
+    background:var(--red);
+    color:white;
     text-align:center;
-    box-shadow:0 25px 60px rgba(16,37,118,.1);
     position:relative;
     overflow:hidden;
 }
 
-.cta-box:before{
-    content:"♫  ♪  ♫  ♪";
+.cta:before,
+.cta:after{
     position:absolute;
-    top:18px;
-    left:0;
-    width:100%;
-    color:rgba(16,37,118,.07);
-    font-size:35px;
-    letter-spacing:30px;
+    font-family:"Cherry Bomb One";
+    font-size:220px;
+    opacity:.08;
 }
 
-.cta-box h2{
+.cta:before{
+    content:"♪";
+    left:-30px;
+    top:-80px;
+}
+
+.cta:after{
+    content:"♫";
+    right:-30px;
+    bottom:-100px;
+}
+
+.cta-content{
+    position:relative;
+    z-index:2;
+}
+
+.cta h2{
     font-family:"Cherry Bomb One",cursive;
-    color:var(--navy);
-    font-size:clamp(40px,5vw,64px);
-    margin-bottom:15px;
+    font-size:clamp(48px,7vw,85px);
+    line-height:1;
 }
 
-.cta-box h2 em{
+.cta p{
+    font-size:19px;
+    margin:22px auto 32px;
+    max-width:600px;
+    line-height:1.6;
+    color:#FFE9EC;
+}
+
+.cta .btn{
+    background:white;
     color:var(--red);
-    font-style:normal;
+    padding:17px 30px;
 }
 
-.cta-box p{
-    color:#66718A;
-    margin-bottom:28px;
-}
-
-/* =====================================================
+/* =========================
    FOOTER
-===================================================== */
+========================= */
 
 footer{
-    background:#0C1B59;
+    background:#0B1850;
     color:white;
-    text-align:center;
-    padding:35px 20px;
+    padding:35px 0;
 }
 
-footer strong{
-    font-family:"Cherry Bomb One",cursive;
-    font-size:25px;
+.footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
 }
 
-footer p{
-    color:rgba(255,255,255,.65);
-    margin-top:8px;
-    font-size:13px;
+.footer img{
+    width:90px;
+    filter:brightness(0) invert(1);
 }
 
-/* =====================================================
-   MUSIC FLOATING ELEMENTS
-===================================================== */
-
-.floating-note{
-    position:fixed;
-    pointer-events:none;
-    z-index:2;
-    font-size:30px;
-    animation:floatAcross 8s linear infinite;
-    opacity:.13;
+.footer p{
+    color:#AEB7E0;
+    font-size:14px;
 }
 
-.floating-note.a{
-    top:25%;
-    left:-50px;
+/* =========================
+   REVEAL
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:1s ease;
 }
 
-.floating-note.b{
-    top:65%;
-    left:-50px;
-    animation-delay:4s;
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
-/* =====================================================
-   ANIMATION
-===================================================== */
-
-@keyframes slideLeft{
-    from{
-        opacity:0;
-        transform:translateX(-50px);
-    }
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
-}
-
-@keyframes slideRight{
-    from{
-        opacity:0;
-        transform:translateX(50px);
-    }
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
-}
-
-@keyframes floatPiano{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-15px);
-    }
-}
-
-@keyframes floatAcross{
-    from{
-        transform:translateX(0) rotate(0deg);
-    }
-    to{
-        transform:translateX(110vw) rotate(360deg);
-    }
-}
-
-@keyframes rotateSlow{
-    from{
-        transform:rotate(0);
-    }
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-@keyframes noteFloat{
-    0%,100%{
-        transform:translateY(0) rotate(-5deg);
-    }
-    50%{
-        transform:translateY(-18px) rotate(8deg);
-    }
-}
-
-/* =====================================================
+/* =========================
    RESPONSIVE
-===================================================== */
+========================= */
 
 @media(max-width:900px){
 
@@ -822,73 +1027,136 @@ footer p{
         grid-template-columns:1fr;
     }
 
-    .piano-hero{
-        padding:80px 0;
+    .hero{
+        min-height:auto;
     }
 
-    .piano-scene{
-        min-height:400px;
+    .hero-visual{
+        height:430px;
     }
 
     .benefit-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:1fr;
     }
 
-    .roadmap-grid{
-        grid-template-columns:repeat(2,1fr);
+    .benefit:nth-child(2){
+        transform:none;
     }
+
+    .age-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:220px 220px 220px;
+    }
+
+    .gallery-box.big{
+        grid-row:span 2;
+    }
+
 }
 
-@media(max-width:650px){
+@media(max-width:600px){
 
-    .piano-nav{
-        min-height:65px;
+    header{
+        padding:10px 0;
     }
 
-    .piano-logo img{
-        width:85px;
+    .logo img{
+        width:75px;
     }
 
-    .back-home{
-        font-size:12px;
-        padding:8px 13px;
+    .back{
+        font-size:13px;
     }
 
-    .hero-text h1{
-        font-size:52px;
+    .hero{
+        padding-top:115px;
     }
 
-    .music-circle{
-        width:320px;
-        height:320px;
+    .hero h1{
+        font-size:58px;
     }
 
-    .piano-scene{
-        min-height:330px;
+    .hero-desc{
+        font-size:16px;
+    }
+
+    .hero-visual{
+        height:350px;
+    }
+
+    .blob{
+        width:300px;
+        height:300px;
+    }
+
+    .piano-hero{
+        width:310px;
+        height:185px;
+        padding:17px;
     }
 
     .piano-top{
-        height:75px;
+        height:35px;
+        margin-bottom:10px;
     }
 
-    .piano-keys{
-        height:110px;
+    .keys{
+        height:105px;
     }
 
-    .highlight{
+    .black-key{
+        width:18px;
+        height:60px;
+    }
+
+    .sticker{
+        font-size:12px;
+        padding:8px 11px;
+    }
+
+    .section{
+        padding:75px 0;
+    }
+
+    .age-grid{
         grid-template-columns:1fr;
     }
 
-    .benefit-grid,
-    .learning-grid,
-    .roadmap-grid{
-        grid-template-columns:1fr;
+    .age-card{
+        min-height:250px;
     }
 
-    .cta-box{
-        padding:45px 25px;
-        border-radius:30px;
+    .keyboard{
+        padding:10px;
     }
+
+    .keyboard-inner{
+        height:150px;
+    }
+
+    .gallery-grid{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:180px 180px 180px;
+    }
+
+    .gallery-box.big{
+        grid-row:span 2;
+    }
+
+    .gallery-placeholder div{
+        font-size:40px;
+    }
+
+    .footer{
+        flex-direction:column;
+        text-align:center;
+    }
+
 }
 
 </style>
@@ -896,401 +1164,629 @@ footer p{
 
 <body>
 
-<!-- FLOATING NOTES -->
-<div class="floating-note a">♪</div>
-<div class="floating-note b">♫</div>
-
+<!-- MUSIC NOTES -->
+<div class="music-note note1">♪</div>
+<div class="music-note note2">♫</div>
+<div class="music-note note3">♬</div>
+<div class="music-note note4">♪</div>
 
 <!-- HEADER -->
-<header class="piano-header">
+<header>
+    <div class="container nav">
 
-<div class="container piano-nav">
+        <a href="index.html" class="logo">
+            <img src="assets/logo1A.png" alt="EPIC Talent Center">
+        </a>
 
-<a href="index.html" class="piano-logo">
-<img src="assets/logo1A.png" alt="EPIC Talent Center">
-</a>
+        <a href="index.html#chuong-trinh" class="back">
+            ← Các lớp EPIC
+        </a>
 
-<a href="index.html#chuong-trinh" class="back-home">
-← Các lớp EPIC
-</a>
-
-</div>
-
+    </div>
 </header>
 
 
 <!-- HERO -->
-<section class="piano-hero">
+<section class="hero">
 
-<div class="container hero-content">
+    <div class="container hero-content">
 
-<div class="hero-text">
+        <div class="reveal">
 
-<div class="label">
-♪ EPIC MUSIC PROGRAM
-</div>
+            <div class="eyebrow">
+                <span></span>
+                LỚP PIANO EPIC
+            </div>
 
-<h1>
-Piano<br>
-<em>chạm vào âm nhạc.</em>
-</h1>
+            <h1>
+                Chạm vào
+                <em>âm nhạc.</em>
+            </h1>
 
-<p>
-Tại EPIC, mỗi phím đàn là một cơ hội để trẻ khám phá cảm xúc,
-rèn luyện sự tập trung và tự tin kể câu chuyện của riêng mình bằng âm nhạc.
-</p>
+            <p class="hero-desc">
+                Không chỉ học cách chơi Piano.
+                Tại EPIC, mỗi bạn nhỏ được khám phá âm thanh,
+                cảm xúc và tìm thấy giai điệu của riêng mình.
+            </p>
 
-<div class="hero-buttons">
+            <div class="hero-buttons">
 
-<a href="index.html#dang-ky" class="btn btn-primary">
-Đăng ký học thử ↗
-</a>
+                <a href="index.html#dang-ky" class="btn btn-primary">
+                    Đăng ký học thử 🎹
+                </a>
 
-<a href="#chuong-trinh-piano" class="btn btn-outline">
-Xem chương trình →
-</a>
+                <a href="#chuong-trinh" class="btn btn-secondary">
+                    Khám phá lớp →
+                </a>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
 
-<div class="piano-scene">
+        <div class="hero-visual reveal">
 
-<div class="music-circle"></div>
+            <div class="blob"></div>
 
-<div class="music-note note1">♪</div>
-<div class="music-note note2">♫</div>
-<div class="music-note note3">♩</div>
-<div class="music-note note4">♪</div>
+            <div class="note-pop pop1">♪</div>
+            <div class="note-pop pop2">♫</div>
+            <div class="note-pop pop3">♬</div>
 
-<div class="piano-box">
+            <div class="sticker star">
+                ⭐ PLAY!
+            </div>
 
-<div class="piano-top"></div>
+            <div class="sticker play">
+                ♫ HAVE FUN
+            </div>
 
-<div class="piano-keys">
+            <div class="sticker age">
+                4 — 18 TUỔI
+            </div>
 
-<div class="white-key"><i class="black-key"></i></div>
-<div class="white-key"><i class="black-key"></i></div>
-<div class="white-key"></div>
-<div class="white-key"><i class="black-key"></i></div>
-<div class="white-key"><i class="black-key"></i></div>
-<div class="white-key"><i class="black-key"></i></div>
-<div class="white-key"></div>
-<div class="white-key"><i class="black-key"></i></div>
-<div class="white-key"><i class="black-key"></i></div>
-<div class="white-key"></div>
-<div class="white-key"><i class="black-key"></i></div>
-<div class="white-key"><i class="black-key"></i></div>
-<div class="white-key"><i class="black-key"></i></div>
-<div class="white-key"></div>
+            <div class="piano-hero">
 
-</div>
+                <div class="piano-top"></div>
 
-</div>
+                <div class="keys">
 
-</div>
+                    <div class="white-key"></div>
+                    <div class="white-key"></div>
+                    <div class="white-key"></div>
+                    <div class="white-key"></div>
+                    <div class="white-key"></div>
+                    <div class="white-key"></div>
+                    <div class="white-key"></div>
+                    <div class="white-key"></div>
 
-</div>
+                    <div class="black-keys">
+                        <div class="black-key"></div>
+                        <div class="black-key"></div>
+                        <div class="black-key"></div>
+                        <div class="black-key"></div>
+                        <div class="black-key"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
+<!-- MARQUEE -->
+<div class="marquee">
+
+    <div class="marquee-track">
+
+        <span>🎹 <b>PLAY</b> YOUR MUSIC</span>
+        <span>♪ <b>CREATE</b> YOUR SOUND</span>
+        <span>⭐ <b>SHINE</b> YOUR WAY</span>
+        <span>♫ <b>HAVE FUN</b> WITH MUSIC</span>
+
+        <span>🎹 <b>PLAY</b> YOUR MUSIC</span>
+        <span>♪ <b>CREATE</b> YOUR SOUND</span>
+        <span>⭐ <b>SHINE</b> YOUR WAY</span>
+        <span>♫ <b>HAVE FUN</b> WITH MUSIC</span>
+
+    </div>
+
+</div>
+
+
 <!-- INTRO -->
-<section class="intro">
+<section class="section intro">
 
-<div class="container intro-grid">
+    <div class="container intro-grid">
 
-<div class="visual-card">
+        <div class="music-orbit reveal">
 
-<div class="big-note">♫</div>
+            <div class="orbit-item o1">🎵</div>
+            <div class="orbit-item o2">⭐</div>
+            <div class="orbit-item o3">🎶</div>
+            <div class="orbit-item o4">💛</div>
 
-<div class="sticker one">
-LET'S PLAY!
-</div>
+            <div class="orbit-main">
+                🎹
+                <small>EPIC MUSIC</small>
+            </div>
 
-<div class="sticker two">
-♪ FEEL THE MUSIC
-</div>
-
-</div>
+        </div>
 
 
-<div>
+        <div class="reveal">
 
-<div class="section-label">
-VỀ LỚP PIANO
-</div>
+            <div class="section-tag">
+                MUSIC × CREATIVITY
+            </div>
 
-<h2>
-Không chỉ học đàn,<br>
-<em>mà học cách cảm nhận.</em>
-</h2>
+            <h2>
+                Piano không chỉ là
+                <span>những phím đàn.</span>
+            </h2>
 
-<p>
-Piano tại EPIC được xây dựng như một hành trình khám phá âm nhạc.
-Trẻ được làm quen với nhịp điệu, giai điệu, kỹ thuật và khả năng biểu đạt
-thông qua những bài học phù hợp với từng độ tuổi.
-</p>
+            <p class="intro-text" style="margin-top:25px;">
+                Mỗi âm thanh là một màu sắc.
+                Mỗi giai điệu là một câu chuyện.
+                Và mỗi bạn nhỏ đều có một cách riêng để kể câu chuyện ấy.
+            </p>
 
-<div class="highlight">
+            <div class="quote">
+                “Hãy để con khám phá âm nhạc theo cách của chính mình.”
+            </div>
 
-<div>
-<b>4–18</b>
-<span>Độ tuổi</span>
-</div>
+        </div>
 
-<div>
-<b>♪</b>
-<span>Cảm thụ âm nhạc</span>
-</div>
-
-<div>
-<b>★</b>
-<span>Tự tin biểu diễn</span>
-</div>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
 <!-- BENEFITS -->
-<section class="benefits">
+<section class="section benefits">
 
-<div class="container">
+    <div class="container">
 
-<div class="center">
+        <div class="center-title reveal">
 
-<div class="section-label">
-WHY PIANO?
-</div>
+            <div class="section-tag">
+                WHY PIANO?
+            </div>
 
-<h2 class="section-title">
-Âm nhạc giúp trẻ <em>lớn lên.</em>
-</h2>
+            <h2>
+                Học Piano để
+                <br>lớn lên cùng âm nhạc.
+            </h2>
 
-<p>
-Một lớp học Piano không chỉ tạo ra những giai điệu đẹp,
-mà còn giúp trẻ phát triển nhiều kỹ năng quan trọng.
-</p>
+            <p>
+                Không áp lực thành tích.
+                Tập trung vào trải nghiệm, khả năng cảm thụ
+                và sự tự tin của từng học viên.
+            </p>
 
-</div>
-
-
-<div class="benefit-grid">
-
-<article class="benefit">
-
-<div class="benefit-icon">🎧</div>
-
-<h3>Cảm thụ âm nhạc</h3>
-
-<p>
-Làm quen với giai điệu, cao độ, tiết tấu và cảm xúc trong âm nhạc.
-</p>
-
-</article>
+        </div>
 
 
-<article class="benefit">
+        <div class="benefit-grid">
 
-<div class="benefit-icon">🧠</div>
+            <div class="benefit reveal">
 
-<h3>Tập trung</h3>
+                <div class="benefit-icon">🧠</div>
 
-<p>
-Rèn luyện khả năng ghi nhớ, phối hợp tay và khả năng tập trung.
-</p>
+                <h3>Tập trung tốt hơn</h3>
 
-</article>
+                <p>
+                    Luyện Piano giúp trẻ rèn khả năng ghi nhớ,
+                    tập trung và phối hợp giữa mắt – tay – tai.
+                </p>
 
-
-<article class="benefit">
-
-<div class="benefit-icon">✨</div>
-
-<h3>Sáng tạo</h3>
-
-<p>
-Khuyến khích trẻ thể hiện cá tính và khám phá cách biểu đạt riêng.
-</p>
-
-</article>
+            </div>
 
 
-<article class="benefit">
+            <div class="benefit reveal">
 
-<div class="benefit-icon">🎤</div>
+                <div class="benefit-icon">💭</div>
 
-<h3>Tự tin</h3>
+                <h3>Nuôi dưỡng sáng tạo</h3>
 
-<p>
-Từng bước giúp trẻ mạnh dạn trình diễn và chia sẻ thành quả.
-</p>
+                <p>
+                    Trẻ được khám phá âm thanh và tự do thể hiện
+                    cảm xúc qua từng giai điệu.
+                </p>
 
-</article>
+            </div>
 
-</div>
 
-</div>
+            <div class="benefit reveal">
+
+                <div class="benefit-icon">⭐</div>
+
+                <h3>Tự tin biểu diễn</h3>
+
+                <p>
+                    Từ những phím đàn đầu tiên đến sân khấu,
+                    trẻ từng bước xây dựng sự tự tin của mình.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- PROGRAM -->
-<section class="learning" id="chuong-trinh-piano">
+<!-- AGE PROGRAM -->
+<section class="section programs" id="chuong-trinh">
 
-<div class="container">
+    <div class="container">
 
-<div class="center">
+        <div class="center-title reveal">
 
-<div class="section-label">
-PIANO CURRICULUM
-</div>
+            <div class="section-tag">
+                LEARNING JOURNEY
+            </div>
 
-<h2 class="section-title">
-Học Piano theo <em>từng bước.</em>
-</h2>
+            <h2>
+                Mỗi độ tuổi,
+                <br>một hành trình.
+            </h2>
 
-<p>
-Chương trình được chia theo khả năng và độ tuổi để trẻ học vừa sức,
-không tạo áp lực và vẫn giữ được niềm vui với âm nhạc.
-</p>
+            <p>
+                Chương trình được xây dựng theo khả năng tiếp nhận
+                và sự phát triển của từng giai đoạn.
+            </p>
 
-</div>
-
-
-<div class="learning-grid">
-
-<article class="lesson">
-
-<div class="lesson-number">01 / BEGINNER</div>
-
-<h3>Làm quen âm nhạc</h3>
-
-<p>
-Dành cho những bạn mới bắt đầu.
-</p>
-
-<ul>
-<li>Làm quen phím đàn</li>
-<li>Nhận biết nốt nhạc</li>
-<li>Nhịp điệu cơ bản</li>
-<li>Bài hát đơn giản</li>
-</ul>
-
-</article>
+        </div>
 
 
-<article class="lesson">
+        <div class="age-grid">
 
-<div class="lesson-number">02 / DEVELOP</div>
+            <div class="age-card reveal">
 
-<h3>Phát triển kỹ năng</h3>
+                <div class="age-number">01 / 04</div>
 
-<p>
-Từng bước nâng cao kỹ thuật và khả năng cảm thụ.
-</p>
+                <div class="age-icon">🌱</div>
 
-<ul>
-<li>Đọc bản nhạc</li>
-<li>Kỹ thuật ngón</li>
-<li>Tiết tấu & nhịp</li>
-<li>Biểu đạt cảm xúc</li>
-</ul>
+                <h3>Little Melody</h3>
 
-</article>
+                <p>
+                    4–6 tuổi<br>
+                    Làm quen âm thanh, nhịp điệu và những phím đàn đầu tiên.
+                </p>
+
+            </div>
 
 
-<article class="lesson">
+            <div class="age-card reveal">
 
-<div class="lesson-number">03 / PERFORM</div>
+                <div class="age-number">02 / 04</div>
 
-<h3>Tỏa sáng trên sân khấu</h3>
+                <div class="age-icon">🎵</div>
 
-<p>
-Giúp trẻ tự tin thể hiện thành quả học tập.
-</p>
+                <h3>Music Explorer</h3>
 
-<ul>
-<li>Luyện tác phẩm</li>
-<li>Kỹ năng biểu diễn</li>
-<li>Làm quen sân khấu</li>
-<li>Biểu diễn trước khán giả</li>
-</ul>
+                <p>
+                    7–10 tuổi<br>
+                    Khám phá Piano và hình thành nền tảng âm nhạc.
+                </p>
 
-</article>
+            </div>
 
-</div>
 
-</div>
+            <div class="age-card reveal">
+
+                <div class="age-number">03 / 04</div>
+
+                <div class="age-icon">🎹</div>
+
+                <h3>Piano Maker</h3>
+
+                <p>
+                    11–14 tuổi<br>
+                    Phát triển kỹ thuật, cảm thụ và khả năng biểu đạt.
+                </p>
+
+            </div>
+
+
+            <div class="age-card reveal">
+
+                <div class="age-number">04 / 04</div>
+
+                <div class="age-icon">⭐</div>
+
+                <h3>Young Performer</h3>
+
+                <p>
+                    15–18 tuổi<br>
+                    Nâng cao kỹ năng và tự tin thể hiện trên sân khấu.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- ROADMAP -->
-<section class="roadmap">
+<!-- INTERACTIVE PIANO -->
+<section class="section play-section">
 
-<div class="container">
+    <div class="floating-small fs1">♪</div>
+    <div class="floating-small fs2">♫</div>
+    <div class="floating-small fs3">⭐</div>
 
-<div class="center">
+    <div class="container play-wrap">
 
-<div class="section-label">
-EPIC MUSIC JOURNEY
-</div>
+        <div class="play-title reveal">
 
-<h2 class="section-title">
-Hành trình <em>tỏa sáng</em>
-</h2>
+            <div class="section-tag" style="color:#E7C84A;">
+                PLAY WITH EPIC
+            </div>
 
-</div>
+            <h2>
+                Thử chạm một phím đi! 🎹
+            </h2>
 
+            <p>
+                Một chút âm nhạc cho chuyến ghé thăm EPIC của bạn.
+            </p>
 
-<div class="roadmap-grid">
-
-<div class="step">
-<b>01</b>
-<h3>Khám phá</h3>
-<p>
-Làm quen với Piano và tìm thấy niềm vui trong âm nhạc.
-</p>
-</div>
+        </div>
 
 
-<div class="step">
-<b>02</b>
-<h3>Thực hành</h3>
-<p>
-Hình thành kỹ năng thông qua luyện tập đều đặn.
-</p>
-</div>
+        <div class="keyboard reveal">
+
+            <div class="keyboard-inner" id="keyboard">
+
+                <div class="key" data-note="DO">
+                    <span>DO</span>
+                </div>
+
+                <div class="key" data-note="RE">
+                    <span>RE</span>
+                </div>
+
+                <div class="key" data-note="MI">
+                    <span>MI</span>
+                </div>
+
+                <div class="key" data-note="FA">
+                    <span>FA</span>
+                </div>
+
+                <div class="key" data-note="SOL">
+                    <span>SOL</span>
+                </div>
+
+                <div class="key" data-note="LA">
+                    <span>LA</span>
+                </div>
+
+                <div class="key" data-note="SI">
+                    <span>SI</span>
+                </div>
+
+                <div class="key" data-note="DO">
+                    <span>DO</span>
+                </div>
+
+            </div>
+
+            <div class="play-message" id="playMessage">
+                Chạm vào phím đàn ✨
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-<div class="step">
-<b>03</b>
-<h3>Biểu đạt</h3>
-<p>
-Học cách đưa cảm xúc cá nhân vào từng giai điệu.
-</p>
-</div>
+<!-- LESSON -->
+<section class="section lesson">
+
+    <div class="container">
+
+        <div class="center-title reveal">
+
+            <div class="section-tag">
+                A DAY AT EPIC
+            </div>
+
+            <h2>
+                Một buổi học
+                <br>Piano sẽ như thế nào?
+            </h2>
+
+        </div>
 
 
-<div class="step">
-<b>04</b>
-<h3>Tỏa sáng</h3>
-<p>
-Tự tin biểu diễn và chia sẻ thành quả cùng mọi người.
-</p>
-</div>
+        <div class="timeline">
 
-</div>
+            <div class="lesson-row reveal">
 
-</div>
+                <div class="lesson-number">01</div>
+
+                <div class="lesson-box">
+
+                    <h3>🎵 Làm nóng</h3>
+
+                    <p>
+                        Khởi động ngón tay và làm quen với nhịp điệu
+                        thông qua những trò chơi âm nhạc.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="lesson-row reveal">
+
+                <div class="lesson-number">02</div>
+
+                <div class="lesson-box">
+
+                    <h3>👂 Khám phá</h3>
+
+                    <p>
+                        Lắng nghe, nhận biết cao độ và khám phá
+                        những âm thanh mới.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="lesson-row reveal">
+
+                <div class="lesson-number">03</div>
+
+                <div class="lesson-box">
+
+                    <h3>🎹 Luyện tập</h3>
+
+                    <p>
+                        Học kỹ thuật Piano phù hợp với trình độ
+                        và tốc độ tiến bộ của từng học viên.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="lesson-row reveal">
+
+                <div class="lesson-number">04</div>
+
+                <div class="lesson-box">
+
+                    <h3>🎶 Chơi nhạc</h3>
+
+                    <p>
+                        Ứng dụng kiến thức vào bài nhạc,
+                        khuyến khích trẻ tự tin thể hiện.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="lesson-row reveal">
+
+                <div class="lesson-number">05</div>
+
+                <div class="lesson-box">
+
+                    <h3>⭐ Shine!</h3>
+
+                    <p>
+                        Tổng kết buổi học và ghi nhận những
+                        điều nhỏ bé mà học viên đã làm được.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GALLERY -->
+<section class="section gallery">
+
+    <div class="container">
+
+        <div class="center-title reveal">
+
+            <div class="section-tag">
+                EPIC MOMENTS
+            </div>
+
+            <h2>
+                Những khoảnh khắc
+                <br>đầy giai điệu.
+            </h2>
+
+            <p>
+                Khu vực này có thể thay bằng hình ảnh lớp học,
+                giáo viên và học viên thực tế của EPIC.
+            </p>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+            <div class="gallery-box big reveal">
+
+                <div class="gallery-placeholder">
+                    <div>🎹</div>
+                    <span>ẢNH LỚP PIANO</span>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-box reveal">
+
+                <div class="gallery-placeholder">
+                    <div>👩‍🏫</div>
+                    <span>GIÁO VIÊN</span>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-box reveal">
+
+                <div class="gallery-placeholder">
+                    <div>🎵</div>
+                    <span>GIỜ HỌC</span>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-box reveal">
+
+                <div class="gallery-placeholder">
+                    <div>⭐</div>
+                    <span>BIỂU DIỄN</span>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-box reveal">
+
+                <div class="gallery-placeholder">
+                    <div>💛</div>
+                    <span>EPIC MOMENT</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -1298,26 +1794,22 @@ Tự tin biểu diễn và chia sẻ thành quả cùng mọi người.
 <!-- CTA -->
 <section class="cta">
 
-<div class="container">
+    <div class="container cta-content reveal">
 
-<div class="cta-box">
+        <h2>
+            READY TO PLAY?
+        </h2>
 
-<h2>
-Ready to<br>
-<em>make some music?</em>
-</h2>
+        <p>
+            Giai điệu đầu tiên của con có thể bắt đầu
+            từ một phím đàn nhỏ tại EPIC.
+        </p>
 
-<p>
-Cho con một lần thử sức với Piano tại EPIC.
-</p>
+        <a href="index.html#dang-ky" class="btn">
+            Đăng ký học thử 🎹 →
+        </a>
 
-<a href="index.html#dang-ky" class="btn btn-primary">
-Đăng ký học thử Piano ↗
-</a>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -1325,14 +1817,114 @@ Cho con một lần thử sức với Piano tại EPIC.
 <!-- FOOTER -->
 <footer>
 
-<strong>EPIC TALENT CENTER</strong>
+    <div class="container footer">
 
-<p>
-Thỏa sức đam mê – Khơi nguồn sáng tạo
-</p>
+        <a href="index.html">
+            <img src="assets/logo1A.png" alt="EPIC">
+        </a>
+
+        <p>
+            EPIC – Thỏa sức đam mê, khơi nguồn sáng tạo.
+        </p>
+
+        <a href="index.html">
+            ← Về trang chủ
+        </a>
+
+    </div>
 
 </footer>
 
+
+<script>
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const reveals = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("show");
+
+            }
+
+        });
+
+    },
+    {
+        threshold:.12
+    }
+);
+
+reveals.forEach(el => observer.observe(el));
+
+
+/* =========================
+   INTERACTIVE PIANO
+========================= */
+
+const keys = document.querySelectorAll(".key");
+const message = document.getElementById("playMessage");
+
+const messages = {
+    DO:"🎵 DO — bắt đầu một giai điệu mới!",
+    RE:"✨ RE — tiếp tục khám phá!",
+    MI:"💛 MI — nghe thật vui đúng không?",
+    FA:"🎶 FA — âm nhạc đang chuyển động!",
+    SOL:"⭐ SOL — bạn đang tỏa sáng!",
+    LA:"🌈 LA — thêm một chút màu sắc!",
+    SI:"🎹 SI — gần đến nốt tiếp theo rồi!",
+};
+
+keys.forEach(key => {
+
+    key.addEventListener("click", () => {
+
+        keys.forEach(k => k.classList.remove("active"));
+
+        key.classList.add("active");
+
+        const note = key.dataset.note;
+
+        message.textContent = messages[note];
+
+        setTimeout(() => {
+            key.classList.remove("active");
+        },300);
+
+    });
+
+});
+
+
+/* =========================
+   HERO PIANO KEYS
+========================= */
+
+const heroKeys = document.querySelectorAll(".piano-hero .white-key");
+
+heroKeys.forEach(key => {
+
+    key.addEventListener("click", () => {
+
+        key.style.transform = "translateY(9px)";
+
+        setTimeout(() => {
+            key.style.transform = "";
+        },180);
+
+    });
+
+});
+
+</script>
 
 </body>
 </html>
