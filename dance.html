@@ -558,51 +558,321 @@ img{
   line-height:1.6;
 }
 
-.challenge{
-  margin-top:70px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
 
-.challenge-box{
-  min-height:300px;
-  border:4px solid white;
-  padding:30px;
+/* ================= DANCE MIRROR GAME ================= */
+
+.dance-game{
+  margin-top:70px;
+  background:var(--cream);
+  color:var(--black);
+  border:5px solid var(--black);
+  box-shadow:12px 12px 0 var(--red);
+  padding:35px;
   position:relative;
   overflow:hidden;
 }
 
-.challenge-box:nth-child(1){
-  background:var(--red);
+.dance-game::before{
+  content:"DANCE MIRROR";
+  position:absolute;
+  top:-35px;
+  right:-15px;
+  font-family:"Anton",sans-serif;
+  font-size:110px;
+  color:rgba(16,37,118,.06);
+  transform:rotate(-7deg);
+  pointer-events:none;
 }
 
-.challenge-box:nth-child(2){
+.game-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  position:relative;
+  z-index:2;
+}
+
+.game-label{
+  font-family:"Anton",sans-serif;
+  color:var(--red);
+  font-size:25px;
+  letter-spacing:2px;
+}
+
+.game-stats{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.stat{
+  min-width:95px;
+  padding:10px 15px;
+  border:3px solid var(--black);
+  background:white;
+  text-align:center;
+}
+
+.stat small{
+  display:block;
+  font-size:10px;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+.stat strong{
+  display:block;
+  font-family:"Anton",sans-serif;
+  color:var(--navy);
+  font-size:27px;
+}
+
+.game-main{
+  margin-top:30px;
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:30px;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+
+.mirror-character{
+  min-height:330px;
+  border:4px solid var(--black);
   background:var(--yellow);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.mirror-character::after{
+  content:"EPIC CREW";
+  position:absolute;
+  bottom:10px;
+  left:15px;
+  font-family:"Anton",sans-serif;
+  font-size:25px;
+  color:var(--navy);
+  transform:rotate(-4deg);
+}
+
+.mirror-dancer{
+  font-size:135px;
+  line-height:1;
+  filter:drop-shadow(7px 8px 0 var(--navy));
+  transition:.15s;
+}
+
+.mirror-dancer.correct{
+  animation:mirrorCorrect .45s ease;
+}
+
+.mirror-dancer.wrong{
+  animation:mirrorWrong .35s ease;
+}
+
+.mirror-dancer.levelup{
+  animation:levelUp .7s ease;
+}
+
+.game-message{
+  margin-top:18px;
+  min-height:35px;
+  font-family:"Anton",sans-serif;
+  font-size:28px;
+  text-align:center;
+  color:var(--navy);
+}
+
+.game-message.good{
+  color:var(--red);
+}
+
+.game-message.bad{
   color:var(--black);
 }
 
-.challenge-box h3{
+.sequence-area{
+  text-align:center;
+}
+
+.sequence-title{
+  font-size:14px;
+  font-weight:bold;
+  letter-spacing:3px;
+  color:var(--red);
+  margin-bottom:15px;
+}
+
+.sequence{
+  min-height:100px;
+  padding:18px;
+  background:white;
+  border:4px solid var(--black);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.sequence-key{
+  width:58px;
+  height:58px;
+  border:3px solid var(--black);
+  background:var(--yellow);
+  display:flex;
+  align-items:center;
+  justify-content:center;
   font-family:"Anton",sans-serif;
-  font-size:70px;
-  line-height:.8;
+  font-size:30px;
+  box-shadow:4px 4px 0 var(--black);
+  transition:.15s;
 }
 
-.challenge-box p{
-  margin-top:30px;
-  max-width:300px;
-  line-height:1.6;
+.sequence-key.done{
+  background:var(--navy);
+  color:white;
+  transform:translate(3px,3px);
+  box-shadow:1px 1px 0 var(--black);
 }
 
-.challenge-big{
+.sequence-key.current{
+  background:var(--red);
+  color:white;
+  transform:scale(1.12) rotate(-4deg);
+}
+
+.controls{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  max-width:380px;
+  margin:25px auto 0;
+}
+
+.control{
+  min-height:62px;
+  border:3px solid var(--black);
+  background:white;
+  color:var(--black);
+  font-family:"Anton",sans-serif;
+  font-size:27px;
+  cursor:pointer;
+  transition:.15s;
+  box-shadow:5px 5px 0 var(--black);
+}
+
+.control:hover{
+  background:var(--yellow);
+  transform:translate(-2px,-2px);
+}
+
+.control:active{
+  transform:translate(4px,4px);
+  box-shadow:1px 1px 0 var(--black);
+}
+
+.control.space{
+  grid-column:span 3;
+  font-family:"Varela Round",sans-serif;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.game-bottom{
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.game-start,
+.game-restart{
+  border:3px solid var(--black);
+  padding:14px 25px;
+  background:var(--red);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:5px 5px 0 var(--black);
+  transition:.2s;
+}
+
+.game-restart{
+  background:var(--navy);
+}
+
+.game-start:hover,
+.game-restart:hover{
+  transform:translate(-3px,-3px);
+}
+
+.game-hint{
+  text-align:center;
+  font-size:13px;
+  line-height:1.5;
+  margin-top:20px;
+  color:#333;
+}
+
+.game-overlay{
   position:absolute;
-  right:-20px;
-  bottom:-50px;
-  font-family:"Anton",sans-serif;
-  font-size:180px;
-  opacity:.2;
-  transform:rotate(-10deg);
+  inset:0;
+  z-index:10;
+  background:rgba(255,249,233,.96);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
 }
+
+.game-overlay.show{
+  display:flex;
+}
+
+.result-card{
+  width:min(500px,100%);
+  border:5px solid var(--black);
+  background:white;
+  padding:35px;
+  box-shadow:10px 10px 0 var(--navy);
+}
+
+.result-card .result-title{
+  font-family:"Anton",sans-serif;
+  color:var(--red);
+  font-size:70px;
+  line-height:.85;
+}
+
+.result-score{
+  font-family:"Anton",sans-serif;
+  color:var(--navy);
+  font-size:80px;
+  margin:20px 0 5px;
+}
+
+.result-rank{
+  font-size:22px;
+  font-weight:bold;
+  margin-bottom:25px;
+}
+
+.result-card p{
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
 
 /* ================= GALLERY ================= */
 
@@ -738,6 +1008,26 @@ footer{
   to{transform:scaleY(1)}
 }
 
+@keyframes mirrorCorrect{
+  0%{transform:scale(1) rotate(0)}
+  35%{transform:scale(1.25) rotate(-10deg)}
+  70%{transform:scale(.9) rotate(8deg)}
+  100%{transform:scale(1) rotate(0)}
+}
+
+@keyframes mirrorWrong{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-18px) rotate(-5deg)}
+  75%{transform:translateX(18px) rotate(5deg)}
+}
+
+@keyframes levelUp{
+  0%{transform:scale(1)}
+  35%{transform:scale(1.45) rotate(-8deg)}
+  70%{transform:scale(.85) rotate(8deg)}
+  100%{transform:scale(1)}
+}
+
 /* reveal */
 
 .reveal{
@@ -756,8 +1046,7 @@ footer{
 @media(max-width:900px){
 
   .hero-grid,
-  .story-grid,
-  .challenge{
+  .story-grid{
     grid-template-columns:1fr;
   }
 
@@ -795,6 +1084,10 @@ footer{
 
   .play-note{
     margin-top:25px;
+  }
+
+  .game-main{
+    grid-template-columns:1fr;
   }
 
   .gallery-grid{
@@ -876,6 +1169,69 @@ footer{
     min-width:850px;
   }
 
+  .dance-game{
+    padding:20px;
+    box-shadow:7px 7px 0 var(--red);
+  }
+
+  .game-top{
+    display:block;
+  }
+
+  .game-stats{
+    justify-content:flex-start;
+    margin-top:15px;
+  }
+
+  .stat{
+    min-width:75px;
+    padding:8px 10px;
+  }
+
+  .stat strong{
+    font-size:23px;
+  }
+
+  .mirror-character{
+    min-height:270px;
+  }
+
+  .mirror-dancer{
+    font-size:105px;
+  }
+
+  .sequence{
+    gap:7px;
+    padding:12px;
+  }
+
+  .sequence-key{
+    width:45px;
+    height:45px;
+    font-size:23px;
+    box-shadow:3px 3px 0 var(--black);
+  }
+
+  .control{
+    min-height:55px;
+  }
+
+  .game-overlay{
+    padding:15px;
+  }
+
+  .result-card{
+    padding:25px 18px;
+  }
+
+  .result-card .result-title{
+    font-size:52px;
+  }
+
+  .result-score{
+    font-size:65px;
+  }
+
   .gallery-grid{
     grid-template-columns:1fr;
     grid-template-rows:repeat(5,200px);
@@ -906,7 +1262,7 @@ footer{
 </header>
 
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
@@ -927,6 +1283,7 @@ footer{
       </p>
 
       <div class="hero-buttons">
+
         <a href="index.html#dang-ky" class="btn btn-main">
           ĐĂNG KÝ HỌC THỬ →
         </a>
@@ -934,6 +1291,7 @@ footer{
         <a href="#styles" class="btn">
           XEM PHONG CÁCH
         </a>
+
       </div>
     </div>
 
@@ -965,7 +1323,7 @@ footer{
 </section>
 
 
-<!-- MARQUEE -->
+<!-- ================= MARQUEE ================= -->
 
 <div class="marquee">
   <div class="marquee-track">
@@ -974,7 +1332,7 @@ footer{
 </div>
 
 
-<!-- BEAT -->
+<!-- ================= BEAT ================= -->
 
 <section class="beat-section">
 
@@ -989,10 +1347,12 @@ footer{
   </p>
 
   <div class="countdown">
+
     <div class="count" style="--r:-5deg">5</div>
     <div class="count" style="--r:3deg">6</div>
     <div class="count" style="--r:-3deg">7</div>
     <div class="count" style="--r:6deg">8</div>
+
   </div>
 
   <div class="beat-line">
@@ -1009,7 +1369,7 @@ footer{
 </section>
 
 
-<!-- STORY -->
+<!-- ================= STORY ================= -->
 
 <section class="story">
 
@@ -1020,7 +1380,10 @@ footer{
     </div>
 
     <div>
-      <div class="section-tag">WHY DANCE AT EPIC?</div>
+
+      <div class="section-tag">
+        WHY DANCE AT EPIC?
+      </div>
 
       <h2>
         KHÔNG CẦN<br>
@@ -1040,6 +1403,7 @@ footer{
         khả năng phối hợp, sự tự tin và tinh thần
         làm việc nhóm.</b>
       </p>
+
     </div>
 
   </div>
@@ -1047,11 +1411,13 @@ footer{
 </section>
 
 
-<!-- DANCE STYLES -->
+<!-- ================= DANCE STYLES ================= -->
 
 <section class="styles" id="styles">
 
-  <div class="section-tag">FIND YOUR GROOVE</div>
+  <div class="section-tag">
+    FIND YOUR GROOVE
+  </div>
 
   <div class="section-title">
     CHOOSE<br>
@@ -1089,7 +1455,7 @@ footer{
 </section>
 
 
-<!-- JOURNEY -->
+<!-- ================= JOURNEY ================= -->
 
 <section class="journey">
 
@@ -1108,54 +1474,74 @@ footer{
   <div class="path">
 
     <div class="age">
-      <div class="age-dot">4–6</div>
+
+      <div class="age-dot">
+        4–6
+      </div>
 
       <div class="age-content">
         <h3>START</h3>
+
         <p>
           Làm quen với nhịp điệu,
           vận động cơ bản và cảm nhận âm nhạc.
         </p>
       </div>
+
     </div>
 
 
     <div class="age">
-      <div class="age-dot">7–10</div>
+
+      <div class="age-dot">
+        7–10
+      </div>
 
       <div class="age-content">
         <h3>GROOVE</h3>
+
         <p>
           Phát triển kỹ thuật,
           khả năng phối hợp và ghi nhớ động tác.
         </p>
       </div>
+
     </div>
 
 
     <div class="age">
-      <div class="age-dot">11–14</div>
+
+      <div class="age-dot">
+        11–14
+      </div>
 
       <div class="age-content">
         <h3>STYLE</h3>
+
         <p>
           Khám phá phong cách,
           biểu cảm và cá tính trình diễn.
         </p>
       </div>
+
     </div>
 
 
     <div class="age">
-      <div class="age-dot">15–18</div>
+
+      <div class="age-dot">
+        15–18
+      </div>
 
       <div class="age-content">
         <h3>PERFORM</h3>
+
         <p>
           Nâng cao kỹ thuật,
           biểu diễn và xây dựng phong thái riêng.
         </p>
       </div>
+
     </div>
 
   </div>
@@ -1163,19 +1549,23 @@ footer{
 </section>
 
 
-<!-- PLAYGROUND -->
+<!-- ================= PLAYGROUND ================= -->
 
 <section class="playground">
 
   <div class="playground-header">
 
     <div>
-      <div class="section-tag">EPIC PLAYGROUND</div>
+
+      <div class="section-tag">
+        EPIC PLAYGROUND
+      </div>
 
       <div class="section-title">
         DANCE<br>
         CHALLENGE.
       </div>
+
     </div>
 
     <p class="play-note">
@@ -1188,32 +1578,148 @@ footer{
   </div>
 
 
-  <div class="challenge">
+  <!-- ================= DANCE MIRROR GAME ================= -->
 
-    <div class="challenge-box">
-      <h3>SHOW<br>TIME!</h3>
+  <div class="dance-game" id="danceGame">
 
-      <p>
-        Tự tin bước lên sân khấu,
-        trình diễn cùng bạn bè
-        và lưu lại những khoảnh khắc
-        đáng nhớ.
-      </p>
+    <div class="game-top">
 
-      <div class="challenge-big">01</div>
+      <div class="game-label">
+        🎮 DANCE MIRROR
+      </div>
+
+      <div class="game-stats">
+
+        <div class="stat">
+          <small>ĐIỂM</small>
+          <strong id="score">0</strong>
+        </div>
+
+        <div class="stat">
+          <small>COMBO</small>
+          <strong id="combo">0</strong>
+        </div>
+
+        <div class="stat">
+          <small>LEVEL</small>
+          <strong id="level">1</strong>
+        </div>
+
+        <div class="stat">
+          <small>TIME</small>
+          <strong id="time">30</strong>
+        </div>
+
+      </div>
+
     </div>
 
 
-    <div class="challenge-box">
-      <h3>CREW<br>MODE.</h3>
+    <div class="game-main">
 
-      <p>
-        Học cách phối hợp,
-        lắng nghe beat và cùng nhau
-        tạo nên một tiết mục hoàn chỉnh.
-      </p>
+      <div class="mirror-character">
 
-      <div class="challenge-big">02</div>
+        <div class="mirror-dancer" id="mirrorDancer">
+          💃
+        </div>
+
+        <div class="game-message" id="gameMessage">
+          Sẵn sàng chưa?
+        </div>
+
+      </div>
+
+
+      <div class="sequence-area">
+
+        <div class="sequence-title">
+          LÀM THEO CHUỖI ĐỘNG TÁC
+        </div>
+
+        <div class="sequence" id="sequence">
+          <div class="sequence-key current">?</div>
+        </div>
+
+
+        <div class="controls">
+
+          <button class="control" data-key="ArrowUp">
+            ↑
+          </button>
+
+          <button class="control" data-key="Space">
+            ●
+          </button>
+
+          <button class="control" data-key="ArrowLeft">
+            ←
+          </button>
+
+          <button class="control" data-key="ArrowDown">
+            ↓
+          </button>
+
+          <button class="control" data-key="ArrowRight">
+            →
+          </button>
+
+          <button class="control space" data-key="Space">
+            SPACE — NHẢY!
+          </button>
+
+        </div>
+
+        <div class="game-bottom">
+
+          <button class="game-start" id="startGame">
+            ▶ BẮT ĐẦU CHƠI
+          </button>
+
+          <button class="game-restart" id="restartGame">
+            ↻ CHƠI LẠI
+          </button>
+
+        </div>
+
+        <p class="game-hint">
+          Bàn phím: dùng <b>← ↑ → ↓</b> và <b>SPACE</b>.
+          Điện thoại: chạm các nút bên trên.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- GAME RESULT -->
+
+    <div class="game-overlay" id="gameOverlay">
+
+      <div class="result-card">
+
+        <div class="result-title">
+          TIME<br>
+          UP!
+        </div>
+
+        <div class="result-score" id="resultScore">
+          0
+        </div>
+
+        <div class="result-rank" id="resultRank">
+          DANCE STARTER
+        </div>
+
+        <p id="resultText">
+          Mỗi bước nhảy đều là một bước tiến!
+        </p>
+
+        <button class="game-restart" id="playAgain">
+          ↻ CHƠI LẠI
+        </button>
+
+      </div>
+
     </div>
 
   </div>
@@ -1221,11 +1727,13 @@ footer{
 </section>
 
 
-<!-- GALLERY -->
+<!-- ================= GALLERY ================= -->
 
 <section class="gallery">
 
-  <div class="section-tag">EPIC MOMENTS</div>
+  <div class="section-tag">
+    EPIC MOMENTS
+  </div>
 
   <div class="section-title">
     DANCE.<br>
@@ -1260,7 +1768,7 @@ footer{
 </section>
 
 
-<!-- CTA -->
+<!-- ================= CTA ================= -->
 
 <section class="cta">
 
@@ -1296,6 +1804,8 @@ footer{
 
 <script>
 
+/* ================= REVEAL ================= */
+
 const reveals = document.querySelectorAll(".reveal");
 
 const observer = new IntersectionObserver((entries)=>{
@@ -1311,11 +1821,11 @@ const observer = new IntersectionObserver((entries)=>{
 reveals.forEach(el=>observer.observe(el));
 
 
-/* beat interaction */
+/* ================= BEAT INTERACTION ================= */
 
 const counts = document.querySelectorAll(".count");
 
-counts.forEach((item,index)=>{
+counts.forEach((item)=>{
   item.addEventListener("mouseenter",()=>{
     counts.forEach(x=>x.style.opacity=".35");
     item.style.opacity="1";
@@ -1325,6 +1835,361 @@ counts.forEach((item,index)=>{
     counts.forEach(x=>x.style.opacity="1");
   });
 });
+
+
+/* =====================================================
+   DANCE MIRROR GAME
+   ===================================================== */
+
+const scoreEl = document.getElementById("score");
+const comboEl = document.getElementById("combo");
+const levelEl = document.getElementById("level");
+const timeEl = document.getElementById("time");
+
+const sequenceEl = document.getElementById("sequence");
+const messageEl = document.getElementById("gameMessage");
+const dancerEl = document.getElementById("mirrorDancer");
+
+const startBtn = document.getElementById("startGame");
+const restartBtn = document.getElementById("restartGame");
+const playAgainBtn = document.getElementById("playAgain");
+
+const overlay = document.getElementById("gameOverlay");
+const resultScore = document.getElementById("resultScore");
+const resultRank = document.getElementById("resultRank");
+const resultText = document.getElementById("resultText");
+
+
+/* GAME DATA */
+
+const moves = [
+  "ArrowLeft",
+  "ArrowUp",
+  "ArrowRight",
+  "ArrowDown",
+  "Space"
+];
+
+const symbols = {
+  ArrowLeft:"←",
+  ArrowUp:"↑",
+  ArrowRight:"→",
+  ArrowDown:"↓",
+  Space:"●"
+};
+
+let sequence = [];
+let currentStep = 0;
+let score = 0;
+let combo = 0;
+let level = 1;
+let timeLeft = 30;
+let timer = null;
+let playing = false;
+
+
+/* RANDOM MOVE */
+
+function randomMove(){
+  return moves[Math.floor(Math.random() * moves.length)];
+}
+
+
+/* CREATE SEQUENCE */
+
+function createSequence(){
+
+  sequence = [];
+
+  const length = Math.min(3 + level, 10);
+
+  for(let i=0;i<length;i++){
+    sequence.push(randomMove());
+  }
+
+  currentStep = 0;
+
+  renderSequence();
+}
+
+
+/* DRAW SEQUENCE */
+
+function renderSequence(){
+
+  sequenceEl.innerHTML = "";
+
+  sequence.forEach((move,index)=>{
+
+    const key = document.createElement("div");
+
+    key.className = "sequence-key";
+
+    if(index < currentStep){
+      key.classList.add("done");
+    }
+
+    if(index === currentStep){
+      key.classList.add("current");
+    }
+
+    key.textContent = symbols[move];
+
+    sequenceEl.appendChild(key);
+
+  });
+
+}
+
+
+/* UPDATE STATS */
+
+function updateStats(){
+
+  scoreEl.textContent = score;
+  comboEl.textContent = combo;
+  levelEl.textContent = level;
+  timeEl.textContent = timeLeft;
+
+}
+
+
+/* MESSAGE */
+
+function showMessage(text,type=""){
+
+  messageEl.textContent = text;
+
+  messageEl.className = "game-message";
+
+  if(type){
+    messageEl.classList.add(type);
+  }
+
+}
+
+
+/* DANCER ANIMATION */
+
+function dancerAnimation(type){
+
+  dancerEl.classList.remove("correct","wrong","levelup");
+
+  void dancerEl.offsetWidth;
+
+  dancerEl.classList.add(type);
+
+}
+
+
+/* START GAME */
+
+function startGame(){
+
+  clearInterval(timer);
+
+  score = 0;
+  combo = 0;
+  level = 1;
+  timeLeft = 30;
+  playing = true;
+
+  overlay.classList.remove("show");
+
+  updateStats();
+
+  showMessage("5, 6, 7, 8! LET'S GO!","good");
+
+  createSequence();
+
+  timer = setInterval(()=>{
+
+    timeLeft--;
+
+    updateStats();
+
+    if(timeLeft <= 0){
+      endGame();
+    }
+
+  },1000);
+
+}
+
+
+/* END GAME */
+
+function endGame(){
+
+  clearInterval(timer);
+
+  playing = false;
+
+  resultScore.textContent = score;
+
+  let rank = "";
+  let text = "";
+
+  if(score >= 1500){
+
+    rank = "🔥 DANCE LEGEND";
+
+    text = "Quá đỉnh! Bạn bắt beat cực tốt.";
+
+  }else if(score >= 900){
+
+    rank = "⭐ EPIC PERFORMER";
+
+    text = "Phong độ rất tốt! Bạn đã bắt được nhịp.";
+
+  }else if(score >= 400){
+
+    rank = "💃 GROOVE MAKER";
+
+    text = "Bạn đã có groove rồi đó!";
+
+  }else{
+
+    rank = "🎵 DANCE STARTER";
+
+    text = "Tiếp tục luyện tập và thử lại nhé!";
+
+  }
+
+  resultRank.textContent = rank;
+  resultText.textContent = text;
+
+  overlay.classList.add("show");
+
+}
+
+
+/* NEXT LEVEL */
+
+function nextLevel(){
+
+  level++;
+
+  score += 100 * level;
+
+  dancerAnimation("levelup");
+
+  showMessage("🔥 PERFECT! LEVEL UP!","good");
+
+  updateStats();
+
+  setTimeout(()=>{
+
+    if(playing){
+      createSequence();
+      showMessage("Chuỗi mới! LET'S MOVE!","good");
+    }
+
+  },700);
+
+}
+
+
+/* CHECK MOVE */
+
+function checkMove(key){
+
+  if(!playing) return;
+
+  const expected = sequence[currentStep];
+
+  if(key === expected){
+
+    currentStep++;
+
+    combo++;
+
+    score += 10 * combo;
+
+    dancerAnimation("correct");
+
+    if(currentStep >= sequence.length){
+
+      nextLevel();
+
+    }else{
+
+      showMessage("✓ NICE!","good");
+
+      renderSequence();
+      updateStats();
+
+    }
+
+  }else{
+
+    combo = 0;
+
+    dancerAnimation("wrong");
+
+    showMessage("TRY AGAIN!","bad");
+
+    updateStats();
+
+    renderSequence();
+
+  }
+
+}
+
+
+/* KEYBOARD */
+
+document.addEventListener("keydown",(event)=>{
+
+  if(
+    event.code === "ArrowLeft" ||
+    event.code === "ArrowUp" ||
+    event.code === "ArrowRight" ||
+    event.code === "ArrowDown" ||
+    event.code === "Space"
+  ){
+
+    event.preventDefault();
+
+    checkMove(event.code);
+
+  }
+
+});
+
+
+/* MOBILE / CLICK CONTROLS */
+
+const controls = document.querySelectorAll(".control");
+
+controls.forEach(button=>{
+
+  const key = button.dataset.key;
+
+  button.addEventListener("click",()=>{
+
+    checkMove(key);
+
+  });
+
+});
+
+
+/* BUTTONS */
+
+startBtn.addEventListener("click",startGame);
+
+restartBtn.addEventListener("click",startGame);
+
+playAgainBtn.addEventListener("click",startGame);
+
+
+/* INITIAL */
+
+updateStats();
+
+renderSequence();
 
 </script>
 
