@@ -4,475 +4,1231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mỹ thuật – EPIC Talent Center</title>
-
-    <meta
-        name="description"
-        content="Lớp Mỹ thuật EPIC – nơi trẻ khám phá màu sắc, phát triển tư duy sáng tạo và tự tin thể hiện cá tính."
-    >
+    <title>EPIC ART CLUB – Lớp Mỹ thuật</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Varela+Round&display=swap"
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Varela+Round&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 
-<style>
-
-/* =========================================================
-   EPIC ART CANVAS
-========================================================= */
-
-.art-canvas-frame {
-    position: relative;
-    width: 100%;
-    max-width: 570px;
-    margin: 0 auto;
-
-    background: #fffaf0;
-    border: 5px solid #102576;
-    border-radius: 35px;
-
-    box-shadow:
-        10px 10px 0 #102576,
-        inset 0 0 0 3px rgba(255,255,255,.8);
-
-    overflow: hidden;
-    transform: rotate(1deg);
-}
-
-/* giấy */
-
-.art-canvas-paper {
-    position: relative;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(231,200,74,.12) 0 4px, transparent 5px),
-        radial-gradient(circle at 75% 65%, rgba(201,27,43,.08) 0 5px, transparent 6px),
-        #fffdf7;
-    background-size: 45px 45px, 70px 70px, auto;
-}
-
-/* thanh trên */
-
-.canvas-top {
-    min-height: 76px;
-    padding: 13px 16px;
-
-    background: #e7c84f;
-    border-bottom: 4px solid #102576;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.canvas-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.canvas-title-icon {
-    width: 43px;
-    height: 43px;
-
-    display: grid;
-    place-items: center;
-
-    background: white;
-    border: 3px solid #102576;
-    border-radius: 14px;
-
-    font-size: 23px;
-
-    box-shadow: 3px 3px 0 #102576;
-}
-
-.canvas-title-text strong {
-    display: block;
-    color: #102576;
-    font-family: "Cherry Bomb One", cursive;
-    font-size: 22px;
-    line-height: 1;
-}
-
-.canvas-title-text small {
-    display: block;
-    margin-top: 3px;
-    color: #102576;
-    font-size: 11px;
-    font-weight: 700;
-}
-
-/* sticker */
-
-.canvas-sticker {
-    padding: 7px 11px;
-
-    background: #c9182b;
-    color: white;
-
-    border: 3px solid #102576;
-    border-radius: 18px;
-
-    font-size: 12px;
-    font-weight: 700;
-
-    transform: rotate(4deg);
-    box-shadow: 3px 3px 0 #102576;
-}
-
-/* canvas */
-
-#artCanvas {
-    display: block;
-
-    width: 100%;
-    height: 295px;
-
-    background: transparent;
-
-    cursor: crosshair;
-
-    touch-action: none;
-}
-
-/* toolbar */
-
-.canvas-toolbar {
-    padding: 13px;
-
-    background: white;
-    border-top: 4px solid #102576;
-
-    display: flex;
-    flex-direction: column;
-    gap: 11px;
-}
-
-/* màu */
-
-.canvas-tools-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.canvas-tools-label {
-    color: #102576;
-    font-size: 11px;
-    font-weight: 700;
-    margin-right: 2px;
-}
-
-.color-btn {
-    width: 27px;
-    height: 27px;
-
-    border-radius: 50%;
-    border: 3px solid #102576;
-
-    cursor: pointer;
-
-    transition: .15s;
-
-    box-shadow: 2px 2px 0 rgba(16,37,118,.2);
-}
-
-.color-btn:hover {
-    transform: translateY(-3px) scale(1.08);
-}
-
-.color-btn.active {
-    transform: scale(1.16);
-    box-shadow:
-        0 0 0 3px white,
-        0 0 0 5px #102576;
-}
-
-/* cỡ nét */
-
-.size-btn {
-    min-width: 39px;
-    height: 31px;
-
-    padding: 0 8px;
-
-    background: #fffaf0;
-
-    border: 2px solid #102576;
-    border-radius: 12px;
-
-    color: #102576;
-
-    cursor: pointer;
-    font-weight: 700;
-
-    transition: .15s;
-}
-
-.size-btn:hover {
-    background: #ffd8de;
-}
-
-.size-btn.active {
-    background: #102576;
-    color: white;
-}
-
-/* action */
-
-.canvas-actions {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 7px;
-}
-
-.canvas-action {
-    min-height: 37px;
-
-    border: 2px solid #102576;
-    border-radius: 13px;
-
-    background: #fffaf0;
-    color: #102576;
-
-    font-size: 12px;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    box-shadow: 3px 3px 0 #102576;
-
-    transition: .12s;
-}
-
-.canvas-action:hover {
-    transform: translate(2px,2px);
-    box-shadow: 1px 1px 0 #102576;
-}
-
-.canvas-action.erase {
-    background: #ffd8de;
-}
-
-.canvas-action.clear {
-    background: #c9182b;
-    color: white;
-}
-
-.canvas-action.save {
-    background: #e7c84f;
-}
-
-/* dòng hướng dẫn */
-
-.canvas-hint {
-    text-align: center;
-
-    color: #102576;
-
-    font-size: 11px;
-    font-weight: 700;
-
-    opacity: .75;
-}
-
-/* doodle quanh bảng */
-
-.canvas-doodle {
-    position: absolute;
-    pointer-events: none;
-    z-index: 5;
-
-    font-size: 27px;
-}
-
-.canvas-doodle-one {
-    top: 92px;
-    right: -8px;
-    color: #c9182b;
-    transform: rotate(15deg);
-}
-
-.canvas-doodle-two {
-    bottom: 85px;
-    left: -12px;
-    color: #102576;
-    transform: rotate(-15deg);
-}
-
-/* nút bắt đầu */
-
-.canvas-start-message {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%,-50%);
-
-    pointer-events: none;
-
-    padding: 9px 15px;
-
-    background: rgba(255,255,255,.92);
-
-    border: 3px solid #102576;
-    border-radius: 18px;
-
-    color: #c9182b;
-
-    font-family: "Cherry Bomb One", cursive;
-    font-size: 20px;
-
-    box-shadow: 4px 4px 0 #102576;
-
-    transition: .25s;
-}
-
-.canvas-start-message.hide {
-    opacity: 0;
-    transform: translate(-50%,-50%) scale(.8);
-}
-
-/* responsive */
-
-@media (max-width: 700px) {
-
-    .art-canvas-frame {
-        width: calc(100% - 15px);
-        box-shadow: 7px 7px 0 #102576;
-    }
-
-    #artCanvas {
-        height: 250px;
-    }
-
-    .canvas-top {
-        padding: 11px;
-    }
-
-    .canvas-title-text strong {
-        font-size: 18px;
-    }
-
-    .canvas-sticker {
-        font-size: 10px;
-        padding: 6px 8px;
-    }
-
-}
-
-@media (max-width: 430px) {
-
-    #artCanvas {
-        height: 220px;
-    }
-
-    .canvas-actions {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .color-btn {
-        width: 25px;
-        height: 25px;
-    }
-
-}
-
-
-/* =========================================================
-   DRAWING POP ANIMATION
-========================================================= */
-
-@keyframes canvasPop {
-
-    0% {
-        transform: scale(1) rotate(1deg);
-    }
-
-    50% {
-        transform: scale(1.015) rotate(-1deg);
-    }
-
-    100% {
-        transform: scale(1) rotate(1deg);
-    }
-
-}
-
-.art-canvas-frame.drawing {
-    animation: canvasPop .45s ease;
-}
-
-
-/* =========================================================
-   ART HERO OVERRIDE
-========================================================= */
-
-.art-photo-frame {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-}
-
-
-/* tránh CSS cũ của placeholder ảnh ảnh hưởng */
-
-.art-photo-placeholder {
-    display: none !important;
-}
-
-</style>
-
+    <style>
+        :root {
+            --epic-blue: #102576;
+            --epic-red: #c9182b;
+            --epic-yellow: #e7c84a;
+            --cream: #fffdf7;
+            --ink: #17224d;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--cream);
+            color: var(--ink);
+            font-family: "Varela Round", sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .art-page-header {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(255, 253, 247, 0.94);
+            backdrop-filter: blur(14px);
+            border-bottom: 2px solid rgba(16, 37, 118, 0.08);
+        }
+
+        .art-header-inner {
+            max-width: 1180px;
+            margin: auto;
+            min-height: 82px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .art-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .art-logo img {
+            width: 115px;
+            max-height: 60px;
+            object-fit: contain;
+        }
+
+        .art-nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .art-nav a {
+            color: var(--epic-blue);
+            font-weight: 700;
+            font-size: 14px;
+            position: relative;
+            transition: 0.25s;
+        }
+
+        .art-nav a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 4px;
+            left: 0;
+            bottom: -8px;
+            background: var(--epic-red);
+            border-radius: 10px;
+            transition: 0.25s;
+        }
+
+        .art-nav a:hover {
+            color: var(--epic-red);
+            transform: translateY(-2px);
+        }
+
+        .art-nav a:hover::after {
+            width: 100%;
+        }
+
+        .art-header-btn {
+            background: var(--epic-red);
+            color: white !important;
+            padding: 12px 20px;
+            border-radius: 999px;
+            box-shadow: 0 7px 0 #8f1020;
+        }
+
+        .art-header-btn::after {
+            display: none;
+        }
+
+        .art-header-btn:hover {
+            transform: translateY(-2px) !important;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .art-wow-hero {
+            position: relative;
+            min-height: 720px;
+            padding: 90px 20px 120px;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(231, 200, 74, 0.23), transparent 22%),
+                radial-gradient(circle at 90% 15%, rgba(201, 24, 43, 0.13), transparent 25%),
+                var(--cream);
+        }
+
+        .art-wow-hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 48% 52% 65% 35%;
+            background: rgba(231, 200, 74, 0.18);
+            right: -170px;
+            top: -200px;
+            animation: blobMove 8s ease-in-out infinite;
+        }
+
+        .art-wow-hero::after {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border-radius: 55% 45% 40% 60%;
+            background: rgba(16, 37, 118, 0.08);
+            left: -200px;
+            bottom: -180px;
+            animation: blobMove 9s ease-in-out infinite reverse;
+        }
+
+        @keyframes blobMove {
+            0%, 100% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(12deg) scale(1.08);
+            }
+        }
+
+        .art-container {
+            width: 100%;
+            max-width: 1180px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .art-hero-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .art-hero-copy {
+            position: relative;
+            z-index: 5;
+        }
+
+        .art-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--epic-blue);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: bold;
+            box-shadow: 5px 5px 0 var(--epic-yellow);
+            transform: rotate(-2deg);
+            animation: littleBounce 3s ease-in-out infinite;
+        }
+
+        @keyframes littleBounce {
+            0%, 100% {
+                transform: rotate(-2deg) translateY(0);
+            }
+            50% {
+                transform: rotate(-2deg) translateY(-7px);
+            }
+        }
+
+        .art-number {
+            color: var(--epic-red);
+            font-family: "Cherry Bomb One", cursive;
+            font-size: 20px;
+            margin-top: 35px;
+        }
+
+        .art-hero-copy h1 {
+            margin: 5px 0 18px;
+            color: var(--epic-blue);
+            font-family: "Cherry Bomb One", cursive;
+            font-size: clamp(48px, 6vw, 78px);
+            line-height: 0.98;
+            letter-spacing: -2px;
+        }
+
+        .art-hero-copy h1 span {
+            display: block;
+            color: var(--epic-red);
+            transform: rotate(-2deg);
+        }
+
+        .art-hero-copy p {
+            max-width: 540px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: #465071;
+        }
+
+        .art-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .art-tag {
+            background: white;
+            border: 2px solid var(--epic-blue);
+            color: var(--epic-blue);
+            padding: 9px 15px;
+            border-radius: 999px;
+            font-weight: bold;
+            box-shadow: 3px 3px 0 var(--epic-yellow);
+        }
+
+        .art-hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .art-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 15px 23px;
+            border-radius: 999px;
+            font-weight: bold;
+            transition: 0.25s;
+        }
+
+        .art-btn-primary {
+            color: white;
+            background: var(--epic-red);
+            box-shadow: 0 7px 0 #8f1020;
+        }
+
+        .art-btn-secondary {
+            color: var(--epic-blue);
+            background: white;
+            border: 2px solid var(--epic-blue);
+            box-shadow: 0 6px 0 var(--epic-yellow);
+        }
+
+        .art-btn:hover {
+            transform: translateY(-5px);
+        }
+
+        /* =========================
+           HERO VISUAL
+        ========================= */
+
+        .art-hero-visual {
+            position: relative;
+            min-height: 570px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible !important;
+        }
+
+        .art-paint-blob {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 1;
+            filter: blur(0.3px);
+        }
+
+        .blob-yellow {
+            width: 340px;
+            height: 340px;
+            background: var(--epic-yellow);
+            opacity: 0.32;
+            right: 5%;
+            top: 5%;
+            animation: floatBlob 5s ease-in-out infinite;
+        }
+
+        .blob-red {
+            width: 150px;
+            height: 150px;
+            background: var(--epic-red);
+            opacity: 0.16;
+            left: 2%;
+            bottom: 10%;
+            animation: floatBlob 4s ease-in-out infinite reverse;
+        }
+
+        .blob-blue {
+            width: 190px;
+            height: 190px;
+            background: var(--epic-blue);
+            opacity: 0.13;
+            right: 0;
+            bottom: 0;
+            animation: floatBlob 6s ease-in-out infinite;
+        }
+
+        @keyframes floatBlob {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-18px) rotate(8deg);
+            }
+        }
+
+        /* doodles */
+
+        .art-doodle {
+            position: absolute;
+            z-index: 25;
+            font-family: "Cherry Bomb One", cursive;
+            pointer-events: none;
+        }
+
+        .doodle-star {
+            color: var(--epic-yellow);
+            font-size: 48px;
+            left: 5%;
+            top: 4%;
+            animation: spinStar 5s linear infinite;
+        }
+
+        .doodle-star-2 {
+            color: var(--epic-red);
+            font-size: 35px;
+            right: 2%;
+            top: 14%;
+            animation: spinStar 4s linear infinite reverse;
+        }
+
+        .doodle-heart {
+            color: var(--epic-red);
+            font-size: 42px;
+            right: 2%;
+            bottom: 12%;
+            animation: heartPop 2.2s ease-in-out infinite;
+        }
+
+        .doodle-wow {
+            color: var(--epic-blue);
+            font-size: 27px;
+            left: 2%;
+            bottom: 8%;
+            transform: rotate(-10deg);
+            animation: wiggle 2.5s ease-in-out infinite;
+        }
+
+        .doodle-pencil {
+            font-size: 42px;
+            right: 4%;
+            top: 40%;
+            transform: rotate(25deg);
+            animation: pencilFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes spinStar {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.15); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes heartPop {
+            0%, 100% { transform: scale(1) rotate(8deg); }
+            50% { transform: scale(1.25) rotate(-8deg); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        @keyframes pencilFloat {
+            0%, 100% { transform: rotate(25deg) translateY(0); }
+            50% { transform: rotate(10deg) translateY(-12px); }
+        }
+
+        /* canvas */
+
+        .art-canvas-frame {
+            width: min(100%, 520px);
+            background: white;
+            border: 5px solid var(--epic-blue);
+            border-radius: 28px;
+            padding: 13px;
+            position: relative;
+            z-index: 10;
+            box-shadow:
+                13px 13px 0 var(--epic-red),
+                22px 22px 0 rgba(231, 200, 74, 0.85);
+            transform: rotate(1.2deg);
+            animation: canvasFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes canvasFloat {
+            0%, 100% {
+                transform: rotate(1.2deg) translateY(0);
+            }
+            50% {
+                transform: rotate(-1deg) translateY(-10px);
+            }
+        }
+
+        .canvas-top {
+            min-height: 68px;
+            background: var(--epic-yellow);
+            border-radius: 18px 18px 8px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 17px;
+            border: 3px solid var(--epic-blue);
+            margin-bottom: 12px;
+        }
+
+        .canvas-title strong {
+            display: block;
+            color: var(--epic-blue);
+            font-family: "Cherry Bomb One", cursive;
+            font-size: 22px;
+        }
+
+        .canvas-title small {
+            color: var(--epic-blue);
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .canvas-sticker {
+            background: var(--epic-red);
+            color: white;
+            padding: 9px 12px;
+            border-radius: 12px;
+            font-family: "Cherry Bomb One", cursive;
+            font-size: 12px;
+            transform: rotate(7deg);
+        }
+
+        #artCanvas {
+            display: block;
+            width: 100%;
+            height: 300px;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(16, 37, 118, 0.04) 0 2px, transparent 3px),
+                radial-gradient(circle at 70% 60%, rgba(201, 24, 43, 0.04) 0 2px, transparent 3px),
+                #fffdf7;
+            background-size: 28px 28px, 35px 35px, auto;
+            border: 3px dashed var(--epic-blue);
+            border-radius: 18px;
+            cursor: crosshair;
+            touch-action: none;
+        }
+
+        .canvas-message {
+            text-align: center;
+            color: var(--epic-blue);
+            font-family: "Cherry Bomb One", cursive;
+            font-size: 16px;
+            margin: 10px 0 5px;
+        }
+
+        .art-toolbar {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .toolbar-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .toolbar-label {
+            font-size: 11px;
+            font-weight: bold;
+            color: var(--epic-blue);
+            min-width: 55px;
+        }
+
+        .color-btn {
+            width: 27px;
+            height: 27px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px rgba(16, 37, 118, 0.2);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .color-btn:hover,
+        .color-btn.active {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 3px var(--epic-blue);
+        }
+
+        .size-btn,
+        .tool-btn {
+            border: 2px solid var(--epic-blue);
+            background: white;
+            color: var(--epic-blue);
+            border-radius: 10px;
+            padding: 6px 9px;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .size-btn:hover,
+        .size-btn.active,
+        .tool-btn:hover {
+            background: var(--epic-blue);
+            color: white;
+        }
+
+        .tool-btn.danger {
+            border-color: var(--epic-red);
+            color: var(--epic-red);
+        }
+
+        .tool-btn.danger:hover {
+            background: var(--epic-red);
+            color: white;
+        }
+
+        .canvas-hint {
+            margin: 10px 0 2px;
+            text-align: center;
+            color: #69718c;
+            font-size: 10px;
+        }
+
+        /* =========================
+           SECTION COMMON
+        ========================= */
+
+        .art-section {
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .art-section-white {
+            background: white;
+        }
+
+        .art-section-head {
+            max-width: 750px;
+            margin: 0 auto 55px;
+            text-align: center;
+        }
+
+        .art-section-label {
+            display: inline-block;
+            color: var(--epic-red);
+            font-family: "Cherry Bomb One", cursive;
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .art-section-head h2 {
+            margin: 0;
+            color: var(--epic-blue);
+            font-family: "Cherry Bomb One", cursive;
+            font-size: clamp(35px, 5vw, 54px);
+            line-height: 1.1;
+        }
+
+        .art-section-head p {
+            color: #646d86;
+            line-height: 1.8;
+            margin-top: 15px;
+        }
+
+        /* =========================
+           INTRO
+        ========================= */
+
+        .art-intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .art-note {
+            background: var(--epic-yellow);
+            border: 3px solid var(--epic-blue);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 10px 10px 0 var(--epic-blue);
+            transform: rotate(-2deg);
+        }
+
+        .art-note h3 {
+            margin-top: 0;
+            color: var(--epic-blue);
+            font-family: "Cherry Bomb One", cursive;
+            font-size: 30px;
+        }
+
+        .art-note p {
+            line-height: 1.8;
+        }
+
+        .art-intro-copy h3 {
+            color: var(--epic-blue);
+            font-family: "Cherry Bomb One", cursive;
+            font-size: 34px;
+        }
+
+        .art-intro-copy p {
+            color: #5e6680;
+            line-height: 1.9;
+        }
+
+        .art-highlight {
+            color: var(--epic-red);
+            font-weight: bold;
+        }
+
+        /* =========================
+           ROADMAP
+        ========================= */
+
+        .art-roadmap {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .art-step {
+            background: var(--cream);
+            border: 3px solid var(--epic-blue);
+            border-radius: 25px;
+            padding: 28px;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .art-step:nth-child(2) {
+            transform: translateY(25px) rotate(1deg);
+        }
+
+        .art-step:nth-child(3) {
+            transform: rotate(-1deg);
+        }
+
+        .art-step:hover {
+            transform: translateY(-8px) rotate(0);
+            box-shadow: 8px 8px 0 var(--epic-yellow);
+        }
+
+        .art-step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--epic-red);
+            color: white;
+            font-family: "Cherry Bomb One", cursive;
+            font-size: 22px;
+            margin-bottom: 18px;
+        }
+
+        .art-step h3 {
+            color: var(--epic-blue);
+            margin: 0 0 10px;
+        }
+
+        .art-step p {
+            color: #66708a;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .art-skills {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .art-skill {
+            padding: 28px 20px;
+            background: white;
+            border: 3px solid var(--epic-blue);
+            border-radius: 22px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .art-skill:hover {
+            transform: translateY(-8px) rotate(-2deg);
+            box-shadow: 7px 7px 0 var(--epic-red);
+        }
+
+        .art-skill-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .art-skill h3 {
+            color: var(--epic-blue);
+            font-family: "Cherry Bomb One", cursive;
+            font-size: 21px;
+            margin: 0 0 8px;
+        }
+
+        .art-skill p {
+            color: #6b7288;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* =========================
+           GALLERY
+        ========================= */
+
+        .art-gallery-section {
+            background:
+                radial-gradient(circle at 5% 10%, rgba(231, 200, 74, 0.2), transparent 20%),
+                white;
+        }
+
+        .art-gallery {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr 1fr;
+            grid-auto-rows: 220px;
+            gap: 18px;
+        }
+
+        .art-gallery-card {
+            border-radius: 25px;
+            border: 3px solid var(--epic-blue);
+            background: var(--cream);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.35s;
+        }
+
+        .art-gallery-card:first-child {
+            grid-row: span 2;
+        }
+
+        .art-gallery-card:nth-child(2) {
+            background: var(--epic-yellow);
+        }
+
+        .art-gallery-card:nth-child(3) {
+            background: #f6e9eb;
+        }
+
+        .art-gallery-card:nth-child(4) {
+            background: #e8ecfa;
+        }
+
+        .art-gallery-card:hover {
+            transform: scale(1.025) rotate(-1deg);
+            box-shadow: 8px 8px 0 var(--epic-red);
+        }
+
+        .art-placeholder {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .art-placeholder .big {
+            font-size: 70px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .art-placeholder strong {
+            display: block;
+            color: var(--epic-blue);
+            font-family: "Cherry Bomb One", cursive;
+            font-size: 21px;
+        }
+
+        .art-placeholder span {
+            color: #6c7284;
+            font-size: 12px;
+        }
+
+        /* =========================
+           TEACHER
+        ========================= */
+
+        .art-teacher-box {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+            background: var(--epic-blue);
+            color: white;
+            border-radius: 35px;
+            padding: 45px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .art-teacher-box::after {
+            content: "✦";
+            position: absolute;
+            right: 30px;
+            top: 15px;
+            font-size: 100px;
+            color: var(--epic-yellow);
+            opacity: 0.5;
+            animation: spinStar 7s linear infinite;
+        }
+
+        .teacher-art {
+            min-height: 280px;
+            border-radius: 28px;
+            background: var(--epic-yellow);
+            border: 5px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+            transform: rotate(-3deg);
+        }
+
+        .art-teacher-copy h2 {
+            color: var(--epic-yellow);
+            font-family: "Cherry Bomb One", cursive;
+            font-size: 42px;
+            margin: 0 0 15px;
+        }
+
+        .art-teacher-copy p {
+            line-height: 1.8;
+            color: rgba(255,255,255,0.82);
+        }
+
+        .teacher-points {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .teacher-point {
+            background: rgba(255,255,255,0.1);
+            padding: 12px;
+            border-radius: 13px;
+            font-size: 13px;
+        }
+
+        /* =========================
+           FINAL CTA
+        ========================= */
+
+        .art-final {
+            padding: 110px 20px;
+            text-align: center;
+            background: var(--epic-yellow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .art-final::before,
+        .art-final::after {
+            content: "✦";
+            position: absolute;
+            font-size: 150px;
+            color: var(--epic-red);
+            opacity: 0.12;
+            animation: spinStar 10s linear infinite;
+        }
+
+        .art-final::before {
+            left: 5%;
+            top: 10%;
+        }
+
+        .art-final::after {
+            right: 5%;
+            bottom: 0;
+        }
+
+        .art-final h2 {
+            position: relative;
+            z-index: 2;
+            color: var(--epic-blue);
+            font-family: "Cherry Bomb One", cursive;
+            font-size: clamp(38px, 6vw, 65px);
+            margin: 0 auto 15px;
+        }
+
+        .art-final p {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto 28px;
+            line-height: 1.8;
+            color: #35416c;
+        }
+
+        .art-final .art-btn {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .art-footer {
+            background: var(--epic-blue);
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        .art-footer strong {
+            color: var(--epic-yellow);
+            font-family: "Cherry Bomb One", cursive;
+            font-size: 25px;
+        }
+
+        .art-footer p {
+            opacity: 0.75;
+            font-size: 13px;
+            margin-bottom: 0;
+        }
+
+        /* =========================
+           REVEAL ANIMATION
+        ========================= */
+
+        .reveal-art {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal-art.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 950px) {
+
+            .art-nav {
+                display: none;
+            }
+
+            .art-hero-grid,
+            .art-intro-grid,
+            .art-teacher-box {
+                grid-template-columns: 1fr;
+            }
+
+            .art-hero-copy {
+                text-align: center;
+            }
+
+            .art-hero-copy p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .art-tags,
+            .art-hero-buttons {
+                justify-content: center;
+            }
+
+            .art-hero-visual {
+                min-height: 540px;
+            }
+
+            .art-skills {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .art-teacher-box {
+                text-align: center;
+            }
+
+            .teacher-points {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .art-header-inner {
+                padding: 10px 16px;
+            }
+
+            .art-logo img {
+                width: 95px;
+            }
+
+            .art-header-btn {
+                font-size: 12px;
+                padding: 10px 15px;
+            }
+
+            .art-wow-hero {
+                padding-top: 55px;
+                min-height: auto;
+            }
+
+            .art-hero-copy h1 {
+                font-size: 50px;
+            }
+
+            .art-hero-visual {
+                min-height: 470px;
+            }
+
+            .art-canvas-frame {
+                box-shadow:
+                    8px 8px 0 var(--epic-red),
+                    13px 13px 0 rgba(231, 200, 74, 0.85);
+            }
+
+            #artCanvas {
+                height: 250px;
+            }
+
+            .doodle-pencil {
+                display: none;
+            }
+
+            .doodle-star {
+                left: 0;
+                top: 0;
+                font-size: 35px;
+            }
+
+            .doodle-star-2 {
+                right: 0;
+                top: 7%;
+                font-size: 28px;
+            }
+
+            .doodle-wow {
+                display: none;
+            }
+
+            .art-section {
+                padding: 75px 18px;
+            }
+
+            .art-roadmap,
+            .art-skills {
+                grid-template-columns: 1fr;
+            }
+
+            .art-step:nth-child(2) {
+                transform: none;
+            }
+
+            .art-gallery {
+                grid-template-columns: 1fr 1fr;
+                grid-auto-rows: 180px;
+            }
+
+            .art-gallery-card:first-child {
+                grid-row: span 1;
+            }
+
+            .art-teacher-box {
+                padding: 25px;
+            }
+
+            .teacher-points {
+                grid-template-columns: 1fr;
+            }
+
+            .teacher-art {
+                min-height: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .art-hero-copy h1 {
+                font-size: 43px;
+            }
+
+            .art-canvas-frame {
+                padding: 9px;
+                border-width: 4px;
+            }
+
+            .canvas-top {
+                padding: 8px 10px;
+            }
+
+            .canvas-title strong {
+                font-size: 18px;
+            }
+
+            .canvas-sticker {
+                font-size: 9px;
+                padding: 7px;
+            }
+
+            #artCanvas {
+                height: 220px;
+            }
+
+            .toolbar-label {
+                min-width: 48px;
+            }
+
+            .color-btn {
+                width: 23px;
+                height: 23px;
+            }
+
+            .size-btn,
+            .tool-btn {
+                font-size: 10px;
+                padding: 5px 7px;
+            }
+
+            .art-gallery {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 190px;
+            }
+        }
+    </style>
 </head>
 
-<body class="art-page">
+<body>
 
 <!-- =========================
      HEADER
 ========================= -->
 
-<header class="site-header">
-    <div class="container nav-wrap">
+<header class="art-page-header">
+    <div class="art-header-inner">
 
-        <a class="brand" href="index.html">
-            <img src="assets/logo1A.png" alt="EPIC Talent Center">
+        <a href="index.html" class="art-logo">
+            <img src="assets/logo1A.png" alt="EPIC">
         </a>
 
-        <button class="menu-toggle" aria-label="Mở menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <nav class="main-nav">
+        <nav class="art-nav">
             <a href="index.html">TRANG CHỦ</a>
-            <a href="index.html#epic">EPIC</a>
-            <a class="active" href="index.html#chuong-trinh">CHƯƠNG TRÌNH</a>
-            <a href="index.html#giao-vien">GIÁO VIÊN</a>
-            <a href="index.html#hoat-dong">HOẠT ĐỘNG</a>
-            <a href="index.html#dang-ky">ĐĂNG KÝ</a>
-            <a href="index.html#lien-he">LIÊN HỆ</a>
+            <a href="index.html#programs">CHƯƠNG TRÌNH</a>
+            <a href="my-thuat.html">MỸ THUẬT</a>
+            <a href="piano.html">PIANO</a>
+            <a href="dance.html">DANCE</a>
         </nav>
 
-        <a class="nav-cta" href="index.html#dang-ky">
-            Đăng ký học thử <span>↗</span>
+        <a href="index.html#register" class="art-header-btn">
+            Đăng ký học thử ✨
         </a>
 
     </div>
 </header>
 
-
-<main>
 
 <!-- =========================
      HERO
@@ -480,63 +1236,47 @@
 
 <section class="art-wow-hero">
 
-    <div class="art-sky-shape"></div>
-
-    <span class="art-doodle art-star star-one">✦</span>
-    <span class="art-doodle art-star star-two">★</span>
-    <span class="art-doodle art-spark spark-one">✧</span>
-    <span class="art-doodle art-spark spark-two">✦</span>
-
-    <span class="art-doodle art-pencil">✏️</span>
-    <span class="art-doodle art-palette">🎨</span>
-    <span class="art-doodle art-crayon">🖍️</span>
-
-    <div class="container">
-
-        <a href="index.html#chuong-trinh" class="art-back">
-            ← Quay lại chương trình
-        </a>
+    <div class="art-container">
 
         <div class="art-hero-grid">
 
             <!-- LEFT -->
 
-            <div class="art-hero-copy">
+            <div class="art-hero-copy reveal-art">
 
-                <div class="art-mini-label">
+                <div class="art-kicker">
                     🎨 EPIC ART CLUB
                 </div>
 
-                <div class="art-big-number">
-                    01
+                <div class="art-number">
+                    01 — CREATE
                 </div>
 
                 <h1>
-                    Mỹ thuật
-                    <span>cho những</span>
-                    <em>ý tưởng thật lớn.</em>
+                    Vẽ đi!
+                    <span>Đừng ngại.</span>
                 </h1>
 
-                <p class="art-hero-text">
-                    Một không gian nhỏ để những đôi tay bé xinh
-                    tự do vẽ nên thế giới của riêng mình.
+                <p>
+                    Một nơi để những đôi tay nhỏ bé được tự do
+                    khám phá màu sắc, kể chuyện bằng hình ảnh
+                    và biến những ý tưởng ngộ nghĩnh thành
+                    những tác phẩm thật riêng.
                 </p>
 
                 <div class="art-tags">
-                    <span>🖍️ Sáng tạo</span>
-                    <span>🌈 Màu sắc</span>
-                    <span>💡 Tư duy</span>
+                    <div class="art-tag">🖍️ Sáng tạo</div>
+                    <div class="art-tag">🌈 Màu sắc</div>
+                    <div class="art-tag">💡 Tư duy</div>
                 </div>
 
                 <div class="art-hero-buttons">
-                    <a href="index.html#dang-ky" class="art-btn art-btn-primary">
-                        Đăng ký học thử
-                        <span>↗</span>
+                    <a href="index.html#register" class="art-btn art-btn-primary">
+                        Đăng ký học thử 🎨
                     </a>
 
-                    <a href="#art-roadmap" class="art-btn art-btn-white">
-                        Xem chương trình
-                        <span>↓</span>
+                    <a href="#program" class="art-btn art-btn-secondary">
+                        Xem chương trình ↓
                     </a>
                 </div>
 
@@ -547,219 +1287,158 @@
 
             <div class="art-hero-visual">
 
-    <!-- Các mảng màu nằm phía sau -->
-    <div class="art-paint-blob blob-yellow"></div>
-    <div class="art-paint-blob blob-red"></div>
-    <div class="art-paint-blob blob-blue"></div>
+                <div class="art-paint-blob blob-yellow"></div>
+                <div class="art-paint-blob blob-red"></div>
+                <div class="art-paint-blob blob-blue"></div>
+
+                <div class="art-doodle doodle-star">✦</div>
+                <div class="art-doodle doodle-star-2">★</div>
+                <div class="art-doodle doodle-heart">♡</div>
+                <div class="art-doodle doodle-wow">WOW!</div>
+                <div class="art-doodle doodle-pencil">✏️</div>
 
 
-    <!-- ⭐ NGÔI SAO BÊN NGOÀI -->
-    <div class="art-outside-star star-left">
-        ✦
-    </div>
+                <!-- DRAWING BOARD -->
 
-    <div class="art-outside-star star-right">
-        ★
-    </div>
+                <div class="art-canvas-frame">
+
+                    <div class="canvas-top">
+
+                        <div class="canvas-title">
+                            <strong>VẼ ĐI NÈ! 🎨</strong>
+                            <small>Tạo tác phẩm của riêng bạn</small>
+                        </div>
+
+                        <div class="canvas-sticker">
+                            LITTLE<br>ARTIST ✦
+                        </div>
+
+                    </div>
+
+                    <canvas id="artCanvas"></canvas>
+
+                    <div class="canvas-message">
+                        ✏️ Bắt đầu vẽ nhé!
+                    </div>
+
+                    <div class="art-toolbar">
+
+                        <!-- COLORS -->
+
+                        <div class="toolbar-row">
+
+                            <span class="toolbar-label">
+                                Màu:
+                            </span>
+
+                            <button class="color-btn active"
+                                data-color="#102576"
+                                style="background:#102576"
+                                title="Xanh EPIC">
+                            </button>
+
+                            <button class="color-btn"
+                                data-color="#c9182b"
+                                style="background:#c9182b"
+                                title="Đỏ EPIC">
+                            </button>
+
+                            <button class="color-btn"
+                                data-color="#e7c84a"
+                                style="background:#e7c84a"
+                                title="Vàng EPIC">
+                            </button>
+
+                            <button class="color-btn"
+                                data-color="#f26b7a"
+                                style="background:#f26b7a">
+                            </button>
+
+                            <button class="color-btn"
+                                data-color="#62a9e8"
+                                style="background:#62a9e8">
+                            </button>
+
+                            <button class="color-btn"
+                                data-color="#65b891"
+                                style="background:#65b891">
+                            </button>
+
+                            <button class="color-btn"
+                                data-color="#8f65c5"
+                                style="background:#8f65c5">
+                            </button>
+
+                            <button class="color-btn"
+                                data-color="#222222"
+                                style="background:#222222">
+                            </button>
+
+                        </div>
 
 
-    <!-- 🎨 KHUNG BẢNG VẼ -->
-    <div class="art-canvas-frame" id="canvasFrame">
+                        <!-- BRUSH -->
 
-        <div class="canvas-top">
+                        <div class="toolbar-row">
 
-            <div class="canvas-title">
+                            <span class="toolbar-label">
+                                Nét:
+                            </span>
 
-                <div class="canvas-title-icon">
-                    🎨
+                            <button class="size-btn"
+                                data-size="3">
+                                Nhỏ
+                            </button>
+
+                            <button class="size-btn active"
+                                data-size="7">
+                                Vừa
+                            </button>
+
+                            <button class="size-btn"
+                                data-size="14">
+                                To
+                            </button>
+
+                            <button class="size-btn"
+                                data-size="25">
+                                Siêu to
+                            </button>
+
+                        </div>
+
+
+                        <!-- ACTIONS -->
+
+                        <div class="toolbar-row">
+
+                            <button class="tool-btn" id="undoBtn">
+                                ↶ Hoàn tác
+                            </button>
+
+                            <button class="tool-btn" id="eraserBtn">
+                                🧽 Tẩy
+                            </button>
+
+                            <button class="tool-btn danger" id="clearBtn">
+                                🗑 Xóa
+                            </button>
+
+                            <button class="tool-btn" id="saveBtn">
+                                💾 Lưu tác phẩm
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="canvas-hint">
+                        🖱️ Vẽ bằng chuột · 📱 Vẽ bằng tay · ✨ Thỏa sức sáng tạo!
+                    </div>
+
                 </div>
 
-                <div class="canvas-title-text">
-                    <strong>VẼ ĐI NÈ!</strong>
-                    <small>Tạo tác phẩm của riêng bạn</small>
-                </div>
-
             </div>
-
-            <div class="canvas-sticker">
-                LITTLE ARTIST ✦
-            </div>
-
-        </div>
-
-
-        <div class="art-canvas-paper">
-
-            <canvas id="artCanvas"></canvas>
-
-            <div
-                class="canvas-start-message"
-                id="canvasMessage">
-                ✏️ Bắt đầu vẽ nhé!
-            </div>
-
-        </div>
-
-
-        <div class="canvas-toolbar">
-
-            <div class="canvas-tools-row">
-
-                <span class="canvas-tools-label">
-                    MÀU:
-                </span>
-
-                <button
-                    class="color-btn active"
-                    data-color="#102576"
-                    style="background:#102576">
-                </button>
-
-                <button
-                    class="color-btn"
-                    data-color="#C9182B"
-                    style="background:#C9182B">
-                </button>
-
-                <button
-                    class="color-btn"
-                    data-color="#E7C84A"
-                    style="background:#E7C84A">
-                </button>
-
-                <button
-                    class="color-btn"
-                    data-color="#FF8FA3"
-                    style="background:#FF8FA3">
-                </button>
-
-                <button
-                    class="color-btn"
-                    data-color="#6FA8FF"
-                    style="background:#6FA8FF">
-                </button>
-
-                <button
-                    class="color-btn"
-                    data-color="#6BCB77"
-                    style="background:#6BCB77">
-                </button>
-
-                <button
-                    class="color-btn"
-                    data-color="#9B6BFF"
-                    style="background:#9B6BFF">
-                </button>
-
-                <button
-                    class="color-btn"
-                    data-color="#111111"
-                    style="background:#111111">
-                </button>
-
-            </div>
-
-
-            <div class="canvas-tools-row">
-
-                <span class="canvas-tools-label">
-                    NÉT:
-                </span>
-
-                <button
-                    class="size-btn"
-                    data-size="3">
-                    Nhỏ
-                </button>
-
-                <button
-                    class="size-btn active"
-                    data-size="7">
-                    Vừa
-                </button>
-
-                <button
-                    class="size-btn"
-                    data-size="13">
-                    To
-                </button>
-
-                <button
-                    class="size-btn"
-                    data-size="22">
-                    Siêu to
-                </button>
-
-            </div>
-
-
-            <div class="canvas-actions">
-
-                <button
-                    class="canvas-action"
-                    id="undoBtn">
-                    ↩️ Hoàn tác
-                </button>
-
-                <button
-                    class="canvas-action erase"
-                    id="eraseBtn">
-                    🧽 Tẩy
-                </button>
-
-                <button
-                    class="canvas-action clear"
-                    id="clearBtn">
-                    🗑️ Xóa
-                </button>
-
-                <button
-                    class="canvas-action save"
-                    id="saveBtn"
-                    style="grid-column:1/-1;">
-                    💾 Lưu tác phẩm
-                </button>
-
-            </div>
-
-
-            <div class="canvas-hint">
-                🖱️ Vẽ bằng chuột · 📱 Vẽ bằng tay · ✨ Thỏa sức sáng tạo!
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- ⭐ ELEMENT PHÍA NGOÀI BẢNG VẼ -->
-
-    <div class="art-outside-element wow-element">
-        WOW!
-    </div>
-
-    <div class="art-outside-element love-element">
-        LOVE ART ♡
-    </div>
-
-
-    <div class="art-outside-age">
-
-        <span>★</span>
-
-        <div>
-            <strong>4–18</strong>
-            <small>tuổi</small>
-        </div>
-
-    </div>
-
-
-    <div class="art-outside-pencil">
-        ✏️
-    </div>
-
-</div>
 
         </div>
 
@@ -772,25 +1451,24 @@
      INTRO
 ========================= -->
 
-<section class="art-intro">
+<section class="art-section art-section-white" id="program">
 
-    <div class="container">
+    <div class="art-container">
 
-        <div class="art-section-title">
+        <div class="art-section-head reveal-art">
 
-            <span class="art-label">
-                WHY ART? ✦
-            </span>
+            <div class="art-section-label">
+                ✦ WHY ART?
+            </div>
 
             <h2>
-                Vẽ không chỉ là
-                <em>vẽ.</em>
+                Không chỉ là học vẽ.
             </h2>
 
             <p>
-                Đó là cách trẻ quan sát thế giới,
-                kể câu chuyện của mình và học cách
-                tin vào những ý tưởng riêng.
+                Tại EPIC, mỗi bức tranh là một cơ hội
+                để trẻ quan sát, suy nghĩ, thử nghiệm
+                và thể hiện thế giới theo cách của riêng mình.
             </p>
 
         </div>
@@ -798,77 +1476,50 @@
 
         <div class="art-intro-grid">
 
-            <div class="art-big-card art-card-yellow reveal-art">
-
-                <div class="card-number">01</div>
-
-                <div class="card-icon">
-                    👀
-                </div>
+            <div class="art-note reveal-art">
 
                 <h3>
-                    Quan sát
+                    🎨 Ở EPIC...
                 </h3>
 
                 <p>
-                    Nhìn thế giới bằng đôi mắt tò mò
-                    và khám phá những điều thú vị
-                    xung quanh.
+                    Không có bức tranh “đúng” hay “sai”.
+                    Có những ý tưởng cần được lắng nghe,
+                    những màu sắc cần được thử,
+                    và những câu chuyện đang chờ được kể.
                 </p>
 
-                <span class="card-doodle">
-                    ✦
-                </span>
+                <p>
+                    <strong>
+                        Điều quan trọng nhất:
+                        trẻ được tự tin sáng tạo.
+                    </strong>
+                </p>
 
             </div>
 
 
-            <div class="art-big-card art-card-blue reveal-art">
-
-                <div class="card-number">02</div>
-
-                <div class="card-icon">
-                    💡
-                </div>
+            <div class="art-intro-copy reveal-art">
 
                 <h3>
-                    Tưởng tượng
+                    Mỗi bé là một nghệ sĩ nhỏ.
                 </h3>
 
                 <p>
-                    Biến những ý tưởng trong đầu
-                    thành hình ảnh, màu sắc
-                    và câu chuyện.
+                    Chương trình Mỹ thuật EPIC được xây dựng
+                    theo hướng <span class="art-highlight">
+                    học qua trải nghiệm</span>.
+                    Trẻ không chỉ học cách sử dụng màu,
+                    hình khối hay đường nét mà còn phát triển
+                    khả năng quan sát, tư duy hình ảnh,
+                    trí tưởng tượng và sự kiên trì.
                 </p>
-
-                <span class="card-doodle">
-                    ★
-                </span>
-
-            </div>
-
-
-            <div class="art-big-card art-card-red reveal-art">
-
-                <div class="card-number">03</div>
-
-                <div class="card-icon">
-                    💖
-                </div>
-
-                <h3>
-                    Thể hiện
-                </h3>
 
                 <p>
-                    Tự tin tạo ra sản phẩm mang
-                    dấu ấn cá nhân thay vì
-                    chỉ làm theo khuôn mẫu.
+                    Từ một nét chì đầu tiên đến một tác phẩm
+                    hoàn chỉnh — hành trình ấy quan trọng
+                    không kém kết quả cuối cùng.
                 </p>
-
-                <span class="card-doodle">
-                    ♡
-                </span>
 
             </div>
 
@@ -883,145 +1534,85 @@
      ROADMAP
 ========================= -->
 
-<section class="art-roadmap" id="art-roadmap">
+<section class="art-section">
 
-    <div class="container">
+    <div class="art-container">
 
-        <div class="art-section-title light">
+        <div class="art-section-head reveal-art">
 
-            <span class="art-label">
-                EPIC ART JOURNEY ✦
-            </span>
+            <div class="art-section-label">
+                ✏️ ART JOURNEY
+            </div>
 
             <h2>
-                Hành trình
-                <em>khám phá</em>
+                Hành trình sáng tạo
             </h2>
 
             <p>
-                Mỗi độ tuổi là một hành trình
-                với những điều thú vị khác nhau.
+                Từ những nét vẽ đầu tiên đến khi hình thành
+                phong cách và ý tưởng cá nhân.
             </p>
 
         </div>
 
 
-        <div class="art-roadmap-line"></div>
+        <div class="art-roadmap">
 
+            <div class="art-step reveal-art">
 
-        <div class="art-roadmap-grid">
-
-            <article class="art-road-card">
-
-                <div class="road-icon">
-                    🌱
+                <div class="art-step-number">
+                    01
                 </div>
 
-                <span class="road-age">
-                    4–6 TUỔI
-                </span>
-
                 <h3>
-                    Bé làm quen
+                    Khám phá
                 </h3>
 
                 <p>
-                    Làm quen với màu sắc,
-                    hình khối và những hoạt động
-                    tạo hình vui nhộn.
+                    Làm quen với đường nét, màu sắc,
+                    hình khối và những vật liệu nghệ thuật
+                    thông qua các hoạt động vui nhộn.
                 </p>
 
-                <ul>
-                    <li>✓ Vẽ tự do</li>
-                    <li>✓ Màu nước</li>
-                    <li>✓ Cắt dán</li>
-                </ul>
-
-            </article>
+            </div>
 
 
-            <article class="art-road-card">
+            <div class="art-step reveal-art">
 
-                <div class="road-icon">
-                    🌈
+                <div class="art-step-number">
+                    02
                 </div>
 
-                <span class="road-age">
-                    7–10 TUỔI
-                </span>
-
                 <h3>
-                    Bé khám phá
+                    Thử nghiệm
                 </h3>
 
                 <p>
-                    Phát triển khả năng quan sát,
-                    phối màu và xây dựng ý tưởng.
+                    Trẻ được tự do phối màu, tạo hình,
+                    kết hợp nhiều chất liệu và thử những
+                    cách thể hiện mới.
                 </p>
 
-                <ul>
-                    <li>✓ Bố cục</li>
-                    <li>✓ Phối màu</li>
-                    <li>✓ Minh họa</li>
-                </ul>
-
-            </article>
+            </div>
 
 
-            <article class="art-road-card">
+            <div class="art-step reveal-art">
 
-                <div class="road-icon">
-                    🚀
+                <div class="art-step-number">
+                    03
                 </div>
 
-                <span class="road-age">
-                    11–14 TUỔI
-                </span>
-
                 <h3>
-                    Bé phát triển
+                    Tỏa sáng
                 </h3>
 
                 <p>
-                    Tìm hiểu sâu hơn về hình họa,
-                    sáng tạo và phong cách cá nhân.
+                    Hoàn thiện tác phẩm cá nhân,
+                    thuyết trình ý tưởng và tự tin
+                    chia sẻ câu chuyện phía sau bức tranh.
                 </p>
 
-                <ul>
-                    <li>✓ Hình họa</li>
-                    <li>✓ Sáng tác</li>
-                    <li>✓ Digital Art</li>
-                </ul>
-
-            </article>
-
-
-            <article class="art-road-card">
-
-                <div class="road-icon">
-                    ⭐
-                </div>
-
-                <span class="road-age">
-                    15–18 TUỔI
-                </span>
-
-                <h3>
-                    Bé định hình
-                </h3>
-
-                <p>
-                    Xây dựng portfolio và phát triển
-                    tư duy nghệ thuật theo định hướng.
-                </p>
-
-                <ul>
-                    <li>✓ Concept</li>
-                    <li>✓ Portfolio</li>
-                    <li>✓ Định hướng</li>
-                </ul>
-
-            </article>
+            </div>
 
         </div>
 
@@ -1031,72 +1622,97 @@
 
 
 <!-- =========================
-     WHAT CHILDREN LEARN
+     SKILLS
 ========================= -->
 
-<section class="art-skills">
+<section class="art-section art-section-white">
 
-    <div class="container">
+    <div class="art-container">
 
-        <div class="art-split-title">
+        <div class="art-section-head reveal-art">
 
-            <div>
-                <span class="art-label">
-                    WHAT WILL THEY LEARN? ✦
-                </span>
-
-                <h2>
-                    Mỗi buổi học
-                    <em>một điều mới.</em>
-                </h2>
+            <div class="art-section-label">
+                🌈 WHAT WE LEARN
             </div>
 
-            <p>
-                Không đặt nặng việc tạo ra một
-                “bức tranh hoàn hảo”. EPIC quan tâm
-                đến cách trẻ khám phá và trưởng thành
-                qua từng sản phẩm.
-            </p>
+            <h2>
+                Bé sẽ khám phá gì?
+            </h2>
 
         </div>
 
 
-        <div class="art-skill-grid">
+        <div class="art-skills">
 
-            <div class="art-skill">
-                <span>🎨</span>
-                <strong>Màu sắc</strong>
-                <small>Phối màu & cảm nhận màu</small>
+            <div class="art-skill reveal-art">
+
+                <div class="art-skill-icon">
+                    🖍️
+                </div>
+
+                <h3>
+                    Đường nét
+                </h3>
+
+                <p>
+                    Làm chủ nét vẽ và hình thành
+                    khả năng điều khiển tay.
+                </p>
+
             </div>
 
-            <div class="art-skill">
-                <span>✏️</span>
-                <strong>Đường nét</strong>
-                <small>Quan sát & thể hiện</small>
+
+            <div class="art-skill reveal-art">
+
+                <div class="art-skill-icon">
+                    🎨
+                </div>
+
+                <h3>
+                    Màu sắc
+                </h3>
+
+                <p>
+                    Khám phá cách phối màu,
+                    sắc độ và cảm xúc.
+                </p>
+
             </div>
 
-            <div class="art-skill">
-                <span>🧠</span>
-                <strong>Tư duy</strong>
-                <small>Ý tưởng & sáng tạo</small>
+
+            <div class="art-skill reveal-art">
+
+                <div class="art-skill-icon">
+                    💡
+                </div>
+
+                <h3>
+                    Ý tưởng
+                </h3>
+
+                <p>
+                    Phát triển trí tưởng tượng
+                    và tư duy hình ảnh.
+                </p>
+
             </div>
 
-            <div class="art-skill">
-                <span>🖼️</span>
-                <strong>Bố cục</strong>
-                <small>Sắp xếp hình ảnh</small>
-            </div>
 
-            <div class="art-skill">
-                <span>💭</span>
-                <strong>Ý tưởng</strong>
-                <small>Kể chuyện bằng hình ảnh</small>
-            </div>
+            <div class="art-skill reveal-art">
 
-            <div class="art-skill">
-                <span>⭐</span>
-                <strong>Tự tin</strong>
-                <small>Dám thể hiện bản thân</small>
+                <div class="art-skill-icon">
+                    🧠
+                </div>
+
+                <h3>
+                    Tư duy
+                </h3>
+
+                <p>
+                    Rèn khả năng quan sát,
+                    giải quyết vấn đề và kiên trì.
+                </p>
+
             </div>
 
         </div>
@@ -1110,50 +1726,111 @@
      GALLERY
 ========================= -->
 
-<section class="art-gallery-section">
+<section class="art-section art-gallery-section">
 
-    <div class="container">
+    <div class="art-container">
 
-        <div class="art-section-title">
+        <div class="art-section-head reveal-art">
 
-            <span class="art-label">
-                LITTLE ARTISTS ✦
-            </span>
+            <div class="art-section-label">
+                🖼️ LITTLE MASTERPIECES
+            </div>
 
             <h2>
-                Những điều nhỏ bé
-                <em>thật đáng yêu.</em>
+                Góc triển lãm của bé
             </h2>
 
             <p>
-                Khu vực dành cho những khoảnh khắc
-                và sản phẩm đáng nhớ của các học viên EPIC.
+                Sau này bạn có thể thay các ô bên dưới
+                bằng hình ảnh thật của học viên EPIC.
             </p>
 
         </div>
 
 
-        <div class="art-gallery-grid">
+        <div class="art-gallery">
 
-            <div class="art-gallery-box gallery-main">
-                <span>🎨</span>
-                <strong>Khoảnh khắc lớp học</strong>
-                <small>Ảnh sẽ cập nhật</small>
+            <div class="art-gallery-card reveal-art">
+
+                <div class="art-placeholder">
+
+                    <span class="big">
+                        🧑‍🎨
+                    </span>
+
+                    <strong>
+                        Tác phẩm của bé
+                    </strong>
+
+                    <span>
+                        Ảnh học viên sẽ được cập nhật
+                    </span>
+
+                </div>
+
             </div>
 
-            <div class="art-gallery-box gallery-two">
-                <span>🖍️</span>
-                <strong>Sản phẩm của bé</strong>
+
+            <div class="art-gallery-card reveal-art">
+
+                <div class="art-placeholder">
+
+                    <span class="big">
+                        🌈
+                    </span>
+
+                    <strong>
+                        Color Day
+                    </strong>
+
+                    <span>
+                        Một ngày đầy màu sắc
+                    </span>
+
+                </div>
+
             </div>
 
-            <div class="art-gallery-box gallery-three">
-                <span>🌈</span>
-                <strong>Màu sắc & sáng tạo</strong>
+
+            <div class="art-gallery-card reveal-art">
+
+                <div class="art-placeholder">
+
+                    <span class="big">
+                        ✏️
+                    </span>
+
+                    <strong>
+                        Sketch Time
+                    </strong>
+
+                    <span>
+                        Từ nét vẽ đầu tiên
+                    </span>
+
+                </div>
+
             </div>
 
-            <div class="art-gallery-box gallery-four">
-                <span>⭐</span>
-                <strong>EPIC moments</strong>
+
+            <div class="art-gallery-card reveal-art">
+
+                <div class="art-placeholder">
+
+                    <span class="big">
+                        🏆
+                    </span>
+
+                    <strong>
+                        Little Artist
+                    </strong>
+
+                    <span>
+                        Tự tin khoe tác phẩm
+                    </span>
+
+                </div>
+
             </div>
 
         </div>
@@ -1167,42 +1844,48 @@
      TEACHER
 ========================= -->
 
-<section class="art-teacher">
+<section class="art-section">
 
-    <div class="container">
+    <div class="art-container">
 
-        <div class="art-teacher-card">
+        <div class="art-teacher-box reveal-art">
 
-            <div class="teacher-decoration">
-                ✦
-            </div>
-
-            <div class="art-teacher-photo">
-                👩🏻‍🎨
-                <small>Ảnh giáo viên</small>
+            <div class="teacher-art">
+                👩‍🎨
             </div>
 
             <div class="art-teacher-copy">
 
-                <span class="art-label">
-                    MEET THE TEACHER ✦
-                </span>
-
                 <h2>
                     Người truyền cảm hứng
-                    <em>cho những đôi tay nhỏ.</em>
                 </h2>
 
                 <p>
                     Giáo viên Mỹ thuật tại EPIC không chỉ
-                    hướng dẫn kỹ thuật mà còn khuyến khích
-                    trẻ tự tìm ra cách thể hiện của riêng mình.
+                    hướng dẫn kỹ thuật mà còn đồng hành
+                    cùng trẻ trong quá trình tìm kiếm
+                    phong cách và tiếng nói nghệ thuật
+                    của riêng mình.
                 </p>
 
-                <div class="teacher-tags">
-                    <span>♡ Tận tâm</span>
-                    <span>✦ Sáng tạo</span>
-                    <span>★ Đồng hành</span>
+                <div class="teacher-points">
+
+                    <div class="teacher-point">
+                        🎨 Hướng dẫn tận tâm
+                    </div>
+
+                    <div class="teacher-point">
+                        💡 Khuyến khích ý tưởng
+                    </div>
+
+                    <div class="teacher-point">
+                        🧡 Tôn trọng cá tính
+                    </div>
+
+                    <div class="teacher-point">
+                        ✨ Tạo động lực sáng tạo
+                    </div>
+
                 </div>
 
             </div>
@@ -1220,607 +1903,250 @@
 
 <section class="art-final">
 
-    <div class="art-final-stars">
-        ✦　★　✧　♡　✦
-    </div>
+    <div class="art-container">
 
-    <div class="container">
+        <h2>
+            Sẵn sàng vẽ thế giới<br>
+            theo cách của mình?
+        </h2>
 
-        <div class="art-final-card">
+        <p>
+            Để EPIC cùng bé bắt đầu hành trình
+            khám phá màu sắc, trí tưởng tượng
+            và niềm vui sáng tạo.
+        </p>
 
-            <div class="final-sticker">
-                LET'S CREATE!
-            </div>
-
-            <span class="art-label">
-                READY TO CREATE? ✦
-            </span>
-
-            <h2>
-                Sẵn sàng để
-                <em>bé bắt đầu?</em>
-            </h2>
-
-            <p>
-                Một buổi học thử có thể là bước đầu
-                để bé tìm thấy điều mình thật sự yêu thích.
-            </p>
-
-            <a href="index.html#dang-ky" class="art-btn art-btn-primary">
-                Đăng ký học thử
-                <span>↗</span>
-            </a>
-
-            <div class="final-note">
-                🎨 Học để vui · Vui để sáng tạo · Sáng tạo để tỏa sáng ✨
-            </div>
-
-        </div>
+        <a href="index.html#register" class="art-btn art-btn-primary">
+            🎨 Đăng ký học thử miễn phí
+        </a>
 
     </div>
 
 </section>
-
-</main>
 
 
 <!-- =========================
      FOOTER
 ========================= -->
 
-<footer>
+<footer class="art-footer">
 
-    <div class="container footer-wrap">
+    <strong>
+        EPIC
+    </strong>
 
-        <div class="footer-brand">
-            EPIC
-            <span>TALENT CENTER</span>
-        </div>
+    <p>
+        Thỏa sức đam mê, khơi nguồn sáng tạo ✦
+    </p>
 
-        <p>
-            Thỏa sức đam mê, khơi nguồn sáng tạo.
-        </p>
-
-        <a class="to-top" href="#">
-            ↑
-        </a>
-
-    </div>
-
-    <div class="copyright">
-        © 2026 EPIC Talent Center. All rights reserved.
-    </div>
+    <p>
+        © 2026 EPIC – Trung tâm đào tạo năng khiếu trẻ em
+    </p>
 
 </footer>
 
 
+<!-- =========================
+     JAVASCRIPT – DRAWING
+========================= -->
+
 <script>
 
-/* =========================================================
-   MENU + REVEAL
-========================================================= */
+document.addEventListener("DOMContentLoaded", function () {
 
-document.addEventListener("DOMContentLoaded", () => {
+    /* =========================
+       REVEAL ANIMATION
+    ========================= */
 
-    const items = document.querySelectorAll(".reveal-art");
+    const revealItems = document.querySelectorAll(".reveal-art");
 
-    if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+        function(entries) {
 
-        const observer = new IntersectionObserver(
-            entries => {
+            entries.forEach(function(entry) {
 
-                entries.forEach(entry => {
+                if (entry.isIntersecting) {
 
-                    if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
 
-                        entry.target.classList.add("show-art");
+                    observer.unobserve(entry.target);
+                }
 
-                        observer.unobserve(entry.target);
+            });
 
-                    }
+        },
+        {
+            threshold: 0.12
+        }
+    );
 
-                });
+    revealItems.forEach(function(item) {
+        observer.observe(item);
+    });
 
-            },
-            {
-                threshold: 0.12
+
+    /* =========================
+       CANVAS
+    ========================= */
+
+    const canvas = document.getElementById("artCanvas");
+
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+
+    let drawing = false;
+    let currentColor = "#102576";
+    let currentSize = 7;
+    let erasing = false;
+
+    let history = [];
+    const maxHistory = 25;
+
+
+    /* =========================
+       CANVAS RESIZE
+    ========================= */
+
+    function setupCanvas() {
+
+        const rect = canvas.getBoundingClientRect();
+
+        const dpr = window.devicePixelRatio || 1;
+
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+
+        drawPaper();
+
+    }
+
+
+    function drawPaper() {
+
+        const rect = canvas.getBoundingClientRect();
+
+        ctx.save();
+
+        ctx.fillStyle = "#fffdf7";
+        ctx.fillRect(0, 0, rect.width, rect.height);
+
+        /* tiny paper dots */
+
+        ctx.fillStyle = "rgba(16,37,118,0.045)";
+
+        for (
+            let x = 15;
+            x < rect.width;
+            x += 28
+        ) {
+
+            for (
+                let y = 15;
+                y < rect.height;
+                y += 28
+            ) {
+
+                ctx.beginPath();
+                ctx.arc(x, y, 1.1, 0, Math.PI * 2);
+                ctx.fill();
+
             }
-        );
 
-        items.forEach(item => observer.observe(item));
+        }
 
-    } else {
-
-        items.forEach(item => {
-            item.classList.add("show-art");
-        });
+        ctx.restore();
 
     }
 
 
-    const menuButton = document.querySelector(".menu-toggle");
-    const nav = document.querySelector(".main-nav");
-
-    if (menuButton && nav) {
-
-        menuButton.addEventListener("click", () => {
-
-            nav.classList.toggle("open");
-            menuButton.classList.toggle("active");
-
-        });
-
-    }
-
-});
+    setupCanvas();
 
 
-/* =========================================================
-   EPIC ART CANVAS
-========================================================= */
+    window.addEventListener("resize", function() {
 
-const canvas = document.getElementById("artCanvas");
-const ctx = canvas.getContext("2d");
-
-const canvasFrame = document.getElementById("canvasFrame");
-const canvasMessage = document.getElementById("canvasMessage");
-
-const colorButtons =
-    document.querySelectorAll(".color-btn");
-
-const sizeButtons =
-    document.querySelectorAll(".size-btn");
-
-const undoBtn =
-    document.getElementById("undoBtn");
-
-const eraseBtn =
-    document.getElementById("eraseBtn");
-
-const clearBtn =
-    document.getElementById("clearBtn");
-
-const saveBtn =
-    document.getElementById("saveBtn");
-
-
-/* =========================================================
-   DRAW SETTINGS
-========================================================= */
-
-let currentColor = "#102576";
-let currentSize = 7;
-
-let drawing = false;
-let lastX = 0;
-let lastY = 0;
-
-let isEraser = false;
-
-let history = [];
-
-let hasDrawn = false;
-
-
-/* =========================================================
-   CANVAS SIZE
-========================================================= */
-
-function resizeCanvas(keepDrawing = true) {
-
-    const oldCanvas = document.createElement("canvas");
-
-    if (keepDrawing && canvas.width > 0 && canvas.height > 0) {
+        const oldCanvas = document.createElement("canvas");
 
         oldCanvas.width = canvas.width;
         oldCanvas.height = canvas.height;
 
-        const oldCtx = oldCanvas.getContext("2d");
+        oldCanvas.getContext("2d").drawImage(canvas, 0, 0);
 
-        oldCtx.drawImage(canvas,0,0);
+        setupCanvas();
 
-    }
+        const newCtx = canvas.getContext("2d");
 
+        const oldWidth = oldCanvas.width;
+        const oldHeight = oldCanvas.height;
 
-    const rect = canvas.getBoundingClientRect();
+        const newWidth = canvas.width;
+        const newHeight = canvas.height;
 
-    const dpr =
-        Math.max(
-            1,
-            Math.min(
-                window.devicePixelRatio || 1,
-                2
-            )
-        );
-
-
-    canvas.width =
-        Math.round(rect.width * dpr);
-
-    canvas.height =
-        Math.round(rect.height * dpr);
-
-
-    ctx.setTransform(
-        dpr,
-        0,
-        0,
-        dpr,
-        0,
-        0
-    );
-
-
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-
-
-    if (
-        keepDrawing &&
-        oldCanvas.width &&
-        oldCanvas.height
-    ) {
-
-        ctx.drawImage(
+        newCtx.drawImage(
             oldCanvas,
             0,
             0,
-            oldCanvas.width,
-            oldCanvas.height,
+            oldWidth,
+            oldHeight,
             0,
             0,
-            rect.width,
-            rect.height
+            newWidth,
+            newHeight
+        );
+
+    });
+
+
+    /* =========================
+       POSITION
+    ========================= */
+
+    function getPosition(event) {
+
+        const rect = canvas.getBoundingClientRect();
+
+        return {
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top
+        };
+
+    }
+
+
+    /* =========================
+       SAVE HISTORY
+    ========================= */
+
+    function saveHistory() {
+
+        if (history.length >= maxHistory) {
+            history.shift();
+        }
+
+        history.push(
+            canvas.toDataURL("image/png")
         );
 
     }
 
-}
 
+    function restoreHistory() {
 
-resizeCanvas(false);
+        if (history.length === 0) {
 
-
-window.addEventListener(
-    "resize",
-    () => resizeCanvas(true)
-);
-
-
-/* =========================================================
-   SAVE HISTORY
-========================================================= */
-
-function saveHistory() {
-
-    history.push(
-        canvas.toDataURL("image/png")
-    );
-
-
-    if (history.length > 20) {
-        history.shift();
-    }
-
-}
-
-
-/* =========================================================
-   GET POSITION
-========================================================= */
-
-function getPosition(event) {
-
-    const rect =
-        canvas.getBoundingClientRect();
-
-
-    return {
-
-        x:
-            event.clientX - rect.left,
-
-        y:
-            event.clientY - rect.top
-
-    };
-
-}
-
-
-/* =========================================================
-   START DRAW
-========================================================= */
-
-function startDrawing(event) {
-
-    event.preventDefault();
-
-    drawing = true;
-
-    const pos =
-        getPosition(event);
-
-    lastX = pos.x;
-    lastY = pos.y;
-
-
-    saveHistory();
-
-
-    canvasMessage.classList.add("hide");
-
-    canvasFrame.classList.remove("drawing");
-
-    void canvasFrame.offsetWidth;
-
-    canvasFrame.classList.add("drawing");
-
-
-    /*
-       Chấm đầu tiên khi người dùng chỉ click
-    */
-
-    ctx.beginPath();
-
-    ctx.fillStyle =
-        isEraser
-            ? "#fffdf7"
-            : currentColor;
-
-    ctx.arc(
-        lastX,
-        lastY,
-        currentSize / 2,
-        0,
-        Math.PI * 2
-    );
-
-    ctx.fill();
-
-}
-
-
-/* =========================================================
-   DRAW
-========================================================= */
-
-function draw(event) {
-
-    if (!drawing) return;
-
-    event.preventDefault();
-
-
-    const pos =
-        getPosition(event);
-
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        lastX,
-        lastY
-    );
-
-    ctx.lineTo(
-        pos.x,
-        pos.y
-    );
-
-
-    ctx.lineWidth =
-        currentSize;
-
-
-    /*
-       Tẩy
-    */
-
-    if (isEraser) {
-
-        ctx.strokeStyle = "#fffdf7";
-
-    } else {
-
-        ctx.strokeStyle =
-            currentColor;
-
-    }
-
-
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-
-    ctx.stroke();
-
-
-    lastX = pos.x;
-    lastY = pos.y;
-
-
-    if (!hasDrawn) {
-
-        hasDrawn = true;
-
-        canvasMessage.classList.add("hide");
-
-    }
-
-}
-
-
-/* =========================================================
-   STOP
-========================================================= */
-
-function stopDrawing(event) {
-
-    if (!drawing) return;
-
-    if (event) {
-        event.preventDefault();
-    }
-
-    drawing = false;
-
-    ctx.closePath();
-
-}
-
-
-/* =========================================================
-   POINTER EVENTS
-========================================================= */
-
-canvas.addEventListener(
-    "pointerdown",
-    startDrawing
-);
-
-canvas.addEventListener(
-    "pointermove",
-    draw
-);
-
-canvas.addEventListener(
-    "pointerup",
-    stopDrawing
-);
-
-canvas.addEventListener(
-    "pointercancel",
-    stopDrawing
-);
-
-canvas.addEventListener(
-    "pointerleave",
-    stopDrawing
-);
-
-
-/* =========================================================
-   COLORS
-========================================================= */
-
-colorButtons.forEach(button => {
-
-    button.addEventListener(
-        "click",
-        () => {
-
-            colorButtons.forEach(btn =>
-                btn.classList.remove("active")
-            );
-
-
-            button.classList.add("active");
-
-
-            currentColor =
-                button.dataset.color;
-
-
-            isEraser = false;
-
-
-            eraseBtn.textContent =
-                "🧽 Tẩy";
-
-        }
-    );
-
-});
-
-
-/* =========================================================
-   BRUSH SIZE
-========================================================= */
-
-sizeButtons.forEach(button => {
-
-    button.addEventListener(
-        "click",
-        () => {
-
-            sizeButtons.forEach(btn =>
-                btn.classList.remove("active")
-            );
-
-
-            button.classList.add("active");
-
-
-            currentSize =
-                Number(button.dataset.size);
-
-
-            isEraser = false;
-
-
-            eraseBtn.textContent =
-                "🧽 Tẩy";
-
-        }
-    );
-
-});
-
-
-/* =========================================================
-   ERASER
-========================================================= */
-
-eraseBtn.addEventListener(
-    "click",
-    () => {
-
-        isEraser =
-            !isEraser;
-
-
-        if (isEraser) {
-
-            eraseBtn.textContent =
-                "🎨 Vẽ lại";
-
-            eraseBtn.style.background =
-                "#e7c84f";
-
-        } else {
-
-            eraseBtn.textContent =
-                "🧽 Tẩy";
-
-            eraseBtn.style.background =
-                "";
+            drawPaper();
+            return;
 
         }
 
-    }
-);
+        const image = new Image();
 
-
-/* =========================================================
-   UNDO
-========================================================= */
-
-undoBtn.addEventListener(
-    "click",
-    () => {
-
-        if (!history.length) return;
-
-
-        const previous =
-            history.pop();
-
-
-        const image =
-            new Image();
-
-
-        image.onload = () => {
+        image.onload = function() {
 
             ctx.clearRect(
                 0,
@@ -1829,208 +2155,272 @@ undoBtn.addEventListener(
                 canvas.height
             );
 
-
-            const rect =
-                canvas.getBoundingClientRect();
-
-
             ctx.drawImage(
                 image,
                 0,
                 0,
-                rect.width,
-                rect.height
+                canvas.width / (window.devicePixelRatio || 1),
+                canvas.height / (window.devicePixelRatio || 1)
             );
 
         };
 
-
-        image.src = previous;
+        image.src = history.pop();
 
     }
-);
 
 
-/* =========================================================
-   CLEAR
-========================================================= */
+    /* =========================
+       START DRAW
+    ========================= */
 
-clearBtn.addEventListener(
-    "click",
-    () => {
+    canvas.addEventListener("pointerdown", function(event) {
 
-        if (
-            !confirm(
-                "Xóa toàn bộ tranh và vẽ lại nhé? 🎨"
-            )
-        ) {
-            return;
-        }
+        event.preventDefault();
 
+        drawing = true;
+
+        canvas.setPointerCapture(event.pointerId);
 
         saveHistory();
 
+        const pos = getPosition(event);
 
-        ctx.clearRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
+        ctx.beginPath();
+
+        ctx.moveTo(
+            pos.x,
+            pos.y
         );
 
+        ctx.lineWidth = currentSize;
 
-        hasDrawn = false;
+        ctx.strokeStyle = erasing
+            ? "#fffdf7"
+            : currentColor;
 
-        canvasMessage.classList.remove(
-            "hide"
+    });
+
+
+    /* =========================
+       DRAW
+    ========================= */
+
+    canvas.addEventListener("pointermove", function(event) {
+
+        if (!drawing) return;
+
+        event.preventDefault();
+
+        const pos = getPosition(event);
+
+        ctx.lineWidth = currentSize;
+
+        ctx.strokeStyle = erasing
+            ? "#fffdf7"
+            : currentColor;
+
+        ctx.lineTo(
+            pos.x,
+            pos.y
         );
 
-    }
-);
+        ctx.stroke();
+
+    });
 
 
-/* =========================================================
-   SAVE IMAGE
-========================================================= */
+    /* =========================
+       END DRAW
+    ========================= */
 
-saveBtn.addEventListener(
-    "click",
-    () => {
+    function stopDrawing(event) {
 
-        /*
-           Tạo canvas trắng để tranh lưu xuống
-           không bị trong suốt.
-        */
+        if (!drawing) return;
 
-        const exportCanvas =
-            document.createElement("canvas");
+        drawing = false;
 
-
-        const rect =
-            canvas.getBoundingClientRect();
-
-
-        const scale = 2;
-
-
-        exportCanvas.width =
-            rect.width * scale;
-
-
-        exportCanvas.height =
-            rect.height * scale;
-
-
-        const exportCtx =
-            exportCanvas.getContext("2d");
-
-
-        exportCtx.fillStyle =
-            "#fffdf7";
-
-
-        exportCtx.fillRect(
-            0,
-            0,
-            exportCanvas.width,
-            exportCanvas.height
-        );
-
-
-        exportCtx.drawImage(
-            canvas,
-            0,
-            0,
-            canvas.width,
-            canvas.height,
-            0,
-            0,
-            exportCanvas.width,
-            exportCanvas.height
-        );
-
-
-        const link =
-            document.createElement("a");
-
-
-        link.download =
-            "EPIC-Art-" +
-            new Date()
-                .toISOString()
-                .slice(0,10) +
-            ".png";
-
-
-        link.href =
-            exportCanvas.toDataURL(
-                "image/png"
-            );
-
-
-        link.click();
-
-
-        saveBtn.textContent =
-            "✓ Đã lưu tranh!";
-
-
-        setTimeout(
-            () => {
-
-                saveBtn.textContent =
-                    "💾 Lưu tác phẩm";
-
-            },
-            1800
-        );
-
-    }
-);
-
-
-/* =========================================================
-   KEYBOARD SHORTCUTS
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        /*
-           Không chạy shortcut khi người dùng
-           đang ở input/textarea.
-        */
-
-        const tag =
-            event.target.tagName.toLowerCase();
-
+        ctx.closePath();
 
         if (
-            tag === "input" ||
-            tag === "textarea"
-        ) {
-            return;
-        }
-
-
-        /*
-           Ctrl + Z
-        */
-
-        if (
-            (event.ctrlKey || event.metaKey) &&
-            event.key.toLowerCase() === "z"
+            event &&
+            canvas.hasPointerCapture &&
+            canvas.hasPointerCapture(event.pointerId)
         ) {
 
-            event.preventDefault();
-
-            undoBtn.click();
+            canvas.releasePointerCapture(event.pointerId);
 
         }
 
     }
-);
+
+
+    canvas.addEventListener(
+        "pointerup",
+        stopDrawing
+    );
+
+    canvas.addEventListener(
+        "pointercancel",
+        stopDrawing
+    );
+
+
+    /* =========================
+       COLORS
+    ========================= */
+
+    const colorButtons =
+        document.querySelectorAll(".color-btn");
+
+    colorButtons.forEach(function(button) {
+
+        button.addEventListener("click", function() {
+
+            currentColor =
+                button.dataset.color;
+
+            erasing = false;
+
+            document
+                .getElementById("eraserBtn")
+                .classList.remove("active");
+
+            colorButtons.forEach(function(btn) {
+                btn.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+        });
+
+    });
+
+
+    /* =========================
+       BRUSH SIZE
+    ========================= */
+
+    const sizeButtons =
+        document.querySelectorAll(".size-btn");
+
+    sizeButtons.forEach(function(button) {
+
+        button.addEventListener("click", function() {
+
+            currentSize =
+                Number(button.dataset.size);
+
+            sizeButtons.forEach(function(btn) {
+                btn.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+        });
+
+    });
+
+
+    /* =========================
+       ERASER
+    ========================= */
+
+    const eraserBtn =
+        document.getElementById("eraserBtn");
+
+    eraserBtn.addEventListener("click", function() {
+
+        erasing = !erasing;
+
+        eraserBtn.classList.toggle(
+            "active",
+            erasing
+        );
+
+    });
+
+
+    /* =========================
+       UNDO
+    ========================= */
+
+    document
+        .getElementById("undoBtn")
+        .addEventListener("click", function() {
+
+            restoreHistory();
+
+        });
+
+
+    /* =========================
+       CLEAR
+    ========================= */
+
+    document
+        .getElementById("clearBtn")
+        .addEventListener("click", function() {
+
+            const ok =
+                confirm(
+                    "Bạn có chắc muốn xóa toàn bộ tác phẩm không? 🎨"
+                );
+
+            if (!ok) return;
+
+            saveHistory();
+
+            drawPaper();
+
+        });
+
+
+    /* =========================
+       SAVE IMAGE
+    ========================= */
+
+    document
+        .getElementById("saveBtn")
+        .addEventListener("click", function() {
+
+            const link =
+                document.createElement("a");
+
+            link.download =
+                "EPIC-Little-Artist.png";
+
+            link.href =
+                canvas.toDataURL("image/png");
+
+            link.click();
+
+        });
+
+
+    /* =========================
+       KEYBOARD UNDO
+    ========================= */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                (event.ctrlKey || event.metaKey) &&
+                event.key.toLowerCase() === "z"
+            ) {
+
+                event.preventDefault();
+
+                restoreHistory();
+
+            }
+
+        }
+    );
+
+});
 
 </script>
 
