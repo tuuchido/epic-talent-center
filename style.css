@@ -4837,3 +4837,285 @@ h6 {
   }
 }
 ```
+/* =========================================
+   EPIC STAR MAP BUTTON
+========================================= */
+
+.star-map-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: fit-content;
+  min-width: 350px;
+  margin-top: 24px;
+  padding: 15px 20px 15px 16px;
+
+  color: #fff;
+  text-decoration: none;
+
+  background:
+    radial-gradient(circle at 15% 50%, rgba(231,200,74,.25), transparent 35%),
+    linear-gradient(135deg, #102576 0%, #182f91 55%, #102576 100%);
+
+  border: 2px solid rgba(231,200,74,.75);
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 25px rgba(16,37,118,.22),
+    0 0 0 rgba(231,200,74,0);
+
+  overflow: hidden;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    border-color .3s ease;
+}
+
+/* ánh sáng chạy bên trong */
+.star-map-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255,255,255,.18) 45%,
+    transparent 70%
+  );
+
+  transform: translateX(-120%);
+  animation: starMapShine 4s ease-in-out infinite;
+}
+
+/* nền lấp lánh */
+.star-map-button::after {
+  content: "✦   ·   ✧   ·   ✦   ·   ✧";
+  position: absolute;
+  right: 55px;
+  top: 5px;
+
+  font-size: 13px;
+  letter-spacing: 8px;
+
+  color: rgba(255,255,255,.35);
+  pointer-events: none;
+
+  animation: starMapTwinkle 2s ease-in-out infinite;
+}
+
+/* ICON NGÔI SAO */
+
+.star-map-icon {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+
+  font-size: 29px;
+  color: #fff;
+
+  background: #e7c84a;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 5px rgba(231,200,74,.15),
+    0 0 22px rgba(231,200,74,.65);
+
+  animation: starMapPulse 2s ease-in-out infinite;
+}
+
+/* TEXT */
+
+.star-map-content {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.star-map-content strong {
+  font-family: "Cherry Bomb One", cursive;
+  font-size: 19px;
+  line-height: 1.1;
+  letter-spacing: .5px;
+}
+
+.star-map-content small {
+  font-family: "Varela Round", sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(255,255,255,.82);
+}
+
+/* ARROW */
+
+.star-map-arrow {
+  position: relative;
+  z-index: 2;
+
+  margin-left: auto;
+
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 50%;
+
+  font-size: 19px;
+
+  transition:
+    transform .3s ease,
+    background .3s ease;
+}
+
+/* SAO NHỎ BAY XUNG QUANH */
+
+.star-map-sparkle {
+  position: absolute;
+  z-index: 3;
+
+  color: #e7c84a;
+  pointer-events: none;
+
+  animation: floatingSparkle 2s ease-in-out infinite;
+}
+
+.sparkle-1 {
+  top: 8px;
+  left: 92px;
+  font-size: 12px;
+}
+
+.sparkle-2 {
+  right: 70px;
+  bottom: 9px;
+  font-size: 10px;
+  animation-delay: .6s;
+}
+
+.sparkle-3 {
+  right: 105px;
+  top: 13px;
+  font-size: 8px;
+  animation-delay: 1s;
+}
+
+/* HOVER */
+
+.star-map-button:hover {
+  transform: translateY(-5px) scale(1.015);
+
+  border-color: #e7c84a;
+
+  box-shadow:
+    0 14px 35px rgba(16,37,118,.28),
+    0 0 28px rgba(231,200,74,.28);
+}
+
+.star-map-button:hover .star-map-icon {
+  transform: rotate(12deg) scale(1.08);
+
+  box-shadow:
+    0 0 0 7px rgba(231,200,74,.18),
+    0 0 32px rgba(231,200,74,.85);
+}
+
+.star-map-button:hover .star-map-arrow {
+  transform: translate(4px,-4px);
+  background: rgba(255,255,255,.12);
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes starMapPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes starMapShine {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  35%, 100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes starMapTwinkle {
+  0%, 100% {
+    opacity: .25;
+  }
+
+  50% {
+    opacity: .7;
+  }
+}
+
+@keyframes floatingSparkle {
+  0%, 100% {
+    transform: translateY(0) scale(.8);
+    opacity: .4;
+  }
+
+  50% {
+    transform: translateY(-5px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .star-map-button {
+    width: 100%;
+    min-width: 0;
+    padding: 13px 15px;
+    gap: 12px;
+  }
+
+  .star-map-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 25px;
+  }
+
+  .star-map-content strong {
+    font-size: 16px;
+  }
+
+  .star-map-content small {
+    font-size: 10px;
+  }
+
+  .star-map-arrow {
+    width: 31px;
+    height: 31px;
+  }
+}
