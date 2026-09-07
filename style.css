@@ -5119,3 +5119,39 @@ h6 {
     height: 31px;
   }
 }
+/* ================================
+   HERO BUTTONS – EPIC
+================================ */
+
+.hero-actions{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+/* Star Map nằm cùng nhóm nhưng tách thành nút riêng */
+.hero-actions .star-map-button{
+  flex-basis:100%;
+  margin-top:8px;
+}
+
+/* Mobile */
+@media (max-width:700px){
+  .hero-actions{
+    flex-direction:column;
+    align-items:stretch;
+    gap:14px;
+  }
+
+  .hero-actions .btn,
+  .hero-actions .star-map-button{
+    width:100%;
+    box-sizing:border-box;
+  }
+
+  .hero-actions .star-map-button{
+    margin-top:4px;
+  }
+}
