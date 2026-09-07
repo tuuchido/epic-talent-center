@@ -29,11 +29,11 @@ import {
 
 
 // =====================================================
-// FIREBASE CONFIG CỦA EPIC
+// FIREBASE CONFIG - EPIC WEBSITE
 // =====================================================
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBJyw2rj-0c4VlA8r0QbCveLQtoDBwvtA",
+    apiKey: "AIzaSyBJyw2rj-Oc4VlA8r0QbCveLQtoDBwvtA",
     authDomain: "epic-talent-center-a151f.firebaseapp.com",
     projectId: "epic-talent-center-a151f",
     storageBucket: "epic-talent-center-a151f.firebasestorage.app",
