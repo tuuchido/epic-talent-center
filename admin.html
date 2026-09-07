@@ -1116,12 +1116,12 @@ loginForm.addEventListener(
         }
         catch(error){
 
-            console.error(error);
+    console.error("FIREBASE LOGIN ERROR:", error);
 
-            loginMessage.textContent =
-                "❌ Email hoặc mật khẩu không đúng.";
+    loginMessage.textContent =
+        "❌ " + error.code + " — " + error.message;
 
-        }
+}
 
     }
 );
