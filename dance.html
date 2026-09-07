@@ -20,6 +20,8 @@
   --blue:#DCE8FF;
   --white:#fff;
   --black:#18204A;
+  --green:#BDECC8;
+  --purple:#CDBBFF;
   --shadow:0 10px 0 rgba(16,37,118,.12);
 }
 
@@ -47,6 +49,7 @@ a{
 
 button{
   font-family:inherit;
+  touch-action:manipulation;
 }
 
 /* =========================
@@ -60,14 +63,11 @@ button{
   transform:translateX(-50%);
   width:min(1180px,92%);
   z-index:1000;
-
   background:rgba(255,255,255,.94);
   border:3px solid var(--navy);
   border-radius:30px;
   box-shadow:0 7px 0 var(--navy);
-
   padding:10px 18px;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -155,17 +155,15 @@ button{
   padding:170px 7% 100px;
   position:relative;
   overflow:hidden;
-
   background:
-    radial-gradient(circle at 85% 15%, #DCE8FF 0 120px, transparent 121px),
-    radial-gradient(circle at 8% 80%, #FFD8DE 0 130px, transparent 131px),
+    radial-gradient(circle at 85% 15%,#DCE8FF 0 120px,transparent 121px),
+    radial-gradient(circle at 8% 80%,#FFD8DE 0 130px,transparent 131px),
     var(--cream);
 }
 
 .hero-inner{
   max-width:1180px;
   margin:auto;
-
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:70px;
@@ -405,14 +403,8 @@ button{
   transition:.15s;
 }
 
-.beat:nth-child(2){
-  background:var(--pink);
-}
-
-.beat:nth-child(3){
-  background:var(--blue);
-}
-
+.beat:nth-child(2){background:var(--pink)}
+.beat:nth-child(3){background:var(--blue)}
 .beat:nth-child(4){
   background:var(--red);
   color:white;
@@ -506,17 +498,9 @@ button{
   transform:translateY(-8px) rotate(-1deg);
 }
 
-.style-card:nth-child(2){
-  background:var(--pink);
-}
-
-.style-card:nth-child(3){
-  background:var(--blue);
-}
-
-.style-card:nth-child(4){
-  background:var(--yellow);
-}
+.style-card:nth-child(2){background:var(--pink)}
+.style-card:nth-child(3){background:var(--blue)}
+.style-card:nth-child(4){background:var(--yellow)}
 
 .style-number{
   position:absolute;
@@ -590,17 +574,44 @@ button{
   font-size:28px;
 }
 
-/* =========================
-   DANCE MIRROR
-========================= */
+/* =========================================================
+   DANCE MIRROR — WOW ARCADE
+========================================================= */
 
 .game-section{
   background:white;
   position:relative;
+  overflow:hidden;
+}
+
+.game-section::before,
+.game-section::after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.game-section::before{
+  width:280px;
+  height:280px;
+  background:var(--pink);
+  left:-150px;
+  top:150px;
+  opacity:.5;
+}
+
+.game-section::after{
+  width:350px;
+  height:350px;
+  background:var(--blue);
+  right:-200px;
+  bottom:100px;
+  opacity:.6;
 }
 
 .game-card{
-  max-width:900px;
+  max-width:950px;
   margin:auto;
   background:var(--cream);
   border:5px solid var(--navy);
@@ -608,6 +619,7 @@ button{
   padding:35px;
   box-shadow:10px 10px 0 var(--navy);
   position:relative;
+  z-index:2;
 }
 
 .game-top{
@@ -632,6 +644,7 @@ button{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
+  justify-content:flex-end;
 }
 
 .stat{
@@ -640,15 +653,29 @@ button{
   border-radius:18px;
   padding:8px 13px;
   font-weight:700;
+  box-shadow:3px 3px 0 rgba(16,37,118,.15);
 }
 
 .stat strong{
   color:var(--red);
 }
 
+.best-stat strong{
+  color:#8A62D6;
+}
+
+/* =========================
+   ARCADE SCREEN
+========================= */
+
 .game-screen{
-  min-height:280px;
-  background:var(--blue);
+  min-height:470px;
+  background:
+    radial-gradient(circle at 20% 25%,rgba(255,255,255,.9) 0 3px,transparent 4px),
+    radial-gradient(circle at 80% 35%,rgba(255,255,255,.9) 0 3px,transparent 4px),
+    radial-gradient(circle at 50% 70%,rgba(255,255,255,.7) 0 2px,transparent 3px),
+    linear-gradient(145deg,#DCE8FF,#CDBBFF,#FFD8DE);
+  background-size:auto,auto,auto,100% 100%;
   border:4px solid var(--navy);
   border-radius:30px;
   display:flex;
@@ -658,31 +685,664 @@ button{
   text-align:center;
   position:relative;
   overflow:hidden;
+  isolation:isolate;
 }
+
+/* disco lights */
+
+.game-screen::before{
+  content:"";
+  position:absolute;
+  width:160%;
+  height:160%;
+  left:-30%;
+  top:-30%;
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg 20deg,
+      rgba(255,255,255,.15) 20deg 38deg,
+      transparent 38deg 65deg,
+      rgba(201,24,43,.08) 65deg 82deg,
+      transparent 82deg 110deg,
+      rgba(231,200,74,.12) 110deg 130deg,
+      transparent 130deg 170deg,
+      rgba(16,37,118,.08) 170deg 190deg,
+      transparent 190deg 230deg,
+      rgba(255,255,255,.18) 230deg 255deg,
+      transparent 255deg 300deg,
+      rgba(201,24,43,.08) 300deg 325deg,
+      transparent 325deg
+    );
+  animation:discoSpin 12s linear infinite;
+  z-index:-1;
+}
+
+@keyframes discoSpin{
+  to{transform:rotate(360deg)}
+}
+
+.game-screen.playing{
+  animation:screenPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes screenPulse{
+  0%,100%{
+    box-shadow:inset 0 0 0 rgba(255,255,255,0);
+  }
+  50%{
+    box-shadow:inset 0 0 45px rgba(255,255,255,.18);
+  }
+}
+
+/* energy */
+
+.energy-wrap{
+  position:absolute;
+  top:15px;
+  left:18px;
+  right:18px;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:700;
+  color:var(--navy);
+}
+
+.energy-bar{
+  flex:1;
+  height:15px;
+  background:white;
+  border:3px solid var(--navy);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:2px 2px 0 rgba(16,37,118,.15);
+}
+
+.energy-fill{
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,var(--red),var(--yellow));
+  border-radius:20px;
+  transition:.25s;
+}
+
+/* combo */
+
+.combo-pop{
+  position:absolute;
+  top:72px;
+  right:25px;
+  font-family:"Cherry Bomb One";
+  font-size:30px;
+  color:var(--red);
+  pointer-events:none;
+  opacity:0;
+  z-index:30;
+  text-shadow:3px 3px 0 white;
+}
+
+.combo-pop.show{
+  animation:comboPop .7s ease;
+}
+
+@keyframes comboPop{
+  0%{
+    opacity:0;
+    transform:scale(.5) translateY(15px) rotate(-8deg);
+  }
+  30%{
+    opacity:1;
+    transform:scale(1.3) translateY(0) rotate(4deg);
+  }
+  100%{
+    opacity:0;
+    transform:scale(1) translateY(-35px) rotate(0);
+  }
+}
+
+/* feedback */
+
+.feedback{
+  position:absolute;
+  top:85px;
+  left:50%;
+  transform:translateX(-50%);
+  font-family:"Cherry Bomb One";
+  font-size:42px;
+  color:var(--red);
+  text-shadow:4px 4px 0 white;
+  opacity:0;
+  pointer-events:none;
+  z-index:25;
+  white-space:nowrap;
+}
+
+.feedback.show{
+  animation:feedbackPop .75s ease;
+}
+
+.feedback.perfect{
+  color:var(--red);
+}
+
+.feedback.great{
+  color:#8A62D6;
+}
+
+.feedback.good{
+  color:var(--navy);
+}
+
+.feedback.miss{
+  color:#777;
+}
+
+@keyframes feedbackPop{
+  0%{
+    opacity:0;
+    transform:translateX(-50%) scale(.5) translateY(15px);
+  }
+  25%{
+    opacity:1;
+    transform:translateX(-50%) scale(1.25) translateY(0);
+  }
+  100%{
+    opacity:0;
+    transform:translateX(-50%) scale(1) translateY(-45px);
+  }
+}
+
+/* =========================
+   CUTE DANCER
+========================= */
 
 .game-character{
-  font-size:100px;
-  animation:gameDance 1s ease-in-out infinite;
+  width:250px;
+  height:225px;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  margin-bottom:10px;
+  z-index:10;
+  transform-origin:center bottom;
 }
 
-@keyframes gameDance{
-  0%,100%{transform:rotate(-8deg) translateY(0)}
-  50%{transform:rotate(8deg) translateY(-12px)}
+.dancer-character{
+  width:125px;
+  height:190px;
+  position:relative;
+  transform-origin:center bottom;
+  animation:dancerIdle 1.8s ease-in-out infinite;
+  z-index:3;
 }
 
-.game-message{
-  font-family:"Cherry Bomb One";
+.dancer-shadow{
+  position:absolute;
+  bottom:5px;
+  left:50%;
+  width:105px;
+  height:18px;
+  border-radius:50%;
+  background:rgba(16,37,118,.18);
+  transform:translateX(-50%);
+  animation:shadowIdle 1.8s ease-in-out infinite;
+}
+
+@keyframes dancerIdle{
+  0%,100%{
+    transform:translateY(0) rotate(-2deg);
+  }
+  50%{
+    transform:translateY(-7px) rotate(2deg);
+  }
+}
+
+@keyframes shadowIdle{
+  0%,100%{
+    transform:translateX(-50%) scale(1);
+    opacity:.25;
+  }
+  50%{
+    transform:translateX(-50%) scale(.82);
+    opacity:.15;
+  }
+}
+
+/* hair */
+
+.dancer-hair{
+  position:absolute;
+  width:68px;
+  height:78px;
+  left:28px;
+  top:4px;
+  background:#633B31;
+  border:4px solid var(--navy);
+  border-radius:48% 48% 45% 45%;
+  z-index:1;
+}
+
+.dancer-hair span{
+  position:absolute;
+  width:18px;
+  height:35px;
+  background:#633B31;
+  border:4px solid var(--navy);
+  border-top:none;
+  border-radius:0 0 15px 15px;
+  bottom:-22px;
+}
+
+.dancer-hair span:nth-child(1){
+  left:-8px;
+  transform:rotate(12deg);
+}
+
+.dancer-hair span:nth-child(2){
+  left:21px;
+  height:42px;
+}
+
+.dancer-hair span:nth-child(3){
+  right:-8px;
+  transform:rotate(-12deg);
+}
+
+/* head */
+
+.dancer-head{
+  position:absolute;
+  width:61px;
+  height:65px;
+  left:32px;
+  top:13px;
+  background:#FFD1B8;
+  border:4px solid var(--navy);
+  border-radius:45% 45% 48% 48%;
+  z-index:2;
+}
+
+.eye{
+  position:absolute;
+  width:7px;
+  height:10px;
+  background:var(--navy);
+  border-radius:50%;
+  top:27px;
+}
+
+.eye.left{left:15px}
+.eye.right{right:15px}
+
+.blush{
+  position:absolute;
+  width:10px;
+  height:6px;
+  background:#F28B9B;
+  border-radius:50%;
+  top:39px;
+  opacity:.7;
+}
+
+.blush.left{left:7px}
+.blush.right{right:7px}
+
+.mouth{
+  position:absolute;
+  left:50%;
+  top:39px;
+  transform:translateX(-50%);
   color:var(--red);
-  font-size:28px;
-  min-height:40px;
+  font-size:17px;
+  font-weight:700;
+}
+
+/* neck */
+
+.dancer-neck{
+  position:absolute;
+  width:20px;
+  height:20px;
+  left:52px;
+  top:73px;
+  background:#FFD1B8;
+  border:4px solid var(--navy);
+  z-index:1;
+}
+
+/* body */
+
+.dancer-body{
+  position:absolute;
+  width:62px;
+  height:67px;
+  left:32px;
+  top:82px;
+  background:var(--red);
+  border:4px solid var(--navy);
+  border-radius:22px 22px 18px 18px;
+  z-index:2;
+  display:grid;
+  place-items:center;
+}
+
+.shirt-star{
+  color:var(--yellow);
+  font-size:24px;
+  animation:starPulse .8s ease-in-out infinite;
+}
+
+@keyframes starPulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.18)}
+}
+
+/* arms */
+
+.dancer-arm{
+  position:absolute;
+  width:18px;
+  height:63px;
+  background:#FFD1B8;
+  border:4px solid var(--navy);
+  border-radius:20px;
+  top:87px;
+  z-index:1;
+  transform-origin:top center;
+}
+
+.arm-left{
+  left:17px;
+  transform:rotate(20deg);
+}
+
+.arm-right{
+  right:17px;
+  transform:rotate(-20deg);
+}
+
+.hand{
+  position:absolute;
+  bottom:-13px;
+  left:50%;
+  transform:translateX(-50%);
+  width:24px;
+  height:24px;
+  background:#FFD1B8;
+  border:3px solid var(--navy);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:var(--red);
+  font-size:12px;
+}
+
+/* skirt */
+
+.dancer-skirt{
+  position:absolute;
+  width:91px;
+  height:44px;
+  left:17px;
+  top:135px;
+  background:#FF91A4;
+  border:4px solid var(--navy);
+  border-radius:15px 15px 45% 45%;
+  z-index:3;
+  transform-origin:top center;
+}
+
+/* legs */
+
+.dancer-leg{
+  position:absolute;
+  width:20px;
+  height:52px;
+  background:#FFD1B8;
+  border:4px solid var(--navy);
+  border-radius:20px;
+  top:168px;
+  z-index:1;
+  transform-origin:top center;
+}
+
+.leg-left{
+  left:40px;
+  transform:rotate(5deg);
+}
+
+.leg-right{
+  right:40px;
+  transform:rotate(-5deg);
+}
+
+/* shoes */
+
+.shoe{
+  position:absolute;
+  bottom:-10px;
+  width:35px;
+  height:18px;
+  background:white;
+  border:4px solid var(--navy);
+  border-radius:20px 20px 10px 10px;
+}
+
+.leg-left .shoe{
+  left:-12px;
+  transform:rotate(-8deg);
+}
+
+.leg-right .shoe{
+  right:-12px;
+  transform:rotate(8deg);
+}
+
+/* =========================
+   DANCE MOVEMENTS
+========================= */
+
+.move-left .dancer-character{
+  animation:moveLeft .42s cubic-bezier(.2,.8,.2,1);
+}
+
+.move-right .dancer-character{
+  animation:moveRight .42s cubic-bezier(.2,.8,.2,1);
+}
+
+.move-up .dancer-character{
+  animation:moveUp .5s cubic-bezier(.2,.8,.2,1);
+}
+
+.move-down .dancer-character{
+  animation:moveDown .45s ease;
+}
+
+.move-space .dancer-character{
+  animation:moveSpace .6s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes moveLeft{
+  0%{transform:translateX(0) rotate(-2deg)}
+  35%{transform:translateX(-28px) rotate(-10deg) scale(1.05)}
+  70%{transform:translateX(10px) rotate(5deg)}
+  100%{transform:translateX(0) rotate(0)}
+}
+
+@keyframes moveRight{
+  0%{transform:translateX(0) rotate(2deg)}
+  35%{transform:translateX(28px) rotate(10deg) scale(1.05)}
+  70%{transform:translateX(-10px) rotate(-5deg)}
+  100%{transform:translateX(0) rotate(0)}
+}
+
+@keyframes moveUp{
+  0%{transform:translateY(0) scale(1)}
+  35%{transform:translateY(-55px) scale(1.1) rotate(-4deg)}
+  65%{transform:translateY(-25px) scale(1.05) rotate(5deg)}
+  100%{transform:translateY(0) scale(1)}
+}
+
+@keyframes moveDown{
+  0%{transform:translateY(0) scale(1)}
+  35%{transform:translateY(22px) scaleY(.78) scaleX(1.08)}
+  70%{transform:translateY(10px) scaleY(.92)}
+  100%{transform:translateY(0) scale(1)}
+}
+
+@keyframes moveSpace{
+  0%{transform:translateY(0) rotate(0) scale(1)}
+  25%{transform:translateY(-70px) rotate(-8deg) scale(1.1)}
+  50%{transform:translateY(-85px) rotate(8deg) scale(1.18)}
+  75%{transform:translateY(-30px) rotate(-5deg) scale(1.05)}
+  100%{transform:translateY(0) rotate(0) scale(1)}
+}
+
+/* limb reactions */
+
+.move-left .arm-left{
+  animation:armLeft .42s ease;
+}
+
+.move-left .arm-right{
+  animation:armRight .42s ease;
+}
+
+.move-right .arm-left{
+  animation:armRight .42s ease;
+}
+
+.move-right .arm-right{
+  animation:armLeft .42s ease;
+}
+
+.move-up .arm-left,
+.move-up .arm-right,
+.move-space .arm-left,
+.move-space .arm-right{
+  animation:armsUp .5s ease;
+}
+
+.move-down .arm-left,
+.move-down .arm-right{
+  animation:armsDown .45s ease;
+}
+
+.move-left .leg-left,
+.move-right .leg-right{
+  animation:legKick .42s ease;
+}
+
+.move-right .leg-left,
+.move-left .leg-right{
+  animation:legKick2 .42s ease;
+}
+
+.move-space .dancer-skirt{
+  animation:skirtSpin .6s ease;
+}
+
+@keyframes armLeft{
+  0%{transform:rotate(20deg)}
+  40%{transform:rotate(-45deg)}
+  100%{transform:rotate(20deg)}
+}
+
+@keyframes armRight{
+  0%{transform:rotate(-20deg)}
+  40%{transform:rotate(45deg)}
+  100%{transform:rotate(-20deg)}
+}
+
+@keyframes armsUp{
+  0%{transform:rotate(20deg)}
+  45%{transform:rotate(-55deg)}
+  100%{transform:rotate(20deg)}
+}
+
+@keyframes armsDown{
+  0%{transform:rotate(20deg)}
+  45%{transform:rotate(75deg)}
+  100%{transform:rotate(20deg)}
+}
+
+@keyframes legKick{
+  0%{transform:rotate(5deg)}
+  45%{transform:rotate(-28deg)}
+  100%{transform:rotate(5deg)}
+}
+
+@keyframes legKick2{
+  0%{transform:rotate(-5deg)}
+  45%{transform:rotate(28deg)}
+  100%{transform:rotate(-5deg)}
+}
+
+@keyframes skirtSpin{
+  0%{transform:rotate(0) scaleX(1)}
+  50%{transform:rotate(-10deg) scaleX(1.2)}
+  100%{transform:rotate(0) scaleX(1)}
+}
+
+/* hit */
+
+.game-character.hit{
+  animation:hitGlow .35s ease;
+}
+
+@keyframes hitGlow{
+  0%{filter:brightness(1)}
+  45%{filter:brightness(1.4) drop-shadow(0 0 18px rgba(231,200,74,.8))}
+  100%{filter:brightness(1)}
+}
+
+/* miss */
+
+.game-character.miss{
+  animation:missShake .3s ease;
+}
+
+@keyframes missShake{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-12px) rotate(-3deg)}
+  75%{transform:translateX(12px) rotate(3deg)}
+}
+
+/* level */
+
+.game-character.level-up{
+  animation:levelUpDance .7s ease;
+}
+
+@keyframes levelUpDance{
+  0%{transform:scale(1)}
+  35%{transform:scale(1.28) rotate(-8deg)}
+  65%{transform:scale(1.15) rotate(8deg)}
+  100%{transform:scale(1)}
+}
+
+/* =========================
+   SEQUENCE
+========================= */
+
+.sequence-label{
+  font-size:12px;
+  font-weight:700;
+  color:var(--navy);
+  margin-top:2px;
 }
 
 .sequence{
   display:flex;
   gap:10px;
-  margin-top:15px;
+  margin-top:8px;
   flex-wrap:wrap;
   justify-content:center;
+  min-height:52px;
 }
 
 .seq-item{
@@ -695,16 +1355,50 @@ button{
   place-items:center;
   font-size:24px;
   font-weight:700;
+  transition:.18s;
+  box-shadow:3px 3px 0 rgba(16,37,118,.12);
 }
 
 .seq-item.current{
   background:var(--yellow);
   transform:scale(1.15) rotate(-4deg);
+  box-shadow:4px 4px 0 var(--navy);
+  animation:currentPulse .8s ease-in-out infinite;
+}
+
+@keyframes currentPulse{
+  50%{
+    box-shadow:0 0 0 7px rgba(231,200,74,.25);
+  }
 }
 
 .seq-item.done{
-  background:#BDECC8;
+  background:var(--green);
+  color:var(--navy);
 }
+
+/* progress */
+
+.sequence-progress{
+  width:min(520px,90%);
+  height:7px;
+  background:white;
+  border:2px solid var(--navy);
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:10px;
+}
+
+.sequence-progress-fill{
+  width:0%;
+  height:100%;
+  background:var(--red);
+  transition:.2s;
+}
+
+/* =========================
+   CONTROLS
+========================= */
 
 .controls{
   display:grid;
@@ -731,9 +1425,11 @@ button{
   background:var(--pink);
 }
 
-.control:active{
+.control:active,
+.control.pressed{
   transform:translate(3px,3px);
   box-shadow:1px 1px 0 var(--navy);
+  background:var(--yellow);
 }
 
 .space{
@@ -741,6 +1437,8 @@ button{
   background:var(--yellow);
   font-size:17px;
 }
+
+/* start */
 
 .game-start{
   display:block;
@@ -754,6 +1452,7 @@ button{
   font-weight:700;
   cursor:pointer;
   box-shadow:5px 5px 0 var(--navy);
+  transition:.15s;
 }
 
 .game-start:hover{
@@ -761,21 +1460,102 @@ button{
   box-shadow:3px 3px 0 var(--navy);
 }
 
+.game-start:active{
+  transform:translate(5px,5px);
+  box-shadow:0 0 0 var(--navy);
+}
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown{
+  position:absolute;
+  inset:0;
+  background:rgba(16,37,118,.9);
+  z-index:50;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  color:white;
+}
+
+.countdown.show{
+  display:flex;
+}
+
+.countdown-number{
+  font-family:"Cherry Bomb One";
+  font-size:110px;
+  line-height:1;
+  text-shadow:7px 7px 0 var(--red);
+  animation:countPop .7s ease;
+}
+
+.countdown-text{
+  font-size:18px;
+  margin-top:10px;
+  font-weight:700;
+}
+
+@keyframes countPop{
+  0%{
+    transform:scale(.3) rotate(-10deg);
+    opacity:0;
+  }
+  40%{
+    transform:scale(1.2) rotate(5deg);
+    opacity:1;
+  }
+  100%{
+    transform:scale(1) rotate(0);
+  }
+}
+
+/* =========================
+   RESULT
+========================= */
+
 .result{
   display:none;
   position:absolute;
   inset:0;
   background:rgba(255,249,233,.97);
-  z-index:10;
+  z-index:60;
   align-items:center;
   justify-content:center;
   flex-direction:column;
   text-align:center;
   padding:30px;
+  overflow:hidden;
 }
 
 .result.show{
   display:flex;
+  animation:resultIn .4s ease;
+}
+
+@keyframes resultIn{
+  from{
+    opacity:0;
+    transform:scale(1.08);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+.result-badge{
+  background:var(--yellow);
+  border:3px solid var(--navy);
+  border-radius:30px;
+  padding:7px 16px;
+  font-size:13px;
+  font-weight:700;
+  box-shadow:4px 4px 0 var(--navy);
+  margin-bottom:12px;
 }
 
 .result h2{
@@ -786,7 +1566,83 @@ button{
 
 .result-score{
   font-size:25px;
-  margin:10px 0 20px;
+  margin:10px 0 5px;
+}
+
+.result-detail{
+  font-size:14px;
+  color:var(--navy);
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+.new-record{
+  display:none;
+  color:#8A62D6;
+  font-family:"Cherry Bomb One";
+  font-size:25px;
+  margin:5px 0;
+  animation:recordPulse .7s infinite alternate;
+}
+
+.new-record.show{
+  display:block;
+}
+
+@keyframes recordPulse{
+  to{transform:scale(1.1) rotate(-2deg)}
+}
+
+/* =========================
+   PARTICLES
+========================= */
+
+.particle{
+  position:absolute;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:40;
+  animation:particleFly .8s ease-out forwards;
+}
+
+@keyframes particleFly{
+  0%{
+    opacity:1;
+    transform:translate(0,0) scale(1);
+  }
+  100%{
+    opacity:0;
+    transform:translate(var(--x),var(--y)) scale(.1) rotate(180deg);
+  }
+}
+
+.confetti{
+  position:absolute;
+  width:10px;
+  height:16px;
+  top:50%;
+  left:50%;
+  z-index:65;
+  pointer-events:none;
+  animation:confettiFly 1.2s ease-out forwards;
+}
+
+@keyframes confettiFly{
+  0%{
+    opacity:1;
+    transform:translate(-50%,-50%) rotate(0);
+  }
+  100%{
+    opacity:0;
+    transform:
+      translate(
+        calc(-50% + var(--x)),
+        calc(-50% + var(--y))
+      )
+      rotate(720deg);
+  }
 }
 
 /* =========================
@@ -949,6 +1805,14 @@ footer img{
   .gallery-grid{
     grid-template-columns:1fr 1fr;
   }
+
+  .game-top{
+    flex-direction:column;
+  }
+
+  .stats{
+    justify-content:flex-start;
+  }
 }
 
 @media(max-width:520px){
@@ -984,6 +1848,15 @@ footer img{
     font-size:32px;
   }
 
+  .stats{
+    gap:6px;
+  }
+
+  .stat{
+    font-size:12px;
+    padding:7px 9px;
+  }
+
   .controls{
     grid-template-columns:repeat(2,1fr);
   }
@@ -993,7 +1866,23 @@ footer img{
   }
 
   .game-screen{
-    min-height:250px;
+    min-height:430px;
+  }
+
+  .feedback{
+    font-size:30px;
+  }
+
+  .combo-pop{
+    font-size:23px;
+  }
+
+  .countdown-number{
+    font-size:85px;
+  }
+
+  .result h2{
+    font-size:40px;
   }
 }
 </style>
@@ -1003,6 +1892,7 @@ footer img{
 
 <!-- HEADER -->
 <header class="header">
+
   <a href="index.html">
     <img src="assets/logo1A.png" class="logo" alt="EPIC">
   </a>
@@ -1010,6 +1900,7 @@ footer img{
   <a href="index.html#chuong-trinh" class="back">
     ← Về EPIC
   </a>
+
 </header>
 
 
@@ -1036,6 +1927,7 @@ footer img{
       </p>
 
       <div class="hero-buttons">
+
         <a href="index.html#dang-ky" class="btn btn-primary">
           ĐĂNG KÝ HỌC THỬ 💛
         </a>
@@ -1043,6 +1935,7 @@ footer img{
         <a href="#styles" class="btn btn-secondary">
           XEM PHONG CÁCH →
         </a>
+
       </div>
 
     </div>
@@ -1077,20 +1970,25 @@ footer img{
 
 <!-- MARQUEE -->
 <div class="marquee">
+
   <div class="marquee-track">
+
     MOVE <span>•</span>
     GROOVE <span>•</span>
     ENERGY <span>•</span>
     FUN <span>•</span>
     CONFIDENCE <span>•</span>
     EPIC DANCE <span>•</span>
+
     MOVE <span>•</span>
     GROOVE <span>•</span>
     ENERGY <span>•</span>
     FUN <span>•</span>
     CONFIDENCE <span>•</span>
     EPIC DANCE <span>•</span>
+
   </div>
+
 </div>
 
 
@@ -1112,10 +2010,12 @@ footer img{
     </p>
 
     <div class="beat-boxes">
+
       <div class="beat count">5</div>
       <div class="beat count">6</div>
       <div class="beat count">7</div>
       <div class="beat count">8</div>
+
     </div>
 
     <div class="beat-line"></div>
@@ -1176,45 +2076,68 @@ footer img{
     <div class="style-grid">
 
       <div class="style-card">
+
         <div class="style-number">01</div>
+
         <div class="style-icon">🧢</div>
+
         <h3>HIP HOP</h3>
+
         <p>
           Cá tính, vui nhộn và đầy năng lượng.
           Học groove, freestyle và những bước nhảy
           cực chất.
         </p>
+
       </div>
 
+
       <div class="style-card">
+
         <div class="style-number">02</div>
+
         <div class="style-icon">⭐</div>
+
         <h3>JAZZ FUNK</h3>
+
         <p>
           Biểu cảm, tự tin và cực kỳ cuốn hút.
           Phù hợp với những bạn thích biểu diễn.
         </p>
+
       </div>
 
+
       <div class="style-card">
+
         <div class="style-number">03</div>
+
         <div class="style-icon">🎤</div>
+
         <h3>K-POP DANCE</h3>
+
         <p>
           Học choreography hiện đại,
           kết hợp âm nhạc và phong cách trình diễn.
         </p>
+
       </div>
 
+
       <div class="style-card">
+
         <div class="style-number">04</div>
+
         <div class="style-icon">🌈</div>
+
         <h3>FREE STYLE</h3>
+
         <p>
           Không khuôn mẫu.
           Tự tạo chuyển động và tìm ra phong cách
           riêng của mình.
         </p>
+
       </div>
 
     </div>
@@ -1240,43 +2163,74 @@ footer img{
     <div class="journey-grid">
 
       <div class="age-card">
+
         <div class="age-icon">🐣</div>
-        <div class="age">4–6 TUỔI</div>
+
+        <div class="age">
+          4–6 TUỔI
+        </div>
+
         <h3>START</h3>
+
         <p>
           Làm quen âm nhạc,
           vận động và nhịp điệu.
         </p>
+
       </div>
 
+
       <div class="age-card">
+
         <div class="age-icon">🐻</div>
-        <div class="age">7–10 TUỔI</div>
+
+        <div class="age">
+          7–10 TUỔI
+        </div>
+
         <h3>GROOVE</h3>
+
         <p>
           Học bước cơ bản,
           phối hợp và biểu cảm.
         </p>
+
       </div>
 
+
       <div class="age-card">
+
         <div class="age-icon">🦋</div>
-        <div class="age">11–14 TUỔI</div>
+
+        <div class="age">
+          11–14 TUỔI
+        </div>
+
         <h3>STYLE</h3>
+
         <p>
           Khám phá cá tính,
           phong cách và freestyle.
         </p>
+
       </div>
 
+
       <div class="age-card">
+
         <div class="age-icon">🌟</div>
-        <div class="age">15–18 TUỔI</div>
+
+        <div class="age">
+          15–18 TUỔI
+        </div>
+
         <h3>PERFORM</h3>
+
         <p>
           Nâng cao kỹ năng
           và tự tin trình diễn.
         </p>
+
       </div>
 
     </div>
@@ -1286,7 +2240,10 @@ footer img{
 </section>
 
 
-<!-- GAME -->
+<!-- ======================================================
+     DANCE GAME
+====================================================== -->
+
 <section class="section game-section">
 
   <div class="container">
@@ -1299,19 +2256,23 @@ footer img{
       DANCE <span>CHALLENGE!</span>
     </h2>
 
+
     <div class="game-card">
 
       <div class="game-top">
 
         <div>
+
           <div class="game-title">
             DANCE MIRROR 🪩
           </div>
 
           <p class="game-sub">
-            Nhìn chuỗi → bấm đúng nhịp → lên level!
+            Nhìn chuỗi → bấm đúng → giữ combo → lên level!
           </p>
+
         </div>
+
 
         <div class="stats">
 
@@ -1335,36 +2296,231 @@ footer img{
             <strong id="time">30</strong>
           </div>
 
+          <div class="stat best-stat">
+            BEST:
+            <strong id="bestScore">0</strong>
+          </div>
+
         </div>
 
       </div>
 
 
-      <div class="game-screen">
+      <div class="game-screen" id="gameScreen">
 
-        <div class="game-character" id="gameCharacter">
-          💃
-        </div>
+        <!-- ENERGY -->
 
-        <div class="game-message" id="gameMessage">
-          READY?
-        </div>
+        <div class="energy-wrap">
 
-        <div class="sequence" id="sequence"></div>
+          <span>
+            ENERGY
+          </span>
 
+          <div class="energy-bar">
 
-        <div class="result" id="result">
+            <div
+              class="energy-fill"
+              id="energyFill">
+            </div>
 
-          <h2 id="resultTitle">
-            PERFECT! 🎉
-          </h2>
-
-          <div class="result-score" id="resultScore">
-            Score: 0
           </div>
 
-          <button class="game-start" id="playAgain">
+        </div>
+
+
+        <!-- COMBO -->
+
+        <div
+          class="combo-pop"
+          id="comboPop">
+        </div>
+
+
+        <!-- FEEDBACK -->
+
+        <div
+          class="feedback"
+          id="feedback">
+        </div>
+
+
+        <!-- COUNTDOWN -->
+
+        <div
+          class="countdown"
+          id="countdown">
+
+          <div
+            class="countdown-number"
+            id="countdownNumber">
+            3
+          </div>
+
+          <div class="countdown-text">
+            GET READY TO DANCE!
+          </div>
+
+        </div>
+
+
+        <!-- CHARACTER -->
+
+        <div
+          class="game-character"
+          id="gameCharacter">
+
+          <div class="dancer-character">
+
+            <div class="dancer-hair">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+
+            <div class="dancer-head">
+
+              <div class="eye left"></div>
+              <div class="eye right"></div>
+
+              <div class="blush left"></div>
+              <div class="blush right"></div>
+
+              <div class="mouth">
+                ⌣
+              </div>
+
+            </div>
+
+
+            <div class="dancer-neck"></div>
+
+
+            <div class="dancer-body">
+
+              <div class="shirt-star">
+                ★
+              </div>
+
+            </div>
+
+
+            <div class="dancer-arm arm-left">
+
+              <div class="hand">
+                ♡
+              </div>
+
+            </div>
+
+
+            <div class="dancer-arm arm-right">
+
+              <div class="hand">
+                ♡
+              </div>
+
+            </div>
+
+
+            <div class="dancer-skirt"></div>
+
+
+            <div class="dancer-leg leg-left">
+
+              <div class="shoe"></div>
+
+            </div>
+
+
+            <div class="dancer-leg leg-right">
+
+              <div class="shoe"></div>
+
+            </div>
+
+          </div>
+
+
+          <div class="dancer-shadow"></div>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+
+        <div
+          class="game-message"
+          id="gameMessage">
+
+          READY?
+
+        </div>
+
+
+        <div class="sequence-label">
+          YOUR NEXT MOVE
+        </div>
+
+
+        <!-- SEQUENCE -->
+
+        <div
+          class="sequence"
+          id="sequence">
+        </div>
+
+
+        <!-- PROGRESS -->
+
+        <div class="sequence-progress">
+
+          <div
+            class="sequence-progress-fill"
+            id="sequenceProgress">
+          </div>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div
+          class="result"
+          id="result">
+
+          <div class="result-badge">
+            🪩 DANCE COMPLETE
+          </div>
+
+          <h2 id="resultTitle">
+            PERFECT!
+          </h2>
+
+          <div
+            class="result-score"
+            id="resultScore">
+            Bạn đạt 0 điểm
+          </div>
+
+          <div
+            class="result-detail"
+            id="resultDetail">
+            Level 1 · Combo 0
+          </div>
+
+          <div
+            class="new-record"
+            id="newRecord">
+            🏆 NEW RECORD!
+          </div>
+
+          <button
+            class="game-start"
+            id="playAgain">
+
             CHƠI LẠI 💃
+
           </button>
 
         </div>
@@ -1372,33 +2528,53 @@ footer img{
       </div>
 
 
+      <!-- CONTROLS -->
+
       <div class="controls">
 
-        <button class="control" data-key="ArrowUp">
+        <button
+          class="control"
+          data-key="ArrowUp">
           ↑
         </button>
 
-        <button class="control" data-key="ArrowLeft">
+        <button
+          class="control"
+          data-key="ArrowLeft">
           ←
         </button>
 
-        <button class="control" data-key="ArrowDown">
+        <button
+          class="control"
+          data-key="ArrowDown">
           ↓
         </button>
 
-        <button class="control" data-key="ArrowRight">
+        <button
+          class="control"
+          data-key="ArrowRight">
           →
         </button>
 
-        <button class="control space" data-key="Space">
+        <button
+          class="control space"
+          data-key="Space">
+
           SPACE — NHẢY! 💥
+
         </button>
 
       </div>
 
 
-      <button class="game-start" id="startGame">
+      <!-- START -->
+
+      <button
+        class="game-start"
+        id="startGame">
+
         ▶ START DANCE
+
       </button>
 
     </div>
@@ -1458,11 +2634,15 @@ footer img{
 <!-- CTA -->
 <section class="cta">
 
-  <div class="sticker heart" style="left:8%;top:25%;">
+  <div
+    class="sticker heart"
+    style="left:8%;top:25%;">
     ♡
   </div>
 
-  <div class="sticker star" style="right:8%;bottom:20%;">
+  <div
+    class="sticker star"
+    style="right:8%;bottom:20%;">
     ✦
   </div>
 
@@ -1476,8 +2656,12 @@ footer img{
     cùng EPIC chưa?
   </p>
 
-  <a href="index.html#dang-ky" class="btn btn-primary">
+  <a
+    href="index.html#dang-ky"
+    class="btn btn-primary">
+
     ĐĂNG KÝ HỌC THỬ 💛
+
   </a>
 
 </section>
@@ -1486,7 +2670,9 @@ footer img{
 <!-- FOOTER -->
 <footer>
 
-  <img src="assets/logo1A.png" alt="EPIC">
+  <img
+    src="assets/logo1A.png"
+    alt="EPIC">
 
   <p>
     EPIC – Thỏa sức đam mê, khơi nguồn sáng tạo
@@ -1501,11 +2687,11 @@ footer img{
 
 <script>
 
-/* =========================
-   BEAT INTERACTION
-========================= */
+/* =========================================================
+   WARM UP
+========================================================= */
 
-document.querySelectorAll(".count").forEach((item,index)=>{
+document.querySelectorAll(".count").forEach((item)=>{
 
   item.addEventListener("click",()=>{
 
@@ -1523,9 +2709,9 @@ document.querySelectorAll(".count").forEach((item,index)=>{
 });
 
 
-/* =========================
-   DANCE MIRROR
-========================= */
+/* =========================================================
+   DANCE MIRROR — WOW ENGINE
+========================================================= */
 
 const moves = [
   "ArrowLeft",
@@ -1536,375 +2722,1532 @@ const moves = [
 ];
 
 const symbols = {
+
   ArrowLeft:"←",
   ArrowUp:"↑",
   ArrowRight:"→",
   ArrowDown:"↓",
   Space:"●"
+
 };
+
+
+/* =========================
+   GAME STATE
+========================= */
 
 let sequence = [];
 let currentStep = 0;
+
 let score = 0;
 let combo = 0;
+let maxCombo = 0;
+
 let level = 1;
+
 let timeLeft = 30;
+
+let energy = 100;
+
 let playing = false;
+let acceptingInput = false;
+
 let timer = null;
+let countdownTimer = null;
 let nextLevelTimer = null;
 
+let sequenceStartTime = 0;
 
-/* ELEMENTS */
-
-const scoreEl = document.getElementById("score");
-const comboEl = document.getElementById("combo");
-const levelEl = document.getElementById("level");
-const timeEl = document.getElementById("time");
-
-const sequenceEl = document.getElementById("sequence");
-const messageEl = document.getElementById("gameMessage");
-const characterEl = document.getElementById("gameCharacter");
-
-const startBtn = document.getElementById("startGame");
-const resultEl = document.getElementById("result");
-const resultTitle = document.getElementById("resultTitle");
-const resultScore = document.getElementById("resultScore");
-const playAgain = document.getElementById("playAgain");
+let bestScore = Number(
+  localStorage.getItem("epicDanceHighScore") || 0
+);
 
 
-/* CREATE SEQUENCE */
+/* =========================
+   ELEMENTS
+========================= */
+
+const scoreEl =
+  document.getElementById("score");
+
+const comboEl =
+  document.getElementById("combo");
+
+const levelEl =
+  document.getElementById("level");
+
+const timeEl =
+  document.getElementById("time");
+
+const bestScoreEl =
+  document.getElementById("bestScore");
+
+const energyFill =
+  document.getElementById("energyFill");
+
+const sequenceEl =
+  document.getElementById("sequence");
+
+const sequenceProgress =
+  document.getElementById("sequenceProgress");
+
+const messageEl =
+  document.getElementById("gameMessage");
+
+const characterEl =
+  document.getElementById("gameCharacter");
+
+const gameScreen =
+  document.getElementById("gameScreen");
+
+const startBtn =
+  document.getElementById("startGame");
+
+const resultEl =
+  document.getElementById("result");
+
+const resultTitle =
+  document.getElementById("resultTitle");
+
+const resultScore =
+  document.getElementById("resultScore");
+
+const resultDetail =
+  document.getElementById("resultDetail");
+
+const newRecordEl =
+  document.getElementById("newRecord");
+
+const playAgain =
+  document.getElementById("playAgain");
+
+const comboPop =
+  document.getElementById("comboPop");
+
+const feedbackEl =
+  document.getElementById("feedback");
+
+const countdownEl =
+  document.getElementById("countdown");
+
+const countdownNumber =
+  document.getElementById("countdownNumber");
+
+
+/* =========================
+   BEST SCORE
+========================= */
+
+function updateBest(){
+
+  bestScoreEl.textContent =
+    bestScore;
+
+}
+
+
+/* =========================
+   RANDOM SEQUENCE
+========================= */
 
 function createSequence(){
 
   sequence = [];
 
-  const length = Math.min(3 + level,10);
+  /*
+    Level 1 = 4 moves
+    Level 2 = 5
+    ...
+    Maximum = 10
+  */
+
+  const length =
+    Math.min(3 + level,10);
+
 
   for(let i=0;i<length;i++){
 
     let move;
 
     do{
-      move = moves[Math.floor(Math.random()*moves.length)];
+
+      move =
+        moves[
+          Math.floor(
+            Math.random()*moves.length
+          )
+        ];
+
     }
+
     while(
+
       i >= 2 &&
       sequence[i-1] === move &&
       sequence[i-2] === move
+
     );
 
+
     sequence.push(move);
+
   }
+
 
   currentStep = 0;
 
+  sequenceStartTime =
+    performance.now();
+
   renderSequence();
+
 }
 
 
-/* RENDER */
+/* =========================
+   RENDER SEQUENCE
+========================= */
 
 function renderSequence(){
 
   sequenceEl.innerHTML = "";
 
+
   sequence.forEach((move,index)=>{
 
-    const item = document.createElement("div");
+    const item =
+      document.createElement("div");
 
-    item.className = "seq-item";
+    item.className =
+      "seq-item";
+
 
     if(index === currentStep){
-      item.classList.add("current");
+
+      item.classList.add(
+        "current"
+      );
+
     }
 
+
     if(index < currentStep){
-      item.classList.add("done");
+
+      item.classList.add(
+        "done"
+      );
+
       item.textContent = "✓";
-    }else{
-      item.textContent = symbols[move];
+
     }
+    else{
+
+      item.textContent =
+        symbols[move];
+
+    }
+
 
     sequenceEl.appendChild(item);
 
   });
 
+
+  updateSequenceProgress();
+
 }
 
 
-/* STATS */
+/* =========================
+   PROGRESS
+========================= */
+
+function updateSequenceProgress(){
+
+  if(!sequence.length){
+
+    sequenceProgress.style.width =
+      "0%";
+
+    return;
+
+  }
+
+
+  const percent =
+    (currentStep / sequence.length) * 100;
+
+
+  sequenceProgress.style.width =
+    percent + "%";
+
+}
+
+
+/* =========================
+   STATS
+========================= */
 
 function updateStats(){
 
-  scoreEl.textContent = score;
-  comboEl.textContent = combo;
-  levelEl.textContent = level;
-  timeEl.textContent = timeLeft;
+  scoreEl.textContent =
+    score;
+
+  comboEl.textContent =
+    combo;
+
+  levelEl.textContent =
+    level;
+
+  timeEl.textContent =
+    timeLeft;
+
+  bestScoreEl.textContent =
+    bestScore;
+
 
   if(timeLeft <= 5){
-    timeEl.style.color = "var(--red)";
-  }else{
-    timeEl.style.color = "";
+
+    timeEl.style.color =
+      "var(--red)";
+
+  }
+  else{
+
+    timeEl.style.color =
+      "";
+
+  }
+
+
+  energyFill.style.width =
+    Math.max(0,energy) + "%";
+
+
+  if(energy <= 25){
+
+    energyFill.style.background =
+      "var(--red)";
+
+  }
+  else if(energy <= 50){
+
+    energyFill.style.background =
+      "var(--yellow)";
+
+  }
+  else{
+
+    energyFill.style.background =
+      "linear-gradient(90deg,var(--red),var(--yellow))";
+
   }
 
 }
 
 
-/* MESSAGE */
+/* =========================
+   MESSAGE
+========================= */
 
 function showMessage(text){
 
-  messageEl.textContent = text;
+  messageEl.textContent =
+    text;
 
 }
 
 
-/* DANCER */
+/* =========================
+   FEEDBACK
+========================= */
 
-function dancerAnimation(){
+function showFeedback(
+  text,
+  type=""
+){
 
-  characterEl.animate(
-    [
-      {
-        transform:"scale(1) rotate(-8deg)"
-      },
-      {
-        transform:"scale(1.2) rotate(8deg)"
-      },
-      {
-        transform:"scale(.95) rotate(-5deg)"
-      },
-      {
-        transform:"scale(1) rotate(0)"
-      }
-    ],
-    {
-      duration:450,
-      easing:"ease-out"
-    }
+  feedbackEl.textContent =
+    text;
+
+  feedbackEl.className =
+    "feedback " + type;
+
+  /*
+    Force animation restart
+  */
+
+  void feedbackEl.offsetWidth;
+
+  feedbackEl.classList.add(
+    "show"
   );
 
 }
 
 
-/* START */
+/* =========================
+   COMBO POP
+========================= */
+
+function showComboPop(text){
+
+  comboPop.textContent =
+    text;
+
+  comboPop.classList.remove(
+    "show"
+  );
+
+  void comboPop.offsetWidth;
+
+  comboPop.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================
+   PARTICLES
+========================= */
+
+function createParticles(
+  amount=14
+){
+
+  const rect =
+    gameScreen.getBoundingClientRect();
+
+
+  for(let i=0;i<amount;i++){
+
+    const particle =
+      document.createElement("div");
+
+    particle.className =
+      "particle";
+
+
+    const x =
+      (Math.random()-.5)*280;
+
+    const y =
+      (Math.random()-.5)*180;
+
+
+    particle.style.left =
+      "50%";
+
+    particle.style.top =
+      "48%";
+
+    particle.style.setProperty(
+      "--x",
+      x + "px"
+    );
+
+    particle.style.setProperty(
+      "--y",
+      y + "px"
+    );
+
+
+    particle.style.background =
+      [
+        "var(--red)",
+        "var(--yellow)",
+        "var(--navy)",
+        "white",
+        "#CDBBFF"
+      ][
+        Math.floor(
+          Math.random()*5
+        )
+      ];
+
+
+    particle.style.width =
+      (6 + Math.random()*7) + "px";
+
+    particle.style.height =
+      (6 + Math.random()*7) + "px";
+
+
+    gameScreen.appendChild(
+      particle
+    );
+
+
+    setTimeout(()=>{
+      particle.remove();
+    },850);
+
+  }
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function createConfetti(
+  amount=45
+){
+
+  for(let i=0;i<amount;i++){
+
+    const confetti =
+      document.createElement("div");
+
+    confetti.className =
+      "confetti";
+
+
+    const x =
+      (Math.random()-.5)*650;
+
+    const y =
+      (Math.random()-.5)*500;
+
+
+    confetti.style.setProperty(
+      "--x",
+      x + "px"
+    );
+
+    confetti.style.setProperty(
+      "--y",
+      y + "px"
+    );
+
+
+    confetti.style.background =
+      [
+        "var(--red)",
+        "var(--yellow)",
+        "var(--navy)",
+        "var(--pink)",
+        "var(--purple)"
+      ][
+        Math.floor(
+          Math.random()*5
+        )
+      ];
+
+
+    confetti.style.transform =
+      "rotate(" +
+      Math.random()*360 +
+      "deg)";
+
+
+    resultEl.appendChild(
+      confetti
+    );
+
+
+    setTimeout(()=>{
+      confetti.remove();
+    },1300);
+
+  }
+
+}
+
+
+/* =========================
+   ENERGY
+========================= */
+
+function changeEnergy(amount){
+
+  energy =
+    Math.max(
+      0,
+      Math.min(
+        100,
+        energy + amount
+      )
+    );
+
+
+  updateStats();
+
+
+  if(
+    energy <= 0 &&
+    playing
+  ){
+
+    showMessage(
+      "OUT OF ENERGY! 😵"
+    );
+
+    setTimeout(()=>{
+      endGame("energy");
+    },300);
+
+  }
+
+}
+
+
+/* =========================
+   DANCER MOVE
+========================= */
+
+function dancerAnimation(
+  key
+){
+
+  /*
+    Remove only movement classes.
+    Do NOT cancel the idle animation
+    on .dancer-character.
+  */
+
+  characterEl.classList.remove(
+    "move-left",
+    "move-right",
+    "move-up",
+    "move-down",
+    "move-space",
+    "hit",
+    "miss",
+    "level-up"
+  );
+
+
+  void characterEl.offsetWidth;
+
+
+  if(key === "ArrowLeft"){
+
+    characterEl.classList.add(
+      "move-left"
+    );
+
+  }
+
+  else if(key === "ArrowRight"){
+
+    characterEl.classList.add(
+      "move-right"
+    );
+
+  }
+
+  else if(key === "ArrowUp"){
+
+    characterEl.classList.add(
+      "move-up"
+    );
+
+  }
+
+  else if(key === "ArrowDown"){
+
+    characterEl.classList.add(
+      "move-down"
+    );
+
+  }
+
+  else if(key === "Space"){
+
+    characterEl.classList.add(
+      "move-space"
+    );
+
+  }
+
+
+  characterEl.classList.add(
+    "hit"
+  );
+
+
+  setTimeout(()=>{
+
+    characterEl.classList.remove(
+      "hit"
+    );
+
+  },400);
+
+}
+
+
+/* =========================
+   MISS
+========================= */
+
+function missAnimation(){
+
+  characterEl.classList.remove(
+    "miss"
+  );
+
+  void characterEl.offsetWidth;
+
+  characterEl.classList.add(
+    "miss"
+  );
+
+  setTimeout(()=>{
+
+    characterEl.classList.remove(
+      "miss"
+    );
+
+  },320);
+
+}
+
+
+/* =========================
+   START COUNTDOWN
+========================= */
+
+function startCountdown(){
+
+  countdownEl.classList.add(
+    "show"
+  );
+
+
+  const numbers =
+    ["3","2","1","GO!"];
+
+  let index = 0;
+
+
+  countdownNumber.textContent =
+    numbers[index];
+
+
+  countdownTimer =
+    setInterval(()=>{
+
+      index++;
+
+
+      if(index >= numbers.length){
+
+        clearInterval(
+          countdownTimer
+        );
+
+        countdownEl.classList.remove(
+          "show"
+        );
+
+        beginActualGame();
+
+        return;
+
+      }
+
+
+      countdownNumber.textContent =
+        numbers[index];
+
+
+      countdownNumber.style.animation =
+        "none";
+
+      void countdownNumber.offsetWidth;
+
+      countdownNumber.style.animation =
+        "countPop .7s ease";
+
+    },700);
+
+}
+
+
+/* =========================
+   ACTUAL GAME START
+========================= */
+
+function beginActualGame(){
+
+  playing = true;
+
+  acceptingInput = true;
+
+  gameScreen.classList.add(
+    "playing"
+  );
+
+  startBtn.textContent =
+    "↻ ĐANG NHẢY...";
+
+  showMessage(
+    "YOUR MOVE! 👀"
+  );
+
+
+  createSequence();
+
+
+  timer =
+    setInterval(()=>{
+
+      timeLeft--;
+
+      updateStats();
+
+
+      if(timeLeft <= 0){
+
+        endGame("time");
+
+      }
+
+    },1000);
+
+}
+
+
+/* =========================
+   START GAME
+========================= */
 
 function startGame(){
 
   clearInterval(timer);
+
+  clearInterval(countdownTimer);
+
   clearTimeout(nextLevelTimer);
 
+
   score = 0;
+
   combo = 0;
+
+  maxCombo = 0;
+
   level = 1;
+
   timeLeft = 30;
 
-  playing = true;
+  energy = 100;
 
-  resultEl.classList.remove("show");
-
-  startBtn.textContent = "↻ ĐANG NHẢY...";
-
-  createSequence();
-  updateStats();
-
-  showMessage("LET'S DANCE! 💃");
-
-  timer = setInterval(()=>{
-
-    timeLeft--;
-
-    updateStats();
-
-    if(timeLeft <= 0){
-      endGame();
-    }
-
-  },1000);
-
-}
-
-
-/* END */
-
-function endGame(){
 
   playing = false;
 
-  clearInterval(timer);
-  clearTimeout(nextLevelTimer);
-
-  startBtn.textContent = "▶ START DANCE";
-
-  let rank = "";
-
-  if(score >= 1500){
-    rank = "🔥 DANCE LEGEND";
-  }
-  else if(score >= 900){
-    rank = "⭐ EPIC PERFORMER";
-  }
-  else if(score >= 400){
-    rank = "💃 GROOVE MAKER";
-  }
-  else{
-    rank = "🎵 DANCE STARTER";
-  }
-
-  resultTitle.textContent = rank;
-
-  resultScore.textContent =
-    "Bạn đạt " + score + " điểm · Level " + level;
-
-  resultEl.classList.add("show");
-
-}
+  acceptingInput = false;
 
 
-/* LEVEL UP */
+  resultEl.classList.remove(
+    "show"
+  );
 
-function nextLevel(){
+  newRecordEl.classList.remove(
+    "show"
+  );
 
-  level++;
 
-  score += 100 * level;
+  gameScreen.classList.remove(
+    "playing"
+  );
 
-  combo += 2;
 
-  showMessage("LEVEL UP! 🌟");
+  startBtn.textContent =
+    "GET READY...";
+
 
   updateStats();
 
-  characterEl.animate(
-    [
-      {transform:"scale(1)"},
-      {transform:"scale(1.35) rotate(10deg)"},
-      {transform:"scale(1)"}
-    ],
-    {
-      duration:500
-    }
+
+  showMessage(
+    "GET READY! 🪩"
   );
 
-  nextLevelTimer = setTimeout(()=>{
 
-    if(playing){
-      createSequence();
-      showMessage("YOUR MOVE! 👀");
-    }
-
-  },700);
+  startCountdown();
 
 }
 
 
-/* CHECK MOVE */
+/* =========================
+   END GAME
+========================= */
+
+function endGame(reason="time"){
+
+  if(!playing && !acceptingInput){
+
+    /*
+      Prevent duplicate endings
+      during countdown/result state.
+    */
+
+  }
+
+
+  playing = false;
+
+  acceptingInput = false;
+
+
+  clearInterval(timer);
+
+  clearInterval(countdownTimer);
+
+  clearTimeout(nextLevelTimer);
+
+
+  gameScreen.classList.remove(
+    "playing"
+  );
+
+
+  startBtn.textContent =
+    "▶ START DANCE";
+
+
+  /*
+    High score
+  */
+
+  let isNewRecord = false;
+
+
+  if(score > bestScore){
+
+    bestScore = score;
+
+    localStorage.setItem(
+      "epicDanceHighScore",
+      bestScore
+    );
+
+    isNewRecord = true;
+
+  }
+
+
+  updateBest();
+
+
+  /*
+    Rank
+  */
+
+  let rank = "";
+
+
+  if(score >= 1800){
+
+    rank =
+      "🔥 DANCE LEGEND";
+
+  }
+
+  else if(score >= 1100){
+
+    rank =
+      "⭐ EPIC SUPERSTAR";
+
+  }
+
+  else if(score >= 700){
+
+    rank =
+      "💃 GROOVE MASTER";
+
+  }
+
+  else if(score >= 350){
+
+    rank =
+      "🎵 GROOVE MAKER";
+
+  }
+
+  else{
+
+    rank =
+      "🌱 DANCE STARTER";
+
+  }
+
+
+  if(reason === "energy"){
+
+    resultTitle.textContent =
+      "KEEP DANCING! 💗";
+
+  }
+  else{
+
+    resultTitle.textContent =
+      rank;
+
+  }
+
+
+  resultScore.textContent =
+    "Bạn đạt " +
+    score +
+    " điểm";
+
+
+  resultDetail.textContent =
+    "Level " +
+    level +
+    " · Max Combo x" +
+    maxCombo;
+
+
+  if(isNewRecord){
+
+    newRecordEl.classList.add(
+      "show"
+    );
+
+    setTimeout(()=>{
+      createConfetti(55);
+    },100);
+
+  }
+  else{
+
+    newRecordEl.classList.remove(
+      "show"
+    );
+
+  }
+
+
+  resultEl.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================
+   LEVEL UP
+========================= */
+
+function nextLevel(){
+
+  acceptingInput = false;
+
+
+  level++;
+
+
+  /*
+    Level bonus
+  */
+
+  score +=
+    100 * level;
+
+
+  /*
+    Keep combo alive
+  */
+
+  combo += 2;
+
+  maxCombo =
+    Math.max(
+      maxCombo,
+      combo
+    );
+
+
+  /*
+    Recover energy
+  */
+
+  energy =
+    Math.min(
+      100,
+      energy + 12
+    );
+
+
+  showMessage(
+    "LEVEL " +
+    level +
+    "! 🌟"
+  );
+
+
+  showComboPop(
+    "LEVEL UP!"
+  );
+
+
+  updateStats();
+
+
+  characterEl.classList.add(
+    "level-up"
+  );
+
+
+  createParticles(24);
+
+
+  setTimeout(()=>{
+
+    characterEl.classList.remove(
+      "level-up"
+    );
+
+  },750);
+
+
+  nextLevelTimer =
+    setTimeout(()=>{
+
+      if(playing){
+
+        createSequence();
+
+        acceptingInput = true;
+
+        showMessage(
+          "NEW COMBO! 🔥"
+        );
+
+      }
+
+    },850);
+
+}
+
+
+/* =========================
+   CALCULATE ACCURACY
+========================= */
+
+function getTimingQuality(){
+
+  const now =
+    performance.now();
+
+  const elapsed =
+    now - sequenceStartTime;
+
+
+  /*
+    Faster response = better.
+    Still generous for children.
+  */
+
+  if(elapsed < 1200){
+
+    return "PERFECT";
+
+  }
+
+  if(elapsed < 2200){
+
+    return "GREAT";
+
+  }
+
+  return "GOOD";
+
+}
+
+
+/* =========================
+   CHECK MOVE
+========================= */
 
 function checkMove(key){
 
-  if(!playing) return;
+  if(
+    !playing ||
+    !acceptingInput
+  ){
 
-  const expected = sequence[currentStep];
+    return;
+
+  }
+
+
+  const expected =
+    sequence[currentStep];
+
+
+  /*
+    CORRECT
+  */
 
   if(key === expected){
 
+    const quality =
+      getTimingQuality();
+
+
     currentStep++;
+
 
     combo++;
 
-    score += 10 + Math.min(combo * 2,50);
 
-    dancerAnimation();
+    maxCombo =
+      Math.max(
+        maxCombo,
+        combo
+      );
 
-    showMessage(
-      combo >= 5
-        ? "COMBO x" + combo + " 🔥"
-        : "NICE! ✨"
-    );
 
-    renderSequence();
-    updateStats();
+    /*
+      Score
+    */
 
-    if(currentStep >= sequence.length){
+    let points = 10;
 
-      nextLevel();
+
+    if(quality === "PERFECT"){
+
+      points = 30;
 
     }
 
-  }else{
+    else if(quality === "GREAT"){
 
-    combo = 0;
+      points = 20;
 
-    showMessage("TRY AGAIN! 💗");
+    }
+
+
+    /*
+      Combo bonus
+    */
+
+    points +=
+      Math.min(
+        combo * 2,
+        50
+      );
+
+
+    /*
+      Higher level bonus
+    */
+
+    points +=
+      (level - 1) * 3;
+
+
+    score +=
+      points;
+
+
+    /*
+      Energy reward
+    */
+
+    changeEnergy(
+      combo >= 5 ? 5 : 3
+    );
+
+
+    dancerAnimation(
+      key
+    );
+
+
+    /*
+      Feedback
+    */
+
+    showFeedback(
+      quality === "PERFECT"
+        ? "PERFECT! ✨"
+        : quality === "GREAT"
+        ? "GREAT! ⭐"
+        : "GOOD! 💗",
+      quality.toLowerCase()
+    );
+
+
+    if(combo >= 3){
+
+      showMessage(
+        "COMBO x" +
+        combo +
+        " 🔥"
+      );
+
+    }
+    else{
+
+      showMessage(
+        "NICE MOVE! ✨"
+      );
+
+    }
+
+
+    /*
+      Big combo effects
+    */
+
+    if(combo > 0 && combo % 5 === 0){
+
+      showComboPop(
+        "COMBO x" +
+        combo +
+        " 🔥"
+      );
+
+
+      createParticles(
+        18
+      );
+
+    }
+
+
+    /*
+      Perfect particle
+    */
+
+    if(
+      quality === "PERFECT"
+    ){
+
+      createParticles(
+        12
+      );
+
+    }
+
+
+    renderSequence();
 
     updateStats();
 
-    characterEl.animate(
-      [
-        {transform:"translateX(0)"},
-        {transform:"translateX(-10px)"},
-        {transform:"translateX(10px)"},
-        {transform:"translateX(0)"}
-      ],
-      {
-        duration:250
-      }
+
+    /*
+      SEQUENCE COMPLETE
+    */
+
+    if(
+      currentStep >=
+      sequence.length
+    ){
+
+      acceptingInput = false;
+
+
+      showFeedback(
+        "FULL COMBO! 🎉",
+        "perfect"
+      );
+
+
+      createParticles(
+        28
+      );
+
+
+      setTimeout(()=>{
+
+        if(playing){
+
+          nextLevel();
+
+        }
+
+      },400);
+
+    }
+
+  }
+
+  /*
+    WRONG
+  */
+
+  else{
+
+    combo = 0;
+
+
+    /*
+      Lose energy
+    */
+
+    changeEnergy(
+      -15
     );
+
+
+    missAnimation();
+
+
+    showFeedback(
+      "MISS! 💗",
+      "miss"
+    );
+
+
+    showMessage(
+      "TRY AGAIN! 👀"
+    );
+
+
+    updateStats();
+
+
+    /*
+      If energy did not kill game,
+      keep playing.
+    */
+
+    if(
+      energy > 0 &&
+      playing
+    ){
+
+      renderSequence();
+
+    }
 
   }
 
 }
 
 
-/* KEYBOARD */
+/* =========================================================
+   KEYBOARD
+========================================================= */
 
-document.addEventListener("keydown",(event)=>{
+document.addEventListener(
+  "keydown",
+  (event)=>{
 
-  if(
-    event.code === "Space" ||
-    moves.includes(event.key)
-  ){
+    let key = null;
 
-    event.preventDefault();
 
-    checkMove(
-      event.code === "Space"
-        ? "Space"
-        : event.key
-    );
+    if(event.code === "Space"){
+
+      key = "Space";
+
+    }
+
+    else if(
+      moves.includes(event.key)
+    ){
+
+      key = event.key;
+
+    }
+
+
+    if(key){
+
+      event.preventDefault();
+
+
+      /*
+        Avoid repeated keydown
+        when key is held.
+      */
+
+      if(event.repeat){
+
+        return;
+
+      }
+
+
+      checkMove(
+        key
+      );
+
+
+      const button =
+        document.querySelector(
+          '.control[data-key="' +
+          key +
+          '"]'
+        );
+
+
+      if(button){
+
+        button.classList.add(
+          "pressed"
+        );
+
+
+        setTimeout(()=>{
+
+          button.classList.remove(
+            "pressed"
+          );
+
+        },150);
+
+      }
+
+    }
 
   }
+);
 
-});
+
+/* =========================================================
+   BUTTON CONTROLS
+========================================================= */
+
+document
+  .querySelectorAll(".control")
+  .forEach(button=>{
+
+    button.addEventListener(
+      "click",
+      ()=>{
+
+        const key =
+          button.dataset.key;
 
 
-/* BUTTONS */
+        button.classList.add(
+          "pressed"
+        );
 
-document.querySelectorAll(".control").forEach(button=>{
 
-  button.addEventListener("click",()=>{
+        setTimeout(()=>{
 
-    const key = button.dataset.key;
+          button.classList.remove(
+            "pressed"
+          );
 
-    button.animate(
-      [
-        {transform:"scale(1)"},
-        {transform:"scale(.9)"},
-        {transform:"scale(1)"}
-      ],
-      {
-        duration:180
+        },150);
+
+
+        checkMove(
+          key
+        );
+
       }
     );
 
-    checkMove(key);
-
   });
 
-});
 
-
-/* START */
+/* =========================================================
+   START BUTTON
+========================================================= */
 
 startBtn.addEventListener(
   "click",
@@ -1912,7 +4255,9 @@ startBtn.addEventListener(
 );
 
 
-/* PLAY AGAIN */
+/* =========================================================
+   PLAY AGAIN
+========================================================= */
 
 playAgain.addEventListener(
   "click",
@@ -1920,13 +4265,19 @@ playAgain.addEventListener(
 );
 
 
-/* FIRST SCREEN */
+/* =========================================================
+   INITIAL SCREEN
+========================================================= */
+
+updateBest();
 
 createSequence();
 
 updateStats();
 
-showMessage("READY? 💗");
+showMessage(
+  "READY? 💗"
+);
 
 </script>
 
