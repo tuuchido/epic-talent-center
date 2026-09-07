@@ -67,7 +67,7 @@ h1,
 h2,
 h3{
     margin:0;
-    font-family:'Cherry Bomb One', cursive;
+    font-family:'Sigmar', cursive;
     font-weight:400;
     line-height:1.15;
 }
@@ -175,7 +175,7 @@ p{
 }
 
 .brand-fallback{
-    font-family:'Cherry Bomb One',cursive;
+    font-family:'Sigmar',cursive;
     font-size:30px;
     color:var(--blue);
     display:none;
@@ -525,7 +525,7 @@ p{
 }
 
 .hero-placeholder strong{
-    font-family:'Cherry Bomb One',cursive;
+    font-family:'Sigmar',cursive;
     font-size:20px;
     color:var(--blue);
     margin-top:8px;
@@ -578,7 +578,7 @@ p{
 .sticker{
     position:absolute;
     z-index:4;
-    font-family:'Cherry Bomb One',cursive;
+    font-family:'Sigmar',cursive;
 }
 
 .sticker-music{
@@ -672,7 +672,7 @@ p{
 }
 
 .about-card span{
-    font-family:'Cherry Bomb One',cursive;
+    font-family:'Sigmar',cursive;
     font-size:20px;
     color:var(--blue);
     margin-top:12px;
@@ -696,7 +696,7 @@ p{
     display:grid;
     place-items:center;
     text-align:center;
-    font-family:'Cherry Bomb One',cursive;
+    font-family:'Sigmar',cursive;
     font-size:27px;
     line-height:.8;
     box-shadow:0 15px 35px rgba(201,24,43,.2);
@@ -749,7 +749,7 @@ p{
 
 .value-row strong{
     display:block;
-    font-family:'Cherry Bomb One',cursive;
+    font-family:'Sigmar',cursive;
     font-size:18px;
     font-weight:400;
     margin:5px 0;
@@ -1096,7 +1096,7 @@ p{
 }
 
 .gallery-item b{
-    font-family:'Cherry Bomb One',cursive;
+    font-family:'Sigmar',cursive;
     font-size:16px;
     font-weight:400;
 }
@@ -1173,7 +1173,7 @@ p{
 }
 
 .price-placeholder strong{
-    font-family:'Cherry Bomb One',cursive;
+    font-family:'Sigmar',cursive;
     font-size:45px;
     color:var(--red);
     display:block;
@@ -1393,7 +1393,7 @@ footer{
 }
 
 .footer-brand{
-    font-family:'Cherry Bomb One',cursive;
+    font-family:'Sigmar',cursive;
     font-size:25px;
 }
 
@@ -1735,7 +1735,7 @@ footer{
 }
 /* =========================================
    EPIC FONT OVERRIDE
-   Title: Cherry Bomb One
+   Title: Sigmar
    Other text: Varela Round
 ========================================= */
 
@@ -1762,14 +1762,14 @@ h3,
 h4,
 h5,
 h6 {
-    font-family:'Cherry Bomb One', cursive;
+    font-family:'Sigmar', cursive;
     font-weight:400;
 }
 
 /* Logo chữ dự phòng */
 .brand-fallback,
 .footer-brand {
-    font-family:'Cherry Bomb One', cursive;
+    font-family:'Sigmar', cursive;
 }
 
 /* Chữ phụ logo */
@@ -2015,7 +2015,7 @@ h6 {
 
     color: var(--blue);
 
-    font-family: 'Cherry Bomb One', cursive;
+    font-family: 'Sigmar', cursive;
     font-size: clamp(48px, 6vw, 82px);
     line-height: 1.05;
     font-weight: 400;
@@ -2297,7 +2297,7 @@ h6 {
 .detail-gallery .center-head h2 {
     color: var(--blue);
 
-    font-family: 'Cherry Bomb One', cursive;
+    font-family: 'Sigmar', cursive;
     font-size: clamp(38px, 5vw, 60px);
     line-height: 1.15;
     font-weight: 400;
@@ -2389,7 +2389,7 @@ h6 {
 
     color: var(--blue);
 
-    font-family: 'Cherry Bomb One', cursive;
+    font-family: 'Sigmar', cursive;
     font-size: 24px;
     font-weight: 400;
 }
@@ -2425,7 +2425,7 @@ h6 {
 
     color: var(--blue);
 
-    font-family: 'Cherry Bomb One', cursive;
+    font-family: 'Sigmar', cursive;
     font-size: clamp(38px, 5vw, 58px);
     line-height: 1.15;
     font-weight: 400;
@@ -2633,7 +2633,7 @@ h6 {
 
     color: var(--blue);
 
-    font-family: 'Cherry Bomb One', cursive;
+    font-family: 'Sigmar', cursive;
     font-size: 23px;
     font-weight: 400;
 }
@@ -2720,7 +2720,7 @@ h6 {
 
     color: #fff;
 
-    font-family: 'Cherry Bomb One', cursive;
+    font-family: 'Sigmar', cursive;
     font-size: 22px;
     font-weight: 400;
 }
@@ -2862,7 +2862,7 @@ h6 {
 
     color: var(--blue);
 
-    font-family: 'Cherry Bomb One', cursive;
+    font-family: 'Sigmar', cursive;
     font-size: clamp(35px, 5vw, 58px);
     line-height: 1.15;
     font-weight: 400;
@@ -3150,7 +3150,7 @@ h6 {
 .art-page h1,
 .art-page h2,
 .art-page h3 {
-    font-family: 'Cherry Bomb One', cursive;
+    font-family: 'Sigmar', cursive;
     font-weight: 400;
 }
 
@@ -3432,7 +3432,7 @@ h6 {
     z-index: 10;
     display: grid;
     place-items: center;
-    font-family: 'Cherry Bomb One', cursive;
+    font-family: 'Sigmar', cursive;
     box-shadow: 0 15px 35px rgba(16,37,118,.16);
     animation: artStickerFloat 3.5s ease-in-out infinite;
 }
@@ -4083,7 +4083,7 @@ h6 {
     border-radius: 16px;
     background: #e7c84a;
     color: #102576;
-    font-family: 'Cherry Bomb One', cursive !important;
+    font-family: 'Sigmar', cursive !important;
     font-size: 14px;
     transform: rotate(8deg);
 }
@@ -4401,7 +4401,7 @@ h6 {
 
     pointer-events: none;
 
-    font-family: "Cherry Bomb One", cursive;
+    font-family: "Sigmar", cursive;
 
     border: 4px solid #102576;
 
@@ -4532,7 +4532,7 @@ h6 {
 
     color: #102576;
 
-    font-family: "Cherry Bomb One", cursive;
+    font-family: "Sigmar", cursive;
 
     font-size: 18px;
 
@@ -4946,7 +4946,7 @@ h6 {
 }
 
 .star-map-content strong {
-  font-family: "Cherry Bomb One", cursive;
+  font-family: "Sigmar", cursive;
   font-size: 19px;
   line-height: 1.1;
   letter-spacing: .5px;
