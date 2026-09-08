@@ -416,7 +416,141 @@ button{
 .beat.active{
   transform:scale(1.08) rotate(4deg);
 }
+/* =========================================================
+   EPIC FEEL THE BEAT
+========================================================= */
 
+.instrument{
+  border:4px solid var(--navy);
+  font-family:"Sigmar",cursive;
+  cursor:pointer;
+  overflow:hidden;
+  position:relative;
+  transition:.15s;
+}
+
+.instrument-icon{
+  display:block;
+  font-size:64px;
+  line-height:1;
+  transition:.15s;
+}
+
+.instrument small{
+  display:block;
+  margin-top:12px;
+  font-family:"Fredoka","Varela Round",sans-serif;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.instrument:hover .instrument-icon{
+  transform:scale(1.12) rotate(-5deg);
+}
+
+.instrument:active{
+  transform:
+    translate(4px,4px)
+    scale(.96);
+
+  box-shadow:
+    3px 3px 0 var(--navy);
+}
+
+.instrument.playing{
+
+  animation:
+    epicInstrumentBeat
+    .35s
+    ease;
+
+}
+
+@keyframes epicInstrumentBeat{
+
+  0%{
+    transform:scale(1);
+  }
+
+  35%{
+    transform:
+      scale(1.1)
+      rotate(-4deg);
+  }
+
+  70%{
+    transform:
+      scale(.97)
+      rotate(3deg);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+
+}
+
+.beat-note{
+
+  position:absolute;
+
+  pointer-events:none;
+
+  font-size:28px;
+
+  animation:
+    epicNoteFloat
+    .8s
+    ease-out
+    forwards;
+
+  z-index:20;
+
+}
+
+@keyframes epicNoteFloat{
+
+  0%{
+    opacity:1;
+
+    transform:
+      translateY(0)
+      scale(.7)
+      rotate(0);
+  }
+
+  100%{
+    opacity:0;
+
+    transform:
+      translateY(-70px)
+      translateX(var(--note-x))
+      scale(1.2)
+      rotate(20deg);
+  }
+
+}
+
+
+/* Mobile */
+
+@media(max-width:700px){
+
+  .beat-boxes{
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+    gap:14px;
+
+  }
+
+  .instrument-icon{
+    font-size:48px;
+  }
+
+}
 .beat-line{
   height:8px;
   max-width:700px;
@@ -2008,7 +2142,76 @@ footer img{
       Bấm thử từng nhịp và cảm nhận EPIC Dance bắt đầu!
     </p>
 
-    <div class="beat-boxes">
+   <div class="beat-boxes">
+
+  <button
+    class="beat instrument"
+    data-sound="drum"
+    type="button"
+  >
+
+    <span class="instrument-icon">
+      🥁
+    </span>
+
+    <small>
+      DRUM
+    </small>
+
+  </button>
+
+
+  <button
+    class="beat instrument"
+    data-sound="trumpet"
+    type="button"
+  >
+
+    <span class="instrument-icon">
+      🎺
+    </span>
+
+    <small>
+      BRASS
+    </small>
+
+  </button>
+
+
+  <button
+    class="beat instrument"
+    data-sound="guitar"
+    type="button"
+  >
+
+    <span class="instrument-icon">
+      🎸
+    </span>
+
+    <small>
+      GUITAR
+    </small>
+
+  </button>
+
+
+  <button
+    class="beat instrument"
+    data-sound="piano"
+    type="button"
+  >
+
+    <span class="instrument-icon">
+      🎹
+    </span>
+
+    <small>
+      PIANO
+    </small>
+
+  </button>
+
+</div>
 
       <div class="beat count">5</div>
       <div class="beat count">6</div>
@@ -2687,25 +2890,327 @@ footer img{
 <script>
 
 /* =========================================================
-   WARM UP
+   FEEL THE BEAT — EPIC MINI BAND
 ========================================================= */
 
-document.querySelectorAll(".count").forEach((item)=>{
+let epicAudio = null;
 
-  item.addEventListener("click",()=>{
+function getEpicAudio(){
 
-    document.querySelectorAll(".count")
-      .forEach(x=>x.classList.remove("active"));
+  if(!epicAudio){
 
-    item.classList.add("active");
+    epicAudio =
+      new (window.AudioContext ||
+           window.webkitAudioContext)();
 
-    setTimeout(()=>{
-      item.classList.remove("active");
-    },350);
+  }
+
+  if(epicAudio.state === "suspended"){
+    epicAudio.resume();
+  }
+
+  return epicAudio;
+}
+
+
+/* =========================
+   DRUM
+========================= */
+
+function epicDrum(){
+
+  const ctx = getEpicAudio();
+
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+
+  osc.type = "sine";
+
+  osc.frequency.setValueAtTime(
+    150,
+    ctx.currentTime
+  );
+
+  osc.frequency.exponentialRampToValueAtTime(
+    55,
+    ctx.currentTime + 0.18
+  );
+
+  gain.gain.setValueAtTime(
+    0.8,
+    ctx.currentTime
+  );
+
+  gain.gain.exponentialRampToValueAtTime(
+    0.01,
+    ctx.currentTime + 0.18
+  );
+
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+
+  osc.start();
+
+  osc.stop(
+    ctx.currentTime + 0.2
+  );
+}
+
+
+/* =========================
+   BRASS
+========================= */
+
+function epicBrass(){
+
+  const ctx = getEpicAudio();
+
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+
+  osc.type = "sawtooth";
+
+  osc.frequency.setValueAtTime(
+    440,
+    ctx.currentTime
+  );
+
+  osc.frequency.exponentialRampToValueAtTime(
+    520,
+    ctx.currentTime + 0.12
+  );
+
+  gain.gain.setValueAtTime(
+    0.16,
+    ctx.currentTime
+  );
+
+  gain.gain.exponentialRampToValueAtTime(
+    0.01,
+    ctx.currentTime + 0.28
+  );
+
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+
+  osc.start();
+
+  osc.stop(
+    ctx.currentTime + 0.3
+  );
+}
+
+
+/* =========================
+   GUITAR
+========================= */
+
+function epicGuitar(){
+
+  const ctx = getEpicAudio();
+
+  const notes = [
+    196,
+    246.94,
+    293.66
+  ];
+
+  notes.forEach((frequency,index)=>{
+
+    const osc =
+      ctx.createOscillator();
+
+    const gain =
+      ctx.createGain();
+
+    osc.type = "triangle";
+
+    osc.frequency.value =
+      frequency;
+
+    const start =
+      ctx.currentTime +
+      index * 0.025;
+
+    gain.gain.setValueAtTime(
+      0.16,
+      start
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.01,
+      start + 0.65
+    );
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(start);
+
+    osc.stop(
+      start + 0.7
+    );
 
   });
+}
 
-});
+
+/* =========================
+   PIANO
+========================= */
+
+function epicPiano(){
+
+  const ctx = getEpicAudio();
+
+  const notes = [
+    261.63,
+    329.63,
+    392
+  ];
+
+  notes.forEach((frequency,index)=>{
+
+    const osc =
+      ctx.createOscillator();
+
+    const gain =
+      ctx.createGain();
+
+    osc.type = "sine";
+
+    osc.frequency.value =
+      frequency;
+
+    const start =
+      ctx.currentTime +
+      index * 0.08;
+
+    gain.gain.setValueAtTime(
+      0.2,
+      start
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.01,
+      start + 0.6
+    );
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(start);
+
+    osc.stop(
+      start + 0.7
+    );
+
+  });
+}
+
+
+/* =========================
+   INSTRUMENT BUTTONS
+========================= */
+
+document
+  .querySelectorAll(".instrument")
+  .forEach(button=>{
+
+    button.addEventListener(
+      "click",
+      ()=>{
+
+        const sound =
+          button.dataset.sound;
+
+
+        if(sound === "drum"){
+          epicDrum();
+        }
+
+        if(sound === "trumpet"){
+          epicBrass();
+        }
+
+        if(sound === "guitar"){
+          epicGuitar();
+        }
+
+        if(sound === "piano"){
+          epicPiano();
+        }
+
+
+        /* Animation */
+
+        button.classList.remove(
+          "playing"
+        );
+
+        void button.offsetWidth;
+
+        button.classList.add(
+          "playing"
+        );
+
+
+        setTimeout(()=>{
+
+          button.classList.remove(
+            "playing"
+          );
+
+        },400);
+
+
+        /* Floating music note */
+
+        const note =
+          document.createElement(
+            "span"
+          );
+
+        note.className =
+          "beat-note";
+
+        const notes = [
+          "♪",
+          "♫",
+          "✦",
+          "♬"
+        ];
+
+        note.textContent =
+          notes[
+            Math.floor(
+              Math.random() *
+              notes.length
+            )
+          ];
+
+
+        note.style.setProperty(
+          "--note-x",
+          `${Math.random()*60-30}px`
+        );
+
+
+        button.appendChild(
+          note
+        );
+
+
+        setTimeout(()=>{
+
+          note.remove();
+
+        },800);
+
+      }
+    );
+
+  });
 
 
 /* =========================================================
