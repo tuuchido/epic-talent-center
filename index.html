@@ -306,16 +306,20 @@
     </div>
 
     <label>
-        Khung giờ mong muốn
-        <select name="time">
-            <option value="">Chọn khung giờ</option>
-            <option>Sáng</option>
-            <option>Chiều</option>
-            <option>Tối</option>
-            <option>Cuối tuần</option>
-        </select>
-    </label>
+  Lớp đã chọn
+  <input
+    type="text"
+    id="selectedClass"
+    readonly
+    placeholder="Chưa chọn lớp"
+  >
+</label>
 
+<input
+  type="hidden"
+  name="classId"
+  id="classId"
+>
     <label>
         Ghi chú
         <textarea
