@@ -5456,3 +5456,127 @@ h6 {
   }
 
 }
+/* =========================
+   LỊCH HỌC - 3 BỘ MÔN
+========================= */
+
+.schedule-intro {
+  max-width: 760px;
+  margin: 0 auto 30px;
+  line-height: 1.7;
+}
+
+.schedule-subjects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.schedule-subject {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+  padding: 26px;
+  border: 3px solid var(--navy);
+  border-radius: 28px;
+  color: var(--navy);
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 7px 7px 0 var(--navy);
+  transition: 0.2s ease;
+}
+
+.schedule-subject:hover {
+  transform: translateY(-7px) rotate(-1deg);
+  box-shadow: 10px 12px 0 var(--navy);
+}
+
+.schedule-subject.art {
+  background: #fff6b8;
+}
+
+.schedule-subject.piano {
+  background: #e7edff;
+}
+
+.schedule-subject.dance {
+  background: #ffe4e8;
+}
+
+.schedule-subject-icon {
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--navy);
+  border-radius: 20px;
+  background: white;
+  font-size: 35px;
+  margin-bottom: 18px;
+}
+
+.schedule-subject-number {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  opacity: 0.55;
+  margin-bottom: 5px;
+}
+
+.schedule-subject h3 {
+  margin: 0 0 10px;
+  font-family: "Sigmar", cursive;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.schedule-subject p {
+  margin: 0;
+  line-height: 1.65;
+  color: #444;
+  max-width: 300px;
+}
+
+.schedule-subject strong {
+  margin-top: auto;
+  padding-top: 22px;
+  font-size: 14px;
+}
+
+.schedule-subject strong span {
+  display: inline-block;
+  margin-left: 6px;
+  transition: 0.2s;
+}
+
+.schedule-subject:hover strong span {
+  transform: translateX(5px);
+}
+
+.schedule-note {
+  margin-top: 30px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: #fff;
+  border: 2px dashed var(--navy);
+  line-height: 1.6;
+}
+
+.schedule-note span {
+  margin-right: 6px;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+  .schedule-subjects {
+    grid-template-columns: 1fr;
+  }
+
+  .schedule-subject {
+    min-height: auto;
+  }
+}
