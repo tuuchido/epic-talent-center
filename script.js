@@ -156,3 +156,78 @@ if (registrationForm) {
 
     });
 }
+/* =========================================================
+   EPIC SCHEDULE — FILTER
+========================================================= */
+
+const scheduleFilters = document.querySelectorAll(".schedule-filter");
+const ageFilters = document.querySelectorAll(".age-filter");
+const classCards = document.querySelectorAll(".class-card");
+
+let selectedSubject = "all";
+let selectedAge = "all";
+
+function filterSchedule(){
+
+  classCards.forEach(card => {
+
+    const subject = card.dataset.subject;
+    const age = card.dataset.age;
+
+    const subjectMatch =
+      selectedSubject === "all" ||
+      subject === selectedSubject;
+
+    const ageMatch =
+      selectedAge === "all" ||
+      age === selectedAge;
+
+    if(subjectMatch && ageMatch){
+      card.classList.remove("is-hidden");
+    }else{
+      card.classList.add("is-hidden");
+    }
+
+  });
+
+}
+
+
+/* Lọc theo môn */
+scheduleFilters.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    scheduleFilters.forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+    selectedSubject = button.dataset.filter;
+
+    filterSchedule();
+
+  });
+
+});
+
+
+/* Lọc theo độ tuổi */
+ageFilters.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    ageFilters.forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+    selectedAge = button.dataset.age;
+
+    filterSchedule();
+
+  });
+
+});
