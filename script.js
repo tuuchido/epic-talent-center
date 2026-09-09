@@ -3,8 +3,7 @@ import {
   collection,
   addDoc,
   serverTimestamp
-} from "./firebase-config.js?v=3";
-
+} from "./firebase-config.js?v=4";
 
 /* =========================================================
    EPIC TALENT CENTER — MAIN SCRIPT
