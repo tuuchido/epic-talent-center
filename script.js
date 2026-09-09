@@ -58,19 +58,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     title.addEventListener('animationend',()=>title.classList.remove('title-wiggle'));
   });
 
-  form?.addEventListener('submit',e=>{
-    e.preventDefault();
-    const data=Object.fromEntries(new FormData(form).entries());
-    data.createdAt=new Date().toISOString();
-    try{
-      localStorage.setItem('epic_latest_registration',JSON.stringify(data));
-      msg.textContent='🎉 Đã nhận thông tin! Đây là bản demo, dữ liệu đang được lưu trên trình duyệt.';
-      form.reset();
-    }catch{
-      msg.textContent='Form đang ở chế độ demo. Hãy kết nối Google Forms hoặc dịch vụ nhận dữ liệu để dùng thật.';
-    }
-  });
-
+  
   // Parallax rất nhẹ cho doodle khi di chuyển chuột
   const doodles=document.querySelectorAll('.doodle');
   window.addEventListener('mousemove',e=>{
@@ -89,145 +77,255 @@ const registrationForm =
 const formMessage =
     document.getElementById("formMessage");
 
-const GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycby_FhDDcOSKW5lJ5F7Yu1fZMAuD_FC-pODeL9EPTRxk2L9i4hsVg9bQoQPKuS-UUgM/exec";
+/* =========================================================
+   EPIC REGISTRATION — FIREBASE
+========================================================= */
 
+import {
+  db,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "./firebase-config.js?v=3";
+
+
+const CLASS_DATA = {
+
+  "art-01": {
+    program: "Mỹ thuật",
+    className: "Mỹ thuật Mầm non",
+    age: "4–6 tuổi",
+    day: "Thứ 7",
+    time: "09:00 – 10:30",
+    capacity: 10
+  },
+
+  "art-02": {
+    program: "Mỹ thuật",
+    className: "Mỹ thuật Thiếu nhi",
+    age: "7–10 tuổi",
+    day: "Chủ nhật",
+    time: "09:00 – 10:30",
+    capacity: 10
+  },
+
+  "art-03": {
+    program: "Mỹ thuật",
+    className: "Mỹ thuật Sáng tạo",
+    age: "11–15 tuổi",
+    day: "Chủ nhật",
+    time: "14:00 – 15:30",
+    capacity: 10
+  },
+
+
+  "piano-01": {
+    program: "Piano",
+    className: "Piano Khởi đầu",
+    age: "4–6 tuổi",
+    day: "Thứ 7",
+    time: "09:00 – 10:00",
+    capacity: 8
+  },
+
+  "piano-02": {
+    program: "Piano",
+    className: "Piano Cơ bản",
+    age: "7–10 tuổi",
+    day: "Chủ nhật",
+    time: "09:00 – 10:00",
+    capacity: 8
+  },
+
+  "piano-03": {
+    program: "Piano",
+    className: "Piano Nâng cao",
+    age: "11–18 tuổi",
+    day: "Chủ nhật",
+    time: "14:00 – 15:00",
+    capacity: 8
+  },
+
+
+  "dance-01": {
+    program: "Dance",
+    className: "Dance Kids",
+    age: "4–6 tuổi",
+    day: "Thứ 7",
+    time: "15:00 – 16:00",
+    capacity: 10
+  },
+
+  "dance-02": {
+    program: "Dance",
+    className: "Dance Teen",
+    age: "7–12 tuổi",
+    day: "Chủ nhật",
+    time: "15:00 – 16:00",
+    capacity: 10
+  },
+
+  "dance-03": {
+    program: "Dance",
+    className: "Dance Performance",
+    age: "13–18 tuổi",
+    day: "Chủ nhật",
+    time: "17:00 – 18:00",
+    capacity: 10
+  }
+
+};
+
+
+/* =========================================================
+   CHỌN LỚP TỪ TRANG LỊCH
+========================================================= */
+
+const params = new URLSearchParams(window.location.search);
+const selectedClassId = params.get("classId");
+
+if (selectedClassId && CLASS_DATA[selectedClassId]) {
+
+  const selectedClass = CLASS_DATA[selectedClassId];
+
+  const programSelect =
+    document.querySelector('[name="program"]');
+
+  const ageSelect =
+    document.querySelector('[name="age"]');
+
+  const timeSelect =
+    document.querySelector('[name="time"]');
+
+  if (programSelect) {
+    programSelect.value = selectedClass.program;
+  }
+
+  if (ageSelect) {
+    ageSelect.value = selectedClass.age;
+  }
+
+  if (timeSelect) {
+    timeSelect.value =
+      `${selectedClass.day} – ${selectedClass.time}`;
+  }
+
+}
+
+
+/* =========================================================
+   GỬI ĐĂNG KÝ
+========================================================= */
 
 if (registrationForm) {
 
-    registrationForm.addEventListener("submit", async function (event) {
+  registrationForm.addEventListener(
+    "submit",
+    async function(event) {
 
-        event.preventDefault();
+      event.preventDefault();
 
-        const submitButton =
-            registrationForm.querySelector("button[type='submit']");
+      const submitButton =
+        registrationForm.querySelector(
+          "button[type='submit']"
+        );
 
-        submitButton.disabled = true;
-        submitButton.innerHTML = "Đang gửi...";
+      submitButton.disabled = true;
+      submitButton.innerHTML = "Đang gửi...";
 
-        formMessage.textContent = "";
-        formMessage.className = "form-message";
+      formMessage.textContent = "";
+      formMessage.className = "form-message";
 
-        const formData =
-            new FormData(registrationForm);
 
-        const data = {
-            parentName: formData.get("parentName"),
-            phone: formData.get("phone"),
-            studentName: formData.get("studentName"),
-            age: formData.get("age"),
-            program: formData.get("program"),
-            time: formData.get("time"),
-            note: formData.get("note")
-        };
+      const formData =
+        new FormData(registrationForm);
 
-        try {
 
-            await fetch(GOOGLE_SCRIPT_URL, {
-                method: "POST",
-                mode: "no-cors",
-                headers: {
-                    "Content-Type": "text/plain;charset=utf-8"
-                },
-                body: JSON.stringify(data)
-            });
+      const classInfo =
+        CLASS_DATA[selectedClassId] || null;
 
-            formMessage.textContent =
-                "🎉 Đăng ký thành công! EPIC sẽ liên hệ với bạn sớm nhất.";
 
-            formMessage.classList.add("success");
+      const data = {
 
-            registrationForm.reset();
+        parentName:
+          formData.get("parentName")?.trim(),
 
-        } catch (error) {
+        phone:
+          formData.get("phone")?.trim(),
 
-            formMessage.textContent =
-                "❌ Có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ EPIC.";
+        studentName:
+          formData.get("studentName")?.trim(),
 
-            formMessage.classList.add("error");
+        age:
+          formData.get("age"),
 
-        } finally {
+        program:
+          formData.get("program"),
 
-            submitButton.disabled = false;
+        time:
+          formData.get("time"),
 
-            submitButton.innerHTML =
-                'Gửi đăng ký học thử <span>↗</span>';
-        }
+        note:
+          formData.get("note")?.trim(),
 
-    });
-}
-/* =========================================================
-   EPIC SCHEDULE — FILTER
-========================================================= */
+        classId:
+          selectedClassId || "",
 
-const scheduleFilters = document.querySelectorAll(".schedule-filter");
-const ageFilters = document.querySelectorAll(".age-filter");
-const classCards = document.querySelectorAll(".class-card");
+        className:
+          classInfo?.className || "",
 
-let selectedSubject = "all";
-let selectedAge = "all";
+        classDay:
+          classInfo?.day || "",
 
-function filterSchedule(){
+        classTime:
+          classInfo?.time || "",
 
-  classCards.forEach(card => {
+        status:
+          "pending",
 
-    const subject = card.dataset.subject;
-    const age = card.dataset.age;
+        createdAt:
+          serverTimestamp()
 
-    const subjectMatch =
-      selectedSubject === "all" ||
-      subject === selectedSubject;
+      };
 
-    const ageMatch =
-      selectedAge === "all" ||
-      age === selectedAge;
 
-    if(subjectMatch && ageMatch){
-      card.classList.remove("is-hidden");
-    }else{
-      card.classList.add("is-hidden");
+      try {
+
+        await addDoc(
+          collection(db, "registrations"),
+          data
+        );
+
+
+        formMessage.textContent =
+          "🎉 Đã nhận đăng ký! EPIC sẽ kiểm tra và liên hệ với bạn để xác nhận lớp.";
+
+        formMessage.classList.add("success");
+
+        registrationForm.reset();
+
+
+      } catch(error) {
+
+        console.error(
+          "FIREBASE REGISTRATION ERROR:",
+          error
+        );
+
+        formMessage.textContent =
+          "❌ Không thể gửi đăng ký. Vui lòng thử lại.";
+
+        formMessage.classList.add("error");
+
+      } finally {
+
+        submitButton.disabled = false;
+
+        submitButton.innerHTML =
+          'Gửi đăng ký học <span>↗</span>';
+
+      }
+
     }
+  );
 
-  });
-
-}
-
-
-/* Lọc theo môn */
-scheduleFilters.forEach(button => {
-
-  button.addEventListener("click", () => {
-
-    scheduleFilters.forEach(btn =>
-      btn.classList.remove("active")
-    );
-
-    button.classList.add("active");
-
-    selectedSubject = button.dataset.filter;
-
-    filterSchedule();
-
-  });
-
-});
-
-
-/* Lọc theo độ tuổi */
-ageFilters.forEach(button => {
-
-  button.addEventListener("click", () => {
-
-    ageFilters.forEach(btn =>
-      btn.classList.remove("active")
-    );
-
-    button.classList.add("active");
-
-    selectedAge = button.dataset.age;
-
-    filterSchedule();
-
-  });
-
-});
