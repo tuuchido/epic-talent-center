@@ -194,8 +194,11 @@ if (selectedClassId && CLASS_DATA[selectedClassId]) {
   const ageSelect =
     document.querySelector('[name="age"]');
 
-  const timeSelect =
-    document.querySelector('[name="time"]');
+  const selectedClassInput =
+    document.getElementById("selectedClass");
+
+  const classIdInput =
+    document.getElementById("classId");
 
   if (programSelect) {
     programSelect.value = selectedClass.program;
@@ -205,9 +208,13 @@ if (selectedClassId && CLASS_DATA[selectedClassId]) {
     ageSelect.value = selectedClass.age;
   }
 
-  if (timeSelect) {
-    timeSelect.value =
-      `${selectedClass.day} – ${selectedClass.time}`;
+  if (selectedClassInput) {
+    selectedClassInput.value =
+      `${selectedClass.className} — ${selectedClass.day}, ${selectedClass.time}`;
+  }
+
+  if (classIdInput) {
+    classIdInput.value = selectedClassId;
   }
 
 }
@@ -262,8 +269,8 @@ if (registrationForm) {
         program:
           formData.get("program"),
 
-        time:
-          formData.get("time"),
+       time:
+  classInfo?.time || "",
 
         note:
           formData.get("note")?.trim(),
