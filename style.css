@@ -5155,3 +5155,304 @@ h6 {
     margin-top:4px;
   }
 }
+/* =========================================================
+   EPIC SCHEDULE
+========================================================= */
+
+.schedule-intro{
+  max-width:760px;
+  margin:0 auto 28px;
+  line-height:1.7;
+}
+
+/* Bộ lọc môn */
+.schedule-filters{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:28px auto 16px;
+}
+
+.schedule-filter,
+.age-filter{
+  border:3px solid var(--navy);
+  background:white;
+  color:var(--navy);
+  border-radius:999px;
+  padding:10px 18px;
+  font-family:"Varela Round",sans-serif;
+  font-weight:700;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.schedule-filter:hover,
+.age-filter:hover{
+  transform:translateY(-3px);
+}
+
+.schedule-filter.active,
+.age-filter.active{
+  background:var(--navy);
+  color:white;
+  box-shadow:4px 4px 0 var(--red);
+}
+
+/* Bộ lọc độ tuổi */
+.schedule-age-filter{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:35px;
+}
+
+.schedule-age-filter > span{
+  font-weight:700;
+  color:var(--navy);
+  margin-right:5px;
+}
+
+/* Lưới lớp */
+.schedule-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+/* Card lớp */
+.class-card{
+  position:relative;
+  background:white;
+  border:3px solid var(--navy);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:6px 6px 0 var(--navy);
+  transition:.2s ease;
+  overflow:hidden;
+}
+
+.class-card:hover{
+  transform:translateY(-7px);
+  box-shadow:9px 11px 0 var(--navy);
+}
+
+/* Thanh màu trên card */
+.class-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:7px;
+  background:var(--yellow);
+}
+
+.class-card[data-subject="piano"]::before{
+  background:var(--blue);
+}
+
+.class-card[data-subject="dance"]::before{
+  background:var(--red);
+}
+
+/* Phần đầu card */
+.class-card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.class-icon{
+  width:52px;
+  height:52px;
+  display:grid;
+  place-items:center;
+  background:#fff8cf;
+  border:2px solid var(--navy);
+  border-radius:15px;
+  font-size:27px;
+}
+
+.class-card[data-subject="piano"] .class-icon{
+  background:#e9efff;
+}
+
+.class-card[data-subject="dance"] .class-icon{
+  background:#ffe8eb;
+}
+
+.class-age{
+  display:inline-flex;
+  align-items:center;
+  padding:7px 11px;
+  border-radius:999px;
+  background:#f4f4f4;
+  color:var(--navy);
+  font-size:12px;
+  font-weight:700;
+}
+
+/* Tên lớp */
+.class-card h3{
+  margin:8px 0 18px;
+  font-family:"Sigmar",cursive;
+  font-size:26px;
+  font-weight:400;
+  color:var(--navy);
+}
+
+/* Ngày + giờ */
+.class-info{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  padding:14px 0;
+  border-top:1px dashed #c9c9c9;
+  border-bottom:1px dashed #c9c9c9;
+}
+
+.class-info span{
+  font-size:14px;
+  color:#555;
+}
+
+.class-info strong{
+  color:var(--navy);
+  font-size:16px;
+}
+
+/* Số lượng học viên */
+.class-capacity{
+  margin-top:18px;
+}
+
+.capacity-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+}
+
+.capacity-head span{
+  font-size:13px;
+  color:#666;
+}
+
+.capacity-head strong{
+  font-size:14px;
+  color:var(--navy);
+}
+
+/* Thanh tiến độ */
+.capacity-bar{
+  width:100%;
+  height:10px;
+  background:#ececec;
+  border-radius:999px;
+  overflow:hidden;
+  border:1px solid #ddd;
+}
+
+.capacity-bar span{
+  display:block;
+  height:100%;
+  width:0;
+  background:var(--yellow);
+  border-radius:999px;
+  transition:width .4s ease;
+}
+
+.class-card[data-subject="piano"] .capacity-bar span{
+  background:var(--blue);
+}
+
+.class-card[data-subject="dance"] .capacity-bar span{
+  background:var(--red);
+}
+
+.class-capacity small{
+  display:block;
+  margin-top:9px;
+  color:#555;
+  font-size:12px;
+  font-weight:700;
+}
+
+/* Ghi chú */
+.schedule-note{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  margin-top:32px;
+  padding:14px 18px;
+  background:#fffbea;
+  border:2px dashed var(--yellow);
+  border-radius:16px;
+  color:#555;
+  font-size:13px;
+  text-align:center;
+}
+
+/* Card bị ẩn khi lọc */
+.class-card.is-hidden{
+  display:none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1000px){
+
+  .schedule-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:700px){
+
+  .schedule-grid{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  .schedule-filters{
+    gap:8px;
+  }
+
+  .schedule-filter,
+  .age-filter{
+    padding:9px 14px;
+    font-size:13px;
+  }
+
+  .schedule-age-filter{
+    gap:7px;
+  }
+
+  .schedule-age-filter > span{
+    width:100%;
+    text-align:center;
+    margin-bottom:3px;
+  }
+
+  .class-card{
+    padding:19px;
+    box-shadow:5px 5px 0 var(--navy);
+  }
+
+  .class-card:hover{
+    transform:translateY(-4px);
+    box-shadow:7px 8px 0 var(--navy);
+  }
+
+}
