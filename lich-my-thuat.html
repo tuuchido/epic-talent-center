@@ -9,15 +9,505 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Varela+Round&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Varela+Round:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+    :root{
+      --navy:#102576;
+      --red:#C9182B;
+      --gold:#E7C84A;
+      --cream:#FFF9E8;
+      --text:#252525;
+      --white:#fff;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"Varela Round",sans-serif;
+      color:var(--text);
+      background:var(--cream);
+      overflow-x:hidden;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(1120px,calc(100% - 40px));
+      margin:auto;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header{
+      position:relative;
+      z-index:10;
+      background:#fff;
+      border-bottom:3px solid var(--navy);
+    }
+
+    .header-inner{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .logo img{
+      width:105px;
+      height:auto;
+      display:block;
+    }
+
+    .back-home{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+
+      padding:11px 17px;
+
+      border:2px solid var(--navy);
+      border-radius:14px;
+
+      color:var(--navy);
+      font-size:14px;
+      font-weight:700;
+
+      background:#fff;
+
+      transition:.2s ease;
+    }
+
+    .back-home:hover{
+      color:#fff;
+      background:var(--navy);
+      transform:translateY(-2px);
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero{
+      position:relative;
+      padding:75px 0 60px;
+      text-align:center;
+      overflow:hidden;
+    }
+
+    .decor{
+      position:absolute;
+      pointer-events:none;
+      font-weight:400;
+    }
+
+    .decor.one{
+      top:40px;
+      left:7%;
+      color:var(--red);
+      font-size:32px;
+      transform:rotate(-15deg);
+    }
+
+    .decor.two{
+      top:120px;
+      right:8%;
+      color:var(--gold);
+      font-size:42px;
+      transform:rotate(12deg);
+    }
+
+    .decor.three{
+      bottom:25px;
+      left:15%;
+      color:var(--navy);
+      font-size:24px;
+    }
+
+    .decor.four{
+      bottom:35px;
+      right:16%;
+      color:var(--red);
+      font-size:25px;
+    }
+
+    .subject-icon{
+      width:94px;
+      height:94px;
+
+      margin:0 auto 25px;
+
+      display:grid;
+      place-items:center;
+
+      background:#fff6b8;
+
+      border:3px solid var(--navy);
+      border-radius:28px;
+
+      font-size:47px;
+
+      box-shadow:7px 7px 0 var(--navy);
+
+      transform:rotate(-3deg);
+
+      transition:.25s ease;
+    }
+
+    .subject-icon:hover{
+      transform:rotate(3deg) scale(1.04);
+    }
+
+    .eyebrow{
+      display:inline-block;
+
+      margin-bottom:12px;
+
+      color:var(--red);
+
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:2px;
+    }
+
+    h1{
+      font-family:"Sigmar",cursive;
+      font-size:clamp(42px,7vw,70px);
+      font-weight:400;
+      line-height:1.08;
+      color:var(--navy);
+    }
+
+    h1 span{
+      color:var(--red);
+    }
+
+    .hero-text{
+      max-width:620px;
+      margin:18px auto 0;
+
+      font-size:16px;
+      line-height:1.8;
+      color:#555;
+    }
+
+
+    /* =========================
+       LỚP HỌC
+    ========================= */
+
+    .classes{
+      padding:20px 0 90px;
+    }
+
+    .class-list{
+      display:grid;
+      gap:22px;
+    }
+
+    .class-card{
+      position:relative;
+
+      display:grid;
+      grid-template-columns:1.5fr 1fr .8fr auto;
+      align-items:center;
+
+      gap:25px;
+
+      padding:28px 30px;
+
+      background:#fff6b8;
+
+      border:3px solid var(--navy);
+      border-radius:27px;
+
+      box-shadow:8px 8px 0 var(--navy);
+
+      overflow:hidden;
+
+      transition:.25s ease;
+    }
+
+    .class-card:nth-child(2){
+      background:#e9edff;
+    }
+
+    .class-card:nth-child(3){
+      background:#ffe5e9;
+    }
+
+    .class-card:hover{
+      transform:translateY(-6px) rotate(-.4deg);
+      box-shadow:11px 13px 0 var(--navy);
+    }
+
+    .class-card::after{
+      content:"✦";
+
+      position:absolute;
+      right:22px;
+      top:12px;
+
+      font-size:30px;
+      color:var(--red);
+
+      opacity:.3;
+    }
+
+    .class-number{
+      display:block;
+
+      margin-bottom:6px;
+
+      color:var(--navy);
+
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:2px;
+
+      opacity:.5;
+    }
+
+    .class-name{
+      font-family:"Sigmar",cursive;
+      font-size:27px;
+      font-weight:400;
+      line-height:1.2;
+      color:var(--navy);
+    }
+
+    .age{
+      margin-top:8px;
+      color:#666;
+      font-size:14px;
+    }
+
+    .label{
+      display:block;
+
+      margin-bottom:7px;
+
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:1.5px;
+
+      color:#777;
+    }
+
+    .time-day{
+      font-size:17px;
+      font-weight:700;
+      color:var(--navy);
+    }
+
+    .time-hour{
+      margin-top:5px;
+      font-size:14px;
+      color:#555;
+    }
+
+    .capacity{
+      padding:12px 15px;
+
+      background:rgba(255,255,255,.65);
+
+      border:2px solid var(--navy);
+      border-radius:16px;
+
+      text-align:center;
+    }
+
+    .capacity-number{
+      display:block;
+
+      font-family:"Sigmar",cursive;
+      font-size:28px;
+      font-weight:400;
+
+      color:var(--red);
+      line-height:1;
+    }
+
+    .capacity-left{
+      display:block;
+
+      margin-top:6px;
+
+      font-size:12px;
+      color:#666;
+    }
+
+    .register{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+
+      min-height:48px;
+      padding:0 20px;
+
+      background:var(--navy);
+      color:#fff;
+
+      border-radius:15px;
+
+      font-size:14px;
+      font-weight:700;
+
+      white-space:nowrap;
+
+      transition:.2s ease;
+    }
+
+    .register:hover{
+      background:var(--red);
+      transform:translateY(-2px);
+    }
+
+
+    /* =========================
+       NOTE
+    ========================= */
+
+    .note{
+      margin-top:35px;
+
+      padding:18px 22px;
+
+      background:#fff;
+
+      border:2px dashed var(--navy);
+      border-radius:18px;
+
+      text-align:center;
+
+      font-size:14px;
+      line-height:1.6;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer{
+      padding:28px 0;
+
+      background:var(--navy);
+      color:#fff;
+
+      text-align:center;
+
+      font-size:13px;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width:850px){
+
+      .class-card{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .register{
+        width:100%;
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      .container{
+        width:min(100% - 28px,500px);
+      }
+
+      .header-inner{
+        min-height:68px;
+      }
+
+      .logo img{
+        width:90px;
+      }
+
+      .back-home{
+        padding:9px 12px;
+        font-size:12px;
+      }
+
+      .hero{
+        padding:55px 0 40px;
+      }
+
+      .subject-icon{
+        width:75px;
+        height:75px;
+        font-size:37px;
+      }
+
+      h1{
+        font-size:42px;
+      }
+
+      .hero-text{
+        font-size:14px;
+      }
+
+      .classes{
+        padding-bottom:65px;
+      }
+
+      .class-card{
+        grid-template-columns:1fr;
+        gap:18px;
+
+        padding:23px;
+
+        border-radius:21px;
+        box-shadow:6px 6px 0 var(--navy);
+      }
+
+      .class-card:hover{
+        transform:translateY(-3px);
+        box-shadow:7px 8px 0 var(--navy);
+      }
+
+      .register{
+        width:100%;
+      }
+
+      .decor.one{
+        left:2%;
+      }
+
+      .decor.two{
+        right:2%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="site-header">
-  <div class="container nav-inner">
+<header>
+  <div class="container header-inner">
 
     <a href="index.html" class="logo">
       <img src="assets/logo1A.png" alt="EPIC">
@@ -33,207 +523,220 @@
 
 <main>
 
-  <section class="subject-page art-page">
+  <section class="hero">
+
+    <span class="decor one">✦</span>
+    <span class="decor two">✧</span>
+    <span class="decor three">✦</span>
+    <span class="decor four">✧</span>
 
     <div class="container">
 
-      <div class="subject-hero">
-
-        <div class="subject-icon">🎨</div>
-
-        <span class="section-label">
-          EPIC ART
-        </span>
-
-        <h1>
-          Lịch học <em>Mỹ thuật</em>
-        </h1>
-
-        <p>
-          Khám phá màu sắc, đường nét và hình ảnh
-          qua những giờ học sáng tạo tại EPIC.
-        </p>
-
+      <div class="subject-icon">
+        🎨
       </div>
 
+      <span class="eyebrow">
+        EPIC ART
+      </span>
+
+      <h1>
+        Lịch học <span>Mỹ thuật</span>
+      </h1>
+
+      <p class="hero-text">
+        Nơi các bạn nhỏ khám phá màu sắc,
+        phát triển trí tưởng tượng và tự do
+        thể hiện thế giới của riêng mình.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="classes">
+
+    <div class="container">
 
       <div class="class-list">
 
+
         <!-- LỚP 01 -->
 
-        <div class="class-schedule-card">
+        <article class="class-card">
 
-          <div class="class-info">
+          <div>
+            <span class="class-number">LỚP 01</span>
 
-            <span class="class-number">01</span>
-
-            <h2>
+            <h2 class="class-name">
               Mỹ thuật Mầm non
             </h2>
 
-            <p class="class-age">
+            <p class="age">
               Dành cho trẻ 4–6 tuổi
             </p>
-
           </div>
 
 
-          <div class="class-time">
+          <div>
+            <span class="label">
+              THỜI GIAN
+            </span>
 
-            <span>THỜI GIAN</span>
-
-            <strong>
+            <strong class="time-day">
               Thứ 7
             </strong>
 
-            <b>
+            <p class="time-hour">
               09:00 – 10:30
-            </b>
-
+            </p>
           </div>
 
 
-          <div class="class-capacity">
+          <div class="capacity">
 
-            <span>SĨ SỐ</span>
+            <span class="label">
+              SĨ SỐ
+            </span>
 
-            <strong>
+            <strong class="capacity-number">
               7/10
             </strong>
 
-            <small>
+            <small class="capacity-left">
               Còn 3 chỗ
             </small>
 
           </div>
 
 
-          <a href="index.html#dang-ky" class="class-register">
+          <a href="index.html#dang-ky" class="register">
             Đăng ký lớp →
           </a>
 
-        </div>
+        </article>
 
 
         <!-- LỚP 02 -->
 
-        <div class="class-schedule-card">
+        <article class="class-card">
 
-          <div class="class-info">
+          <div>
+            <span class="class-number">LỚP 02</span>
 
-            <span class="class-number">02</span>
-
-            <h2>
+            <h2 class="class-name">
               Mỹ thuật Thiếu nhi
             </h2>
 
-            <p class="class-age">
+            <p class="age">
               Dành cho trẻ 7–10 tuổi
             </p>
-
           </div>
 
 
-          <div class="class-time">
+          <div>
+            <span class="label">
+              THỜI GIAN
+            </span>
 
-            <span>THỜI GIAN</span>
-
-            <strong>
+            <strong class="time-day">
               Chủ nhật
             </strong>
 
-            <b>
+            <p class="time-hour">
               09:00 – 10:30
-            </b>
-
+            </p>
           </div>
 
 
-          <div class="class-capacity">
+          <div class="capacity">
 
-            <span>SĨ SỐ</span>
+            <span class="label">
+              SĨ SỐ
+            </span>
 
-            <strong>
+            <strong class="capacity-number">
               8/10
             </strong>
 
-            <small>
+            <small class="capacity-left">
               Còn 2 chỗ
             </small>
 
           </div>
 
 
-          <a href="index.html#dang-ky" class="class-register">
+          <a href="index.html#dang-ky" class="register">
             Đăng ký lớp →
           </a>
 
-        </div>
+        </article>
 
 
         <!-- LỚP 03 -->
 
-        <div class="class-schedule-card">
+        <article class="class-card">
 
-          <div class="class-info">
+          <div>
+            <span class="class-number">LỚP 03</span>
 
-            <span class="class-number">03</span>
-
-            <h2>
+            <h2 class="class-name">
               Mỹ thuật Sáng tạo
             </h2>
 
-            <p class="class-age">
+            <p class="age">
               Dành cho trẻ 11–15 tuổi
             </p>
-
           </div>
 
 
-          <div class="class-time">
+          <div>
+            <span class="label">
+              THỜI GIAN
+            </span>
 
-            <span>THỜI GIAN</span>
-
-            <strong>
+            <strong class="time-day">
               Chủ nhật
             </strong>
 
-            <b>
+            <p class="time-hour">
               14:00 – 15:30
-            </b>
-
+            </p>
           </div>
 
 
-          <div class="class-capacity">
+          <div class="capacity">
 
-            <span>SĨ SỐ</span>
+            <span class="label">
+              SĨ SỐ
+            </span>
 
-            <strong>
+            <strong class="capacity-number">
               6/10
             </strong>
 
-            <small>
+            <small class="capacity-left">
               Còn 4 chỗ
             </small>
 
           </div>
 
 
-          <a href="index.html#dang-ky" class="class-register">
+          <a href="index.html#dang-ky" class="register">
             Đăng ký lớp →
           </a>
 
-        </div>
+        </article>
+
 
       </div>
 
 
-      <div class="schedule-page-note">
-        💡 Số lượng học viên được giới hạn để đảm bảo giáo viên
-        có thể theo sát từng bạn trong quá trình học.
+      <div class="note">
+        💡 Mỗi lớp được giới hạn sĩ số để giáo viên
+        có thể theo sát và hỗ trợ từng học viên.
       </div>
-
 
     </div>
 
@@ -242,12 +745,8 @@
 </main>
 
 
-<footer class="site-footer">
-  <div class="container">
-    <p>
-      © 2026 EPIC – Thỏa sức đam mê, khơi nguồn sáng tạo
-    </p>
-  </div>
+<footer>
+  © 2026 EPIC – Thỏa sức đam mê, khơi nguồn sáng tạo
 </footer>
 
 </body>
