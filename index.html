@@ -185,658 +185,70 @@
   </div>
 
   <h2>
-    Chọn lớp <em>phù hợp với bạn</em>
+    Chọn môn <em>con yêu thích</em>
   </h2>
 
   <p class="schedule-intro">
-    Khám phá lịch học theo môn và độ tuổi. Mỗi lớp đều có giới hạn số lượng
-    để đảm bảo giáo viên có thể quan tâm đến từng học viên.
+    Khám phá lịch học của từng bộ môn và tìm lớp phù hợp với độ tuổi của con.
   </p>
 
-  <!-- BỘ LỌC -->
-  <div class="schedule-filters">
+  <div class="schedule-subjects">
 
-    <button class="schedule-filter active" data-filter="all">
-      ✨ Tất cả
-    </button>
+    <a class="schedule-subject art" href="lich-my-thuat.html">
+      <div class="schedule-subject-icon">🎨</div>
 
-    <button class="schedule-filter" data-filter="art">
-      🎨 Mỹ thuật
-    </button>
-
-    <button class="schedule-filter" data-filter="piano">
-      🎹 Piano
-    </button>
-
-    <button class="schedule-filter" data-filter="dance">
-      💃 Dance
-    </button>
-
-  </div>
-
-  <!-- LỌC ĐỘ TUỔI -->
-  <div class="schedule-age-filter">
-
-    <span>Độ tuổi:</span>
-
-    <button class="age-filter active" data-age="all">
-      Tất cả
-    </button>
-
-    <button class="age-filter" data-age="4-6">
-      4–6
-    </button>
-
-    <button class="age-filter" data-age="7-10">
-      7–10
-    </button>
-
-    <button class="age-filter" data-age="11-14">
-      11–14
-    </button>
-
-    <button class="age-filter" data-age="15-18">
-      15–18
-    </button>
-
-  </div>
-
-  <!-- LỊCH CÁC LỚP -->
-  <div class="schedule-grid" id="scheduleGrid">
-
-    <!-- MỸ THUẬT -->
-    <div class="class-card" data-subject="art" data-age="4-6">
-
-      <div class="class-card-top">
-        <span class="class-icon">🎨</span>
-
-        <span class="class-age">
-          4–6 tuổi
-        </span>
+      <div class="schedule-subject-content">
+        <span class="schedule-subject-number">01</span>
+        <h3>Mỹ thuật</h3>
+        <p>
+          Khơi nguồn sáng tạo qua màu sắc,
+          đường nét và hình ảnh.
+        </p>
+        <strong>
+          Xem lịch học <span>→</span>
+        </strong>
       </div>
+    </a>
 
-      <h3>Mỹ thuật 1</h3>
 
-      <div class="class-info">
-        <span>📅 Thứ 7</span>
-        <strong>09:00 – 10:00</strong>
+    <a class="schedule-subject piano" href="lich-piano.html">
+      <div class="schedule-subject-icon">🎹</div>
+
+      <div class="schedule-subject-content">
+        <span class="schedule-subject-number">02</span>
+        <h3>Piano</h3>
+        <p>
+          Phát triển cảm thụ âm nhạc,
+          sự tập trung và khả năng biểu đạt.
+        </p>
+        <strong>
+          Xem lịch học <span>→</span>
+        </strong>
       </div>
+    </a>
 
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 10</strong>
-        </div>
 
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
+    <a class="schedule-subject dance" href="lich-dance.html">
+      <div class="schedule-subject-icon">💃</div>
 
-        <small>✨ Còn 10 chỗ</small>
+      <div class="schedule-subject-content">
+        <span class="schedule-subject-number">03</span>
+        <h3>Dance</h3>
+        <p>
+          Rèn luyện nhịp điệu,
+          sự tự tin và khả năng biểu diễn.
+        </p>
+        <strong>
+          Xem lịch học <span>→</span>
+        </strong>
       </div>
-
-   
-
-    </div>
-
-
-    <div class="class-card" data-subject="art" data-age="7-10">
-
-      <div class="class-card-top">
-        <span class="class-icon">🎨</span>
-
-        <span class="class-age">
-          7–10 tuổi
-        </span>
-      </div>
-
-      <h3>Mỹ thuật 2</h3>
-
-      <div class="class-info">
-        <span>📅 Thứ 3 & Thứ 5</span>
-        <strong>17:45 – 19:15</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 10</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 10 chỗ</small>
-      </div>
-
-
-    </div>
-
-
-    <div class="class-card" data-subject="art" data-age="11-14">
-
-      <div class="class-card-top">
-        <span class="class-icon">🎨</span>
-
-        <span class="class-age">
-          11–14 tuổi
-        </span>
-      </div>
-
-      <h3>Mỹ thuật 3</h3>
-
-      <div class="class-info">
-        <span>📅 Thứ 2 & Thứ 4</span>
-        <strong>17:30 – 19:00</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 10</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 10 chỗ</small>
-      </div>
-
-    </div>
-
-
-    <div class="class-card" data-subject="art" data-age="11-14">
-
-      <div class="class-card-top">
-        <span class="class-icon">🎨</span>
-
-        <span class="class-age">
-          11–14 tuổi
-        </span>
-      </div>
-
-      <h3>Mỹ thuật 4</h3>
-
-      <div class="class-info">
-        <span>📅 Thứ 7</span>
-        <strong>14:00 – 15:30</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 10</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 10 chỗ</small>
-      </div>
-
-    </div>
-
-
-    <div class="class-card" data-subject="art" data-age="15-18">
-
-      <div class="class-card-top">
-        <span class="class-icon">🎨</span>
-
-        <span class="class-age">
-          15–18 tuổi
-        </span>
-      </div>
-
-      <h3>Mỹ thuật 5</h3>
-
-      <div class="class-info">
-        <span>📅 Thứ 5</span>
-        <strong>18:00 – 19:30</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 10</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 10 chỗ</small>
-      </div>
-
-   
-    </div>
-
-
-    <div class="class-card" data-subject="art" data-age="15-18">
-
-      <div class="class-card-top">
-        <span class="class-icon">🎨</span>
-
-        <span class="class-age">
-          15–18 tuổi
-        </span>
-      </div>
-
-      <h3>Mỹ thuật 6</h3>
-
-      <div class="class-info">
-        <span>📅 Chủ nhật</span>
-        <strong>14:00 – 15:30</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 10</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 10 chỗ</small>
-      </div>
-
-   
-
-    </div>
-
-
-    <!-- PIANO -->
-    <div class="class-card" data-subject="piano" data-age="4-6">
-
-      <div class="class-card-top">
-        <span class="class-icon">🎹</span>
-        <span class="class-age">4–6 tuổi</span>
-      </div>
-
-      <h3>Piano 1</h3>
-
-      <div class="class-info">
-        <span>📅 Thứ 7</span>
-        <strong>09:00 – 10:00</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 8</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 8 chỗ</small>
-      </div>
-
-     
-
-    </div>
-
-
-    <div class="class-card" data-subject="piano" data-age="7-10">
-
-      <div class="class-card-top">
-        <span class="class-icon">🎹</span>
-        <span class="class-age">7–10 tuổi</span>
-      </div>
-
-      <h3>Piano 2</h3>
-
-      <div class="class-info">
-        <span>📅 Thứ 2 & Thứ 4</span>
-        <strong>17:45 – 18:45</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 8</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 8 chỗ</small>
-      </div>
-
-   
-
-    </div>
-
-
-    <div class="class-card" data-subject="piano" data-age="11-14">
-
-      <div class="class-card-top">
-        <span class="class-icon">🎹</span>
-        <span class="class-age">11–14 tuổi</span>
-      </div>
-
-      <h3>Piano 3</h3>
-
-      <div class="class-info">
-        <span>📅 Thứ 3 & Thứ 5</span>
-        <strong>17:30 – 18:30</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 8</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 8 chỗ</small>
-      </div>
-
-     
-
-    </div>
-
-
-    <div class="class-card" data-subject="piano" data-age="11-14">
-
-      <div class="class-card-top">
-        <span class="class-icon">🎹</span>
-        <span class="class-age">11–14 tuổi</span>
-      </div>
-
-      <h3>Piano 4</h3>
-
-      <div class="class-info">
-        <span>📅 Thứ 7</span>
-        <strong>14:00 – 15:00</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 8</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 8 chỗ</small>
-      </div>
-
-
-    </div>
-
-
-    <div class="class-card" data-subject="piano" data-age="15-18">
-
-      <div class="class-card-top">
-        <span class="class-icon">🎹</span>
-        <span class="class-age">15–18 tuổi</span>
-      </div>
-
-      <h3>Piano 5</h3>
-
-      <div class="class-info">
-        <span>📅 Thứ 2 & Thứ 4</span>
-        <strong>18:00 – 19:00</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 8</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 8 chỗ</small>
-      </div>
-
-
-    </div>
-
-
-    <div class="class-card" data-subject="piano" data-age="15-18">
-
-      <div class="class-card-top">
-        <span class="class-icon">🎹</span>
-        <span class="class-age">15–18 tuổi</span>
-      </div>
-
-      <h3>Piano 6</h3>
-
-      <div class="class-info">
-        <span>📅 Chủ nhật</span>
-        <strong>15:00 – 16:00</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 8</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 8 chỗ</small>
-      </div>
-
-      
-
-    </div>
-
-
-    <!-- DANCE -->
-    <div class="class-card" data-subject="dance" data-age="4-6">
-
-      <div class="class-card-top">
-        <span class="class-icon">💃</span>
-        <span class="class-age">4–6 tuổi</span>
-      </div>
-
-      <h3>Dance 1</h3>
-
-      <div class="class-info">
-        <span>📅 Thứ 7</span>
-        <strong>10:15 – 11:15</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 10</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 10 chỗ</small>
-      </div>
-
-    
-
-    </div>
-
-
-    <div class="class-card" data-subject="dance" data-age="7-10">
-
-      <div class="class-card-top">
-        <span class="class-icon">💃</span>
-        <span class="class-age">7–10 tuổi</span>
-      </div>
-
-      <h3>Dance 2</h3>
-
-      <div class="class-info">
-        <span>📅 Thứ 2 & Thứ 4</span>
-        <strong>17:45 – 19:00</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 10</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 10 chỗ</small>
-      </div>
-
-    
-
-    </div>
-
-
-    <div class="class-card" data-subject="dance" data-age="11-14">
-
-      <div class="class-card-top">
-        <span class="class-icon">💃</span>
-        <span class="class-age">11–14 tuổi</span>
-      </div>
-
-      <h3>Dance 3</h3>
-
-      <div class="class-info">
-        <span>📅 Thứ 3 & Thứ 5</span>
-        <strong>18:00 – 19:15</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 12</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 12 chỗ</small>
-      </div>
-
-     
-
-    </div>
-
-
-    <div class="class-card" data-subject="dance" data-age="11-14">
-
-      <div class="class-card-top">
-        <span class="class-icon">💃</span>
-        <span class="class-age">11–14 tuổi</span>
-      </div>
-
-      <h3>Dance 4</h3>
-
-      <div class="class-info">
-        <span>📅 Thứ 7</span>
-        <strong>14:00 – 15:30</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 12</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 12 chỗ</small>
-      </div>
-
-      
-
-    </div>
-
-
-    <div class="class-card" data-subject="dance" data-age="15-18">
-
-      <div class="class-card-top">
-        <span class="class-icon">💃</span>
-        <span class="class-age">15–18 tuổi</span>
-      </div>
-
-      <h3>Dance 5</h3>
-
-      <div class="class-info">
-        <span>📅 Thứ 2 & Thứ 4</span>
-        <strong>18:30 – 20:00</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 12</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 12 chỗ</small>
-      </div>
-
-    
-
-    </div>
-
-
-    <div class="class-card" data-subject="dance" data-age="15-18">
-
-      <div class="class-card-top">
-        <span class="class-icon">💃</span>
-        <span class="class-age">15–18 tuổi</span>
-      </div>
-
-      <h3>Dance 6</h3>
-
-      <div class="class-info">
-        <span>📅 Chủ nhật</span>
-        <strong>16:30 – 18:00</strong>
-      </div>
-
-      <div class="class-capacity">
-        <div class="capacity-head">
-          <span>Học viên</span>
-          <strong>0 / 12</strong>
-        </div>
-
-        <div class="capacity-bar">
-          <span style="width:0%"></span>
-        </div>
-
-        <small>✨ Còn 12 chỗ</small>
-      </div>
-
-    
-
-    </div>
+    </a>
 
   </div>
 
   <div class="schedule-note">
     <span>💡</span>
-    Số lượng học viên được cập nhật tự động theo tình trạng đăng ký của từng lớp.
+    Mỗi lớp có giới hạn số lượng học viên để đảm bảo chất lượng học tập.
   </div>
 
 </div>
