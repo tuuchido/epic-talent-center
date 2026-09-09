@@ -23,10 +23,10 @@ import {
     onSnapshot,
     query,
     orderBy,
-    serverTimestamp
+    serverTimestamp,
+    runTransaction
 } from
-    "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 // =====================================================
 // FIREBASE CONFIG - EPIC WEBSITE
@@ -78,4 +78,5 @@ export {
     query,
     orderBy,
     serverTimestamp
+    runTransaction
 };
