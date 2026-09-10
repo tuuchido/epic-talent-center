@@ -3019,15 +3019,19 @@ async function approveRegistration(
 
 
                 const capacity =
-                    Number(
-                        classData.capacity
-                    ) || 0;
+    classData.capacity;
 
+const enrolled =
+    classData.enrolled;
 
-                const enrolled =
-                    Number(
-                        classData.enrolled
-                    ) || 0;
+if (
+    typeof capacity !== "number" ||
+    typeof enrolled !== "number"
+) {
+    throw new Error(
+        `Dữ liệu lớp không hợp lệ. capacity=${capacity}, enrolled=${enrolled}`
+    );
+}
 
 
                 const active =
