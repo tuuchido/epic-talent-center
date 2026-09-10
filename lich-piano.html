@@ -7,7 +7,7 @@
   <title>Lịch học Piano | EPIC</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Varela+Round:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -24,6 +24,10 @@
       box-sizing:border-box;
       margin:0;
       padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
     }
 
     body{
@@ -44,6 +48,8 @@
     }
 
     header{
+      position:relative;
+      z-index:10;
       background:#fff;
       border-bottom:3px solid var(--navy);
     }
@@ -58,33 +64,41 @@
 
     .logo img{
       width:105px;
+      height:auto;
       display:block;
     }
 
     .back-home{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
       padding:11px 17px;
       border:2px solid var(--navy);
       border-radius:14px;
       color:var(--navy);
       font-size:14px;
       font-weight:700;
-      transition:.2s;
+      background:#fff;
+      transition:.2s ease;
     }
 
     .back-home:hover{
       color:#fff;
       background:var(--navy);
+      transform:translateY(-2px);
     }
 
     .hero{
       position:relative;
       text-align:center;
       padding:75px 0 60px;
+      overflow:hidden;
     }
 
     .decor{
       position:absolute;
       pointer-events:none;
+      font-weight:400;
     }
 
     .one{
@@ -92,6 +106,7 @@
       top:45px;
       color:var(--red);
       font-size:32px;
+      transform:rotate(-15deg);
     }
 
     .two{
@@ -99,6 +114,7 @@
       top:100px;
       color:var(--gold);
       font-size:40px;
+      transform:rotate(12deg);
     }
 
     .three{
@@ -132,9 +148,15 @@
       box-shadow:7px 7px 0 var(--navy);
 
       transform:rotate(3deg);
+      transition:.25s ease;
+    }
+
+    .subject-icon:hover{
+      transform:rotate(-3deg) scale(1.04);
     }
 
     .eyebrow{
+      display:inline-block;
       color:var(--red);
       font-size:13px;
       font-weight:700;
@@ -160,6 +182,7 @@
       max-width:620px;
       margin:18px auto 0;
 
+      font-size:16px;
       line-height:1.8;
       color:#555;
     }
@@ -174,6 +197,8 @@
     }
 
     .class-card{
+      position:relative;
+
       display:grid;
       grid-template-columns:1.5fr 1fr .8fr auto;
       align-items:center;
@@ -188,7 +213,8 @@
 
       box-shadow:8px 8px 0 var(--navy);
 
-      transition:.25s;
+      overflow:hidden;
+      transition:.25s ease;
     }
 
     .class-card:nth-child(2){
@@ -204,7 +230,20 @@
       box-shadow:11px 13px 0 var(--navy);
     }
 
+    .class-card::after{
+      content:"✦";
+      position:absolute;
+      right:22px;
+      top:12px;
+      font-size:30px;
+      color:var(--red);
+      opacity:.3;
+    }
+
     .class-number{
+      display:block;
+      margin-bottom:6px;
+
       font-size:12px;
       font-weight:700;
       letter-spacing:2px;
@@ -242,6 +281,7 @@
     .time-day{
       color:var(--navy);
       font-size:17px;
+      font-weight:700;
     }
 
     .time-hour{
@@ -267,17 +307,21 @@
       font-family:"Sigmar",cursive;
       font-size:28px;
       font-weight:400;
+      line-height:1;
 
       color:var(--red);
     }
 
     .capacity-left{
+      display:block;
+      margin-top:6px;
+
       font-size:12px;
       color:#666;
     }
 
     .register{
-      display:flex;
+      display:inline-flex;
       align-items:center;
       justify-content:center;
 
@@ -294,12 +338,18 @@
 
       white-space:nowrap;
 
-      transition:.2s;
+      transition:.2s ease;
     }
 
     .register:hover{
       background:var(--red);
       transform:translateY(-2px);
+    }
+
+    .register.full{
+      background:#777;
+      cursor:not-allowed;
+      pointer-events:none;
     }
 
     .note{
@@ -325,6 +375,7 @@
     }
 
     @media(max-width:850px){
+
       .class-card{
         grid-template-columns:1fr 1fr;
       }
@@ -332,6 +383,7 @@
       .register{
         width:100%;
       }
+
     }
 
     @media(max-width:600px){
@@ -340,8 +392,17 @@
         width:min(100% - 28px,500px);
       }
 
+      .header-inner{
+        min-height:68px;
+      }
+
       .logo img{
         width:90px;
+      }
+
+      .back-home{
+        padding:9px 12px;
+        font-size:12px;
       }
 
       .hero{
@@ -358,6 +419,14 @@
         font-size:42px;
       }
 
+      .hero-text{
+        font-size:14px;
+      }
+
+      .classes{
+        padding-bottom:65px;
+      }
+
       .class-card{
         grid-template-columns:1fr;
         gap:18px;
@@ -366,9 +435,23 @@
         box-shadow:6px 6px 0 var(--navy);
       }
 
+      .class-card:hover{
+        transform:translateY(-3px);
+        box-shadow:7px 8px 0 var(--navy);
+      }
+
       .register{
         width:100%;
       }
+
+      .decor.one{
+        left:2%;
+      }
+
+      .decor.two{
+        right:2%;
+      }
+
     }
   </style>
 </head>
@@ -430,10 +513,17 @@
 <div class="class-list">
 
 
-<article class="class-card">
+<!-- =========================
+     LỚP 01
+========================= -->
+
+<article class="class-card" data-class-id="piano-01">
 
   <div>
-    <span class="class-number">LỚP 01</span>
+
+    <span class="class-number">
+      LỚP 01
+    </span>
 
     <h2 class="class-name">
       Piano Khởi đầu
@@ -442,10 +532,15 @@
     <p class="age">
       Dành cho trẻ 4–6 tuổi
     </p>
+
   </div>
 
+
   <div>
-    <span class="label">THỜI GIAN</span>
+
+    <span class="label">
+      THỜI GIAN
+    </span>
 
     <strong class="time-day">
       Thứ 7
@@ -454,11 +549,15 @@
     <p class="time-hour">
       09:00 – 10:00
     </p>
+
   </div>
+
 
   <div class="capacity">
 
-    <span class="label">SĨ SỐ</span>
+    <span class="label">
+      SĨ SỐ
+    </span>
 
     <strong class="capacity-number">
       6/8
@@ -470,17 +569,28 @@
 
   </div>
 
-  <a href="index.html?classId=piano-01#dang-ky" class="register">
-  Đăng ký lớp →
-</a>
+
+  <a
+    href="index.html?classId=piano-01#dang-ky"
+    class="register"
+  >
+    Đăng ký lớp →
+  </a>
 
 </article>
 
 
-<article class="class-card">
+<!-- =========================
+     LỚP 02
+========================= -->
+
+<article class="class-card" data-class-id="piano-02">
 
   <div>
-    <span class="class-number">LỚP 02</span>
+
+    <span class="class-number">
+      LỚP 02
+    </span>
 
     <h2 class="class-name">
       Piano Cơ bản
@@ -489,10 +599,15 @@
     <p class="age">
       Dành cho trẻ 7–10 tuổi
     </p>
+
   </div>
 
+
   <div>
-    <span class="label">THỜI GIAN</span>
+
+    <span class="label">
+      THỜI GIAN
+    </span>
 
     <strong class="time-day">
       Chủ nhật
@@ -501,11 +616,15 @@
     <p class="time-hour">
       09:00 – 10:00
     </p>
+
   </div>
+
 
   <div class="capacity">
 
-    <span class="label">SĨ SỐ</span>
+    <span class="label">
+      SĨ SỐ
+    </span>
 
     <strong class="capacity-number">
       7/8
@@ -517,17 +636,28 @@
 
   </div>
 
-  <a href="index.html?classId=piano-02#dang-ky" class="register">
-  Đăng ký lớp →
-</a>
+
+  <a
+    href="index.html?classId=piano-02#dang-ky"
+    class="register"
+  >
+    Đăng ký lớp →
+  </a>
 
 </article>
 
 
-<article class="class-card">
+<!-- =========================
+     LỚP 03
+========================= -->
+
+<article class="class-card" data-class-id="piano-03">
 
   <div>
-    <span class="class-number">LỚP 03</span>
+
+    <span class="class-number">
+      LỚP 03
+    </span>
 
     <h2 class="class-name">
       Piano Nâng cao
@@ -536,10 +666,15 @@
     <p class="age">
       Dành cho trẻ 11–18 tuổi
     </p>
+
   </div>
 
+
   <div>
-    <span class="label">THỜI GIAN</span>
+
+    <span class="label">
+      THỜI GIAN
+    </span>
 
     <strong class="time-day">
       Chủ nhật
@@ -548,11 +683,15 @@
     <p class="time-hour">
       14:00 – 15:00
     </p>
+
   </div>
+
 
   <div class="capacity">
 
-    <span class="label">SĨ SỐ</span>
+    <span class="label">
+      SĨ SỐ
+    </span>
 
     <strong class="capacity-number">
       5/8
@@ -564,8 +703,12 @@
 
   </div>
 
-  <a href="index.html?classId=piano-03#dang-ky" class="register">
-  Đăng ký lớp →
+
+  <a
+    href="index.html?classId=piano-03#dang-ky"
+    class="register"
+  >
+    Đăng ký lớp →
   </a>
 
 </article>
@@ -589,6 +732,140 @@
 <footer>
   © 2026 EPIC – Thỏa sức đam mê, khơi nguồn sáng tạo
 </footer>
+
+
+<!-- =====================================================
+     FIREBASE — CẬP NHẬT SĨ SỐ REAL-TIME
+===================================================== -->
+
+<script type="module">
+
+  import {
+    db,
+    collection,
+    onSnapshot
+  } from "./firebase-config.js?v=4";
+
+
+  const classesRef =
+    collection(db, "classes");
+
+
+  onSnapshot(
+    classesRef,
+
+    (snapshot) => {
+
+      snapshot.forEach((docSnapshot) => {
+
+        const classId =
+          docSnapshot.id;
+
+        const data =
+          docSnapshot.data();
+
+
+        const card =
+          document.querySelector(
+            `.class-card[data-class-id="${classId}"]`
+          );
+
+
+        if (!card) return;
+
+
+        const enrolled =
+          Number(data.enrolled || 0);
+
+
+        const capacity =
+          Number(data.capacity || 0);
+
+
+        const numberElement =
+          card.querySelector(".capacity-number");
+
+
+        const leftElement =
+          card.querySelector(".capacity-left");
+
+
+        const registerButton =
+          card.querySelector(".register");
+
+
+        const isFull =
+          capacity > 0 &&
+          enrolled >= capacity;
+
+
+        if (numberElement){
+
+          numberElement.textContent =
+            `${enrolled}/${capacity}`;
+
+        }
+
+
+        if (leftElement){
+
+          if (isFull){
+
+            leftElement.textContent =
+              "LỚP ĐÃ ĐẦY";
+
+          }else{
+
+            leftElement.textContent =
+              `Còn ${Math.max(capacity - enrolled,0)} chỗ`;
+
+          }
+
+        }
+
+
+        if (registerButton){
+
+          if (isFull){
+
+            registerButton.textContent =
+              "LỚP ĐÃ ĐẦY";
+
+            registerButton.classList.add("full");
+
+            registerButton.removeAttribute("href");
+
+          }else{
+
+            registerButton.textContent =
+              "Đăng ký lớp →";
+
+            registerButton.classList.remove("full");
+
+            registerButton.href =
+              `index.html?classId=${classId}#dang-ky`;
+
+          }
+
+        }
+
+      });
+
+    },
+
+
+    (error) => {
+
+      console.error(
+        "EPIC PIANO CLASSES ERROR:",
+        error
+      );
+
+    }
+
+  );
+
+</script>
 
 </body>
 </html>
