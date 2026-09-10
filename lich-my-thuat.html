@@ -48,11 +48,6 @@
       margin:auto;
     }
 
-
-    /* =========================
-       HEADER
-    ========================= */
-
     header{
       position:relative;
       z-index:10;
@@ -78,18 +73,13 @@
       display:inline-flex;
       align-items:center;
       gap:7px;
-
       padding:11px 17px;
-
       border:2px solid var(--navy);
       border-radius:14px;
-
       color:var(--navy);
       font-size:14px;
       font-weight:700;
-
       background:#fff;
-
       transition:.2s ease;
     }
 
@@ -98,11 +88,6 @@
       background:var(--navy);
       transform:translateY(-2px);
     }
-
-
-    /* =========================
-       HERO
-    ========================= */
 
     .hero{
       position:relative;
@@ -150,23 +135,15 @@
     .subject-icon{
       width:94px;
       height:94px;
-
       margin:0 auto 25px;
-
       display:grid;
       place-items:center;
-
       background:#fff6b8;
-
       border:3px solid var(--navy);
       border-radius:28px;
-
       font-size:47px;
-
       box-shadow:7px 7px 0 var(--navy);
-
       transform:rotate(-3deg);
-
       transition:.25s ease;
     }
 
@@ -176,11 +153,8 @@
 
     .eyebrow{
       display:inline-block;
-
       margin-bottom:12px;
-
       color:var(--red);
-
       font-size:13px;
       font-weight:700;
       letter-spacing:2px;
@@ -201,16 +175,10 @@
     .hero-text{
       max-width:620px;
       margin:18px auto 0;
-
       font-size:16px;
       line-height:1.8;
       color:#555;
     }
-
-
-    /* =========================
-       LỚP HỌC
-    ========================= */
 
     .classes{
       padding:20px 0 90px;
@@ -223,24 +191,16 @@
 
     .class-card{
       position:relative;
-
       display:grid;
       grid-template-columns:1.5fr 1fr .8fr auto;
       align-items:center;
-
       gap:25px;
-
       padding:28px 30px;
-
       background:#fff6b8;
-
       border:3px solid var(--navy);
       border-radius:27px;
-
       box-shadow:8px 8px 0 var(--navy);
-
       overflow:hidden;
-
       transition:.25s ease;
     }
 
@@ -259,28 +219,21 @@
 
     .class-card::after{
       content:"✦";
-
       position:absolute;
       right:22px;
       top:12px;
-
       font-size:30px;
       color:var(--red);
-
       opacity:.3;
     }
 
     .class-number{
       display:block;
-
       margin-bottom:6px;
-
       color:var(--navy);
-
       font-size:12px;
       font-weight:700;
       letter-spacing:2px;
-
       opacity:.5;
     }
 
@@ -300,13 +253,10 @@
 
     .label{
       display:block;
-
       margin-bottom:7px;
-
       font-size:10px;
       font-weight:700;
       letter-spacing:1.5px;
-
       color:#777;
     }
 
@@ -324,31 +274,24 @@
 
     .capacity{
       padding:12px 15px;
-
       background:rgba(255,255,255,.65);
-
       border:2px solid var(--navy);
       border-radius:16px;
-
       text-align:center;
     }
 
     .capacity-number{
       display:block;
-
       font-family:"Sigmar",cursive;
       font-size:28px;
       font-weight:400;
-
       color:var(--red);
       line-height:1;
     }
 
     .capacity-left{
       display:block;
-
       margin-top:6px;
-
       font-size:12px;
       color:#666;
     }
@@ -357,20 +300,14 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-
       min-height:48px;
       padding:0 20px;
-
       background:var(--navy);
       color:#fff;
-
       border-radius:15px;
-
       font-size:14px;
       font-weight:700;
-
       white-space:nowrap;
-
       transition:.2s ease;
     }
 
@@ -379,47 +316,30 @@
       transform:translateY(-2px);
     }
 
-
-    /* =========================
-       NOTE
-    ========================= */
+    .register.full{
+      background:#777;
+      cursor:not-allowed;
+      pointer-events:none;
+    }
 
     .note{
       margin-top:35px;
-
       padding:18px 22px;
-
       background:#fff;
-
       border:2px dashed var(--navy);
       border-radius:18px;
-
       text-align:center;
-
       font-size:14px;
       line-height:1.6;
     }
 
-
-    /* =========================
-       FOOTER
-    ========================= */
-
     footer{
       padding:28px 0;
-
       background:var(--navy);
       color:#fff;
-
       text-align:center;
-
       font-size:13px;
     }
-
-
-    /* =========================
-       MOBILE
-    ========================= */
 
     @media(max-width:850px){
 
@@ -477,9 +397,7 @@
       .class-card{
         grid-template-columns:1fr;
         gap:18px;
-
         padding:23px;
-
         border-radius:21px;
         box-shadow:6px 6px 0 var(--navy);
       }
@@ -500,6 +418,7 @@
       .decor.two{
         right:2%;
       }
+
     }
   </style>
 </head>
@@ -562,9 +481,11 @@
       <div class="class-list">
 
 
-        <!-- LỚP 01 -->
+        <!-- =========================
+             LỚP 01
+        ========================== -->
 
-        <article class="class-card">
+        <article class="class-card" data-class-id="art-01">
 
           <div>
             <span class="class-number">LỚP 01</span>
@@ -601,26 +522,28 @@
             </span>
 
             <strong class="capacity-number">
-              7/10
+              Đang tải...
             </strong>
 
             <small class="capacity-left">
-              Còn 3 chỗ
+              Đang tải...
             </small>
 
           </div>
 
 
-         <a href="index.html?classId=art-01#dang-ky" class="register">
-  Đăng ký lớp →
-</a>
+          <a href="index.html?classId=art-01#dang-ky" class="register">
+            Đăng ký lớp →
+          </a>
 
         </article>
 
 
-        <!-- LỚP 02 -->
+        <!-- =========================
+             LỚP 02
+        ========================== -->
 
-        <article class="class-card">
+        <article class="class-card" data-class-id="art-02">
 
           <div>
             <span class="class-number">LỚP 02</span>
@@ -657,26 +580,28 @@
             </span>
 
             <strong class="capacity-number">
-              8/10
+              Đang tải...
             </strong>
 
             <small class="capacity-left">
-              Còn 2 chỗ
+              Đang tải...
             </small>
 
           </div>
 
 
           <a href="index.html?classId=art-02#dang-ky" class="register">
-  Đăng ký lớp →
-</a>
+            Đăng ký lớp →
+          </a>
 
         </article>
 
 
-        <!-- LỚP 03 -->
+        <!-- =========================
+             LỚP 03
+        ========================== -->
 
-        <article class="class-card">
+        <article class="class-card" data-class-id="art-03">
 
           <div>
             <span class="class-number">LỚP 03</span>
@@ -703,6 +628,7 @@
             <p class="time-hour">
               14:00 – 15:30
             </p>
+
           </div>
 
 
@@ -713,19 +639,19 @@
             </span>
 
             <strong class="capacity-number">
-              6/10
+              Đang tải...
             </strong>
 
             <small class="capacity-left">
-              Còn 4 chỗ
+              Đang tải...
             </small>
 
           </div>
 
 
-         <a href="index.html?classId=art-03#dang-ky" class="register">
-  Đăng ký lớp →
-</a>
+          <a href="index.html?classId=art-03#dang-ky" class="register">
+            Đăng ký lớp →
+          </a>
 
         </article>
 
@@ -748,6 +674,142 @@
 <footer>
   © 2026 EPIC – Thỏa sức đam mê, khơi nguồn sáng tạo
 </footer>
+
+
+<!-- =====================================================
+     FIREBASE — CẬP NHẬT SĨ SỐ REAL-TIME
+===================================================== -->
+
+<script type="module">
+
+  import {
+    db,
+    collection,
+    onSnapshot
+  } from "./firebase-config.js?v=4";
+
+
+  const classCards =
+    document.querySelectorAll(".class-card");
+
+
+  const classesRef =
+    collection(db, "classes");
+
+
+  onSnapshot(
+    classesRef,
+    (snapshot) => {
+
+      snapshot.forEach((docSnapshot) => {
+
+        const classId =
+          docSnapshot.id;
+
+        const data =
+          docSnapshot.data();
+
+
+        const card =
+          document.querySelector(
+            `.class-card[data-class-id="${classId}"]`
+          );
+
+
+        if (!card) return;
+
+
+        const enrolled =
+          Number(data.enrolled || 0);
+
+
+        const capacity =
+          Number(data.capacity || 0);
+
+
+        const numberElement =
+          card.querySelector(".capacity-number");
+
+
+        const leftElement =
+          card.querySelector(".capacity-left");
+
+
+        const registerButton =
+          card.querySelector(".register");
+
+
+        const isFull =
+          capacity > 0 &&
+          enrolled >= capacity;
+
+
+        if (numberElement) {
+
+          numberElement.textContent =
+            `${enrolled}/${capacity}`;
+
+        }
+
+
+        if (leftElement) {
+
+          if (isFull) {
+
+            leftElement.textContent =
+              "LỚP ĐÃ ĐẦY";
+
+          } else {
+
+            leftElement.textContent =
+              `Còn ${Math.max(capacity - enrolled, 0)} chỗ`;
+
+          }
+
+        }
+
+
+        if (registerButton) {
+
+          if (isFull) {
+
+            registerButton.textContent =
+              "LỚP ĐÃ ĐẦY";
+
+            registerButton.classList.add("full");
+
+            registerButton.removeAttribute("href");
+
+          } else {
+
+            registerButton.textContent =
+              "Đăng ký lớp →";
+
+            registerButton.classList.remove("full");
+
+            registerButton.href =
+              `index.html?classId=${classId}#dang-ky`;
+
+          }
+
+        }
+
+      });
+
+    },
+
+    (error) => {
+
+      console.error(
+        "EPIC CLASSES ERROR:",
+        error
+      );
+
+    }
+
+  );
+
+</script>
 
 </body>
 </html>
