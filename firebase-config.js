@@ -48,11 +48,14 @@ const firebaseConfig = {
 // KHỞI TẠO FIREBASE
 // =====================================================
 
-const app = initializeApp(firebaseConfig);
+const app =
+    initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+const auth =
+    getAuth(app);
 
-const db = getFirestore(app);
+const db =
+    getFirestore(app);
 
 
 // =====================================================
@@ -64,12 +67,10 @@ export {
     auth,
     db,
 
-    // Authentication
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged,
 
-    // Firestore
     collection,
     addDoc,
     updateDoc,
