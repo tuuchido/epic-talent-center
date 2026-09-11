@@ -23,10 +23,6 @@
 
 <style>
 
-/* =====================================================
-   RESET
-===================================================== */
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -928,7 +924,6 @@ tbody tr:hover{
 
 }
 
-
 </style>
 
 </head>
@@ -1558,7 +1553,6 @@ const logoutBtn =
     document.getElementById("logoutBtn");
 
 
-
 /* =====================================================
    STUDENT ELEMENTS
 ===================================================== */
@@ -1615,7 +1609,6 @@ const cancelEdit =
     document.getElementById("cancelEdit");
 
 
-
 /* =====================================================
    REGISTRATION ELEMENTS
 ===================================================== */
@@ -1636,7 +1629,6 @@ const waitlistCount =
     document.getElementById("waitlistCount");
 
 
-
 /* =====================================================
    STATE
 ===================================================== */
@@ -1646,7 +1638,6 @@ let unsubscribeStudents = null;
 let unsubscribeRegistrations = null;
 
 let currentRegistrations = [];
-
 
 
 /* =====================================================
@@ -1703,7 +1694,6 @@ onAuthStateChanged(
 
     }
 );
-
 
 
 /* =====================================================
@@ -1763,7 +1753,6 @@ loginForm.addEventListener(
 );
 
 
-
 /* =====================================================
    LOGOUT
 ===================================================== */
@@ -1776,7 +1765,6 @@ logoutBtn.addEventListener(
 
     }
 );
-
 
 
 /* =====================================================
@@ -1839,7 +1827,6 @@ function loadStudents(){
 }
 
 
-
 /* =====================================================
    RENDER STUDENTS
 ===================================================== */
@@ -1878,7 +1865,6 @@ function renderStudents(
         return;
 
     }
-
 
 
     students.forEach(
@@ -2010,11 +1996,6 @@ function renderStudents(
     );
 
 
-
-    /* =================================================
-       EDIT
-    ================================================= */
-
     document
         .querySelectorAll("[data-edit]")
         .forEach(
@@ -2046,11 +2027,6 @@ function renderStudents(
             }
         );
 
-
-
-    /* =================================================
-       TOGGLE
-    ================================================= */
 
     document
         .querySelectorAll("[data-toggle]")
@@ -2108,11 +2084,6 @@ function renderStudents(
             }
         );
 
-
-
-    /* =================================================
-       DELETE
-    ================================================= */
 
     document
         .querySelectorAll("[data-delete]")
@@ -2172,7 +2143,6 @@ function renderStudents(
         );
 
 }
-
 
 
 /* =====================================================
@@ -2286,7 +2256,6 @@ studentForm.addEventListener(
 );
 
 
-
 /* =====================================================
    START EDIT
 ===================================================== */
@@ -2338,7 +2307,6 @@ function startEdit(
 }
 
 
-
 /* =====================================================
    RESET
 ===================================================== */
@@ -2370,7 +2338,6 @@ function resetForm(){
         "✦ Thêm ngôi sao mới";
 
 }
-
 
 
 /* =====================================================
@@ -2471,7 +2438,6 @@ function loadRegistrations(){
 }
 
 
-
 /* =====================================================
    RENDER REGISTRATIONS
 ===================================================== */
@@ -2515,7 +2481,6 @@ function renderRegistrations(){
         `${waitlist} Danh sách chờ`;
 
 
-
     if(currentRegistrations.length === 0){
 
         registrationList.innerHTML = `
@@ -2537,7 +2502,6 @@ function renderRegistrations(){
         return;
 
     }
-
 
 
     currentRegistrations.forEach(
@@ -2617,7 +2581,9 @@ function renderRegistrations(){
 
                         ${escapeHTML(
                             age
-                                ? age + " tuổi"
+                                ? String(age).includes("tuổi")
+                                    ? age
+                                    : age + " tuổi"
                                 : ""
                         )}
 
@@ -2785,11 +2751,6 @@ function renderRegistrations(){
     );
 
 
-
-    /* =================================================
-       APPROVE
-    ================================================= */
-
     document
         .querySelectorAll("[data-approve]")
         .forEach(
@@ -2815,11 +2776,6 @@ function renderRegistrations(){
         );
 
 
-
-    /* =================================================
-       WAITLIST
-    ================================================= */
-
     document
         .querySelectorAll("[data-waitlist]")
         .forEach(
@@ -2844,11 +2800,6 @@ function renderRegistrations(){
             }
         );
 
-
-
-    /* =================================================
-       REJECT
-    ================================================= */
 
     document
         .querySelectorAll("[data-reject]")
@@ -2877,9 +2828,9 @@ function renderRegistrations(){
 }
 
 
-
 /* =====================================================
    APPROVE REGISTRATION
+   FIXED
 ===================================================== */
 
 async function approveRegistration(
@@ -2890,12 +2841,15 @@ async function approveRegistration(
     const registration =
         currentRegistrations.find(
             item =>
-            item.id ===
-            registrationId
+            item.id === registrationId
         );
 
 
     if(!registration){
+
+        alert(
+            "❌ Không tìm thấy đăng ký."
+        );
 
         return;
 
@@ -2916,8 +2870,16 @@ async function approveRegistration(
     }
 
 
+    /*
+       Lấy classId từ đăng ký.
+       trim() giúp tránh trường hợp classId
+       bị dư khoảng trắng.
+    */
+
     const classId =
-        registration.classId;
+        String(
+            registration.classId || ""
+        ).trim();
 
 
     if(!classId){
@@ -2939,7 +2901,6 @@ async function approveRegistration(
         "Đang duyệt...";
 
 
-
     try{
 
         await runTransaction(
@@ -2947,6 +2908,10 @@ async function approveRegistration(
             db,
 
             async transaction => {
+
+                /* -----------------------------------------
+                   FIRESTORE REFERENCES
+                ----------------------------------------- */
 
                 const registrationRef =
                     doc(
@@ -2964,6 +2929,10 @@ async function approveRegistration(
                     );
 
 
+                /* -----------------------------------------
+                   READ REGISTRATION
+                ----------------------------------------- */
+
                 const registrationSnap =
                     await transaction.get(
                         registrationRef
@@ -2975,27 +2944,35 @@ async function approveRegistration(
                 ){
 
                     throw new Error(
-                        "Đăng ký không tồn tại."
+                        "Đăng ký không tồn tại trong Firebase."
                     );
 
                 }
 
 
-                const current =
+                const currentRegistration =
                     registrationSnap.data();
 
 
+                /* -----------------------------------------
+                   CHECK REGISTRATION STATUS
+                ----------------------------------------- */
+
                 if(
-                    current.status !==
+                    currentRegistration.status !==
                     "pending"
                 ){
 
                     throw new Error(
-                        "Đăng ký này đã được xử lý."
+                        "Đăng ký này đã được xử lý trước đó."
                     );
 
                 }
 
+
+                /* -----------------------------------------
+                   READ CLASS
+                ----------------------------------------- */
 
                 const classSnap =
                     await transaction.get(
@@ -3008,7 +2985,7 @@ async function approveRegistration(
                 ){
 
                     throw new Error(
-                        "Không tìm thấy lớp học."
+                        `Không tìm thấy lớp "${classId}" trong Firebase.`
                     );
 
                 }
@@ -3018,21 +2995,83 @@ async function approveRegistration(
                     classSnap.data();
 
 
+                /*
+                   LOG DỮ LIỆU THỰC TẾ FIREBASE
+                   để nếu còn lỗi có thể biết chính xác
+                   admin đang đọc document nào.
+                */
+
+                console.log(
+                    "APPROVE CLASS ID:",
+                    classId
+                );
+
+
+                console.log(
+                    "APPROVE CLASS DATA:",
+                    classData
+                );
+
+
+                console.log(
+                    "APPROVE CLASS FIELDS:",
+                    Object.keys(classData)
+                );
+
+
+                /* -----------------------------------------
+                   READ CAPACITY + ENROLLED
+                ----------------------------------------- */
+
                 const capacity =
-    classData.capacity;
+                    Number(
+                        classData.capacity
+                    );
 
-const enrolled =
-    classData.enrolled;
 
-if (
-    typeof capacity !== "number" ||
-    typeof enrolled !== "number"
-) {
-    throw new Error(
-        `Dữ liệu lớp không hợp lệ. capacity=${capacity}, enrolled=${enrolled}`
-    );
-}
+                const enrolled =
+                    Number(
+                        classData.enrolled
+                    );
 
+
+                /* -----------------------------------------
+                   VALIDATE CAPACITY
+                ----------------------------------------- */
+
+                if(
+                    !Number.isFinite(
+                        capacity
+                    )
+                ){
+
+                    throw new Error(
+                        `Lớp "${classId}" không có capacity hợp lệ. Giá trị Firebase hiện tại: ${classData.capacity}`
+                    );
+
+                }
+
+
+                /* -----------------------------------------
+                   VALIDATE ENROLLED
+                ----------------------------------------- */
+
+                if(
+                    !Number.isFinite(
+                        enrolled
+                    )
+                ){
+
+                    throw new Error(
+                        `Lớp "${classId}" không có enrolled hợp lệ. Giá trị Firebase hiện tại: ${classData.enrolled}`
+                    );
+
+                }
+
+
+                /* -----------------------------------------
+                   CHECK ACTIVE
+                ----------------------------------------- */
 
                 const active =
                     classData.active !==
@@ -3042,22 +3081,45 @@ if (
                 if(!active){
 
                     throw new Error(
-                        "Lớp học hiện không hoạt động."
+                        `Lớp "${classId}" hiện không hoạt động.`
                     );
 
                 }
 
+
+                /* -----------------------------------------
+                   CHECK CAPACITY
+                ----------------------------------------- */
 
                 if(
                     capacity <= 0
                 ){
 
                     throw new Error(
-                        "Lớp chưa được thiết lập sức chứa."
+                        `Lớp "${classId}" chưa được thiết lập sức chứa hợp lệ.`
                     );
 
                 }
 
+
+                /* -----------------------------------------
+                   CHECK ENROLLED
+                ----------------------------------------- */
+
+                if(
+                    enrolled < 0
+                ){
+
+                    throw new Error(
+                        `Sĩ số lớp "${classId}" không hợp lệ.`
+                    );
+
+                }
+
+
+                /* -----------------------------------------
+                   CHECK FULL
+                ----------------------------------------- */
 
                 if(
                     enrolled >=
@@ -3065,11 +3127,15 @@ if (
                 ){
 
                     throw new Error(
-                        "LỚP ĐÃ ĐẦY. Không thể duyệt thêm học viên."
+                        `LỚP ĐÃ ĐẦY. Sĩ số hiện tại ${enrolled}/${capacity}.`
                     );
 
                 }
 
+
+                /* -----------------------------------------
+                   APPROVE REGISTRATION
+                ----------------------------------------- */
 
                 transaction.update(
 
@@ -3087,6 +3153,10 @@ if (
 
                 );
 
+
+                /* -----------------------------------------
+                   UPDATE CLASS COUNT
+                ----------------------------------------- */
 
                 transaction.update(
 
@@ -3122,7 +3192,10 @@ if (
 
         alert(
             "❌ " +
-            error.message
+            (
+                error.message ||
+                "Không thể duyệt đăng ký."
+            )
         );
 
     }
@@ -3138,7 +3211,6 @@ if (
     }
 
 }
-
 
 
 /* =====================================================
@@ -3246,7 +3318,6 @@ async function moveToWaitlist(
 }
 
 
-
 /* =====================================================
    REJECT REGISTRATION
 ===================================================== */
@@ -3352,7 +3423,6 @@ async function rejectRegistration(
 }
 
 
-
 /* =====================================================
    STATUS TEXT
 ===================================================== */
@@ -3387,7 +3457,6 @@ function getStatusText(
     }
 
 }
-
 
 
 /* =====================================================
@@ -3481,7 +3550,6 @@ function formatDate(
 }
 
 
-
 /* =====================================================
    TIMESTAMP TO MILLISECONDS
 ===================================================== */
@@ -3553,7 +3621,6 @@ function getTimestampMillis(
     }
 
 }
-
 
 
 /* =====================================================
