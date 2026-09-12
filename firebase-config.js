@@ -31,7 +31,7 @@ import {
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBJyw2r-oC4VlA8r0OQbCveLQtoDBwvtA",
+    apiKey: "AIzaSyBJyw2rj-Oc4VlA8r0OQbCveLQtoDBwvtA",
     authDomain: "epic-talent-center-a151f.firebaseapp.com",
     projectId: "epic-talent-center-a151f",
     storageBucket: "epic-talent-center-a151f.firebasestorage.app",
