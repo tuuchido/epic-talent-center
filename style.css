@@ -5819,3 +5819,159 @@ h6 {
 .teacher-card:hover .teacher-photo img {
     transform: scale(1.04);
 }
+
+/* BẢNG HỌC PHÍ EPIC */
+.tuition-intro {
+    color: #68708a;
+    margin: 12px 0 24px;
+    line-height: 1.7;
+}
+
+.tuition-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+}
+
+.tuition-card {
+    padding: 22px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(30, 50, 100, .10);
+    box-shadow: 0 8px 24px rgba(30, 50, 100, .08);
+    min-width: 0;
+}
+
+.tuition-card.basic {
+    background: #e3f2ff;
+}
+
+.tuition-card.standard {
+    background: #ffe7ed;
+}
+
+.tuition-card.premium {
+    background: #fff3c8;
+}
+
+.tuition-name {
+    display: block;
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+    color: #244f91;
+    margin-bottom: 15px;
+}
+
+.standard .tuition-name {
+    color: #d84e70;
+}
+
+.premium .tuition-name {
+    color: #b38b19;
+}
+
+.tuition-price {
+    background: #fff;
+    border-radius: 14px;
+    padding: 13px 8px;
+    text-align: center;
+    margin-bottom: 14px;
+}
+
+.tuition-price strong {
+    display: block;
+    font-size: clamp(19px, 2vw, 26px);
+    color: #244f91;
+    overflow-wrap: anywhere;
+}
+
+.standard .tuition-price strong {
+    color: #d84e70;
+}
+
+.premium .tuition-price strong {
+    color: #b38b19;
+}
+
+.tuition-price span {
+    color: #68708a;
+    font-size: 13px;
+}
+
+.tuition-sessions {
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 14px;
+    line-height: 1.6;
+}
+
+.tuition-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tuition-card li {
+    position: relative;
+    padding-left: 20px;
+    margin: 12px 0;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.tuition-card li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 900;
+    color: #315fa6;
+}
+
+.tuition-offers {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.offer-item {
+    background: #fff;
+    border: 1px solid #f3d5df;
+    border-radius: 15px;
+    padding: 16px 10px;
+    text-align: center;
+}
+
+.offer-item strong {
+    display: block;
+    color: #e44d70;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.offer-item span {
+    display: block;
+    font-size: 12px;
+    color: #68708a;
+    line-height: 1.5;
+}
+
+.tuition-register {
+    margin-top: 24px;
+}
+
+@media (max-width: 850px) {
+    .tuition-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tuition-offers {
+        grid-template-columns: 1fr;
+    }
+
+    .tuition-card {
+        padding: 22px;
+    }
+}
