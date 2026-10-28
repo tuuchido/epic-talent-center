@@ -478,7 +478,33 @@
       margin-top: 8px;
       font-weight: bold;
     }
+/* Hiển thị ảnh âm nhạc đúng tỷ lệ gốc */
+.work {
+  aspect-ratio: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 14px;
+  font-size: initial;
+}
 
+.work img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 14px;
+}
+
+.work span {
+  display: block;
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--navy);
+  text-align: center;
+}
     /* CTA */
 
     .cta {
@@ -992,39 +1018,45 @@
 
       </div>
 
-      <div class="portfolio-grid">
+<div class="portfolio-grid">
 
-        <div class="work">
-          🎹
-          <span>Ảnh biểu diễn</span>
-        </div>
+  <div class="work">
+    <img src="../../assets/images/co-nhat-quynh/amnhac01.jpg"
+         alt="Ảnh biểu diễn âm nhạc" loading="lazy">
+    <span>Ảnh biểu diễn</span>
+  </div>
 
-        <div class="work">
-          🎼
-          <span>Bài học âm nhạc</span>
-        </div>
+  <div class="work">
+    <img src="../../assets/images/co-nhat-quynh/amnhac02.jpg"
+         alt="Bài học âm nhạc" loading="lazy">
+    <span>Bài học âm nhạc</span>
+  </div>
 
-        <div class="work">
-          🎵
-          <span>Hoạt động học viên</span>
-        </div>
+  <div class="work">
+    <img src="../../assets/images/co-nhat-quynh/amnhac03.jpg"
+         alt="Hoạt động học viên" loading="lazy">
+    <span>Hoạt động học viên</span>
+  </div>
 
-        <div class="work">
-          ⭐
-          <span>Sân khấu</span>
-        </div>
+  <div class="work">
+    <img src="../../assets/images/co-nhat-quynh/amnhac04.jpg"
+         alt="Sân khấu âm nhạc" loading="lazy">
+    <span>Sân khấu</span>
+  </div>
 
-        <div class="work">
-          🎶
-          <span>Tác phẩm</span>
-        </div>
+  <div class="work">
+    <img src="../../assets/images/co-nhat-quynh/amnhac05.jpg"
+         alt="Tác phẩm âm nhạc" loading="lazy">
+    <span>Tác phẩm</span>
+  </div>
 
-        <div class="work">
-          📸
-          <span>Khoảnh khắc lớp học</span>
-        </div>
+  <div class="work">
+    <img src="../../assets/images/co-nhat-quynh/amnhac06.jpg"
+         alt="Khoảnh khắc lớp học" loading="lazy">
+    <span>Khoảnh khắc lớp học</span>
+  </div>
 
-      </div>
+</div>
 
     </div>
 
