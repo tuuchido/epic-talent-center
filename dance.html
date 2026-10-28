@@ -1,15 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="EPIC Ribbon Dance: chương trình múa ruy băng kết hợp kỹ thuật thể dục nghệ thuật và múa biểu diễn, gồm lớp năng khiếu và lớp chuyên sâu.">
 
-<title>EPIC Vũ đạo – Cute Move Club</title>
+<title>EPIC Ribbon Dance – Múa ruy băng</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Fredoka:wght@400;500;600;700&family=Varela+Round&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --navy:#102576;
@@ -52,9 +53,7 @@ button{
   touch-action:manipulation;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .header{
   position:fixed;
@@ -93,9 +92,7 @@ button{
   transform:translateY(-3px) rotate(-2deg);
 }
 
-/* =========================
-   DECORATIONS
-========================= */
+/* DECORATIONS */
 
 .sticker{
   position:absolute;
@@ -146,9 +143,7 @@ button{
   to{transform:rotate(360deg)}
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
   min-height:850px;
@@ -238,7 +233,7 @@ button{
   background:white;
 }
 
-/* Hero character */
+/* HERO ART */
 
 .hero-art{
   position:relative;
@@ -299,9 +294,7 @@ button{
   left:5px;
 }
 
-/* =========================
-   MARQUEE
-========================= */
+/* MARQUEE */
 
 .marquee{
   background:var(--navy);
@@ -331,9 +324,7 @@ button{
   to{transform:translateX(-50%)}
 }
 
-/* =========================
-   COMMON
-========================= */
+/* COMMON */
 
 .section{
   padding:110px 7%;
@@ -367,1656 +358,500 @@ button{
 .section-title span{
   color:var(--red);
 }
-
-/* =========================
-   BEAT
+  /* =========================
+   TRAINING PROGRAMS
 ========================= */
 
-.beat-section{
+.program-section{
   background:white;
 }
 
-.beat-intro{
-  text-align:center;
+.program-intro{
+  max-width:720px;
+  font-size:18px;
+  line-height:1.8;
+  margin-bottom:45px;
 }
 
-.beat-boxes{
+.program-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-  max-width:700px;
-  margin:40px auto;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:28px;
 }
 
-.beat{
-  aspect-ratio:1;
-  background:var(--yellow);
+.program-card{
+  position:relative;
+  padding:32px;
   border:4px solid var(--navy);
-  border-radius:30px;
-  display:grid;
-  place-items:center;
-  font-family:"Sigmar";
-  font-size:60px;
-  color:var(--navy);
-  box-shadow:7px 7px 0 var(--navy);
-  cursor:pointer;
-  transition:.15s;
-}
-
-.beat:nth-child(2){background:var(--pink)}
-.beat:nth-child(3){background:var(--blue)}
-.beat:nth-child(4){
-  background:var(--red);
-  color:white;
-}
-
-.beat:hover{
-  transform:translateY(-8px) rotate(-4deg);
-}
-
-.beat.active{
-  transform:scale(1.08) rotate(4deg);
-}
-/* =========================================================
-   EPIC FEEL THE BEAT
-========================================================= */
-
-.instrument{
-  border:4px solid var(--navy);
-  font-family:"Sigmar",cursive;
-  cursor:pointer;
+  border-radius:32px;
+  box-shadow:9px 9px 0 var(--navy);
   overflow:hidden;
-  position:relative;
-  transition:.15s;
+  transition:transform .25s;
 }
 
-.instrument-icon{
-  display:block;
-  font-size:64px;
-  line-height:1;
-  transition:.15s;
+.program-card:hover{
+  transform:translateY(-7px);
 }
 
-.instrument small{
-  display:block;
-  margin-top:12px;
-  font-family:"Fredoka","Varela Round",sans-serif;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:1px;
+.program-card.talent{
+  background:var(--pink);
 }
 
-.instrument:hover .instrument-icon{
-  transform:scale(1.12) rotate(-5deg);
-}
-
-.instrument:active{
-  transform:
-    translate(4px,4px)
-    scale(.96);
-
-  box-shadow:
-    3px 3px 0 var(--navy);
-}
-
-.instrument.playing{
-
-  animation:
-    epicInstrumentBeat
-    .35s
-    ease;
-
-}
-
-@keyframes epicInstrumentBeat{
-
-  0%{
-    transform:scale(1);
-  }
-
-  35%{
-    transform:
-      scale(1.1)
-      rotate(-4deg);
-  }
-
-  70%{
-    transform:
-      scale(.97)
-      rotate(3deg);
-  }
-
-  100%{
-    transform:scale(1);
-  }
-
-}
-
-.beat-note{
-
-  position:absolute;
-
-  pointer-events:none;
-
-  font-size:28px;
-
-  animation:
-    epicNoteFloat
-    .8s
-    ease-out
-    forwards;
-
-  z-index:20;
-
-}
-
-@keyframes epicNoteFloat{
-
-  0%{
-    opacity:1;
-
-    transform:
-      translateY(0)
-      scale(.7)
-      rotate(0);
-  }
-
-  100%{
-    opacity:0;
-
-    transform:
-      translateY(-70px)
-      translateX(var(--note-x))
-      scale(1.2)
-      rotate(20deg);
-  }
-
-}
-
-
-/* Mobile */
-
-@media(max-width:700px){
-
-  .beat-boxes{
-
-    grid-template-columns:
-      repeat(2,1fr);
-
-    gap:14px;
-
-  }
-
-  .instrument-icon{
-    font-size:48px;
-  }
-
-}
-.beat-line{
-  height:8px;
-  max-width:700px;
-  margin:auto;
-  background:var(--navy);
-  border-radius:10px;
-  position:relative;
-  overflow:hidden;
-}
-
-.beat-line::after{
-  content:"";
-  position:absolute;
-  width:80px;
-  height:100%;
-  background:var(--red);
-  left:-100px;
-  animation:beatLine 2s linear infinite;
-}
-
-@keyframes beatLine{
-  to{left:100%}
-}
-
-/* =========================
-   STORY
-========================= */
-
-.story{
-  background:var(--red);
-  color:white;
-  position:relative;
-  overflow:hidden;
-}
-
-.story .section-label{
-  background:white;
-}
-
-.story .section-title{
-  color:white;
-  max-width:850px;
-}
-
-.story p{
-  font-size:24px;
-  line-height:1.6;
-  max-width:850px;
-}
-
-/* =========================
-   STYLE CARDS
-========================= */
-
-.styles{
-  background:var(--cream);
-}
-
-.style-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:25px;
-}
-
-.style-card{
-  min-height:240px;
-  padding:35px;
-  background:white;
-  border:4px solid var(--navy);
-  border-radius:35px;
-  box-shadow:8px 8px 0 var(--navy);
-  position:relative;
-  overflow:hidden;
-  transition:.25s;
-}
-
-.style-card:hover{
-  transform:translateY(-8px) rotate(-1deg);
-}
-
-.style-card:nth-child(2){background:var(--pink)}
-.style-card:nth-child(3){background:var(--blue)}
-.style-card:nth-child(4){background:var(--yellow)}
-
-.style-number{
-  position:absolute;
-  right:20px;
-  top:15px;
-  font-size:65px;
-  font-family:"Sigmar";
-  opacity:.15;
-}
-
-.style-icon{
-  font-size:55px;
-}
-
-.style-card h3{
-  font-family:"Sigmar";
-  color:var(--navy);
-  font-size:34px;
-  margin:15px 0 10px;
-}
-
-.style-card p{
-  line-height:1.6;
-}
-
-/* =========================
-   AGE JOURNEY
-========================= */
-
-.journey{
+.program-card.advanced{
   background:var(--blue);
 }
 
-.journey-grid{
+.program-number{
+  position:absolute;
+  top:20px;
+  right:24px;
+  font-family:"Sigmar",cursive;
+  font-size:44px;
+  color:rgba(16,37,118,.18);
+}
+
+.program-icon{
+  width:78px;
+  height:78px;
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  place-items:center;
+  background:white;
+  border:3px solid var(--navy);
+  border-radius:24px;
+  font-size:40px;
+  margin-bottom:24px;
+}
+
+.program-card h3{
+  font-family:"Sigmar",cursive;
+  color:var(--navy);
+  font-size:clamp(27px,3vw,38px);
+  line-height:1.15;
+  margin-bottom:14px;
+}
+
+.program-card p{
+  font-size:16px;
+  line-height:1.75;
+  margin-bottom:20px;
+}
+
+.program-list{
+  list-style:none;
+  display:grid;
+  gap:13px;
+  margin:20px 0 28px;
+}
+
+.program-list li{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  line-height:1.6;
+}
+
+.program-list li::before{
+  content:"✦";
+  color:var(--red);
+  font-size:18px;
+  font-weight:700;
+  flex-shrink:0;
+}
+
+.program-note{
+  background:rgba(255,255,255,.75);
+  border:2px dashed var(--navy);
+  border-radius:18px;
+  padding:15px;
+  font-size:14px;
+  line-height:1.7;
+}
+
+/* =========================
+   AGE GROUPS
+========================= */
+
+.age-section{
+  background:var(--cream);
+}
+
+.age-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
   gap:18px;
 }
 
 .age-card{
   background:white;
-  border:4px solid var(--navy);
-  border-radius:30px;
-  padding:28px 20px;
-  text-align:center;
-  box-shadow:6px 6px 0 var(--navy);
-  transition:.2s;
+  border:3px solid var(--navy);
+  border-radius:24px;
+  padding:24px 18px;
+  box-shadow:5px 5px 0 var(--navy);
+  transition:transform .2s;
 }
 
 .age-card:hover{
-  transform:translateY(-8px) rotate(2deg);
+  transform:translateY(-5px) rotate(-1deg);
+}
+
+.age-card:nth-child(2){
+  background:var(--pink);
+}
+
+.age-card:nth-child(3){
+  background:var(--blue);
+}
+
+.age-card:nth-child(4){
+  background:var(--green);
 }
 
 .age-icon{
-  font-size:55px;
-}
-
-.age{
-  display:inline-block;
-  margin:15px 0;
-  background:var(--yellow);
-  padding:6px 14px;
-  border-radius:20px;
-  font-weight:700;
-  border:2px solid var(--navy);
+  font-size:38px;
+  margin-bottom:15px;
 }
 
 .age-card h3{
-  color:var(--red);
-  font-family:"Sigmar";
-  font-size:28px;
-}
-
-/* =========================================================
-   DANCE MIRROR — WOW ARCADE
-========================================================= */
-
-.game-section{
-  background:white;
-  position:relative;
-  overflow:hidden;
-}
-
-.game-section::before,
-.game-section::after{
-  content:"";
-  position:absolute;
-  border-radius:50%;
-  pointer-events:none;
-}
-
-.game-section::before{
-  width:280px;
-  height:280px;
-  background:var(--pink);
-  left:-150px;
-  top:150px;
-  opacity:.5;
-}
-
-.game-section::after{
-  width:350px;
-  height:350px;
-  background:var(--blue);
-  right:-200px;
-  bottom:100px;
-  opacity:.6;
-}
-
-.game-card{
-  max-width:950px;
-  margin:auto;
-  background:var(--cream);
-  border:5px solid var(--navy);
-  border-radius:40px;
-  padding:35px;
-  box-shadow:10px 10px 0 var(--navy);
-  position:relative;
-  z-index:2;
-}
-
-.game-top{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  flex-wrap:wrap;
-  margin-bottom:25px;
-}
-
-.game-title{
-  font-family:"Sigmar";
   color:var(--navy);
-  font-size:42px;
-}
-
-.game-sub{
-  margin-top:5px;
-}
-
-.stats{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-}
-
-.stat{
-  background:white;
-  border:3px solid var(--navy);
-  border-radius:18px;
-  padding:8px 13px;
-  font-weight:700;
-  box-shadow:3px 3px 0 rgba(16,37,118,.15);
-}
-
-.stat strong{
-  color:var(--red);
-}
-
-.best-stat strong{
-  color:#8A62D6;
-}
-
-/* =========================
-   ARCADE SCREEN
-========================= */
-
-.game-screen{
-  min-height:470px;
-  background:
-    radial-gradient(circle at 20% 25%,rgba(255,255,255,.9) 0 3px,transparent 4px),
-    radial-gradient(circle at 80% 35%,rgba(255,255,255,.9) 0 3px,transparent 4px),
-    radial-gradient(circle at 50% 70%,rgba(255,255,255,.7) 0 2px,transparent 3px),
-    linear-gradient(145deg,#DCE8FF,#CDBBFF,#FFD8DE);
-  background-size:auto,auto,auto,100% 100%;
-  border:4px solid var(--navy);
-  border-radius:30px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-  isolation:isolate;
-}
-
-/* disco lights */
-
-.game-screen::before{
-  content:"";
-  position:absolute;
-  width:160%;
-  height:160%;
-  left:-30%;
-  top:-30%;
-  background:
-    conic-gradient(
-      from 0deg,
-      transparent 0deg 20deg,
-      rgba(255,255,255,.15) 20deg 38deg,
-      transparent 38deg 65deg,
-      rgba(201,24,43,.08) 65deg 82deg,
-      transparent 82deg 110deg,
-      rgba(231,200,74,.12) 110deg 130deg,
-      transparent 130deg 170deg,
-      rgba(16,37,118,.08) 170deg 190deg,
-      transparent 190deg 230deg,
-      rgba(255,255,255,.18) 230deg 255deg,
-      transparent 255deg 300deg,
-      rgba(201,24,43,.08) 300deg 325deg,
-      transparent 325deg
-    );
-  animation:discoSpin 12s linear infinite;
-  z-index:-1;
-}
-
-@keyframes discoSpin{
-  to{transform:rotate(360deg)}
-}
-
-.game-screen.playing{
-  animation:screenPulse 1.2s ease-in-out infinite;
-}
-
-@keyframes screenPulse{
-  0%,100%{
-    box-shadow:inset 0 0 0 rgba(255,255,255,0);
-  }
-  50%{
-    box-shadow:inset 0 0 45px rgba(255,255,255,.18);
-  }
-}
-
-/* energy */
-
-.energy-wrap{
-  position:absolute;
-  top:15px;
-  left:18px;
-  right:18px;
-  z-index:20;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:12px;
-  font-weight:700;
-  color:var(--navy);
-}
-
-.energy-bar{
-  flex:1;
-  height:15px;
-  background:white;
-  border:3px solid var(--navy);
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:2px 2px 0 rgba(16,37,118,.15);
-}
-
-.energy-fill{
-  width:100%;
-  height:100%;
-  background:linear-gradient(90deg,var(--red),var(--yellow));
-  border-radius:20px;
-  transition:.25s;
-}
-
-/* combo */
-
-.combo-pop{
-  position:absolute;
-  top:72px;
-  right:25px;
-  font-family:"Sigmar";
-  font-size:30px;
-  color:var(--red);
-  pointer-events:none;
-  opacity:0;
-  z-index:30;
-  text-shadow:3px 3px 0 white;
-}
-
-.combo-pop.show{
-  animation:comboPop .7s ease;
-}
-
-@keyframes comboPop{
-  0%{
-    opacity:0;
-    transform:scale(.5) translateY(15px) rotate(-8deg);
-  }
-  30%{
-    opacity:1;
-    transform:scale(1.3) translateY(0) rotate(4deg);
-  }
-  100%{
-    opacity:0;
-    transform:scale(1) translateY(-35px) rotate(0);
-  }
-}
-
-/* feedback */
-
-.feedback{
-  position:absolute;
-  top:85px;
-  left:50%;
-  transform:translateX(-50%);
-  font-family:"Sigmar";
-  font-size:42px;
-  color:var(--red);
-  text-shadow:4px 4px 0 white;
-  opacity:0;
-  pointer-events:none;
-  z-index:25;
-  white-space:nowrap;
-}
-
-.feedback.show{
-  animation:feedbackPop .75s ease;
-}
-
-.feedback.perfect{
-  color:var(--red);
-}
-
-.feedback.great{
-  color:#8A62D6;
-}
-
-.feedback.good{
-  color:var(--navy);
-}
-
-.feedback.miss{
-  color:#777;
-}
-
-@keyframes feedbackPop{
-  0%{
-    opacity:0;
-    transform:translateX(-50%) scale(.5) translateY(15px);
-  }
-  25%{
-    opacity:1;
-    transform:translateX(-50%) scale(1.25) translateY(0);
-  }
-  100%{
-    opacity:0;
-    transform:translateX(-50%) scale(1) translateY(-45px);
-  }
-}
-
-/* =========================
-   CUTE DANCER
-========================= */
-
-.game-character{
-  width:250px;
-  height:225px;
-  position:relative;
-  display:flex;
-  justify-content:center;
-  align-items:flex-end;
+  font-size:21px;
   margin-bottom:10px;
-  z-index:10;
-  transform-origin:center bottom;
 }
 
-.dancer-character{
-  width:125px;
-  height:190px;
-  position:relative;
-  transform-origin:center bottom;
-  animation:dancerIdle 1.8s ease-in-out infinite;
-  z-index:3;
-}
-
-.dancer-shadow{
-  position:absolute;
-  bottom:5px;
-  left:50%;
-  width:105px;
-  height:18px;
-  border-radius:50%;
-  background:rgba(16,37,118,.18);
-  transform:translateX(-50%);
-  animation:shadowIdle 1.8s ease-in-out infinite;
-}
-
-@keyframes dancerIdle{
-  0%,100%{
-    transform:translateY(0) rotate(-2deg);
-  }
-  50%{
-    transform:translateY(-7px) rotate(2deg);
-  }
-}
-
-@keyframes shadowIdle{
-  0%,100%{
-    transform:translateX(-50%) scale(1);
-    opacity:.25;
-  }
-  50%{
-    transform:translateX(-50%) scale(.82);
-    opacity:.15;
-  }
-}
-
-/* hair */
-
-.dancer-hair{
-  position:absolute;
-  width:68px;
-  height:78px;
-  left:28px;
-  top:4px;
-  background:#633B31;
-  border:4px solid var(--navy);
-  border-radius:48% 48% 45% 45%;
-  z-index:1;
-}
-
-.dancer-hair span{
-  position:absolute;
-  width:18px;
-  height:35px;
-  background:#633B31;
-  border:4px solid var(--navy);
-  border-top:none;
-  border-radius:0 0 15px 15px;
-  bottom:-22px;
-}
-
-.dancer-hair span:nth-child(1){
-  left:-8px;
-  transform:rotate(12deg);
-}
-
-.dancer-hair span:nth-child(2){
-  left:21px;
-  height:42px;
-}
-
-.dancer-hair span:nth-child(3){
-  right:-8px;
-  transform:rotate(-12deg);
-}
-
-/* head */
-
-.dancer-head{
-  position:absolute;
-  width:61px;
-  height:65px;
-  left:32px;
-  top:13px;
-  background:#FFD1B8;
-  border:4px solid var(--navy);
-  border-radius:45% 45% 48% 48%;
-  z-index:2;
-}
-
-.eye{
-  position:absolute;
-  width:7px;
-  height:10px;
-  background:var(--navy);
-  border-radius:50%;
-  top:27px;
-}
-
-.eye.left{left:15px}
-.eye.right{right:15px}
-
-.blush{
-  position:absolute;
-  width:10px;
-  height:6px;
-  background:#F28B9B;
-  border-radius:50%;
-  top:39px;
-  opacity:.7;
-}
-
-.blush.left{left:7px}
-.blush.right{right:7px}
-
-.mouth{
-  position:absolute;
-  left:50%;
-  top:39px;
-  transform:translateX(-50%);
-  color:var(--red);
-  font-size:17px;
-  font-weight:700;
-}
-
-/* neck */
-
-.dancer-neck{
-  position:absolute;
-  width:20px;
-  height:20px;
-  left:52px;
-  top:73px;
-  background:#FFD1B8;
-  border:4px solid var(--navy);
-  z-index:1;
-}
-
-/* body */
-
-.dancer-body{
-  position:absolute;
-  width:62px;
-  height:67px;
-  left:32px;
-  top:82px;
-  background:var(--red);
-  border:4px solid var(--navy);
-  border-radius:22px 22px 18px 18px;
-  z-index:2;
-  display:grid;
-  place-items:center;
-}
-
-.shirt-star{
-  color:var(--yellow);
-  font-size:24px;
-  animation:starPulse .8s ease-in-out infinite;
-}
-
-@keyframes starPulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.18)}
-}
-
-/* arms */
-
-.dancer-arm{
-  position:absolute;
-  width:18px;
-  height:63px;
-  background:#FFD1B8;
-  border:4px solid var(--navy);
-  border-radius:20px;
-  top:87px;
-  z-index:1;
-  transform-origin:top center;
-}
-
-.arm-left{
-  left:17px;
-  transform:rotate(20deg);
-}
-
-.arm-right{
-  right:17px;
-  transform:rotate(-20deg);
-}
-
-.hand{
-  position:absolute;
-  bottom:-13px;
-  left:50%;
-  transform:translateX(-50%);
-  width:24px;
-  height:24px;
-  background:#FFD1B8;
-  border:3px solid var(--navy);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  color:var(--red);
-  font-size:12px;
-}
-
-/* skirt */
-
-.dancer-skirt{
-  position:absolute;
-  width:91px;
-  height:44px;
-  left:17px;
-  top:135px;
-  background:#FF91A4;
-  border:4px solid var(--navy);
-  border-radius:15px 15px 45% 45%;
-  z-index:3;
-  transform-origin:top center;
-}
-
-/* legs */
-
-.dancer-leg{
-  position:absolute;
-  width:20px;
-  height:52px;
-  background:#FFD1B8;
-  border:4px solid var(--navy);
-  border-radius:20px;
-  top:168px;
-  z-index:1;
-  transform-origin:top center;
-}
-
-.leg-left{
-  left:40px;
-  transform:rotate(5deg);
-}
-
-.leg-right{
-  right:40px;
-  transform:rotate(-5deg);
-}
-
-/* shoes */
-
-.shoe{
-  position:absolute;
-  bottom:-10px;
-  width:35px;
-  height:18px;
-  background:white;
-  border:4px solid var(--navy);
-  border-radius:20px 20px 10px 10px;
-}
-
-.leg-left .shoe{
-  left:-12px;
-  transform:rotate(-8deg);
-}
-
-.leg-right .shoe{
-  right:-12px;
-  transform:rotate(8deg);
-}
-
-/* =========================
-   DANCE MOVEMENTS
-========================= */
-
-.move-left .dancer-character{
-  animation:moveLeft .42s cubic-bezier(.2,.8,.2,1);
-}
-
-.move-right .dancer-character{
-  animation:moveRight .42s cubic-bezier(.2,.8,.2,1);
-}
-
-.move-up .dancer-character{
-  animation:moveUp .5s cubic-bezier(.2,.8,.2,1);
-}
-
-.move-down .dancer-character{
-  animation:moveDown .45s ease;
-}
-
-.move-space .dancer-character{
-  animation:moveSpace .6s cubic-bezier(.2,.8,.2,1);
-}
-
-@keyframes moveLeft{
-  0%{transform:translateX(0) rotate(-2deg)}
-  35%{transform:translateX(-28px) rotate(-10deg) scale(1.05)}
-  70%{transform:translateX(10px) rotate(5deg)}
-  100%{transform:translateX(0) rotate(0)}
-}
-
-@keyframes moveRight{
-  0%{transform:translateX(0) rotate(2deg)}
-  35%{transform:translateX(28px) rotate(10deg) scale(1.05)}
-  70%{transform:translateX(-10px) rotate(-5deg)}
-  100%{transform:translateX(0) rotate(0)}
-}
-
-@keyframes moveUp{
-  0%{transform:translateY(0) scale(1)}
-  35%{transform:translateY(-55px) scale(1.1) rotate(-4deg)}
-  65%{transform:translateY(-25px) scale(1.05) rotate(5deg)}
-  100%{transform:translateY(0) scale(1)}
-}
-
-@keyframes moveDown{
-  0%{transform:translateY(0) scale(1)}
-  35%{transform:translateY(22px) scaleY(.78) scaleX(1.08)}
-  70%{transform:translateY(10px) scaleY(.92)}
-  100%{transform:translateY(0) scale(1)}
-}
-
-@keyframes moveSpace{
-  0%{transform:translateY(0) rotate(0) scale(1)}
-  25%{transform:translateY(-70px) rotate(-8deg) scale(1.1)}
-  50%{transform:translateY(-85px) rotate(8deg) scale(1.18)}
-  75%{transform:translateY(-30px) rotate(-5deg) scale(1.05)}
-  100%{transform:translateY(0) rotate(0) scale(1)}
-}
-
-/* limb reactions */
-
-.move-left .arm-left{
-  animation:armLeft .42s ease;
-}
-
-.move-left .arm-right{
-  animation:armRight .42s ease;
-}
-
-.move-right .arm-left{
-  animation:armRight .42s ease;
-}
-
-.move-right .arm-right{
-  animation:armLeft .42s ease;
-}
-
-.move-up .arm-left,
-.move-up .arm-right,
-.move-space .arm-left,
-.move-space .arm-right{
-  animation:armsUp .5s ease;
-}
-
-.move-down .arm-left,
-.move-down .arm-right{
-  animation:armsDown .45s ease;
-}
-
-.move-left .leg-left,
-.move-right .leg-right{
-  animation:legKick .42s ease;
-}
-
-.move-right .leg-left,
-.move-left .leg-right{
-  animation:legKick2 .42s ease;
-}
-
-.move-space .dancer-skirt{
-  animation:skirtSpin .6s ease;
-}
-
-@keyframes armLeft{
-  0%{transform:rotate(20deg)}
-  40%{transform:rotate(-45deg)}
-  100%{transform:rotate(20deg)}
-}
-
-@keyframes armRight{
-  0%{transform:rotate(-20deg)}
-  40%{transform:rotate(45deg)}
-  100%{transform:rotate(-20deg)}
-}
-
-@keyframes armsUp{
-  0%{transform:rotate(20deg)}
-  45%{transform:rotate(-55deg)}
-  100%{transform:rotate(20deg)}
-}
-
-@keyframes armsDown{
-  0%{transform:rotate(20deg)}
-  45%{transform:rotate(75deg)}
-  100%{transform:rotate(20deg)}
-}
-
-@keyframes legKick{
-  0%{transform:rotate(5deg)}
-  45%{transform:rotate(-28deg)}
-  100%{transform:rotate(5deg)}
-}
-
-@keyframes legKick2{
-  0%{transform:rotate(-5deg)}
-  45%{transform:rotate(28deg)}
-  100%{transform:rotate(-5deg)}
-}
-
-@keyframes skirtSpin{
-  0%{transform:rotate(0) scaleX(1)}
-  50%{transform:rotate(-10deg) scaleX(1.2)}
-  100%{transform:rotate(0) scaleX(1)}
-}
-
-/* hit */
-
-.game-character.hit{
-  animation:hitGlow .35s ease;
-}
-
-@keyframes hitGlow{
-  0%{filter:brightness(1)}
-  45%{filter:brightness(1.4) drop-shadow(0 0 18px rgba(231,200,74,.8))}
-  100%{filter:brightness(1)}
-}
-
-/* miss */
-
-.game-character.miss{
-  animation:missShake .3s ease;
-}
-
-@keyframes missShake{
-  0%,100%{transform:translateX(0)}
-  25%{transform:translateX(-12px) rotate(-3deg)}
-  75%{transform:translateX(12px) rotate(3deg)}
-}
-
-/* level */
-
-.game-character.level-up{
-  animation:levelUpDance .7s ease;
-}
-
-@keyframes levelUpDance{
-  0%{transform:scale(1)}
-  35%{transform:scale(1.28) rotate(-8deg)}
-  65%{transform:scale(1.15) rotate(8deg)}
-  100%{transform:scale(1)}
-}
-
-/* =========================
-   SEQUENCE
-========================= */
-
-.sequence-label{
-  font-size:12px;
-  font-weight:700;
-  color:var(--navy);
-  margin-top:2px;
-}
-
-.sequence{
-  display:flex;
-  gap:10px;
-  margin-top:8px;
-  flex-wrap:wrap;
-  justify-content:center;
-  min-height:52px;
-}
-
-.seq-item{
-  width:50px;
-  height:50px;
-  border:3px solid var(--navy);
-  background:white;
-  border-radius:15px;
-  display:grid;
-  place-items:center;
-  font-size:24px;
-  font-weight:700;
-  transition:.18s;
-  box-shadow:3px 3px 0 rgba(16,37,118,.12);
-}
-
-.seq-item.current{
-  background:var(--yellow);
-  transform:scale(1.15) rotate(-4deg);
-  box-shadow:4px 4px 0 var(--navy);
-  animation:currentPulse .8s ease-in-out infinite;
-}
-
-@keyframes currentPulse{
-  50%{
-    box-shadow:0 0 0 7px rgba(231,200,74,.25);
-  }
-}
-
-.seq-item.done{
-  background:var(--green);
-  color:var(--navy);
-}
-
-/* progress */
-
-.sequence-progress{
-  width:min(520px,90%);
-  height:7px;
+.age-card .age-range{
+  display:inline-block;
   background:white;
   border:2px solid var(--navy);
   border-radius:20px;
-  overflow:hidden;
-  margin-top:10px;
-}
-
-.sequence-progress-fill{
-  width:0%;
-  height:100%;
-  background:var(--red);
-  transition:.2s;
-}
-
-/* =========================
-   CONTROLS
-========================= */
-
-.controls{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  max-width:520px;
-  margin:25px auto 15px;
-}
-
-.control{
-  border:3px solid var(--navy);
-  background:white;
-  border-radius:20px;
-  min-height:60px;
-  font-size:24px;
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:4px 4px 0 var(--navy);
-  transition:.1s;
-}
-
-.control:hover{
-  transform:translateY(-3px);
-  background:var(--pink);
-}
-
-.control:active,
-.control.pressed{
-  transform:translate(3px,3px);
-  box-shadow:1px 1px 0 var(--navy);
-  background:var(--yellow);
-}
-
-.space{
-  grid-column:1/-1;
-  background:var(--yellow);
-  font-size:17px;
-}
-
-/* start */
-
-.game-start{
-  display:block;
-  margin:20px auto 0;
-  border:3px solid var(--navy);
-  background:var(--red);
-  color:white;
-  border-radius:22px;
-  padding:14px 28px;
-  font-size:18px;
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:5px 5px 0 var(--navy);
-  transition:.15s;
-}
-
-.game-start:hover{
-  transform:translate(2px,2px);
-  box-shadow:3px 3px 0 var(--navy);
-}
-
-.game-start:active{
-  transform:translate(5px,5px);
-  box-shadow:0 0 0 var(--navy);
-}
-
-/* =========================
-   COUNTDOWN
-========================= */
-
-.countdown{
-  position:absolute;
-  inset:0;
-  background:rgba(16,37,118,.9);
-  z-index:50;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  color:white;
-}
-
-.countdown.show{
-  display:flex;
-}
-
-.countdown-number{
-  font-family:"Sigmar";
-  font-size:110px;
-  line-height:1;
-  text-shadow:7px 7px 0 var(--red);
-  animation:countPop .7s ease;
-}
-
-.countdown-text{
-  font-size:18px;
-  margin-top:10px;
-  font-weight:700;
-}
-
-@keyframes countPop{
-  0%{
-    transform:scale(.3) rotate(-10deg);
-    opacity:0;
-  }
-  40%{
-    transform:scale(1.2) rotate(5deg);
-    opacity:1;
-  }
-  100%{
-    transform:scale(1) rotate(0);
-  }
-}
-
-/* =========================
-   RESULT
-========================= */
-
-.result{
-  display:none;
-  position:absolute;
-  inset:0;
-  background:rgba(255,249,233,.97);
-  z-index:60;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  text-align:center;
-  padding:30px;
-  overflow:hidden;
-}
-
-.result.show{
-  display:flex;
-  animation:resultIn .4s ease;
-}
-
-@keyframes resultIn{
-  from{
-    opacity:0;
-    transform:scale(1.08);
-  }
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
-}
-
-.result-badge{
-  background:var(--yellow);
-  border:3px solid var(--navy);
-  border-radius:30px;
-  padding:7px 16px;
+  padding:5px 10px;
   font-size:13px;
   font-weight:700;
-  box-shadow:4px 4px 0 var(--navy);
-  margin-bottom:12px;
+  margin-bottom:14px;
 }
 
-.result h2{
-  font-family:"Sigmar";
-  color:var(--red);
-  font-size:50px;
-}
-
-.result-score{
-  font-size:25px;
-  margin:10px 0 5px;
-}
-
-.result-detail{
+.age-card p{
   font-size:14px;
-  color:var(--navy);
-  font-weight:600;
-  margin-bottom:10px;
-}
-
-.new-record{
-  display:none;
-  color:#8A62D6;
-  font-family:"Sigmar";
-  font-size:25px;
-  margin:5px 0;
-  animation:recordPulse .7s infinite alternate;
-}
-
-.new-record.show{
-  display:block;
-}
-
-@keyframes recordPulse{
-  to{transform:scale(1.1) rotate(-2deg)}
+  line-height:1.7;
 }
 
 /* =========================
-   PARTICLES
+   LEARNING PATH
 ========================= */
 
-.particle{
-  position:absolute;
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  pointer-events:none;
-  z-index:40;
-  animation:particleFly .8s ease-out forwards;
-}
-
-@keyframes particleFly{
-  0%{
-    opacity:1;
-    transform:translate(0,0) scale(1);
-  }
-  100%{
-    opacity:0;
-    transform:translate(var(--x),var(--y)) scale(.1) rotate(180deg);
-  }
-}
-
-.confetti{
-  position:absolute;
-  width:10px;
-  height:16px;
-  top:50%;
-  left:50%;
-  z-index:65;
-  pointer-events:none;
-  animation:confettiFly 1.2s ease-out forwards;
-}
-
-@keyframes confettiFly{
-  0%{
-    opacity:1;
-    transform:translate(-50%,-50%) rotate(0);
-  }
-  100%{
-    opacity:0;
-    transform:
-      translate(
-        calc(-50% + var(--x)),
-        calc(-50% + var(--y))
-      )
-      rotate(720deg);
-  }
-}
-
-/* =========================
-   GALLERY
-========================= */
-
-.gallery{
+.path-section{
   background:var(--navy);
   color:white;
-}
-
-.gallery .section-title{
-  color:white;
-}
-
-.gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.photo{
-  min-height:220px;
-  border:4px solid white;
-  border-radius:30px;
-  background:var(--blue);
-  color:var(--navy);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:20px;
-  font-weight:700;
-  box-shadow:7px 7px 0 var(--red);
-  transition:.2s;
-}
-
-.photo:nth-child(2){
-  transform:rotate(2deg);
-  background:var(--pink);
-}
-
-.photo:nth-child(3){
-  transform:rotate(-2deg);
-  background:var(--yellow);
-}
-
-.photo:nth-child(4){
-  transform:rotate(-2deg);
-  background:white;
-}
-
-.photo:nth-child(5){
-  transform:rotate(2deg);
-  background:var(--pink);
-}
-
-.photo:hover{
-  transform:translateY(-8px) rotate(0);
-}
-
-/* =========================
-   CTA
-========================= */
-
-.cta{
-  padding:120px 7%;
-  background:var(--yellow);
-  text-align:center;
   position:relative;
   overflow:hidden;
 }
 
-.cta h2{
-  font-family:"Sigmar";
-  color:var(--navy);
-  font-size:clamp(55px,8vw,100px);
-  line-height:.95;
+.path-section .section-label{
+  background:var(--yellow);
 }
 
-.cta p{
-  font-size:22px;
-  margin:25px auto;
-  max-width:650px;
+.path-section .section-title{
+  color:white;
+}
+
+.path-section .section-title span{
+  color:var(--yellow);
+}
+
+.path-intro{
+  max-width:720px;
+  font-size:18px;
+  line-height:1.8;
+  margin-bottom:45px;
+  color:rgba(255,255,255,.88);
+}
+
+.path-list{
+  display:grid;
+  gap:22px;
+  max-width:900px;
+}
+
+.path-item{
+  display:grid;
+  grid-template-columns:75px 1fr;
+  gap:22px;
+  align-items:start;
+  padding:25px;
+  background:rgba(255,255,255,.09);
+  border:2px solid rgba(255,255,255,.25);
+  border-radius:24px;
+}
+
+.path-step{
+  width:65px;
+  height:65px;
+  display:grid;
+  place-items:center;
+  background:var(--yellow);
+  color:var(--navy);
+  border:3px solid white;
+  border-radius:20px;
+  font-family:"Sigmar",cursive;
+  font-size:26px;
+  box-shadow:4px 4px 0 rgba(255,255,255,.2);
+}
+
+.path-item h3{
+  font-size:23px;
+  margin-bottom:9px;
+  color:var(--yellow);
+}
+
+.path-item p{
+  line-height:1.8;
+  color:rgba(255,255,255,.9);
+}
+
+.path-tag{
+  display:inline-block;
+  margin-top:12px;
+  padding:6px 12px;
+  border-radius:20px;
+  background:rgba(255,255,255,.14);
+  font-size:13px;
+  font-weight:600;
 }
 
 /* =========================
-   FOOTER
+   CLASS STRUCTURE
 ========================= */
 
-footer{
-  background:var(--navy);
-  color:white;
-  padding:35px 7%;
-  text-align:center;
+.class-section{
+  background:var(--pink);
 }
 
-footer img{
-  width:110px;
-  filter:brightness(0) invert(1);
-  margin-bottom:10px;
+.class-panel{
+  background:white;
+  border:4px solid var(--navy);
+  border-radius:30px;
+  padding:30px;
+  box-shadow:8px 8px 0 var(--navy);
+}
+
+.class-panel h3{
+  color:var(--navy);
+  font-family:"Sigmar",cursive;
+  font-size:30px;
+  margin-bottom:18px;
+}
+
+.class-table-wrap{
+  width:100%;
+  overflow-x:auto;
+}
+
+.class-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:540px;
+}
+
+.class-table th,
+.class-table td{
+  padding:16px 14px;
+  text-align:left;
+  border-bottom:1px solid #e5e7eb;
+  line-height:1.6;
+}
+
+.class-table th{
+  background:var(--navy);
+  color:white;
+  font-size:14px;
+}
+
+.class-table td{
+  font-size:15px;
+}
+
+.class-table tr:last-child td{
+  border-bottom:none;
+}
+
+.class-footnote{
+  margin-top:20px;
+  font-size:14px;
+  line-height:1.8;
+  color:#555d77;
+}
+
+/* =========================
+   LESSON FORMAT
+========================= */
+
+.lesson-section{
+  background:white;
+}
+
+.lesson-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+}
+
+.lesson-card{
+  padding:25px;
+  border:3px solid var(--navy);
+  border-radius:25px;
+  background:var(--cream);
+}
+
+.lesson-card:nth-child(2){
+  background:var(--blue);
+}
+
+.lesson-card:nth-child(3){
+  background:var(--green);
+}
+
+.lesson-time{
+  display:inline-block;
+  background:white;
+  border:2px solid var(--navy);
+  border-radius:18px;
+  padding:6px 12px;
+  font-weight:700;
+  font-size:13px;
+  margin-bottom:15px;
+}
+
+.lesson-card h3{
+  font-size:22px;
+  color:var(--navy);
+  margin-bottom:12px;
+}
+
+.lesson-card p{
+  font-size:15px;
+  line-height:1.8;
 }
 
 /* =========================
    RESPONSIVE
 ========================= */
 
-@media(max-width:800px){
+@media(max-width:900px){
+  .program-grid{
+    grid-template-columns:1fr;
+  }
 
-  .header{
-    top:8px;
-    width:94%;
+  .age-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .lesson-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-inner{
+    gap:35px;
+  }
+
+  .blob{
+    width:320px;
+    height:320px;
+  }
+
+  .dancer{
+    width:220px;
+    height:290px;
+    font-size:100px;
+  }
+}
+
+@media(max-width:600px){
+  .section{
+    padding:75px 6%;
   }
 
   .hero{
-    padding-top:140px;
+    padding:140px 6% 70px;
+    min-height:auto;
   }
 
   .hero-inner{
     grid-template-columns:1fr;
-    text-align:center;
-  }
-
-  .hero-text{
-    margin-left:auto;
-    margin-right:auto;
-  }
-
-  .hero-buttons{
-    justify-content:center;
-  }
-
-  .hero-art{
-    min-height:400px;
-  }
-
-  .blob{
-    width:300px;
-    height:300px;
-  }
-
-  .dancer{
-    width:210px;
-    height:280px;
-    font-size:90px;
-  }
-
-  .beat-boxes{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .style-grid{
-    grid-template-columns:1fr;
-  }
-
-  .journey-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .gallery-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .game-top{
-    flex-direction:column;
-  }
-
-  .stats{
-    justify-content:flex-start;
-  }
-}
-
-@media(max-width:520px){
-
-  .section{
-    padding:80px 5%;
-  }
-
-  .hero{
-    padding-left:5%;
-    padding-right:5%;
+    gap:30px;
   }
 
   .hero h1{
-    font-size:75px;
+    font-size:clamp(64px,16vw,100px);
+    letter-spacing:-3px;
   }
 
-  .hero h1 span{
-    margin-left:15px;
+  .hero-text{
+    font-size:17px;
   }
 
-  .journey-grid,
-  .gallery-grid{
-    grid-template-columns:1fr;
+  .hero-art{
+    min-height:370px;
   }
 
-  .game-card{
-    padding:20px;
-    border-radius:28px;
+  .blob{
+    width:280px;
+    height:280px;
   }
 
-  .game-title{
-    font-size:32px;
-  }
-
-  .stats{
-    gap:6px;
-  }
-
-  .stat{
-    font-size:12px;
-    padding:7px 9px;
-  }
-
-  .controls{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .space{
-    grid-column:1/-1;
-  }
-
-  .game-screen{
-    min-height:430px;
-  }
-
-  .feedback{
-    font-size:30px;
-  }
-
-  .combo-pop{
-    font-size:23px;
-  }
-
-  .countdown-number{
+  .dancer{
+    width:190px;
+    height:245px;
     font-size:85px;
   }
 
-  .result h2{
-    font-size:40px;
+  .age-grid{
+    grid-template-columns:1fr;
+  }
+
+  .path-item{
+    grid-template-columns:55px 1fr;
+    gap:15px;
+    padding:18px;
+  }
+
+  .path-step{
+    width:50px;
+    height:50px;
+    font-size:21px;
+  }
+
+  .class-panel{
+    padding:18px;
+  }
+
+  .program-card{
+    padding:24px;
+  }
+
+  .header{
+    width:94%;
+    padding:8px 12px;
+  }
+
+  .logo{
+    width:80px;
+    height:42px;
+  }
+
+  .back{
+    padding:8px 12px;
+    font-size:13px;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+    transition-duration:.01ms !important;
   }
 }
 </style>
@@ -2024,2867 +859,1372 @@ footer img{
 
 <body>
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
+
 <header class="header">
-
-  <a href="index.html">
-    <img src="assets/logo1A.png" class="logo" alt="EPIC">
+  <a href="index.html" aria-label="EPIC - Trang chủ">
+    <img
+      class="logo"
+      src="assets/logo-epic.png"
+      alt="EPIC Talent Center"
+      onerror="this.style.display='none'"
+    >
   </a>
 
-  <a href="index.html#chuong-trinh" class="back">
-    ← Về EPIC
+  <a class="back" href="index.html">
+    ← Trang chủ EPIC
   </a>
-
 </header>
 
+<main>
 
-<!-- HERO -->
-<section class="hero">
+<!-- =========================
+     HERO
+========================= -->
 
+<section class="hero" id="trang-chu">
   <div class="hero-inner">
 
-    <div>
-
+    <div class="hero-content">
       <div class="eyebrow">
-        💃 EPIC VŨ ĐẠO CLUB · 04–18 TUỔI
+        🎀 EPIC RIBBON DANCE · 04–18 TUỔI
       </div>
 
       <h1>
-        MOVE
-        <span>IT!</span>
+        RIBBON
+        <span>DANCE</span>
       </h1>
 
       <p class="hero-text">
-        Một lớp học nơi các bạn nhỏ được nhảy,
-        vui chơi, khám phá chuyển động và tự tin thể hiện
-        chính mình. Không cần hoàn hảo — chỉ cần dám move!
+        Khám phá thế giới múa ruy băng tại EPIC —
+        nơi những dải lụa chuyển động theo âm nhạc,
+        kết hợp kỹ thuật thể dục nghệ thuật với
+        sự mềm mại và sáng tạo của nghệ thuật biểu diễn.
       </p>
 
       <div class="hero-buttons">
-
-        <a href="index.html#dang-ky" class="btn btn-primary">
-          ĐĂNG KÝ HỌC 💛
+        <a class="btn btn-primary" href="#chuong-trinh">
+          Khám phá lớp học 🎀
         </a>
 
-        <a href="#styles" class="btn btn-secondary">
-          XEM PHONG CÁCH →
+        <a class="btn btn-secondary" href="#lo-trinh">
+          Xem lộ trình học
         </a>
-
       </div>
-
     </div>
 
-
-    <div class="hero-art">
-
+    <div class="hero-art" aria-label="Hình minh họa múa ruy băng">
       <div class="blob"></div>
 
-      <div class="dancer">
-        💃
+      <div class="dancer" aria-hidden="true">
+        🎀
       </div>
 
-      <div class="sticker star one">
-        ✦
+      <div class="sticker star one">✦</div>
+      <div class="sticker heart two">♡</div>
+      <div class="sticker spark"
+           style="top:45%;right:0">
+        ✧
       </div>
-
-      <div class="sticker heart two">
-        ♡
-      </div>
-
-      <div class="sticker spark">
-        ✨
-      </div>
-
     </div>
 
   </div>
-
 </section>
 
+<!-- =========================
+     MARQUEE
+========================= -->
 
-<!-- MARQUEE -->
-<div class="marquee">
-
+<div class="marquee" aria-label="Thông điệp EPIC Ribbon Dance">
   <div class="marquee-track">
-
-    MOVE <span>•</span>
-    GROOVE <span>•</span>
-    ENERGY <span>•</span>
-    FUN <span>•</span>
-    CONFIDENCE <span>•</span>
-    EPIC VŨ ĐẠO <span>•</span>
-
-    MOVE <span>•</span>
-    GROOVE <span>•</span>
-    ENERGY <span>•</span>
-    FUN <span>•</span>
-    CONFIDENCE <span>•</span>
-    EPIC VŨ ĐẠO <span>•</span>
-
-  </div>
-
-</div>
-
-
-<!-- BEAT -->
-<section class="section beat-section">
-
-  <div class="container beat-intro">
-
-    <div class="section-label">
-      🎵 WARM UP
-    </div>
-
-    <h2 class="section-title">
-      FEEL THE <span>BEAT.</span>
-    </h2>
-
-    <p>
-      Bấm thử từng nhịp và cảm nhận không khí Vũ đạo tại EPIC!
-    </p>
-
-   <div class="beat-boxes">
-
-  <button
-    class="beat instrument"
-    data-sound="drum"
-    type="button"
-  >
-
-    <span class="instrument-icon">
-      🥁
-    </span>
-
-    <small>
-      DRUM
-    </small>
-
-  </button>
-
-
-  <button
-    class="beat instrument"
-    data-sound="trumpet"
-    type="button"
-  >
-
-    <span class="instrument-icon">
-      🎺
-    </span>
-
-    <small>
-      BRASS
-    </small>
-
-  </button>
-
-
-  <button
-    class="beat instrument"
-    data-sound="guitar"
-    type="button"
-  >
-
-    <span class="instrument-icon">
-      🎸
-    </span>
-
-    <small>
-      GUITAR
-    </small>
-
-  </button>
-
-
-  <button
-    class="beat instrument"
-    data-sound="piano"
-    type="button"
-  >
-
-    <span class="instrument-icon">
-      🎹
-    </span>
-
-    <small>
-      PIANO
-    </small>
-
-  </button>
-
-    </div>
-
-    <div class="beat-line"></div>
-
-  </div>
-
-</section>
-
-
-<!-- STORY -->
-<section class="section story">
-
-  <div class="container">
-
-    <div class="section-label">
-      💗 OUR PHILOSOPHY
-    </div>
-
-    <h2 class="section-title">
-      VŨ ĐẠO<br>
-      YOUR WAY.
-    </h2>
-
-    <p>
-      Tại EPIC, mỗi bạn nhỏ đều có một nhịp điệu riêng.
-      Chúng mình không bắt các bạn phải nhảy giống nhau.
-      Chúng mình tạo không gian để các bạn khám phá,
-      thử nghiệm và tự tin thể hiện cá tính.
-    </p>
-
-    <br>
-
-    <p>
-      <strong>
-        KHÔNG CẦN HOÀN HẢO.<br>
-        CHỈ CẦN DÁM NHẢY.
-      </strong>
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- STYLES -->
-<section class="section styles" id="styles">
-
-  <div class="container">
-
-    <div class="section-label">
-      🎧 PHONG CÁCH VŨ ĐẠO
-    </div>
-
-    <h2 class="section-title">
-      PICK YOUR <span>VIBE!</span>
-    </h2>
-
-    <div class="style-grid">
-
-      <div class="style-card">
-
-        <div class="style-number">01</div>
-
-        <div class="style-icon">🧢</div>
-
-        <h3>HIP HOP</h3>
-
-        <p>
-          Cá tính, vui nhộn và đầy năng lượng.
-          Học groove, freestyle và những bước nhảy
-          cực chất.
-        </p>
-
-      </div>
-
-
-      <div class="style-card">
-
-        <div class="style-number">02</div>
-
-        <div class="style-icon">⭐</div>
-
-        <h3>JAZZ FUNK</h3>
-
-        <p>
-          Biểu cảm, tự tin và cực kỳ cuốn hút.
-          Phù hợp với những bạn thích biểu diễn.
-        </p>
-
-      </div>
-
-
-      <div class="style-card">
-
-        <div class="style-number">03</div>
-
-        <div class="style-icon">🎤</div>
-
-        <h3>K-POP DANCE</h3>
-
-        <p>
-          Học choreography hiện đại,
-          kết hợp vũ đạo và phong cách trình diễn.
-        </p>
-
-      </div>
-
-
-      <div class="style-card">
-
-        <div class="style-number">04</div>
-
-        <div class="style-icon">🌈</div>
-
-        <h3>FREE STYLE</h3>
-
-        <p>
-          Không khuôn mẫu.
-          Tự tạo chuyển động và tìm ra phong cách
-          riêng của mình.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- AGE JOURNEY -->
-<section class="section journey">
-
-  <div class="container">
-
-    <div class="section-label">
-      🌱 GROW WITH EPIC
-    </div>
-
-    <h2 class="section-title">
-      FIND YOUR <span>MOVE.</span>
-    </h2>
-
-    <div class="journey-grid">
-
-      <div class="age-card">
-
-        <div class="age-icon">🐣</div>
-
-        <div class="age">
-          4–6 TUỔI
-        </div>
-
-        <h3>START</h3>
-
-        <p>
-          Làm quen với chuyển động,
-          vận động và nhịp điệu.
-        </p>
-
-      </div>
-
-
-      <div class="age-card">
-
-        <div class="age-icon">🐻</div>
-
-        <div class="age">
-          7–10 TUỔI
-        </div>
-
-        <h3>GROOVE</h3>
-
-        <p>
-          Học bước cơ bản,
-          phối hợp và biểu cảm.
-        </p>
-
-      </div>
-
-
-      <div class="age-card">
-
-        <div class="age-icon">🦋</div>
-
-        <div class="age">
-          11–14 TUỔI
-        </div>
-
-        <h3>STYLE</h3>
-
-        <p>
-          Khám phá cá tính,
-          phong cách và freestyle.
-        </p>
-
-      </div>
-
-
-      <div class="age-card">
-
-        <div class="age-icon">🌟</div>
-
-        <div class="age">
-          15–18 TUỔI
-        </div>
-
-        <h3>PERFORM</h3>
-
-        <p>
-          Nâng cao kỹ năng
-          và tự tin trình diễn.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ======================================================
-     DANCE GAME
-====================================================== -->
-
-<section class="section game-section">
-
-  <div class="container">
-
-    <div class="section-label">
-      🎮 EPIC PLAYGROUND
-    </div>
-
-    <h2 class="section-title">
-      VŨ ĐẠO <span>THỬ THÁCH!</span>
-    </h2>
-
-
-    <div class="game-card">
-
-      <div class="game-top">
-
-        <div>
-
-          <div class="game-title">
-            GƯƠNG VŨ ĐẠO 🪩
-          </div>
-
-          <p class="game-sub">
-            Nhìn chuỗi → bấm đúng → giữ combo → lên level!
-          </p>
-
-        </div>
-
-
-        <div class="stats">
-
-          <div class="stat">
-            SCORE:
-            <strong id="score">0</strong>
-          </div>
-
-          <div class="stat">
-            COMBO:
-            <strong id="combo">0</strong>
-          </div>
-
-          <div class="stat">
-            LEVEL:
-            <strong id="level">1</strong>
-          </div>
-
-          <div class="stat">
-            TIME:
-            <strong id="time">30</strong>
-          </div>
-
-          <div class="stat best-stat">
-            BEST:
-            <strong id="bestScore">0</strong>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="game-screen" id="gameScreen">
-
-        <!-- ENERGY -->
-
-        <div class="energy-wrap">
-
-          <span>
-            ENERGY
-          </span>
-
-          <div class="energy-bar">
-
-            <div
-              class="energy-fill"
-              id="energyFill">
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- COMBO -->
-
-        <div
-          class="combo-pop"
-          id="comboPop">
-        </div>
-
-
-        <!-- FEEDBACK -->
-
-        <div
-          class="feedback"
-          id="feedback">
-        </div>
-
-
-        <!-- COUNTDOWN -->
-
-        <div
-          class="countdown"
-          id="countdown">
-
-          <div
-            class="countdown-number"
-            id="countdownNumber">
-            3
-          </div>
-
-          <div class="countdown-text">
-            GET READY TO DANCE!
-          </div>
-
-        </div>
-
-
-        <!-- CHARACTER -->
-
-        <div
-          class="game-character"
-          id="gameCharacter">
-
-          <div class="dancer-character">
-
-            <div class="dancer-hair">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-
-
-            <div class="dancer-head">
-
-              <div class="eye left"></div>
-              <div class="eye right"></div>
-
-              <div class="blush left"></div>
-              <div class="blush right"></div>
-
-              <div class="mouth">
-                ⌣
-              </div>
-
-            </div>
-
-
-            <div class="dancer-neck"></div>
-
-
-            <div class="dancer-body">
-
-              <div class="shirt-star">
-                ★
-              </div>
-
-            </div>
-
-
-            <div class="dancer-arm arm-left">
-
-              <div class="hand">
-                ♡
-              </div>
-
-            </div>
-
-
-            <div class="dancer-arm arm-right">
-
-              <div class="hand">
-                ♡
-              </div>
-
-            </div>
-
-
-            <div class="dancer-skirt"></div>
-
-
-            <div class="dancer-leg leg-left">
-
-              <div class="shoe"></div>
-
-            </div>
-
-
-            <div class="dancer-leg leg-right">
-
-              <div class="shoe"></div>
-
-            </div>
-
-          </div>
-
-
-          <div class="dancer-shadow"></div>
-
-        </div>
-
-
-        <!-- MESSAGE -->
-
-        <div
-          class="game-message"
-          id="gameMessage">
-
-          READY?
-
-        </div>
-
-
-        <div class="sequence-label">
-          YOUR NEXT MOVE
-        </div>
-
-
-        <!-- SEQUENCE -->
-
-        <div
-          class="sequence"
-          id="sequence">
-        </div>
-
-
-        <!-- PROGRESS -->
-
-        <div class="sequence-progress">
-
-          <div
-            class="sequence-progress-fill"
-            id="sequenceProgress">
-          </div>
-
-        </div>
-
-
-        <!-- RESULT -->
-
-        <div
-          class="result"
-          id="result">
-
-          <div class="result-badge">
-            🪩 HOÀN THÀNH THỬ THÁCH
-          </div>
-
-          <h2 id="resultTitle">
-            PERFECT!
-          </h2>
-
-          <div
-            class="result-score"
-            id="resultScore">
-            Bạn đạt 0 điểm
-          </div>
-
-          <div
-            class="result-detail"
-            id="resultDetail">
-            Level 1 · Combo 0
-          </div>
-
-          <div
-            class="new-record"
-            id="newRecord">
-            🏆 NEW RECORD!
-          </div>
-
-          <button
-            class="game-start"
-            id="playAgain">
-
-            CHƠI LẠI 💃
-
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <!-- CONTROLS -->
-
-      <div class="controls">
-
-        <button
-          class="control"
-          data-key="ArrowUp">
-          ↑
-        </button>
-
-        <button
-          class="control"
-          data-key="ArrowLeft">
-          ←
-        </button>
-
-        <button
-          class="control"
-          data-key="ArrowDown">
-          ↓
-        </button>
-
-        <button
-          class="control"
-          data-key="ArrowRight">
-          →
-        </button>
-
-        <button
-          class="control space"
-          data-key="Space">
-
-          SPACE — NHẢY! 💥
-
-        </button>
-
-      </div>
-
-
-      <!-- START -->
-
-      <button
-        class="game-start"
-        id="startGame">
-
-        ▶ BẮT ĐẦU NHẢY
-
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- GALLERY -->
-<section class="section gallery">
-
-  <div class="container">
-
-    <div class="section-label">
-      📸 EPIC MOMENTS
-    </div>
-
-    <h2 class="section-title">
-      LET'S <span>MOVE!</span>
-    </h2>
-
-    <div class="gallery-grid">
-
-      <div class="photo">
-        📷<br>
-        ẢNH LỚP VŨ ĐẠO
-      </div>
-
-      <div class="photo">
-        ⭐<br>
-        SHOWCASE
-      </div>
-
-      <div class="photo">
-        🎵<br>
-        TRAINING
-      </div>
-
-      <div class="photo">
-        💃<br>
-        EPIC CREW
-      </div>
-
-      <div class="photo">
-        ✨<br>
-        COMING SOON
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- CTA -->
-<section class="cta">
-
-  <div
-    class="sticker heart"
-    style="left:8%;top:25%;">
-    ♡
-  </div>
-
-  <div
-    class="sticker star"
-    style="right:8%;bottom:20%;">
+    <span>RIBBON DANCE</span>
+    ✦
+    MÚA RUY BĂNG
+    ✦
+    THỂ DỤC NGHỆ THUẬT
+    ✦
+    NGHỆ THUẬT BIỂU DIỄN
+    ✦
+    <span>RIBBON DANCE</span>
+    ✦
+    MÚA RUY BĂNG
+    ✦
+    THỂ DỤC NGHỆ THUẬT
+    ✦
+    NGHỆ THUẬT BIỂU DIỄN
     ✦
   </div>
+</div>
 
-  <h2>
-    5, 6, 7, 8!<br>
-    LET'S MOVE.
-  </h2>
+<!-- =========================
+     INTRODUCTION
+========================= -->
 
-  <p>
-    Sẵn sàng khám phá nhịp điệu của riêng bạn
-    cùng EPIC chưa?
-  </p>
+<section class="section" id="chuong-trinh">
+  <div class="container">
 
-  <a
-    href="index.html#dang-ky"
-    class="btn btn-primary">
+    <span class="section-label">
+      HELLO, RIBBON!
+    </span>
 
-    ĐĂNG KÝ HỌC 💛
+    <h2 class="section-title">
+      Mỗi dải lụa<br>
+      <span>một câu chuyện</span>
+    </h2>
 
-  </a>
+    <p class="program-intro">
+      Múa ruy băng là bộ môn kết hợp chuyển động cơ thể,
+      âm nhạc và khả năng điều khiển dải ruy băng để
+      tạo nên những đường nét sinh động trong không gian.
+      Tại EPIC, học viên được tiếp cận bộ môn theo lộ trình
+      phù hợp với độ tuổi, nền tảng và mục tiêu của mình.
+    </p>
 
+    <div class="program-grid">
+
+      <article class="program-card talent">
+        <div class="program-number">01</div>
+
+        <div class="program-icon" aria-hidden="true">
+          🌷
+        </div>
+
+        <h3>
+          Làm quen với<br>
+          nghệ thuật múa
+        </h3>
+
+        <p>
+          Bắt đầu từ những chuyển động đơn giản,
+          cảm nhận âm nhạc và khám phá cách điều khiển
+          ruy băng bằng sự kiên nhẫn và sáng tạo.
+        </p>
+
+        <ul class="program-list">
+          <li>Làm quen với gậy và dải ruy băng.</li>
+          <li>Rèn nhịp điệu và phối hợp tay chân.</li>
+          <li>Học các đường sóng, vòng tròn cơ bản.</li>
+          <li>Thực hành bài múa ngắn phù hợp trình độ.</li>
+        </ul>
+
+        <div class="program-note">
+          <strong>Phù hợp với:</strong>
+          Học viên mới bắt đầu hoặc muốn khám phá
+          múa ruy băng như một môn năng khiếu.
+        </div>
+      </article>
+
+      <article class="program-card advanced">
+        <div class="program-number">02</div>
+
+        <div class="program-icon" aria-hidden="true">
+          ✨
+        </div>
+
+        <h3>
+          Phát triển<br>
+          kỹ thuật chuyên sâu
+        </h3>
+
+        <p>
+          Từng bước hoàn thiện kỹ thuật, tăng khả năng
+          kiểm soát ruy băng và kết hợp các chuyển động
+          thành chuỗi bài tập hoặc tiết mục hoàn chỉnh.
+        </p>
+
+        <ul class="program-list">
+          <li>Củng cố kỹ thuật điều khiển ruy băng.</li>
+          <li>Luyện phối hợp cơ thể với dụng cụ.</li>
+          <li>Phát triển cảm thụ âm nhạc và biểu cảm.</li>
+          <li>Xây dựng bài múa cá nhân hoặc nhóm.</li>
+        </ul>
+
+        <div class="program-note">
+          <strong>Phù hợp với:</strong>
+          Học viên có nền tảng phù hợp và được
+          giáo viên đánh giá đầu vào.
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     END INTRODUCTION
+========================= -->  
+ <!-- =========================
+     AGE GROUPS
+========================= -->
+
+<section class="section age-section" id="do-tuoi">
+  <div class="container">
+
+    <span class="section-label">
+      FIND YOUR RIBBON
+    </span>
+
+    <h2 class="section-title">
+      Mỗi độ tuổi<br>
+      <span>một hành trình</span>
+    </h2>
+
+    <p class="program-intro">
+      EPIC định hướng chương trình theo độ tuổi,
+      khả năng vận động và kinh nghiệm của từng học viên.
+      Việc xếp lớp thực tế sẽ dựa trên đánh giá của giáo viên,
+      không chỉ dựa vào số tuổi.
+    </p>
+
+    <div class="age-grid">
+
+      <article class="age-card">
+        <div class="age-icon" aria-hidden="true">🌼</div>
+
+        <span class="age-range">4–6 tuổi</span>
+
+        <h3>Little Ribbon</h3>
+
+        <p>
+          Làm quen với âm nhạc, màu sắc và ruy băng;
+          rèn khả năng phối hợp vận động thông qua
+          các hoạt động đơn giản, vui tươi và phù hợp lứa tuổi.
+        </p>
+      </article>
+
+      <article class="age-card">
+        <div class="age-icon" aria-hidden="true">🌈</div>
+
+        <span class="age-range">7–9 tuổi</span>
+
+        <h3>Junior Ribbon</h3>
+
+        <p>
+          Học cách cầm gậy, điều khiển ruy băng,
+          thực hành đường sóng, vòng tròn và phối hợp
+          chuyển động theo nhịp nhạc.
+        </p>
+      </article>
+
+      <article class="age-card">
+        <div class="age-icon" aria-hidden="true">🎀</div>
+
+        <span class="age-range">10–13 tuổi</span>
+
+        <h3>Youth Ribbon</h3>
+
+        <p>
+          Phát triển chuỗi kỹ thuật, khả năng kiểm soát
+          dụng cụ, biểu cảm và phối hợp các động tác
+          trong bài múa cá nhân hoặc nhóm.
+        </p>
+      </article>
+
+      <article class="age-card">
+        <div class="age-icon" aria-hidden="true">🌟</div>
+
+        <span class="age-range">14–18 tuổi</span>
+
+        <h3>Teen Ribbon</h3>
+
+        <p>
+          Hoàn thiện kỹ thuật theo năng lực, phát triển
+          phong cách biểu diễn và tham gia xây dựng
+          những tiết mục múa ruy băng phù hợp trình độ.
+        </p>
+      </article>
+
+    </div>
+
+    <div style="
+      margin-top:30px;
+      padding:22px;
+      background:white;
+      border:2px dashed var(--navy);
+      border-radius:22px;
+      line-height:1.8;
+    ">
+      <strong>📌 Lưu ý khi xếp lớp</strong>
+
+      <p style="margin-top:8px">
+        Các nhóm tuổi trên là khung tham khảo.
+        Học viên có thể được xếp vào lớp Năng khiếu
+        hoặc Chuyên sâu tùy theo kinh nghiệm, kỹ thuật,
+        khả năng tiếp thu và mục tiêu học tập.
+      </p>
+    </div>
+
+  </div>
 </section>
 
 
-<!-- FOOTER -->
-<footer>
+<!-- =========================
+     LEARNING PATH
+========================= -->
 
-  <img
-    src="assets/logo1A.png"
-    alt="EPIC">
+<section class="section path-section" id="lo-trinh">
+  <div class="container">
 
-  <p>
-    EPIC – Thỏa sức đam mê, khơi nguồn sáng tạo
-  </p>
+    <span class="section-label">
+      YOUR RIBBON JOURNEY
+    </span>
 
-  <p style="margin-top:8px;font-size:13px;">
-    Trung tâm đào tạo năng khiếu dành cho trẻ em
-  </p>
+    <h2 class="section-title">
+      Từng bước<br>
+      <span>tỏa sáng</span>
+    </h2>
 
+    <p class="path-intro">
+      Lộ trình học tập của EPIC đi từ nền tảng
+      đến khả năng biểu diễn. Học viên được hướng dẫn
+      theo tiến độ phù hợp, có thời gian luyện tập,
+      củng cố kỹ thuật và nhận phản hồi từ giáo viên.
+    </p>
+
+    <div class="path-list">
+
+      <article class="path-item">
+        <div class="path-step">01</div>
+
+        <div>
+          <h3>Ribbon Basics — Nền tảng</h3>
+
+          <p>
+            Làm quen với dụng cụ, tư thế cơ bản,
+            cách cầm gậy và kiểm soát dải ruy băng.
+            Học viên bắt đầu thực hiện những đường
+            chuyển động đơn giản trong không gian.
+          </p>
+
+          <span class="path-tag">
+            Làm quen · Tư thế · Kiểm soát
+          </span>
+        </div>
+      </article>
+
+      <article class="path-item">
+        <div class="path-step">02</div>
+
+        <div>
+          <h3>Ribbon Skills — Kỹ thuật</h3>
+
+          <p>
+            Luyện đường sóng, vòng tròn, đường xoắn,
+            đổi hướng và phối hợp các động tác.
+            Giáo viên điều chỉnh bài tập theo khả năng
+            của từng học viên.
+          </p>
+
+          <span class="path-tag">
+            Kỹ thuật · Phối hợp · Nhịp điệu
+          </span>
+        </div>
+      </article>
+
+      <article class="path-item">
+        <div class="path-step">03</div>
+
+        <div>
+          <h3>Ribbon Artistry — Nghệ thuật</h3>
+
+          <p>
+            Kết hợp chuyển động cơ thể, bước chân,
+            âm nhạc và ruy băng. Học viên luyện cách
+            chuyển tiếp giữa các động tác và thể hiện
+            ý tưởng thông qua bài múa.
+          </p>
+
+          <span class="path-tag">
+            Âm nhạc · Biểu cảm · Sáng tạo
+          </span>
+        </div>
+      </article>
+
+      <article class="path-item">
+        <div class="path-step">04</div>
+
+        <div>
+          <h3>Ribbon Performance — Biểu diễn</h3>
+
+          <p>
+            Ghép các kỹ thuật thành một tiết mục
+            có bố cục rõ ràng. Học viên luyện trình diễn
+            cá nhân hoặc nhóm, phối hợp đội hình
+            và chuẩn bị cho các buổi biểu diễn của EPIC.
+          </p>
+
+          <span class="path-tag">
+            Biên đạo · Trình diễn · Tự tin
+          </span>
+        </div>
+      </article>
+
+    </div>
+
+    <div style="
+      margin-top:35px;
+      padding:22px;
+      background:rgba(255,255,255,.09);
+      border:2px solid rgba(255,255,255,.3);
+      border-radius:22px;
+      line-height:1.8;
+    ">
+      <strong style="color:var(--yellow)">
+        🌟 Cơ hội phát triển lên lớp Chuyên sâu
+      </strong>
+
+      <p style="margin-top:8px">
+        Học viên có nền tảng phù hợp có thể được
+        giáo viên đánh giá để chuyển sang lộ trình
+        Chuyên sâu. Việc chuyển cấp dựa trên mức độ
+        thành thạo kỹ thuật và khả năng vận động,
+        không tự động dựa trên thời gian theo học.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================
+     END AGE GROUPS
+     AND LEARNING PATH
+========================= --> 
+  <!-- =========================
+     CLASS STRUCTURE
+========================= -->
+
+<section class="section class-section" id="cau-truc-lop">
+  <div class="container">
+
+    <span class="section-label">
+      FIND YOUR CLASS
+    </span>
+
+    <h2 class="section-title">
+      Hai lộ trình<br>
+      <span>một đam mê</span>
+    </h2>
+
+    <p class="program-intro">
+      EPIC xây dựng hai nhánh đào tạo múa ruy băng:
+      Năng khiếu dành cho học viên muốn khám phá,
+      rèn luyện và biểu diễn; Chuyên sâu dành cho
+      học viên muốn phát triển kỹ thuật một cách có hệ thống.
+    </p>
+
+    <div class="class-panel">
+
+      <h3>So sánh chương trình</h3>
+
+      <div class="class-table-wrap">
+        <table class="class-table">
+          <thead>
+            <tr>
+              <th>Nội dung</th>
+              <th>Năng khiếu</th>
+              <th>Chuyên sâu</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><strong>Đầu vào</strong></td>
+              <td>Phù hợp với người mới bắt đầu</td>
+              <td>Đánh giá nền tảng trước khi xếp lớp</td>
+            </tr>
+
+            <tr>
+              <td><strong>Mục tiêu</strong></td>
+              <td>Yêu thích vận động, làm quen và biểu diễn</td>
+              <td>Hoàn thiện kỹ thuật và phát triển năng lực</td>
+            </tr>
+
+            <tr>
+              <td><strong>Kỹ thuật</strong></td>
+              <td>Động tác nền tảng, tổ hợp ngắn</td>
+              <td>Chuỗi kỹ thuật và tổ hợp nâng cao phù hợp năng lực</td>
+            </tr>
+
+            <tr>
+              <td><strong>Âm nhạc</strong></td>
+              <td>Giữ nhịp và phối hợp chuyển động</td>
+              <td>Phối hợp âm nhạc, kỹ thuật và biểu cảm</td>
+            </tr>
+
+            <tr>
+              <td><strong>Biểu diễn</strong></td>
+              <td>Bài múa phù hợp trình độ</td>
+              <td>Tiết mục cá nhân hoặc nhóm có yêu cầu cao hơn</td>
+            </tr>
+
+            <tr>
+              <td><strong>Đánh giá</strong></td>
+              <td>Theo dõi tiến bộ và mức độ tự tin</td>
+              <td>Theo dõi kỹ thuật, khả năng phối hợp và mục tiêu phát triển</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="class-footnote">
+        Lưu ý: Lịch học, học phí, sĩ số và thời lượng khóa học
+        sẽ được EPIC công bố sau khi thống nhất kế hoạch vận hành.
+        Việc xếp lớp dựa trên độ tuổi, năng lực và mục tiêu học tập.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================
+     LESSON FORMAT
+========================= -->
+
+<section class="section lesson-section" id="buoi-hoc">
+  <div class="container">
+
+    <span class="section-label">
+      INSIDE THE CLASS
+    </span>
+
+    <h2 class="section-title">
+      Một buổi học<br>
+      <span>tại EPIC</span>
+    </h2>
+
+    <p class="program-intro">
+      Mỗi buổi học kết hợp chuẩn bị thể chất,
+      luyện kỹ thuật ruy băng, phối hợp với âm nhạc
+      và thực hành bài múa. Thời lượng thực tế sẽ
+      được điều chỉnh theo độ tuổi và trình độ.
+    </p>
+
+    <div class="lesson-grid">
+
+      <article class="lesson-card">
+        <span class="lesson-time">
+          Giai đoạn 01
+        </span>
+
+        <h3>Khởi động cơ thể</h3>
+
+        <p>
+          Chuẩn bị cơ thể cho buổi tập bằng các bài
+          vận động phù hợp, luyện tư thế và phối hợp
+          cơ bản. Giáo viên hướng dẫn học viên khởi động
+          đúng cách trước khi sử dụng dụng cụ.
+        </p>
+      </article>
+
+      <article class="lesson-card">
+        <span class="lesson-time">
+          Giai đoạn 02
+        </span>
+
+        <h3>Luyện kỹ thuật ruy băng</h3>
+
+        <p>
+          Thực hành cách cầm gậy, điều khiển dải lụa,
+          tạo đường sóng, vòng tròn và các chuỗi động tác
+          theo trình độ. Học viên được sửa kỹ thuật
+          và luyện khả năng kiểm soát dụng cụ.
+        </p>
+      </article>
+
+      <article class="lesson-card">
+        <span class="lesson-time">
+          Giai đoạn 03
+        </span>
+
+        <h3>Phối hợp với âm nhạc</h3>
+
+        <p>
+          Kết hợp bước chân, chuyển hướng, tư thế
+          và chuyển động ruy băng theo nhịp.
+          Học viên tập chuyển tiếp giữa các động tác
+          để bài múa trở nên liền mạch hơn.
+        </p>
+      </article>
+
+      <article class="lesson-card">
+        <span class="lesson-time">
+          Giai đoạn 04
+        </span>
+
+        <h3>Thực hành bài múa</h3>
+
+        <p>
+          Ghép các động tác thành tổ hợp hoặc bài múa.
+          Tùy trình độ, học viên có thể luyện cá nhân,
+          theo cặp hoặc theo nhóm với đội hình phù hợp.
+        </p>
+      </article>
+
+      <article class="lesson-card">
+        <span class="lesson-time">
+          Giai đoạn 05
+        </span>
+
+        <h3>Biểu cảm và trình diễn</h3>
+
+        <p>
+          Luyện biểu cảm, khả năng ghi nhớ bài,
+          làm chủ không gian và thể hiện âm nhạc
+          qua chuyển động. Hoạt động được điều chỉnh
+          theo mục tiêu của từng lớp.
+        </p>
+      </article>
+
+      <article class="lesson-card">
+        <span class="lesson-time">
+          Giai đoạn 06
+        </span>
+
+        <h3>Thả lỏng và nhận xét</h3>
+
+        <p>
+          Thả lỏng sau buổi tập, nhận phản hồi từ giáo viên
+          và xác định nội dung cần luyện thêm.
+          Học viên được ghi nhận sự tiến bộ qua từng giai đoạn.
+        </p>
+      </article>
+
+    </div>
+
+    <div style="
+      margin-top:30px;
+      padding:22px;
+      border:2px dashed var(--navy);
+      border-radius:22px;
+      background:var(--cream);
+      line-height:1.8;
+    ">
+      <strong>⏱ Thời lượng buổi học</strong>
+
+      <p style="margin-top:8px">
+        EPIC chưa chốt thời lượng chính thức.
+        Có thể xây dựng buổi học thử nghiệm khoảng
+        45–60 phút cho lớp nhỏ tuổi và khoảng 60 phút
+        hoặc lâu hơn tùy kế hoạch cho lớp lớn hơn,
+        sau khi giáo viên đánh giá nhu cầu và khả năng
+        tập trung của học viên.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================
+     END CLASS STRUCTURE
+========================= -->
+  <!-- =========================
+     STUDENT PROGRESS
+========================= -->
+
+<section class="section" id="danh-gia"
+  style="background:var(--blue)">
+
+  <div class="container">
+
+    <span class="section-label">
+      EVERY STEP COUNTS
+    </span>
+
+    <h2 class="section-title">
+      Tiến bộ của bạn<br>
+      <span>là điều đáng tự hào</span>
+    </h2>
+
+    <p class="program-intro">
+      Tại EPIC, sự tiến bộ không chỉ được nhìn nhận
+      qua một động tác đẹp. Giáo viên theo dõi quá trình
+      luyện tập, khả năng phối hợp, sự chủ động và mức độ
+      tự tin của từng học viên để điều chỉnh nội dung phù hợp.
+    </p>
+
+    <div class="program-grid">
+
+      <article class="program-card talent">
+        <div class="program-number">01</div>
+
+        <div class="program-icon" aria-hidden="true">
+          🌱
+        </div>
+
+        <h3>Theo dõi lớp Năng khiếu</h3>
+
+        <p>
+          Khuyến khích học viên yêu thích vận động,
+          tự tin thử nghiệm các chuyển động và từng bước
+          hình thành kỹ năng múa ruy băng.
+        </p>
+
+        <ul class="program-list">
+          <li>Biết cầm và sử dụng dụng cụ đúng cách.</li>
+          <li>Nhận biết nhịp điệu và phối hợp động tác.</li>
+          <li>Ghi nhớ tổ hợp múa phù hợp độ tuổi.</li>
+          <li>Tham gia lớp học tích cực và tự tin hơn.</li>
+        </ul>
+      </article>
+
+      <article class="program-card advanced">
+        <div class="program-number">02</div>
+
+        <div class="program-icon" aria-hidden="true">
+          🏅
+        </div>
+
+        <h3>Theo dõi lớp Chuyên sâu</h3>
+
+        <p>
+          Tập trung vào chất lượng kỹ thuật,
+          khả năng kiểm soát ruy băng, tính liên tục
+          của chuyển động và mức độ hoàn thiện bài múa.
+        </p>
+
+        <ul class="program-list">
+          <li>Kiểm soát dụng cụ tốt hơn qua từng bài tập.</li>
+          <li>Phối hợp chuỗi động tác chính xác hơn.</li>
+          <li>Thể hiện âm nhạc và biểu cảm phù hợp.</li>
+          <li>Tiếp nhận góp ý và điều chỉnh kỹ thuật.</li>
+        </ul>
+      </article>
+
+    </div>
+
+    <div style="
+      margin-top:35px;
+      background:white;
+      border:3px solid var(--navy);
+      border-radius:25px;
+      padding:25px;
+      line-height:1.8;
+    ">
+      <h3 style="
+        color:var(--navy);
+        font-size:23px;
+        margin-bottom:12px;
+      ">
+        📋 Phiếu theo dõi tiến bộ
+      </h3>
+
+      <p>
+        Giáo viên có thể ghi nhận theo từng giai đoạn
+        dựa trên các tiêu chí:
+      </p>
+
+      <ul class="program-list">
+        <li>Kỹ thuật cầm gậy và điều khiển ruy băng.</li>
+        <li>Khả năng phối hợp cơ thể và dụng cụ.</li>
+        <li>Cảm thụ âm nhạc và giữ nhịp.</li>
+        <li>Khả năng ghi nhớ, biểu cảm và hoàn thiện bài múa.</li>
+        <li>Tinh thần luyện tập và sự tiến bộ cá nhân.</li>
+      </ul>
+
+      <p style="font-size:14px;color:#555d77">
+        Việc đánh giá nhằm xác định nội dung cần luyện tập
+        tiếp theo, không dùng để so sánh giá trị của học viên.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     PERFORMANCE
+========================= -->
+
+<section class="section" id="bieu-dien"
+  style="background:var(--cream)">
+
+  <div class="container">
+
+    <span class="section-label">
+      LIGHTS, MUSIC, RIBBON!
+    </span>
+
+    <h2 class="section-title">
+      Từ phòng tập<br>
+      <span>đến sân khấu</span>
+    </h2>
+
+    <p class="program-intro">
+      Biểu diễn là cơ hội để học viên vận dụng những gì
+      đã học, thể hiện cá tính nghệ thuật và cùng nhau
+      tạo nên những tiết mục múa ruy băng.
+      Nội dung biểu diễn được lựa chọn theo khả năng,
+      độ tuổi và mức độ sẵn sàng của từng lớp.
+    </p>
+
+    <div class="age-grid">
+
+      <article class="age-card">
+        <div class="age-icon" aria-hidden="true">🎀</div>
+
+        <h3>Tiết mục cá nhân</h3>
+
+        <p>
+          Học viên trình bày bài múa riêng,
+          rèn khả năng ghi nhớ động tác, làm chủ không gian
+          và thể hiện âm nhạc bằng chuyển động.
+        </p>
+      </article>
+
+      <article class="age-card">
+        <div class="age-icon" aria-hidden="true">👯</div>
+
+        <h3>Tiết mục nhóm</h3>
+
+        <p>
+          Học viên luyện phối hợp đội hình,
+          giữ nhịp chung và tạo nên những chuyển động
+          ruy băng hài hòa với các thành viên.
+        </p>
+      </article>
+
+      <article class="age-card">
+        <div class="age-icon" aria-hidden="true">🎭</div>
+
+        <h3>Showcase EPIC</h3>
+
+        <p>
+          Các lớp có thể tham gia buổi trình diễn nội bộ
+          hoặc chương trình của trung tâm khi đã chuẩn bị
+          đầy đủ và đáp ứng yêu cầu an toàn.
+        </p>
+      </article>
+
+      <article class="age-card">
+        <div class="age-icon" aria-hidden="true">🌟</div>
+
+        <h3>Định hướng nâng cao</h3>
+
+        <p>
+          Học viên phù hợp có thể được tư vấn thêm
+          về lộ trình kỹ thuật chuyên sâu và cơ hội
+          biểu diễn hoặc thi đấu nếu chương trình được triển khai.
+        </p>
+      </article>
+
+    </div>
+
+    <div style="
+      margin-top:35px;
+      padding:25px;
+      background:var(--yellow);
+      border:3px solid var(--navy);
+      border-radius:25px;
+      box-shadow:6px 6px 0 var(--navy);
+      line-height:1.8;
+    ">
+      <strong style="
+        display:block;
+        color:var(--navy);
+        font-size:22px;
+        margin-bottom:10px;
+      ">
+        💛 Mỗi học viên đều có hành trình riêng
+      </strong>
+
+      <p>
+        EPIC hướng đến môi trường luyện tập tích cực,
+        nơi học viên được khuyến khích phát triển theo
+        khả năng của mình. Việc tham gia biểu diễn
+        cần phù hợp với sự chuẩn bị của học viên và
+        được phối hợp cùng phụ huynh khi cần thiết.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     END PROGRESS
+     AND PERFORMANCE
+========================= -->
+  <!-- =========================
+     ABOUT EPIC
+========================= -->
+
+<section class="section" id="ve-epic"
+  style="background:white">
+
+  <div class="container">
+
+    <span class="section-label">
+      OUR PHILOSOPHY
+    </span>
+
+    <h2 class="section-title">
+      Không chỉ là<br>
+      <span>những dải lụa</span>
+    </h2>
+
+    <p class="program-intro">
+      Tại EPIC, múa ruy băng là hành trình khám phá
+      chuyển động, âm nhạc và khả năng biểu đạt của mỗi
+      học viên. Chúng mình hướng đến môi trường học tập
+      tích cực, nơi kỹ thuật được rèn luyện từng bước
+      và sự sáng tạo được nuôi dưỡng qua thực hành.
+    </p>
+
+    <div class="program-grid">
+
+      <article class="program-card talent">
+        <div class="program-icon" aria-hidden="true">💗</div>
+
+        <h3>Học bằng niềm vui</h3>
+
+        <p>
+          Khơi gợi sự yêu thích bộ môn thông qua
+          hoạt động phù hợp độ tuổi, khuyến khích
+          học viên khám phá và chủ động học hỏi.
+        </p>
+      </article>
+
+      <article class="program-card advanced">
+        <div class="program-icon" aria-hidden="true">✨</div>
+
+        <h3>Tiến bộ qua luyện tập</h3>
+
+        <p>
+          Xây dựng nền tảng kỹ thuật, rèn khả năng
+          phối hợp và phát triển nghệ thuật biểu diễn
+          theo năng lực của từng học viên.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================
+     FAQ
+========================= -->
+
+<section class="section" id="faq"
+  style="background:var(--cream)">
+
+  <div class="container">
+
+    <span class="section-label">
+      QUESTIONS & ANSWERS
+    </span>
+
+    <h2 class="section-title">
+      Bạn muốn biết<br>
+      <span>điều gì?</span>
+    </h2>
+
+    <div style="
+      display:grid;
+      gap:16px;
+      max-width:850px;
+    ">
+
+      <details style="
+        background:white;
+        border:3px solid var(--navy);
+        border-radius:20px;
+        padding:20px 24px;
+      ">
+        <summary style="
+          cursor:pointer;
+          color:var(--navy);
+          font-size:18px;
+          font-weight:700;
+          line-height:1.5;
+        ">
+          Chưa từng học múa ruy băng có đăng ký được không?
+        </summary>
+
+        <p style="margin-top:14px;line-height:1.8">
+          Có. Học viên mới có thể được tư vấn vào lớp
+          Năng khiếu để làm quen với dụng cụ, nhịp điệu
+          và các kỹ thuật nền tảng.
+        </p>
+      </details>
+
+      <details style="
+        background:white;
+        border:3px solid var(--navy);
+        border-radius:20px;
+        padding:20px 24px;
+      ">
+        <summary style="
+          cursor:pointer;
+          color:var(--navy);
+          font-size:18px;
+          font-weight:700;
+          line-height:1.5;
+        ">
+          Lớp Năng khiếu và lớp Chuyên sâu khác nhau thế nào?
+        </summary>
+
+        <p style="margin-top:14px;line-height:1.8">
+          Lớp Năng khiếu chú trọng làm quen, xây dựng
+          nền tảng và phát triển niềm yêu thích bộ môn.
+          Lớp Chuyên sâu tập trung hoàn thiện kỹ thuật,
+          phối hợp động tác và phát triển bài múa nâng cao
+          theo khả năng của học viên.
+        </p>
+      </details>
+
+      <details style="
+        background:white;
+        border:3px solid var(--navy);
+        border-radius:20px;
+        padding:20px 24px;
+      ">
+        <summary style="
+          cursor:pointer;
+          color:var(--navy);
+          font-size:18px;
+          font-weight:700;
+          line-height:1.5;
+        ">
+          Học viên có cần tự chuẩn bị ruy băng không?
+        </summary>
+
+        <p style="margin-top:14px;line-height:1.8">
+          Phụ huynh nên xác nhận với EPIC về dụng cụ
+          sử dụng trong buổi học, yêu cầu đối với gậy
+          và ruy băng, cũng như việc trung tâm có cung cấp
+          dụng cụ tập luyện hay không.
+        </p>
+      </details>
+
+      <details style="
+        background:white;
+        border:3px solid var(--navy);
+        border-radius:20px;
+        padding:20px 24px;
+      ">
+        <summary style="
+          cursor:pointer;
+          color:var(--navy);
+          font-size:18px;
+          font-weight:700;
+          line-height:1.5;
+        ">
+          Làm thế nào để đăng ký lớp Chuyên sâu?
+        </summary>
+
+        <p style="margin-top:14px;line-height:1.8">
+          Học viên có thể liên hệ EPIC để được tư vấn
+          và đánh giá nền tảng trước khi xếp lớp.
+          Giáo viên sẽ đề xuất lộ trình phù hợp với
+          năng lực và mục tiêu học tập.
+        </p>
+      </details>
+
+      <details style="
+        background:white;
+        border:3px solid var(--navy);
+        border-radius:20px;
+        padding:20px 24px;
+      ">
+        <summary style="
+          cursor:pointer;
+          color:var(--navy);
+          font-size:18px;
+          font-weight:700;
+          line-height:1.5;
+        ">
+          EPIC có tổ chức biểu diễn không?
+        </summary>
+
+        <p style="margin-top:14px;line-height:1.8">
+          Chương trình có thể kết hợp thực hành tiết mục
+          cá nhân hoặc nhóm và các buổi biểu diễn khi
+          được trung tâm tổ chức. Lịch biểu diễn cụ thể
+          sẽ được EPIC thông báo theo kế hoạch thực tế.
+        </p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================
+     TRIAL CLASS / CONTACT
+========================= -->
+
+<section class="section" id="dang-ky"
+  style="
+    background:var(--pink);
+    text-align:center;
+  ">
+
+  <div class="container">
+
+    <span class="section-label">
+      YOUR RIBBON JOURNEY STARTS HERE
+    </span>
+
+    <h2 class="section-title">
+      Sẵn sàng<br>
+      <span>vẽ nên chuyển động?</span>
+    </h2>
+
+    <p style="
+      max-width:700px;
+      margin:0 auto 30px;
+      font-size:18px;
+      line-height:1.8;
+    ">
+      Hãy liên hệ EPIC để được tư vấn chương trình
+      Múa ruy băng phù hợp với độ tuổi, nền tảng
+      và mục tiêu học tập của bạn.
+    </p>
+
+    <div style="
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:15px;
+    ">
+
+      <!-- Thay # bằng đường dẫn đăng ký thực tế -->
+      <a class="btn btn-primary" href="#thong-tin-lien-he">
+        Đăng ký tư vấn 🎀
+      </a>
+
+      <a class="btn btn-secondary" href="#chuong-trinh">
+        Xem lại chương trình
+      </a>
+
+    </div>
+
+    <p style="
+      max-width:650px;
+      margin:25px auto 0;
+      font-size:14px;
+      line-height:1.8;
+    ">
+      Thông tin về lịch học, học phí, địa điểm,
+      buổi học thử và dụng cụ sẽ được xác nhận
+      trực tiếp với trung tâm.
+    </p>
+
+  </div>
+</section>
+
+<!-- =========================
+     END ABOUT / FAQ
+========================= -->
+  <!-- =========================
+     FOOTER
+========================= -->
+
+<footer id="thong-tin-lien-he" style="
+  background:var(--navy);
+  color:white;
+  padding:65px 7% 25px;
+">
+  <div class="container">
+
+    <div style="
+      display:grid;
+      grid-template-columns:1.5fr 1fr 1fr;
+      gap:35px;
+      padding-bottom:40px;
+    " class="footer-grid">
+
+      <div>
+        <h2 style="
+          font-family:'Sigmar',cursive;
+          font-size:42px;
+          line-height:1.1;
+          color:var(--yellow);
+          margin-bottom:18px;
+        ">
+          EPIC<br>RIBBON DANCE
+        </h2>
+
+        <p style="
+          max-width:360px;
+          line-height:1.8;
+          color:rgba(255,255,255,.85);
+        ">
+          Nơi những dải ruy băng chuyển động theo âm nhạc,
+          kết hợp kỹ thuật, sự sáng tạo và nghệ thuật biểu diễn.
+        </p>
+      </div>
+
+      <div>
+        <h3 style="
+          color:var(--yellow);
+          font-size:19px;
+          margin-bottom:18px;
+        ">
+          Khám phá
+        </h3>
+
+        <ul style="
+          list-style:none;
+          display:grid;
+          gap:13px;
+          line-height:1.6;
+        ">
+          <li><a href="#gioi-thieu">Giới thiệu</a></li>
+          <li><a href="#chuong-trinh">Chương trình</a></li>
+          <li><a href="#do-tuoi">Nhóm tuổi</a></li>
+          <li><a href="#lo-trinh">Lộ trình học</a></li>
+          <li><a href="#bieu-dien">Biểu diễn</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 style="
+          color:var(--yellow);
+          font-size:19px;
+          margin-bottom:18px;
+        ">
+          Chương trình
+        </h3>
+
+        <ul style="
+          list-style:none;
+          display:grid;
+          gap:13px;
+          line-height:1.6;
+        ">
+          <li>
+            <a href="#chuong-trinh">
+              Múa ruy băng năng khiếu
+            </a>
+          </li>
+
+          <li>
+            <a href="#chuong-trinh">
+              Múa ruy băng chuyên sâu
+            </a>
+          </li>
+
+          <li>
+            <a href="#buoi-hoc">
+              Nội dung buổi học
+            </a>
+          </li>
+
+          <li>
+            <a href="#faq">
+              Câu hỏi thường gặp
+            </a>
+          </li>
+
+          <li>
+            <a href="#dang-ky">
+              Đăng ký tư vấn
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div style="
+      border-top:1px solid rgba(255,255,255,.25);
+      padding-top:22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+      flex-wrap:wrap;
+      font-size:13px;
+      color:rgba(255,255,255,.75);
+      line-height:1.7;
+    ">
+      <p>
+        © <span id="current-year"></span> EPIC Talent Center.
+        All rights reserved.
+      </p>
+
+      <a href="#trang-chu">
+        Lên đầu trang ↑
+      </a>
+    </div>
+
+  </div>
 </footer>
 
 
+<!-- =========================
+     FINAL RESPONSIVE
+========================= -->
+
+<style>
+.footer-grid a{
+  transition:color .2s;
+}
+
+.footer-grid a:hover{
+  color:var(--yellow);
+}
+
+footer a{
+  color:inherit;
+}
+
+footer a:focus-visible,
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible{
+  outline:3px solid var(--red);
+  outline-offset:4px;
+}
+
+@media(max-width:760px){
+  .footer-grid{
+    grid-template-columns:1fr !important;
+    gap:30px !important;
+  }
+}
+
+@media(max-width:480px){
+  .hero-buttons .btn{
+    width:100%;
+  }
+
+  .section-title{
+    font-size:clamp(43px,12vw,64px);
+  }
+
+  .path-item h3{
+    font-size:19px;
+  }
+
+  .class-table th,
+  .class-table td{
+    padding:12px 10px;
+    font-size:13px;
+  }
+}
+</style>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const yearElement = document.getElementById("current-year");
 
-/* =========================================================
-   FEEL THE BEAT — EPIC MINI BAND
-========================================================= */
-
-let epicAudio = null;
-
-function getEpicAudio(){
-
-  if(!epicAudio){
-
-    epicAudio =
-      new (window.AudioContext ||
-           window.webkitAudioContext)();
-
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
   }
-
-  if(epicAudio.state === "suspended"){
-    epicAudio.resume();
-  }
-
-  return epicAudio;
-}
-
-/* =========================================================
-   EPIC DANCE MIRROR — GAME SOUNDS
-========================================================= */
-
-function gameTone(frequency, duration = 0.12, type = "sine", volume = 0.08){
-
-  const ctx = getEpicAudio();
-
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-
-  osc.type = type;
-
-  osc.frequency.setValueAtTime(
-    frequency,
-    ctx.currentTime
-  );
-
-  gain.gain.setValueAtTime(
-    volume,
-    ctx.currentTime
-  );
-
-  gain.gain.exponentialRampToValueAtTime(
-    0.001,
-    ctx.currentTime + duration
-  );
-
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-
-  osc.start();
-  osc.stop(
-    ctx.currentTime + duration
-  );
-}
-
-
-function gameMoveSound(key){
-
-  if(key === "ArrowLeft"){
-    gameTone(260, 0.10, "triangle", 0.07);
-  }
-
-  else if(key === "ArrowRight"){
-    gameTone(330, 0.10, "triangle", 0.07);
-  }
-
-  else if(key === "ArrowUp"){
-    gameTone(523.25, 0.12, "sine", 0.08);
-  }
-
-  else if(key === "ArrowDown"){
-    gameTone(196, 0.14, "sine", 0.09);
-  }
-
-  else if(key === "Space"){
-    gameTone(110, 0.18, "sine", 0.12);
-
-    setTimeout(()=>{
-      gameTone(220, 0.12, "triangle", 0.06);
-    }, 60);
-  }
-
-}
-
-
-function gameCorrectSound(){
-
-  gameTone(659.25, 0.10, "sine", 0.07);
-
-  setTimeout(()=>{
-    gameTone(783.99, 0.13, "sine", 0.06);
-  }, 70);
-
-}
-
-
-function gameMissSound(){
-
-  gameTone(140, 0.20, "sawtooth", 0.045);
-
-}
-
-
-function gameComboSound(){
-
-  gameTone(523.25, 0.10, "sine", 0.07);
-
-  setTimeout(()=>{
-    gameTone(659.25, 0.10, "sine", 0.07);
-  }, 80);
-
-  setTimeout(()=>{
-    gameTone(783.99, 0.18, "sine", 0.08);
-  }, 160);
-
-}
-/* =========================
-   DRUM
-========================= */
-
-function epicDrum(){
-
-  const ctx = getEpicAudio();
-
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-
-  osc.type = "sine";
-
-  osc.frequency.setValueAtTime(
-    150,
-    ctx.currentTime
-  );
-
-  osc.frequency.exponentialRampToValueAtTime(
-    55,
-    ctx.currentTime + 0.18
-  );
-
-  gain.gain.setValueAtTime(
-    0.8,
-    ctx.currentTime
-  );
-
-  gain.gain.exponentialRampToValueAtTime(
-    0.01,
-    ctx.currentTime + 0.18
-  );
-
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-
-  osc.start();
-
-  osc.stop(
-    ctx.currentTime + 0.2
-  );
-}
-
-
-/* =========================
-   BRASS
-========================= */
-
-/* =========================
-   BRASS
-========================= */
-
-function epicBrass(){
-
-  const ctx = getEpicAudio();
-
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-
-  osc.type = "square";
-
-  osc.frequency.setValueAtTime(
-    392,
-    ctx.currentTime
-  );
-
-  osc.frequency.setValueAtTime(
-    523.25,
-    ctx.currentTime + 0.08
-  );
-
-  osc.frequency.setValueAtTime(
-    659.25,
-    ctx.currentTime + 0.16
-  );
-
-  gain.gain.setValueAtTime(
-    0.12,
-    ctx.currentTime
-  );
-
-  gain.gain.exponentialRampToValueAtTime(
-    0.01,
-    ctx.currentTime + 0.35
-  );
-
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-
-  osc.start();
-  osc.stop(
-    ctx.currentTime + 0.36
-  );
-}
-
-/* =========================
-   GUITAR
-========================= */
-
-function epicGuitar(){
-
-  const ctx = getEpicAudio();
-
-  const notes = [
-    196,
-    246.94,
-    293.66
-  ];
-
-  notes.forEach((frequency,index)=>{
-
-    const osc =
-      ctx.createOscillator();
-
-    const gain =
-      ctx.createGain();
-
-    osc.type = "triangle";
-
-    osc.frequency.value =
-      frequency;
-
-    const start =
-      ctx.currentTime +
-      index * 0.025;
-
-    gain.gain.setValueAtTime(
-      0.16,
-      start
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-      0.01,
-      start + 0.65
-    );
-
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-
-    osc.start(start);
-
-    osc.stop(
-      start + 0.7
-    );
-
-  });
-}
-
-
-/* =========================
-   PIANO
-========================= */
-
-function epicPiano(){
-
-  const ctx = getEpicAudio();
-
-  const notes = [
-    261.63,
-    329.63,
-    392
-  ];
-
-  notes.forEach((frequency,index)=>{
-
-    const osc =
-      ctx.createOscillator();
-
-    const gain =
-      ctx.createGain();
-
-    osc.type = "sine";
-
-    osc.frequency.value =
-      frequency;
-
-    const start =
-      ctx.currentTime +
-      index * 0.08;
-
-    gain.gain.setValueAtTime(
-      0.2,
-      start
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-      0.01,
-      start + 0.6
-    );
-
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-
-    osc.start(start);
-
-    osc.stop(
-      start + 0.7
-    );
-
-  });
-}
-
-
-/* =========================
-   INSTRUMENT BUTTONS
-========================= */
-
-document
-  .querySelectorAll(".instrument")
-  .forEach(button=>{
-
-    button.addEventListener(
-      "click",
-      ()=>{
-
-        const sound =
-          button.dataset.sound;
-
-
-        if(sound === "drum"){
-          epicDrum();
-        }
-
-        if(sound === "trumpet"){
-          epicBrass();
-        }
-
-        if(sound === "guitar"){
-          epicGuitar();
-        }
-
-        if(sound === "piano"){
-          epicPiano();
-        }
-
-
-        /* Animation */
-
-        button.classList.remove(
-          "playing"
-        );
-
-        void button.offsetWidth;
-
-        button.classList.add(
-          "playing"
-        );
-
-
-        setTimeout(()=>{
-
-          button.classList.remove(
-            "playing"
-          );
-
-        },400);
-
-
-        /* Floating music note */
-
-        const note =
-          document.createElement(
-            "span"
-          );
-
-        note.className =
-          "beat-note";
-
-        const notes = [
-          "♪",
-          "♫",
-          "✦",
-          "♬"
-        ];
-
-        note.textContent =
-          notes[
-            Math.floor(
-              Math.random() *
-              notes.length
-            )
-          ];
-
-
-        note.style.setProperty(
-          "--note-x",
-          `${Math.random()*60-30}px`
-        );
-
-
-        button.appendChild(
-          note
-        );
-
-
-        setTimeout(()=>{
-
-          note.remove();
-
-        },800);
-
-      }
-    );
-
-  });
-
-
-/* =========================================================
-   DANCE MIRROR — WOW ENGINE
-========================================================= */
-
-const moves = [
-  "ArrowLeft",
-  "ArrowUp",
-  "ArrowRight",
-  "ArrowDown",
-  "Space"
-];
-
-const symbols = {
-
-  ArrowLeft:"←",
-  ArrowUp:"↑",
-  ArrowRight:"→",
-  ArrowDown:"↓",
-  Space:"●"
-
-};
-
-
-/* =========================
-   GAME STATE
-========================= */
-
-let sequence = [];
-let currentStep = 0;
-
-let score = 0;
-let combo = 0;
-let maxCombo = 0;
-
-let level = 1;
-
-let timeLeft = 30;
-
-let energy = 100;
-
-let playing = false;
-let acceptingInput = false;
-
-let timer = null;
-let countdownTimer = null;
-let nextLevelTimer = null;
-
-let sequenceStartTime = 0;
-
-let bestScore = Number(
-  localStorage.getItem("epicDanceHighScore") || 0
-);
-
-
-/* =========================
-   ELEMENTS
-========================= */
-
-const scoreEl =
-  document.getElementById("score");
-
-const comboEl =
-  document.getElementById("combo");
-
-const levelEl =
-  document.getElementById("level");
-
-const timeEl =
-  document.getElementById("time");
-
-const bestScoreEl =
-  document.getElementById("bestScore");
-
-const energyFill =
-  document.getElementById("energyFill");
-
-const sequenceEl =
-  document.getElementById("sequence");
-
-const sequenceProgress =
-  document.getElementById("sequenceProgress");
-
-const messageEl =
-  document.getElementById("gameMessage");
-
-const characterEl =
-  document.getElementById("gameCharacter");
-
-const gameScreen =
-  document.getElementById("gameScreen");
-
-const startBtn =
-  document.getElementById("startGame");
-
-const resultEl =
-  document.getElementById("result");
-
-const resultTitle =
-  document.getElementById("resultTitle");
-
-const resultScore =
-  document.getElementById("resultScore");
-
-const resultDetail =
-  document.getElementById("resultDetail");
-
-const newRecordEl =
-  document.getElementById("newRecord");
-
-const playAgain =
-  document.getElementById("playAgain");
-
-const comboPop =
-  document.getElementById("comboPop");
-
-const feedbackEl =
-  document.getElementById("feedback");
-
-const countdownEl =
-  document.getElementById("countdown");
-
-const countdownNumber =
-  document.getElementById("countdownNumber");
-
-
-/* =========================
-   BEST SCORE
-========================= */
-
-function updateBest(){
-
-  bestScoreEl.textContent =
-    bestScore;
-
-}
-
-
-/* =========================
-   RANDOM SEQUENCE
-========================= */
-
-function createSequence(){
-
-  sequence = [];
-
-  /*
-    Level 1 = 4 moves
-    Level 2 = 5
-    ...
-    Maximum = 10
-  */
-
-  const length =
-    Math.min(3 + level,10);
-
-
-  for(let i=0;i<length;i++){
-
-    let move;
-
-    do{
-
-      move =
-        moves[
-          Math.floor(
-            Math.random()*moves.length
-          )
-        ];
-
-    }
-
-    while(
-
-      i >= 2 &&
-      sequence[i-1] === move &&
-      sequence[i-2] === move
-
-    );
-
-
-    sequence.push(move);
-
-  }
-
-
-  currentStep = 0;
-
-  sequenceStartTime =
-    performance.now();
-
-  renderSequence();
-
-}
-
-
-/* =========================
-   RENDER SEQUENCE
-========================= */
-
-function renderSequence(){
-
-  sequenceEl.innerHTML = "";
-
-
-  sequence.forEach((move,index)=>{
-
-    const item =
-      document.createElement("div");
-
-    item.className =
-      "seq-item";
-
-
-    if(index === currentStep){
-
-      item.classList.add(
-        "current"
-      );
-
-    }
-
-
-    if(index < currentStep){
-
-      item.classList.add(
-        "done"
-      );
-
-      item.textContent = "✓";
-
-    }
-    else{
-
-      item.textContent =
-        symbols[move];
-
-    }
-
-
-    sequenceEl.appendChild(item);
-
-  });
-
-
-  updateSequenceProgress();
-
-}
-
-
-/* =========================
-   PROGRESS
-========================= */
-
-function updateSequenceProgress(){
-
-  if(!sequence.length){
-
-    sequenceProgress.style.width =
-      "0%";
-
-    return;
-
-  }
-
-
-  const percent =
-    (currentStep / sequence.length) * 100;
-
-
-  sequenceProgress.style.width =
-    percent + "%";
-
-}
-
-
-/* =========================
-   STATS
-========================= */
-
-function updateStats(){
-
-  scoreEl.textContent =
-    score;
-
-  comboEl.textContent =
-    combo;
-
-  levelEl.textContent =
-    level;
-
-  timeEl.textContent =
-    timeLeft;
-
-  bestScoreEl.textContent =
-    bestScore;
-
-
-  if(timeLeft <= 5){
-
-    timeEl.style.color =
-      "var(--red)";
-
-  }
-  else{
-
-    timeEl.style.color =
-      "";
-
-  }
-
-
-  energyFill.style.width =
-    Math.max(0,energy) + "%";
-
-
-  if(energy <= 25){
-
-    energyFill.style.background =
-      "var(--red)";
-
-  }
-  else if(energy <= 50){
-
-    energyFill.style.background =
-      "var(--yellow)";
-
-  }
-  else{
-
-    energyFill.style.background =
-      "linear-gradient(90deg,var(--red),var(--yellow))";
-
-  }
-
-}
-
-
-/* =========================
-   MESSAGE
-========================= */
-
-function showMessage(text){
-
-  messageEl.textContent =
-    text;
-
-}
-
-
-/* =========================
-   FEEDBACK
-========================= */
-
-function showFeedback(
-  text,
-  type=""
-){
-
-  feedbackEl.textContent =
-    text;
-
-  feedbackEl.className =
-    "feedback " + type;
-
-  /*
-    Force animation restart
-  */
-
-  void feedbackEl.offsetWidth;
-
-  feedbackEl.classList.add(
-    "show"
-  );
-
-}
-
-
-/* =========================
-   COMBO POP
-========================= */
-
-function showComboPop(text){
-
-  comboPop.textContent =
-    text;
-
-  comboPop.classList.remove(
-    "show"
-  );
-
-  void comboPop.offsetWidth;
-
-  comboPop.classList.add(
-    "show"
-  );
-
-}
-
-
-/* =========================
-   PARTICLES
-========================= */
-
-function createParticles(
-  amount=14
-){
-
-  const rect =
-    gameScreen.getBoundingClientRect();
-
-
-  for(let i=0;i<amount;i++){
-
-    const particle =
-      document.createElement("div");
-
-    particle.className =
-      "particle";
-
-
-    const x =
-      (Math.random()-.5)*280;
-
-    const y =
-      (Math.random()-.5)*180;
-
-
-    particle.style.left =
-      "50%";
-
-    particle.style.top =
-      "48%";
-
-    particle.style.setProperty(
-      "--x",
-      x + "px"
-    );
-
-    particle.style.setProperty(
-      "--y",
-      y + "px"
-    );
-
-
-    particle.style.background =
-      [
-        "var(--red)",
-        "var(--yellow)",
-        "var(--navy)",
-        "white",
-        "#CDBBFF"
-      ][
-        Math.floor(
-          Math.random()*5
-        )
-      ];
-
-
-    particle.style.width =
-      (6 + Math.random()*7) + "px";
-
-    particle.style.height =
-      (6 + Math.random()*7) + "px";
-
-
-    gameScreen.appendChild(
-      particle
-    );
-
-
-    setTimeout(()=>{
-      particle.remove();
-    },850);
-
-  }
-
-}
-
-
-/* =========================
-   CONFETTI
-========================= */
-
-function createConfetti(
-  amount=45
-){
-
-  for(let i=0;i<amount;i++){
-
-    const confetti =
-      document.createElement("div");
-
-    confetti.className =
-      "confetti";
-
-
-    const x =
-      (Math.random()-.5)*650;
-
-    const y =
-      (Math.random()-.5)*500;
-
-
-    confetti.style.setProperty(
-      "--x",
-      x + "px"
-    );
-
-    confetti.style.setProperty(
-      "--y",
-      y + "px"
-    );
-
-
-    confetti.style.background =
-      [
-        "var(--red)",
-        "var(--yellow)",
-        "var(--navy)",
-        "var(--pink)",
-        "var(--purple)"
-      ][
-        Math.floor(
-          Math.random()*5
-        )
-      ];
-
-
-    confetti.style.transform =
-      "rotate(" +
-      Math.random()*360 +
-      "deg)";
-
-
-    resultEl.appendChild(
-      confetti
-    );
-
-
-    setTimeout(()=>{
-      confetti.remove();
-    },1300);
-
-  }
-
-}
-
-
-/* =========================
-   ENERGY
-========================= */
-
-function changeEnergy(amount){
-
-  energy =
-    Math.max(
-      0,
-      Math.min(
-        100,
-        energy + amount
-      )
-    );
-
-
-  updateStats();
-
-
-  if(
-    energy <= 0 &&
-    playing
-  ){
-
-    showMessage(
-      "OUT OF ENERGY! 😵"
-    );
-
-    setTimeout(()=>{
-      endGame("energy");
-    },300);
-
-  }
-
-}
-
-
-/* =========================
-   DANCER MOVE
-========================= */
-
-function dancerAnimation(
-  key
-){
-
-  /*
-    Remove only movement classes.
-    Do NOT cancel the idle animation
-    on .dancer-character.
-  */
-
-  characterEl.classList.remove(
-    "move-left",
-    "move-right",
-    "move-up",
-    "move-down",
-    "move-space",
-    "hit",
-    "miss",
-    "level-up"
-  );
-
-
-  void characterEl.offsetWidth;
-
-
-  if(key === "ArrowLeft"){
-
-    characterEl.classList.add(
-      "move-left"
-    );
-
-  }
-
-  else if(key === "ArrowRight"){
-
-    characterEl.classList.add(
-      "move-right"
-    );
-
-  }
-
-  else if(key === "ArrowUp"){
-
-    characterEl.classList.add(
-      "move-up"
-    );
-
-  }
-
-  else if(key === "ArrowDown"){
-
-    characterEl.classList.add(
-      "move-down"
-    );
-
-  }
-
-  else if(key === "Space"){
-
-    characterEl.classList.add(
-      "move-space"
-    );
-
-  }
-
-
-  characterEl.classList.add(
-    "hit"
-  );
-
-
-  setTimeout(()=>{
-
-    characterEl.classList.remove(
-      "hit"
-    );
-
-  },400);
-
-}
-
-
-/* =========================
-   MISS
-========================= */
-
-function missAnimation(){
-
-  characterEl.classList.remove(
-    "miss"
-  );
-
-  void characterEl.offsetWidth;
-
-  characterEl.classList.add(
-    "miss"
-  );
-
-  setTimeout(()=>{
-
-    characterEl.classList.remove(
-      "miss"
-    );
-
-  },320);
-
-}
-
-
-/* =========================
-   START COUNTDOWN
-========================= */
-
-function startCountdown(){
-
-  countdownEl.classList.add(
-    "show"
-  );
-
-
-  const numbers =
-    ["3","2","1","GO!"];
-
-  let index = 0;
-
-
-  countdownNumber.textContent =
-    numbers[index];
-
-
-  countdownTimer =
-    setInterval(()=>{
-
-      index++;
-
-
-      if(index >= numbers.length){
-
-        clearInterval(
-          countdownTimer
-        );
-
-        countdownEl.classList.remove(
-          "show"
-        );
-
-        beginActualGame();
-
-        return;
-
-      }
-
-
-      countdownNumber.textContent =
-        numbers[index];
-
-
-      countdownNumber.style.animation =
-        "none";
-
-      void countdownNumber.offsetWidth;
-
-      countdownNumber.style.animation =
-        "countPop .7s ease";
-
-    },700);
-
-}
-
-
-/* =========================
-   ACTUAL GAME START
-========================= */
-
-function beginActualGame(){
-
-  playing = true;
-
-  acceptingInput = true;
-
-  gameScreen.classList.add(
-    "playing"
-  );
-
-  startBtn.textContent =
-    "↻ ĐANG NHẢY...";
-
-  showMessage(
-    "YOUR MOVE! 👀"
-  );
-
-
-  createSequence();
-
-
-  timer =
-    setInterval(()=>{
-
-      timeLeft--;
-
-      updateStats();
-
-
-      if(timeLeft <= 0){
-
-        endGame("time");
-
-      }
-
-    },1000);
-
-}
-
-
-/* =========================
-   START GAME
-========================= */
-
-function startGame(){
-
-  clearInterval(timer);
-
-  clearInterval(countdownTimer);
-
-  clearTimeout(nextLevelTimer);
-
-
-  score = 0;
-
-  combo = 0;
-
-  maxCombo = 0;
-
-  level = 1;
-
-  timeLeft = 30;
-
-  energy = 100;
-
-
-  playing = false;
-
-  acceptingInput = false;
-
-
-  resultEl.classList.remove(
-    "show"
-  );
-
-  newRecordEl.classList.remove(
-    "show"
-  );
-
-
-  gameScreen.classList.remove(
-    "playing"
-  );
-
-
-  startBtn.textContent =
-    "GET READY...";
-
-
-  updateStats();
-
-
-  showMessage(
-    "GET READY! 🪩"
-  );
-
-
-  startCountdown();
-
-}
-
-
-/* =========================
-   END GAME
-========================= */
-
-function endGame(reason="time"){
-
-  if(!playing && !acceptingInput){
-
-    /*
-      Prevent duplicate endings
-      during countdown/result state.
-    */
-
-  }
-
-
-  playing = false;
-
-  acceptingInput = false;
-
-
-  clearInterval(timer);
-
-  clearInterval(countdownTimer);
-
-  clearTimeout(nextLevelTimer);
-
-
-  gameScreen.classList.remove(
-    "playing"
-  );
-
-
-  startBtn.textContent =
-    "▶ BẮT ĐẦU NHẢY";
-
-
-  /*
-    High score
-  */
-
-  let isNewRecord = false;
-
-
-  if(score > bestScore){
-
-    bestScore = score;
-
-    localStorage.setItem(
-      "epicDanceHighScore",
-      bestScore
-    );
-
-    isNewRecord = true;
-
-  }
-
-
-  updateBest();
-
-
-  /*
-    Rank
-  */
-
-  let rank = "";
-
-
-  if(score >= 1800){
-
-    rank =
-      "🔥 DANCE LEGEND";
-
-  }
-
-  else if(score >= 1100){
-
-    rank =
-      "⭐ EPIC SUPERSTAR";
-
-  }
-
-  else if(score >= 700){
-
-    rank =
-      "💃 GROOVE MASTER";
-
-  }
-
-  else if(score >= 350){
-
-    rank =
-      "🎵 GROOVE MAKER";
-
-  }
-
-  else{
-
-    rank =
-      "🌱 DANCE STARTER";
-
-  }
-
-
-  if(reason === "energy"){
-
-    resultTitle.textContent =
-      "KEEP DANCING! 💗";
-
-  }
-  else{
-
-    resultTitle.textContent =
-      rank;
-
-  }
-
-
-  resultScore.textContent =
-    "Bạn đạt " +
-    score +
-    " điểm";
-
-
-  resultDetail.textContent =
-    "Level " +
-    level +
-    " · Max Combo x" +
-    maxCombo;
-
-
-  if(isNewRecord){
-
-    newRecordEl.classList.add(
-      "show"
-    );
-
-    setTimeout(()=>{
-      createConfetti(55);
-    },100);
-
-  }
-  else{
-
-    newRecordEl.classList.remove(
-      "show"
-    );
-
-  }
-
-
-  resultEl.classList.add(
-    "show"
-  );
-
-}
-
-
-/* =========================
-   LEVEL UP
-========================= */
-
-function nextLevel(){
-
-  acceptingInput = false;
-
-
-  level++;
-
-
-  /*
-    Level bonus
-  */
-
-  score +=
-    100 * level;
-
-
-  /*
-    Keep combo alive
-  */
-
-  combo += 2;
-
-  maxCombo =
-    Math.max(
-      maxCombo,
-      combo
-    );
-
-
-  /*
-    Recover energy
-  */
-
-  energy =
-    Math.min(
-      100,
-      energy + 12
-    );
-
-
-  showMessage(
-    "LEVEL " +
-    level +
-    "! 🌟"
-  );
-
-
-  showComboPop(
-    "LEVEL UP!"
-  );
-
-
-  updateStats();
-
-
-  characterEl.classList.add(
-    "level-up"
-  );
-
-
-  createParticles(24);
-
-
-  setTimeout(()=>{
-
-    characterEl.classList.remove(
-      "level-up"
-    );
-
-  },750);
-
-
-  nextLevelTimer =
-    setTimeout(()=>{
-
-      if(playing){
-
-        createSequence();
-
-        acceptingInput = true;
-
-        showMessage(
-          "NEW COMBO! 🔥"
-        );
-
-      }
-
-    },850);
-
-}
-
-
-/* =========================
-   CALCULATE ACCURACY
-========================= */
-
-function getTimingQuality(){
-
-  const now =
-    performance.now();
-
-  const elapsed =
-    now - sequenceStartTime;
-
-
-  /*
-    Faster response = better.
-    Still generous for children.
-  */
-
-  if(elapsed < 1200){
-
-    return "PERFECT";
-
-  }
-
-  if(elapsed < 2200){
-
-    return "GREAT";
-
-  }
-
-  return "GOOD";
-
-}
-
-
-/* =========================
-   CHECK MOVE
-========================= */
-
-function checkMove(key){
-
-  if(
-    !playing ||
-    !acceptingInput
-  ){
-
-    return;
-
-  }
-
-
-  const expected =
-    sequence[currentStep];
-
-
-  /*
-    CORRECT
-  */
-
-  if(key === expected){
-gameMoveSound(key);
-gameCorrectSound();
-    const quality =
-      getTimingQuality();
-
-
-    currentStep++;
-
-
-    combo++;
-
-
-    maxCombo =
-      Math.max(
-        maxCombo,
-        combo
-      );
-
-
-    /*
-      Score
-    */
-
-    let points = 10;
-
-
-    if(quality === "PERFECT"){
-
-      points = 30;
-
-    }
-
-    else if(quality === "GREAT"){
-
-      points = 20;
-
-    }
-
-
-    /*
-      Combo bonus
-    */
-
-    points +=
-      Math.min(
-        combo * 2,
-        50
-      );
-
-
-    /*
-      Higher level bonus
-    */
-
-    points +=
-      (level - 1) * 3;
-
-
-    score +=
-      points;
-
-
-    /*
-      Energy reward
-    */
-
-    changeEnergy(
-      combo >= 5 ? 5 : 3
-    );
-
-
-    dancerAnimation(
-      key
-    );
-
-
-    /*
-      Feedback
-    */
-
-    showFeedback(
-      quality === "PERFECT"
-        ? "PERFECT! ✨"
-        : quality === "GREAT"
-        ? "GREAT! ⭐"
-        : "GOOD! 💗",
-      quality.toLowerCase()
-    );
-
-
-    if(combo >= 3){
-
-      showMessage(
-        "COMBO x" +
-        combo +
-        " 🔥"
-      );
-
-    }
-    else{
-
-      showMessage(
-        "NICE MOVE! ✨"
-      );
-
-    }
-
-
-    /*
-      Big combo effects
-    */
-
-    if(combo > 0 && combo % 5 === 0){
-
-      showComboPop(
-        "COMBO x" +
-        combo +
-        " 🔥"
-      );
-
-
-      createParticles(
-        18
-      );
-
-    }
-
-
-    /*
-      Perfect particle
-    */
-
-    if(
-      quality === "PERFECT"
-    ){
-
-      createParticles(
-        12
-      );
-
-    }
-
-
-    renderSequence();
-
-    updateStats();
-
-
-    /*
-      SEQUENCE COMPLETE
-    */
-
-    if(
-      currentStep >=
-      sequence.length
-    ){
-gameComboSound();
-      acceptingInput = false;
-
-
-      showFeedback(
-        "FULL COMBO! 🎉",
-        "perfect"
-      );
-
-
-      createParticles(
-        28
-      );
-
-
-      setTimeout(()=>{
-
-        if(playing){
-
-          nextLevel();
-
-        }
-
-      },400);
-
-    }
-
-  }
-
-  /*
-    WRONG
-  */
-
-  else{
-
-  gameMissSound();
-
-  combo = 0;
-
-
-    /*
-      Lose energy
-    */
-
-    changeEnergy(
-      -15
-    );
-
-
-    missAnimation();
-
-
-    showFeedback(
-      "MISS! 💗",
-      "miss"
-    );
-
-
-    showMessage(
-      "TRY AGAIN! 👀"
-    );
-
-
-    updateStats();
-
-
-    /*
-      If energy did not kill game,
-      keep playing.
-    */
-
-    if(
-      energy > 0 &&
-      playing
-    ){
-
-      renderSequence();
-
-    }
-
-  }
-
-}
-
-
-/* =========================================================
-   KEYBOARD
-========================================================= */
-
-document.addEventListener(
-  "keydown",
-  (event)=>{
-
-    let key = null;
-
-
-    if(event.code === "Space"){
-
-      key = "Space";
-
-    }
-
-    else if(
-      moves.includes(event.key)
-    ){
-
-      key = event.key;
-
-    }
-
-
-    if(key){
-
-      event.preventDefault();
-
-
-      /*
-        Avoid repeated keydown
-        when key is held.
-      */
-
-      if(event.repeat){
-
-        return;
-
-      }
-
-
-      checkMove(
-        key
-      );
-
-
-      const button =
-        document.querySelector(
-          '.control[data-key="' +
-          key +
-          '"]'
-        );
-
-
-      if(button){
-
-        button.classList.add(
-          "pressed"
-        );
-
-
-        setTimeout(()=>{
-
-          button.classList.remove(
-            "pressed"
-          );
-
-        },150);
-
-      }
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   BUTTON CONTROLS
-========================================================= */
-
-document
-  .querySelectorAll(".control")
-  .forEach(button=>{
-
-    button.addEventListener(
-      "click",
-      ()=>{
-
-        const key =
-          button.dataset.key;
-
-
-        button.classList.add(
-          "pressed"
-        );
-
-
-        setTimeout(()=>{
-
-          button.classList.remove(
-            "pressed"
-          );
-
-        },150);
-
-
-        checkMove(
-          key
-        );
-
-      }
-    );
-
-  });
-
-
-/* =========================================================
-   START BUTTON
-========================================================= */
-
-startBtn.addEventListener(
-  "click",
-  startGame
-);
-
-
-/* =========================================================
-   PLAY AGAIN
-========================================================= */
-
-playAgain.addEventListener(
-  "click",
-  startGame
-);
-
-
-/* =========================================================
-   INITIAL SCREEN
-========================================================= */
-
-updateBest();
-
-createSequence();
-
-updateStats();
-
-showMessage(
-  "READY? 💗"
-);
-
+});
 </script>
 
+</main>
 </body>
 </html>
