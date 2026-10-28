@@ -1,4694 +1,616 @@
 
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>EPIC Dance – Lớp học vũ đạo</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Fredoka:wght@400;500;600;700&family=Varela+Round&display=swap" rel="stylesheet">
-<style>
-:root{
-  --navy:#102576;
-  --red:#C9182B;
-  --yellow:#E7C84A;
-  --cream:#FFF9E9;
-  --pink:#FFD8DE;
-  --blue:#DCE8FF;
-  --white:#fff;
-  --black:#18204A;
-  --green:#BDECC8;
-  --purple:#CDBBFF;
-  --shadow:0 10px 0 rgba(16,37,118,.12);
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:"Fredoka","Varela Round",sans-serif;
-  background:var(--cream);
-  color:var(--black);
-  overflow-x:hidden;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-button{
-  font-family:inherit;
-  touch-action:manipulation;
-}
-
-/* =========================
-   HEADER
-========================= */
-
-.header{
-  position:fixed;
-  top:16px;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(1180px,92%);
-  z-index:1000;
-  background:rgba(255,255,255,.94);
-  border:3px solid var(--navy);
-  border-radius:30px;
-  box-shadow:0 7px 0 var(--navy);
-  padding:10px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  width:105px;
-  height:52px;
-  object-fit:contain;
-}
-
-.back{
-  background:var(--yellow);
-  color:var(--navy);
-  border:2px solid var(--navy);
-  border-radius:20px;
-  padding:9px 16px;
-  font-weight:700;
-  transition:.2s;
-}
-
-.back:hover{
-  transform:translateY(-3px) rotate(-2deg);
-}
-
-/* =========================
-   DECORATIONS
-========================= */
-
-.sticker{
-  position:absolute;
-  z-index:5;
-  font-weight:700;
-  border:3px solid var(--navy);
-  box-shadow:5px 5px 0 var(--navy);
-}
-
-.star{
-  width:55px;
-  height:55px;
-  display:grid;
-  place-items:center;
-  background:var(--yellow);
-  border-radius:50%;
-  font-size:25px;
-  animation:float 3s ease-in-out infinite;
-}
-
-.heart{
-  width:60px;
-  height:45px;
-  display:grid;
-  place-items:center;
-  background:var(--pink);
-  border-radius:25px;
-  font-size:24px;
-  transform:rotate(-8deg);
-  animation:float 3.5s ease-in-out infinite;
-}
-
-.spark{
-  font-size:38px;
-  color:var(--red);
-  border:none;
-  box-shadow:none;
-  animation:spin 5s linear infinite;
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-10px) rotate(3deg)}
-}
-
-@keyframes spin{
-  from{transform:rotate(0)}
-  to{transform:rotate(360deg)}
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-  min-height:850px;
-  padding:170px 7% 100px;
-  position:relative;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 85% 15%,#DCE8FF 0 120px,transparent 121px),
-    radial-gradient(circle at 8% 80%,#FFD8DE 0 130px,transparent 131px),
-    var(--cream);
-}
-
-.hero-inner{
-  max-width:1180px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:70px;
-  align-items:center;
-}
-
-.eyebrow{
-  display:inline-block;
-  background:var(--yellow);
-  border:3px solid var(--navy);
-  border-radius:30px;
-  padding:9px 18px;
-  font-size:14px;
-  font-weight:700;
-  transform:rotate(-2deg);
-  box-shadow:5px 5px 0 var(--navy);
-  margin-bottom:25px;
-}
-
-.hero h1{
-  font-family:"Sigmar",cursive;
-  font-size:clamp(75px,11vw,150px);
-  line-height:.8;
-  color:var(--navy);
-  letter-spacing:-5px;
-  text-transform:uppercase;
-}
-
-.hero h1 span{
-  color:var(--red);
-  display:block;
-  transform:rotate(-3deg);
-  margin-left:35px;
-}
-
-.hero-text{
-  font-size:20px;
-  line-height:1.7;
-  max-width:550px;
-  margin:30px 0;
-}
-
-.hero-buttons{
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:14px 22px;
-  border:3px solid var(--navy);
-  border-radius:22px;
-  font-weight:700;
-  transition:.2s;
-  box-shadow:5px 5px 0 var(--navy);
-}
-
-.btn:hover{
-  transform:translate(3px,3px);
-  box-shadow:2px 2px 0 var(--navy);
-}
-
-.btn-primary{
-  background:var(--red);
-  color:white;
-}
-
-.btn-secondary{
-  background:white;
-}
-
-/* Hero character */
-
-.hero-art{
-  position:relative;
-  min-height:520px;
-  display:grid;
-  place-items:center;
-}
-
-.blob{
-  width:410px;
-  height:410px;
-  background:var(--blue);
-  border:4px solid var(--navy);
-  border-radius:48% 52% 55% 45%;
-  position:absolute;
-  animation:blob 6s ease-in-out infinite;
-}
-
-@keyframes blob{
-  0%,100%{
-    border-radius:48% 52% 55% 45%;
-    transform:rotate(0);
-  }
-  50%{
-    border-radius:55% 45% 45% 55%;
-    transform:rotate(5deg);
-  }
-}
-
-.dancer{
-  position:relative;
-  z-index:2;
-  width:270px;
-  height:350px;
-  background:white;
-  border:4px solid var(--navy);
-  border-radius:48% 48% 35% 35%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:125px;
-  box-shadow:12px 12px 0 var(--navy);
-  animation:danceBounce 1.3s ease-in-out infinite;
-}
-
-@keyframes danceBounce{
-  0%,100%{transform:rotate(-4deg) translateY(0)}
-  50%{transform:rotate(4deg) translateY(-12px)}
-}
-
-.hero-art .one{
-  top:25px;
-  right:15px;
-}
-
-.hero-art .two{
-  bottom:40px;
-  left:5px;
-}
-
-/* =========================
-   MARQUEE
-========================= */
-
-.marquee{
-  background:var(--navy);
-  color:white;
-  overflow:hidden;
-  padding:15px 0;
-  border-top:4px solid var(--navy);
-  border-bottom:4px solid var(--navy);
-  transform:rotate(-1deg) scale(1.03);
-}
-
-.marquee-track{
-  width:max-content;
-  display:flex;
-  gap:30px;
-  animation:marquee 20s linear infinite;
-  font-size:20px;
-  font-weight:700;
-}
-
-.marquee span{
-  color:var(--yellow);
-}
-
-@keyframes marquee{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
-}
-
-/* =========================
-   COMMON
-========================= */
-
-.section{
-  padding:110px 7%;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-}
-
-.section-label{
-  display:inline-block;
-  background:var(--pink);
-  border:3px solid var(--navy);
-  border-radius:25px;
-  padding:8px 17px;
-  font-size:14px;
-  font-weight:700;
-  box-shadow:4px 4px 0 var(--navy);
-  transform:rotate(-2deg);
-}
-
-.section-title{
-  font-family:"Sigmar",cursive;
-  color:var(--navy);
-  font-size:clamp(48px,7vw,90px);
-  line-height:.95;
-  margin:20px 0 50px;
-}
-
-.section-title span{
-  color:var(--red);
-}
-
-/* =========================
-   BEAT
-========================= */
-
-.beat-section{
-  background:white;
-}
-
-.beat-intro{
-  text-align:center;
-}
-
-.beat-boxes{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-  max-width:700px;
-  margin:40px auto;
-}
-
-.beat{
-  aspect-ratio:1;
-  background:var(--yellow);
-  border:4px solid var(--navy);
-  border-radius:30px;
-  display:grid;
-  place-items:center;
-  font-family:"Sigmar";
-  font-size:60px;
-  color:var(--navy);
-  box-shadow:7px 7px 0 var(--navy);
-  cursor:pointer;
-  transition:.15s;
-}
-
-.beat:nth-child(2){background:var(--pink)}
-.beat:nth-child(3){background:var(--blue)}
-.beat:nth-child(4){
-  background:var(--red);
-  color:white;
-}
-
-.beat:hover{
-  transform:translateY(-8px) rotate(-4deg);
-}
-
-.beat.active{
-  transform:scale(1.08) rotate(4deg);
-}
-/* =========================================================
-   EPIC FEEL THE BEAT
-========================================================= */
-
-.instrument{
-  border:4px solid var(--navy);
-  font-family:"Sigmar",cursive;
-  cursor:pointer;
-  overflow:hidden;
-  position:relative;
-  transition:.15s;
-}
-
-.instrument-icon{
-  display:block;
-  font-size:64px;
-  line-height:1;
-  transition:.15s;
-}
-
-.instrument small{
-  display:block;
-  margin-top:12px;
-  font-family:"Fredoka","Varela Round",sans-serif;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:1px;
-}
-
-.instrument:hover .instrument-icon{
-  transform:scale(1.12) rotate(-5deg);
-}
-
-.instrument:active{
-  transform:
-    translate(4px,4px)
-    scale(.96);
-
-  box-shadow:
-    3px 3px 0 var(--navy);
-}
-
-.instrument.playing{
-
-  animation:
-    epicInstrumentBeat
-    .35s
-    ease;
-
-}
-
-@keyframes epicInstrumentBeat{
-
-  0%{
-    transform:scale(1);
-  }
-
-  35%{
-    transform:
-      scale(1.1)
-      rotate(-4deg);
-  }
-
-  70%{
-    transform:
-      scale(.97)
-      rotate(3deg);
-  }
-
-  100%{
-    transform:scale(1);
-  }
-
-}
-
-.beat-note{
-
-  position:absolute;
-
-  pointer-events:none;
-
-  font-size:28px;
-
-  animation:
-    epicNoteFloat
-    .8s
-    ease-out
-    forwards;
-
-  z-index:20;
-
-}
-
-@keyframes epicNoteFloat{
-
-  0%{
-    opacity:1;
-
-    transform:
-      translateY(0)
-      scale(.7)
-      rotate(0);
-  }
-
-  100%{
-    opacity:0;
-
-    transform:
-      translateY(-70px)
-      translateX(var(--note-x))
-      scale(1.2)
-      rotate(20deg);
-  }
-
-}
-
-
-/* Mobile */
-
-@media(max-width:700px){
-
-  .beat-boxes{
-
-    grid-template-columns:
-      repeat(2,1fr);
-
-    gap:14px;
-
-  }
-
-  .instrument-icon{
-    font-size:48px;
-  }
-
-}
-.beat-line{
-  height:8px;
-  max-width:700px;
-  margin:auto;
-  background:var(--navy);
-  border-radius:10px;
-  position:relative;
-  overflow:hidden;
-}
-
-.beat-line::after{
-  content:"";
-  position:absolute;
-  width:80px;
-  height:100%;
-  background:var(--red);
-  left:-100px;
-  animation:beatLine 2s linear infinite;
-}
-
-@keyframes beatLine{
-  to{left:100%}
-}
-
-/* =========================
-   STORY
-========================= */
-
-.story{
-  background:var(--red);
-  color:white;
-  position:relative;
-  overflow:hidden;
-}
-
-.story .section-label{
-  background:white;
-}
-
-.story .section-title{
-  color:white;
-  max-width:850px;
-}
-
-.story p{
-  font-size:24px;
-  line-height:1.6;
-  max-width:850px;
-}
-
-/* =========================
-   STYLE CARDS
-========================= */
-
-.styles{
-  background:var(--cream);
-}
-
-.style-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:25px;
-}
-
-.style-card{
-  min-height:240px;
-  padding:35px;
-  background:white;
-  border:4px solid var(--navy);
-  border-radius:35px;
-  box-shadow:8px 8px 0 var(--navy);
-  position:relative;
-  overflow:hidden;
-  transition:.25s;
-}
-
-.style-card:hover{
-  transform:translateY(-8px) rotate(-1deg);
-}
-
-.style-card:nth-child(2){background:var(--pink)}
-.style-card:nth-child(3){background:var(--blue)}
-.style-card:nth-child(4){background:var(--yellow)}
-
-.style-number{
-  position:absolute;
-  right:20px;
-  top:15px;
-  font-size:65px;
-  font-family:"Sigmar";
-  opacity:.15;
-}
-
-.style-icon{
-  font-size:55px;
-}
-
-.style-card h3{
-  font-family:"Sigmar";
-  color:var(--navy);
-  font-size:34px;
-  margin:15px 0 10px;
-}
-
-.style-card p{
-  line-height:1.6;
-}
-
-/* =========================
-   AGE JOURNEY
-========================= */
-
-.journey{
-  background:var(--blue);
-}
-
-.journey-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-
-.age-card{
-  background:white;
-  border:4px solid var(--navy);
-  border-radius:30px;
-  padding:28px 20px;
-  text-align:center;
-  box-shadow:6px 6px 0 var(--navy);
-  transition:.2s;
-}
-
-.age-card:hover{
-  transform:translateY(-8px) rotate(2deg);
-}
-
-.age-icon{
-  font-size:55px;
-}
-
-.age{
-  display:inline-block;
-  margin:15px 0;
-  background:var(--yellow);
-  padding:6px 14px;
-  border-radius:20px;
-  font-weight:700;
-  border:2px solid var(--navy);
-}
-
-.age-card h3{
-  color:var(--red);
-  font-family:"Sigmar";
-  font-size:28px;
-}
-
-/* =========================================================
-   DANCE MIRROR — WOW ARCADE
-========================================================= */
-
-.game-section{
-  background:white;
-  position:relative;
-  overflow:hidden;
-}
-
-.game-section::before,
-.game-section::after{
-  content:"";
-  position:absolute;
-  border-radius:50%;
-  pointer-events:none;
-}
-
-.game-section::before{
-  width:280px;
-  height:280px;
-  background:var(--pink);
-  left:-150px;
-  top:150px;
-  opacity:.5;
-}
-
-.game-section::after{
-  width:350px;
-  height:350px;
-  background:var(--blue);
-  right:-200px;
-  bottom:100px;
-  opacity:.6;
-}
-
-.game-card{
-  max-width:950px;
-  margin:auto;
-  background:var(--cream);
-  border:5px solid var(--navy);
-  border-radius:40px;
-  padding:35px;
-  box-shadow:10px 10px 0 var(--navy);
-  position:relative;
-  z-index:2;
-}
-
-.game-top{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  flex-wrap:wrap;
-  margin-bottom:25px;
-}
-
-.game-title{
-  font-family:"Sigmar";
-  color:var(--navy);
-  font-size:42px;
-}
-
-.game-sub{
-  margin-top:5px;
-}
-
-.stats{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-}
-
-.stat{
-  background:white;
-  border:3px solid var(--navy);
-  border-radius:18px;
-  padding:8px 13px;
-  font-weight:700;
-  box-shadow:3px 3px 0 rgba(16,37,118,.15);
-}
-
-.stat strong{
-  color:var(--red);
-}
-
-.best-stat strong{
-  color:#8A62D6;
-}
-
-/* =========================
-   ARCADE SCREEN
-========================= */
-
-.game-screen{
-  min-height:470px;
-  background:
-    radial-gradient(circle at 20% 25%,rgba(255,255,255,.9) 0 3px,transparent 4px),
-    radial-gradient(circle at 80% 35%,rgba(255,255,255,.9) 0 3px,transparent 4px),
-    radial-gradient(circle at 50% 70%,rgba(255,255,255,.7) 0 2px,transparent 3px),
-    linear-gradient(145deg,#DCE8FF,#CDBBFF,#FFD8DE);
-  background-size:auto,auto,auto,100% 100%;
-  border:4px solid var(--navy);
-  border-radius:30px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-  isolation:isolate;
-}
-
-/* disco lights */
-
-.game-screen::before{
-  content:"";
-  position:absolute;
-  width:160%;
-  height:160%;
-  left:-30%;
-  top:-30%;
-  background:
-    conic-gradient(
-      from 0deg,
-      transparent 0deg 20deg,
-      rgba(255,255,255,.15) 20deg 38deg,
-      transparent 38deg 65deg,
-      rgba(201,24,43,.08) 65deg 82deg,
-      transparent 82deg 110deg,
-      rgba(231,200,74,.12) 110deg 130deg,
-      transparent 130deg 170deg,
-      rgba(16,37,118,.08) 170deg 190deg,
-      transparent 190deg 230deg,
-      rgba(255,255,255,.18) 230deg 255deg,
-      transparent 255deg 300deg,
-      rgba(201,24,43,.08) 300deg 325deg,
-      transparent 325deg
-    );
-  animation:discoSpin 12s linear infinite;
-  z-index:-1;
-}
-
-@keyframes discoSpin{
-  to{transform:rotate(360deg)}
-}
-
-.game-screen.playing{
-  animation:screenPulse 1.2s ease-in-out infinite;
-}
-
-@keyframes screenPulse{
-  0%,100%{
-    box-shadow:inset 0 0 0 rgba(255,255,255,0);
-  }
-  50%{
-    box-shadow:inset 0 0 45px rgba(255,255,255,.18);
-  }
-}
-
-/* energy */
-
-.energy-wrap{
-  position:absolute;
-  top:15px;
-  left:18px;
-  right:18px;
-  z-index:20;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:12px;
-  font-weight:700;
-  color:var(--navy);
-}
-
-.energy-bar{
-  flex:1;
-  height:15px;
-  background:white;
-  border:3px solid var(--navy);
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:2px 2px 0 rgba(16,37,118,.15);
-}
-
-.energy-fill{
-  width:100%;
-  height:100%;
-  background:linear-gradient(90deg,var(--red),var(--yellow));
-  border-radius:20px;
-  transition:.25s;
-}
-
-/* combo */
-
-.combo-pop{
-  position:absolute;
-  top:72px;
-  right:25px;
-  font-family:"Sigmar";
-  font-size:30px;
-  color:var(--red);
-  pointer-events:none;
-  opacity:0;
-  z-index:30;
-  text-shadow:3px 3px 0 white;
-}
-
-.combo-pop.show{
-  animation:comboPop .7s ease;
-}
-
-@keyframes comboPop{
-  0%{
-    opacity:0;
-    transform:scale(.5) translateY(15px) rotate(-8deg);
-  }
-  30%{
-    opacity:1;
-    transform:scale(1.3) translateY(0) rotate(4deg);
-  }
-  100%{
-    opacity:0;
-    transform:scale(1) translateY(-35px) rotate(0);
-  }
-}
-
-/* feedback */
-
-.feedback{
-  position:absolute;
-  top:85px;
-  left:50%;
-  transform:translateX(-50%);
-  font-family:"Sigmar";
-  font-size:42px;
-  color:var(--red);
-  text-shadow:4px 4px 0 white;
-  opacity:0;
-  pointer-events:none;
-  z-index:25;
-  white-space:nowrap;
-}
-
-.feedback.show{
-  animation:feedbackPop .75s ease;
-}
-
-.feedback.perfect{
-  color:var(--red);
-}
-
-.feedback.great{
-  color:#8A62D6;
-}
-
-.feedback.good{
-  color:var(--navy);
-}
-
-.feedback.miss{
-  color:#777;
-}
-
-@keyframes feedbackPop{
-  0%{
-    opacity:0;
-    transform:translateX(-50%) scale(.5) translateY(15px);
-  }
-  25%{
-    opacity:1;
-    transform:translateX(-50%) scale(1.25) translateY(0);
-  }
-  100%{
-    opacity:0;
-    transform:translateX(-50%) scale(1) translateY(-45px);
-  }
-}
-
-/* =========================
-   CUTE DANCER
-========================= */
-
-.game-character{
-  width:250px;
-  height:225px;
-  position:relative;
-  display:flex;
-  justify-content:center;
-  align-items:flex-end;
-  margin-bottom:10px;
-  z-index:10;
-  transform-origin:center bottom;
-}
-
-.dancer-character{
-  width:125px;
-  height:190px;
-  position:relative;
-  transform-origin:center bottom;
-  animation:dancerIdle 1.8s ease-in-out infinite;
-  z-index:3;
-}
-
-.dancer-shadow{
-  position:absolute;
-  bottom:5px;
-  left:50%;
-  width:105px;
-  height:18px;
-  border-radius:50%;
-  background:rgba(16,37,118,.18);
-  transform:translateX(-50%);
-  animation:shadowIdle 1.8s ease-in-out infinite;
-}
-
-@keyframes dancerIdle{
-  0%,100%{
-    transform:translateY(0) rotate(-2deg);
-  }
-  50%{
-    transform:translateY(-7px) rotate(2deg);
-  }
-}
-
-@keyframes shadowIdle{
-  0%,100%{
-    transform:translateX(-50%) scale(1);
-    opacity:.25;
-  }
-  50%{
-    transform:translateX(-50%) scale(.82);
-    opacity:.15;
-  }
-}
-
-/* hair */
-
-.dancer-hair{
-  position:absolute;
-  width:68px;
-  height:78px;
-  left:28px;
-  top:4px;
-  background:#633B31;
-  border:4px solid var(--navy);
-  border-radius:48% 48% 45% 45%;
-  z-index:1;
-}
-
-.dancer-hair span{
-  position:absolute;
-  width:18px;
-  height:35px;
-  background:#633B31;
-  border:4px solid var(--navy);
-  border-top:none;
-  border-radius:0 0 15px 15px;
-  bottom:-22px;
-}
-
-.dancer-hair span:nth-child(1){
-  left:-8px;
-  transform:rotate(12deg);
-}
-
-.dancer-hair span:nth-child(2){
-  left:21px;
-  height:42px;
-}
-
-.dancer-hair span:nth-child(3){
-  right:-8px;
-  transform:rotate(-12deg);
-}
-
-/* head */
-
-.dancer-head{
-  position:absolute;
-  width:61px;
-  height:65px;
-  left:32px;
-  top:13px;
-  background:#FFD1B8;
-  border:4px solid var(--navy);
-  border-radius:45% 45% 48% 48%;
-  z-index:2;
-}
-
-.eye{
-  position:absolute;
-  width:7px;
-  height:10px;
-  background:var(--navy);
-  border-radius:50%;
-  top:27px;
-}
-
-.eye.left{left:15px}
-.eye.right{right:15px}
-
-.blush{
-  position:absolute;
-  width:10px;
-  height:6px;
-  background:#F28B9B;
-  border-radius:50%;
-  top:39px;
-  opacity:.7;
-}
-
-.blush.left{left:7px}
-.blush.right{right:7px}
-
-.mouth{
-  position:absolute;
-  left:50%;
-  top:39px;
-  transform:translateX(-50%);
-  color:var(--red);
-  font-size:17px;
-  font-weight:700;
-}
-
-/* neck */
-
-.dancer-neck{
-  position:absolute;
-  width:20px;
-  height:20px;
-  left:52px;
-  top:73px;
-  background:#FFD1B8;
-  border:4px solid var(--navy);
-  z-index:1;
-}
-
-/* body */
-
-.dancer-body{
-  position:absolute;
-  width:62px;
-  height:67px;
-  left:32px;
-  top:82px;
-  background:var(--red);
-  border:4px solid var(--navy);
-  border-radius:22px 22px 18px 18px;
-  z-index:2;
-  display:grid;
-  place-items:center;
-}
-
-.shirt-star{
-  color:var(--yellow);
-  font-size:24px;
-  animation:starPulse .8s ease-in-out infinite;
-}
-
-@keyframes starPulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.18)}
-}
-
-/* arms */
-
-.dancer-arm{
-  position:absolute;
-  width:18px;
-  height:63px;
-  background:#FFD1B8;
-  border:4px solid var(--navy);
-  border-radius:20px;
-  top:87px;
-  z-index:1;
-  transform-origin:top center;
-}
-
-.arm-left{
-  left:17px;
-  transform:rotate(20deg);
-}
-
-.arm-right{
-  right:17px;
-  transform:rotate(-20deg);
-}
-
-.hand{
-  position:absolute;
-  bottom:-13px;
-  left:50%;
-  transform:translateX(-50%);
-  width:24px;
-  height:24px;
-  background:#FFD1B8;
-  border:3px solid var(--navy);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  color:var(--red);
-  font-size:12px;
-}
-
-/* skirt */
-
-.dancer-skirt{
-  position:absolute;
-  width:91px;
-  height:44px;
-  left:17px;
-  top:135px;
-  background:#FF91A4;
-  border:4px solid var(--navy);
-  border-radius:15px 15px 45% 45%;
-  z-index:3;
-  transform-origin:top center;
-}
-
-/* legs */
-
-.dancer-leg{
-  position:absolute;
-  width:20px;
-  height:52px;
-  background:#FFD1B8;
-  border:4px solid var(--navy);
-  border-radius:20px;
-  top:168px;
-  z-index:1;
-  transform-origin:top center;
-}
-
-.leg-left{
-  left:40px;
-  transform:rotate(5deg);
-}
-
-.leg-right{
-  right:40px;
-  transform:rotate(-5deg);
-}
-
-/* shoes */
-
-.shoe{
-  position:absolute;
-  bottom:-10px;
-  width:35px;
-  height:18px;
-  background:white;
-  border:4px solid var(--navy);
-  border-radius:20px 20px 10px 10px;
-}
-
-.leg-left .shoe{
-  left:-12px;
-  transform:rotate(-8deg);
-}
-
-.leg-right .shoe{
-  right:-12px;
-  transform:rotate(8deg);
-}
-
-/* =========================
-   DANCE MOVEMENTS
-========================= */
-
-.move-left .dancer-character{
-  animation:moveLeft .42s cubic-bezier(.2,.8,.2,1);
-}
-
-.move-right .dancer-character{
-  animation:moveRight .42s cubic-bezier(.2,.8,.2,1);
-}
-
-.move-up .dancer-character{
-  animation:moveUp .5s cubic-bezier(.2,.8,.2,1);
-}
-
-.move-down .dancer-character{
-  animation:moveDown .45s ease;
-}
-
-.move-space .dancer-character{
-  animation:moveSpace .6s cubic-bezier(.2,.8,.2,1);
-}
-
-@keyframes moveLeft{
-  0%{transform:translateX(0) rotate(-2deg)}
-  35%{transform:translateX(-28px) rotate(-10deg) scale(1.05)}
-  70%{transform:translateX(10px) rotate(5deg)}
-  100%{transform:translateX(0) rotate(0)}
-}
-
-@keyframes moveRight{
-  0%{transform:translateX(0) rotate(2deg)}
-  35%{transform:translateX(28px) rotate(10deg) scale(1.05)}
-  70%{transform:translateX(-10px) rotate(-5deg)}
-  100%{transform:translateX(0) rotate(0)}
-}
-
-@keyframes moveUp{
-  0%{transform:translateY(0) scale(1)}
-  35%{transform:translateY(-55px) scale(1.1) rotate(-4deg)}
-  65%{transform:translateY(-25px) scale(1.05) rotate(5deg)}
-  100%{transform:translateY(0) scale(1)}
-}
-
-@keyframes moveDown{
-  0%{transform:translateY(0) scale(1)}
-  35%{transform:translateY(22px) scaleY(.78) scaleX(1.08)}
-  70%{transform:translateY(10px) scaleY(.92)}
-  100%{transform:translateY(0) scale(1)}
-}
-
-@keyframes moveSpace{
-  0%{transform:translateY(0) rotate(0) scale(1)}
-  25%{transform:translateY(-70px) rotate(-8deg) scale(1.1)}
-  50%{transform:translateY(-85px) rotate(8deg) scale(1.18)}
-  75%{transform:translateY(-30px) rotate(-5deg) scale(1.05)}
-  100%{transform:translateY(0) rotate(0) scale(1)}
-}
-
-/* limb reactions */
-
-.move-left .arm-left{
-  animation:armLeft .42s ease;
-}
-
-.move-left .arm-right{
-  animation:armRight .42s ease;
-}
-
-.move-right .arm-left{
-  animation:armRight .42s ease;
-}
-
-.move-right .arm-right{
-  animation:armLeft .42s ease;
-}
-
-.move-up .arm-left,
-.move-up .arm-right,
-.move-space .arm-left,
-.move-space .arm-right{
-  animation:armsUp .5s ease;
-}
-
-.move-down .arm-left,
-.move-down .arm-right{
-  animation:armsDown .45s ease;
-}
-
-.move-left .leg-left,
-.move-right .leg-right{
-  animation:legKick .42s ease;
-}
-
-.move-right .leg-left,
-.move-left .leg-right{
-  animation:legKick2 .42s ease;
-}
-
-.move-space .dancer-skirt{
-  animation:skirtSpin .6s ease;
-}
-
-@keyframes armLeft{
-  0%{transform:rotate(20deg)}
-  40%{transform:rotate(-45deg)}
-  100%{transform:rotate(20deg)}
-}
-
-@keyframes armRight{
-  0%{transform:rotate(-20deg)}
-  40%{transform:rotate(45deg)}
-  100%{transform:rotate(-20deg)}
-}
-
-@keyframes armsUp{
-  0%{transform:rotate(20deg)}
-  45%{transform:rotate(-55deg)}
-  100%{transform:rotate(20deg)}
-}
-
-@keyframes armsDown{
-  0%{transform:rotate(20deg)}
-  45%{transform:rotate(75deg)}
-  100%{transform:rotate(20deg)}
-}
-
-@keyframes legKick{
-  0%{transform:rotate(5deg)}
-  45%{transform:rotate(-28deg)}
-  100%{transform:rotate(5deg)}
-}
-
-@keyframes legKick2{
-  0%{transform:rotate(-5deg)}
-  45%{transform:rotate(28deg)}
-  100%{transform:rotate(-5deg)}
-}
-
-@keyframes skirtSpin{
-  0%{transform:rotate(0) scaleX(1)}
-  50%{transform:rotate(-10deg) scaleX(1.2)}
-  100%{transform:rotate(0) scaleX(1)}
-}
-
-/* hit */
-
-.game-character.hit{
-  animation:hitGlow .35s ease;
-}
-
-@keyframes hitGlow{
-  0%{filter:brightness(1)}
-  45%{filter:brightness(1.4) drop-shadow(0 0 18px rgba(231,200,74,.8))}
-  100%{filter:brightness(1)}
-}
-
-/* miss */
-
-.game-character.miss{
-  animation:missShake .3s ease;
-}
-
-@keyframes missShake{
-  0%,100%{transform:translateX(0)}
-  25%{transform:translateX(-12px) rotate(-3deg)}
-  75%{transform:translateX(12px) rotate(3deg)}
-}
-
-/* level */
-
-.game-character.level-up{
-  animation:levelUpDance .7s ease;
-}
-
-@keyframes levelUpDance{
-  0%{transform:scale(1)}
-  35%{transform:scale(1.28) rotate(-8deg)}
-  65%{transform:scale(1.15) rotate(8deg)}
-  100%{transform:scale(1)}
-}
-
-/* =========================
-   SEQUENCE
-========================= */
-
-.sequence-label{
-  font-size:12px;
-  font-weight:700;
-  color:var(--navy);
-  margin-top:2px;
-}
-
-.sequence{
-  display:flex;
-  gap:10px;
-  margin-top:8px;
-  flex-wrap:wrap;
-  justify-content:center;
-  min-height:52px;
-}
-
-.seq-item{
-  width:50px;
-  height:50px;
-  border:3px solid var(--navy);
-  background:white;
-  border-radius:15px;
-  display:grid;
-  place-items:center;
-  font-size:24px;
-  font-weight:700;
-  transition:.18s;
-  box-shadow:3px 3px 0 rgba(16,37,118,.12);
-}
-
-.seq-item.current{
-  background:var(--yellow);
-  transform:scale(1.15) rotate(-4deg);
-  box-shadow:4px 4px 0 var(--navy);
-  animation:currentPulse .8s ease-in-out infinite;
-}
-
-@keyframes currentPulse{
-  50%{
-    box-shadow:0 0 0 7px rgba(231,200,74,.25);
-  }
-}
-
-.seq-item.done{
-  background:var(--green);
-  color:var(--navy);
-}
-
-/* progress */
-
-.sequence-progress{
-  width:min(520px,90%);
-  height:7px;
-  background:white;
-  border:2px solid var(--navy);
-  border-radius:20px;
-  overflow:hidden;
-  margin-top:10px;
-}
-
-.sequence-progress-fill{
-  width:0%;
-  height:100%;
-  background:var(--red);
-  transition:.2s;
-}
-
-/* =========================
-   CONTROLS
-========================= */
-
-.controls{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  max-width:520px;
-  margin:25px auto 15px;
-}
-
-.control{
-  border:3px solid var(--navy);
-  background:white;
-  border-radius:20px;
-  min-height:60px;
-  font-size:24px;
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:4px 4px 0 var(--navy);
-  transition:.1s;
-}
-
-.control:hover{
-  transform:translateY(-3px);
-  background:var(--pink);
-}
-
-.control:active,
-.control.pressed{
-  transform:translate(3px,3px);
-  box-shadow:1px 1px 0 var(--navy);
-  background:var(--yellow);
-}
-
-.space{
-  grid-column:1/-1;
-  background:var(--yellow);
-  font-size:17px;
-}
-
-/* start */
-
-.game-start{
-  display:block;
-  margin:20px auto 0;
-  border:3px solid var(--navy);
-  background:var(--red);
-  color:white;
-  border-radius:22px;
-  padding:14px 28px;
-  font-size:18px;
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:5px 5px 0 var(--navy);
-  transition:.15s;
-}
-
-.game-start:hover{
-  transform:translate(2px,2px);
-  box-shadow:3px 3px 0 var(--navy);
-}
-
-.game-start:active{
-  transform:translate(5px,5px);
-  box-shadow:0 0 0 var(--navy);
-}
-
-/* =========================
-   COUNTDOWN
-========================= */
-
-.countdown{
-  position:absolute;
-  inset:0;
-  background:rgba(16,37,118,.9);
-  z-index:50;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  color:white;
-}
-
-.countdown.show{
-  display:flex;
-}
-
-.countdown-number{
-  font-family:"Sigmar";
-  font-size:110px;
-  line-height:1;
-  text-shadow:7px 7px 0 var(--red);
-  animation:countPop .7s ease;
-}
-
-.countdown-text{
-  font-size:18px;
-  margin-top:10px;
-  font-weight:700;
-}
-
-@keyframes countPop{
-  0%{
-    transform:scale(.3) rotate(-10deg);
-    opacity:0;
-  }
-  40%{
-    transform:scale(1.2) rotate(5deg);
-    opacity:1;
-  }
-  100%{
-    transform:scale(1) rotate(0);
-  }
-}
-
-/* =========================
-   RESULT
-========================= */
-
-.result{
-  display:none;
-  position:absolute;
-  inset:0;
-  background:rgba(255,249,233,.97);
-  z-index:60;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  text-align:center;
-  padding:30px;
-  overflow:hidden;
-}
-
-.result.show{
-  display:flex;
-  animation:resultIn .4s ease;
-}
-
-@keyframes resultIn{
-  from{
-    opacity:0;
-    transform:scale(1.08);
-  }
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
-}
-
-.result-badge{
-  background:var(--yellow);
-  border:3px solid var(--navy);
-  border-radius:30px;
-  padding:7px 16px;
-  font-size:13px;
-  font-weight:700;
-  box-shadow:4px 4px 0 var(--navy);
-  margin-bottom:12px;
-}
-
-.result h2{
-  font-family:"Sigmar";
-  color:var(--red);
-  font-size:50px;
-}
-
-.result-score{
-  font-size:25px;
-  margin:10px 0 5px;
-}
-
-.result-detail{
-  font-size:14px;
-  color:var(--navy);
-  font-weight:600;
-  margin-bottom:10px;
-}
-
-.new-record{
-  display:none;
-  color:#8A62D6;
-  font-family:"Sigmar";
-  font-size:25px;
-  margin:5px 0;
-  animation:recordPulse .7s infinite alternate;
-}
-
-.new-record.show{
-  display:block;
-}
-
-@keyframes recordPulse{
-  to{transform:scale(1.1) rotate(-2deg)}
-}
-
-/* =========================
-   PARTICLES
-========================= */
-
-.particle{
-  position:absolute;
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  pointer-events:none;
-  z-index:40;
-  animation:particleFly .8s ease-out forwards;
-}
-
-@keyframes particleFly{
-  0%{
-    opacity:1;
-    transform:translate(0,0) scale(1);
-  }
-  100%{
-    opacity:0;
-    transform:translate(var(--x),var(--y)) scale(.1) rotate(180deg);
-  }
-}
-
-.confetti{
-  position:absolute;
-  width:10px;
-  height:16px;
-  top:50%;
-  left:50%;
-  z-index:65;
-  pointer-events:none;
-  animation:confettiFly 1.2s ease-out forwards;
-}
-
-@keyframes confettiFly{
-  0%{
-    opacity:1;
-    transform:translate(-50%,-50%) rotate(0);
-  }
-  100%{
-    opacity:0;
-    transform:
-      translate(
-        calc(-50% + var(--x)),
-        calc(-50% + var(--y))
-      )
-      rotate(720deg);
-  }
-}
-
-/* =========================
-   GALLERY
-========================= */
-
-.gallery{
-  background:var(--navy);
-  color:white;
-}
-
-.gallery .section-title{
-  color:white;
-}
-
-.gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.photo{
-  min-height:220px;
-  border:4px solid white;
-  border-radius:30px;
-  background:var(--blue);
-  color:var(--navy);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:20px;
-  font-weight:700;
-  box-shadow:7px 7px 0 var(--red);
-  transition:.2s;
-}
-
-.photo:nth-child(2){
-  transform:rotate(2deg);
-  background:var(--pink);
-}
-
-.photo:nth-child(3){
-  transform:rotate(-2deg);
-  background:var(--yellow);
-}
-
-.photo:nth-child(4){
-  transform:rotate(-2deg);
-  background:white;
-}
-
-.photo:nth-child(5){
-  transform:rotate(2deg);
-  background:var(--pink);
-}
-
-.photo:hover{
-  transform:translateY(-8px) rotate(0);
-}
-
-/* =========================
-   CTA
-========================= */
-
-.cta{
-  padding:120px 7%;
-  background:var(--yellow);
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
-
-.cta h2{
-  font-family:"Sigmar";
-  color:var(--navy);
-  font-size:clamp(55px,8vw,100px);
-  line-height:.95;
-}
-
-.cta p{
-  font-size:22px;
-  margin:25px auto;
-  max-width:650px;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-  background:var(--navy);
-  color:white;
-  padding:35px 7%;
-  text-align:center;
-}
-
-footer img{
-  width:110px;
-  filter:brightness(0) invert(1);
-  margin-bottom:10px;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:800px){
-
-  .header{
-    top:8px;
-    width:94%;
-  }
-
-  .hero{
-    padding-top:140px;
-  }
-
-  .hero-inner{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
-
-  .hero-text{
-    margin-left:auto;
-    margin-right:auto;
-  }
-
-  .hero-buttons{
-    justify-content:center;
-  }
-
-  .hero-art{
-    min-height:400px;
-  }
-
-  .blob{
-    width:300px;
-    height:300px;
-  }
-
-  .dancer{
-    width:210px;
-    height:280px;
-    font-size:90px;
-  }
-
-  .beat-boxes{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .style-grid{
-    grid-template-columns:1fr;
-  }
-
-  .journey-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .gallery-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .game-top{
-    flex-direction:column;
-  }
-
-  .stats{
-    justify-content:flex-start;
-  }
-}
-
-@media(max-width:520px){
-
-  .section{
-    padding:80px 5%;
-  }
-
-  .hero{
-    padding-left:5%;
-    padding-right:5%;
-  }
-
-  .hero h1{
-    font-size:75px;
-  }
-
-  .hero h1 span{
-    margin-left:15px;
-  }
-
-  .journey-grid,
-  .gallery-grid{
-    grid-template-columns:1fr;
-  }
-
-  .game-card{
-    padding:20px;
-    border-radius:28px;
-  }
-
-  .game-title{
-    font-size:32px;
-  }
-
-  .stats{
-    gap:6px;
-  }
-
-  .stat{
-    font-size:12px;
-    padding:7px 9px;
-  }
-
-  .controls{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .space{
-    grid-column:1/-1;
-  }
-
-  .game-screen{
-    min-height:430px;
-  }
-
-  .feedback{
-    font-size:30px;
-  }
-
-  .combo-pop{
-    font-size:23px;
-  }
-
-  .countdown-number{
-    font-size:85px;
-  }
-
-  .result h2{
-    font-size:40px;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lịch học Vũ đạo | EPIC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Varela+Round:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #102576;
+      --red: #C9182B;
+      --gold: #E7C84A;
+      --cream: #FFF4F8;
+      --text: #252525;
+      --white: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Varela Round", sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    header {
+      position: relative;
+      z-index: 10;
+      background: #fff;
+      border-bottom: 3px solid var(--navy);
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo img {
+      width: 105px;
+      height: auto;
+      display: block;
+    }
+
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 11px 17px;
+      border: 2px solid var(--navy);
+      border-radius: 14px;
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 700;
+      background: #fff;
+      transition: .2s ease;
+    }
+
+    .back-home:hover {
+      color: #fff;
+      background: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      position: relative;
+      padding: 75px 0 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .decor {
+      position: absolute;
+      pointer-events: none;
+      font-weight: 400;
+    }
+
+    .decor.one {
+      top: 40px;
+      left: 7%;
+      color: var(--red);
+      font-size: 32px;
+      transform: rotate(-15deg);
+    }
+
+    .decor.two {
+      top: 120px;
+      right: 8%;
+      color: var(--gold);
+      font-size: 42px;
+      transform: rotate(12deg);
+    }
+
+    .decor.three {
+      bottom: 25px;
+      left: 15%;
+      color: var(--navy);
+      font-size: 24px;
+    }
+
+    .decor.four {
+      bottom: 35px;
+      right: 16%;
+      color: var(--red);
+      font-size: 25px;
+    }
+
+    .subject-icon {
+      width: 94px;
+      height: 94px;
+      margin: 0 auto 25px;
+      display: grid;
+      place-items: center;
+      background: #FAD7E6;
+      border: 3px solid var(--navy);
+      border-radius: 28px;
+      font-size: 47px;
+      box-shadow: 7px 7px 0 var(--navy);
+      transform: rotate(-3deg);
+      transition: .25s ease;
+    }
+
+    .subject-icon:hover {
+      transform: rotate(3deg) scale(1.04);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      font-family: "Sigmar", cursive;
+      font-size: clamp(42px, 7vw, 70px);
+      font-weight: 400;
+      line-height: 1.08;
+      color: var(--navy);
+    }
+
+    h1 span {
+      color: var(--red);
+    }
+
+    .hero-text {
+      max-width: 620px;
+      margin: 18px auto 0;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .classes {
+      padding: 20px 0 90px;
+    }
+
+    .class-list {
+      display: grid;
+      gap: 22px;
+    }
+
+    .class-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr .8fr auto;
+      align-items: center;
+      gap: 25px;
+      padding: 28px 30px;
+      background: #FAD7E6;
+      border: 3px solid var(--navy);
+      border-radius: 27px;
+      box-shadow: 8px 8px 0 var(--navy);
+      overflow: hidden;
+      transition: .25s ease;
+    }
+
+    .class-card:nth-child(2) {
+      background: #FCEAF2;
+    }
+
+    .class-card:nth-child(3) {
+      background: #F4B8D0;
+    }
+
+    .class-card:hover {
+      transform: translateY(-6px) rotate(-.4deg);
+      box-shadow: 11px 13px 0 var(--navy);
+    }
+
+    .class-card::after {
+      content: "✦";
+      position: absolute;
+      right: 22px;
+      top: 12px;
+      font-size: 30px;
+      color: var(--red);
+      opacity: .3;
+    }
+
+    .class-number {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      opacity: .5;
+    }
+
+    .class-name {
+      font-family: "Sigmar", cursive;
+      font-size: 27px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--navy);
+    }
+
+    .age {
+      margin-top: 8px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #777;
+    }
+
+    .time-day {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .time-hour {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .capacity {
+      padding: 12px 15px;
+      background: rgba(255,255,255,.65);
+      border: 2px solid var(--navy);
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .capacity-number {
+      display: block;
+      font-family: "Sigmar", cursive;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .capacity-left {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .register {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 15px;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: .2s ease;
+    }
+
+    .register:hover {
+      background: var(--red);
+      transform: translateY(-2px);
+    }
+
+    .register.full {
+      background: #777;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .note {
+      margin-top: 35px;
+      padding: 18px 22px;
+      background: #fff;
+      border: 2px dashed var(--navy);
+      border-radius: 18px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 28px 0;
+      background: var(--navy);
+      color: #fff;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      .class-card {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .register {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 28px, 500px);
+      }
+
+      .header-inner {
+        min-height: 68px;
+      }
+
+      .logo img {
+        width: 90px;
+      }
+
+      .back-home {
+        padding: 9px 12px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 55px 0 40px;
+      }
+
+      .subject-icon {
+        width: 75px;
+        height: 75px;
+        font-size: 37px;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      .hero-text {
+        font-size: 14px;
+      }
+
+      .classes {
+        padding-bottom: 65px;
+      }
+
+      .class-card {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 23px;
+        border-radius: 21px;
+        box-shadow: 6px 6px 0 var(--navy);
+      }
+
+      .class-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 7px 8px 0 var(--navy);
+      }
+
+      .register {
+        width: 100%;
+      }
+
+      .decor.one {
+        left: 2%;
+      }
+
+      .decor.two {
+        right: 2%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header class="header">
+<header>
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <img src="assets/logo1A.png" alt="EPIC">
+    </a>
 
-  <a href="index.html">
-    <img src="assets/logo1A.png" class="logo" alt="EPIC">
-  </a>
-
-  <a href="index.html#chuong-trinh" class="back">
-    ← Về EPIC
-  </a>
-
+    <a href="index.html" class="back-home">
+      ← Trang chủ
+    </a>
+  </div>
 </header>
 
+<main>
+  <section class="hero">
+    <span class="decor one">✦</span>
+    <span class="decor two">✧</span>
+    <span class="decor three">✦</span>
+    <span class="decor four">✧</span>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="eyebrow">
-        🎀 EPIC DANCE · LỚP HỌC VŨ ĐẠO · 04–18 TUỔI
-      </div>
+    <div class="container">
+      <div class="subject-icon">💃</div>
+
+      <span class="eyebrow">EPIC DANCE</span>
 
       <h1>
-        EPIC
-        <span>DANCE!</span>
+        Lịch học <span>Vũ đạo</span>
       </h1>
 
       <p class="hero-text">
-        Khám phá vũ đạo qua âm nhạc, chuyển động
-        và nghệ thuật biểu diễn. Chương trình tập trung
-        vào múa ruy băng, phù hợp theo từng độ tuổi.
+        Nơi các bạn nhỏ khám phá âm nhạc, rèn luyện sự tự tin,
+        cảm nhận nhịp điệu và tự do thể hiện cá tính
+        qua từng chuyển động.
       </p>
+    </div>
+  </section>
 
-      <div class="hero-buttons">
-        <a href="index.html#dang-ky" class="btn btn-primary">
-          ĐĂNG KÝ HỌC 🎀
-        </a>
+  <section class="classes">
+    <div class="container">
+      <div class="class-list">
 
-        <a href="#styles" class="btn btn-secondary">
-          XEM LỚP HỌC →
-        </a>
+        <article class="class-card" data-class-id="dance-01">
+          <div>
+            <span class="class-number">LỚP 01</span>
+            <h2 class="class-name">Vũ đạo Mầm non</h2>
+            <p class="age">Dành cho trẻ 4–6 tuổi</p>
+          </div>
+
+          <div>
+            <span class="label">THỜI GIAN</span>
+            <strong class="time-day">Thứ 7</strong>
+            <p class="time-hour">09:00 – 10:30</p>
+          </div>
+
+          <div class="capacity">
+            <span class="label">SĨ SỐ</span>
+            <strong class="capacity-number">7/10</strong>
+            <small class="capacity-left">Còn 3 chỗ</small>
+          </div>
+
+          <a href="index.html?classId=dance-01#dang-ky" class="register">
+            Đăng ký lớp →
+          </a>
+        </article>
+
+        <article class="class-card" data-class-id="dance-02">
+          <div>
+            <span class="class-number">LỚP 02</span>
+            <h2 class="class-name">Vũ đạo Thiếu nhi</h2>
+            <p class="age">Dành cho trẻ 7–10 tuổi</p>
+          </div>
+
+          <div>
+            <span class="label">THỜI GIAN</span>
+            <strong class="time-day">Chủ nhật</strong>
+            <p class="time-hour">09:00 – 10:30</p>
+          </div>
+
+          <div class="capacity">
+            <span class="label">SĨ SỐ</span>
+            <strong class="capacity-number">8/10</strong>
+            <small class="capacity-left">Còn 2 chỗ</small>
+          </div>
+
+          <a href="index.html?classId=dance-02#dang-ky" class="register">
+            Đăng ký lớp →
+          </a>
+        </article>
+
+        <article class="class-card" data-class-id="dance-03">
+          <div>
+            <span class="class-number">LỚP 03</span>
+            <h2 class="class-name">Vũ đạo Hiện đại</h2>
+            <p class="age">Dành cho trẻ 11–15 tuổi</p>
+          </div>
+
+          <div>
+            <span class="label">THỜI GIAN</span>
+            <strong class="time-day">Chủ nhật</strong>
+            <p class="time-hour">14:00 – 15:30</p>
+          </div>
+
+          <div class="capacity">
+            <span class="label">SĨ SỐ</span>
+            <strong class="capacity-number">6/10</strong>
+            <small class="capacity-left">Còn 4 chỗ</small>
+          </div>
+
+          <a href="index.html?classId=dance-03#dang-ky" class="register">
+            Đăng ký lớp →
+          </a>
+        </article>
+
+      </div>
+
+      <div class="note">
+        💡 Mỗi lớp được giới hạn sĩ số để giáo viên
+        có thể theo sát và hỗ trợ từng học viên.
       </div>
     </div>
+  </section>
+</main>
 
-    <div class="hero-art">
-      <div class="blob"></div>
-      <div class="dancer">🎀</div>
-      <div class="sticker star one">✦</div>
-      <div class="sticker heart two">♡</div>
-      <div class="sticker spark">✨</div>
-    </div>
-  </div>
-</section>
-
-
-<!-- MARQUEE -->
-<div class="marquee">
-  <div class="marquee-track">
-    VŨ ĐẠO <span>•</span>
-    KỸ THUẬT <span>•</span>
-    ÂM NHẠC <span>•</span>
-    BIỂU DIỄN <span>•</span>
-    EPIC DANCE <span>•</span>
-    VŨ ĐẠO <span>•</span>
-    KỸ THUẬT <span>•</span>
-    ÂM NHẠC <span>•</span>
-    BIỂU DIỄN <span>•</span>
-    EPIC DANCE <span>•</span>
-  </div>
-</div>
-
-
-<!-- BEAT -->
-<section class="section beat-section">
-  <div class="container beat-intro">
-    <div class="section-label">🎀 KHỞI ĐỘNG VŨ ĐẠO</div>
-
-    <h2 class="section-title">
-      FEEL THE <span>RHYTHM.</span>
-    </h2>
-
-    <p>
-      Chạm vào từng biểu tượng, cảm nhận nhịp điệu
-      và khám phá các chuyển động mềm mại trong vũ đạo.
-    </p>
-
-    <div class="beat-boxes">
-      <button class="beat instrument" data-sound="drum" type="button">
-        <span class="instrument-icon">〰️</span>
-        <small>WAVE</small>
-      </button>
-
-      <button class="beat instrument" data-sound="trumpet" type="button">
-        <span class="instrument-icon">🌀</span>
-        <small>SPIRAL</small>
-      </button>
-
-      <button class="beat instrument" data-sound="guitar" type="button">
-        <span class="instrument-icon">⭕</span>
-        <small>CIRCLE</small>
-      </button>
-
-      <button class="beat instrument" data-sound="piano" type="button">
-        <span class="instrument-icon">🎀</span>
-        <small>FLOW</small>
-      </button>
-    </div>
-
-    <div class="beat-line"></div>
-  </div>
-</section>
-
-
-<!-- STORY -->
-<section class="section story">
-  <div class="container">
-    <div class="section-label">🎀 VỀ EPIC DANCE</div>
-
-    <h2 class="section-title">
-      MỖI CHUYỂN ĐỘNG<br>
-      <span>MỘT CÂU CHUYỆN.</span>
-    </h2>
-
-    <p>
-      Rèn luyện cảm nhạc, phối hợp cơ thể và biểu cảm
-      qua các bài vũ đạo, với múa ruy băng là trọng tâm.
-    </p>
-
-    <br>
-
-    <p>
-      <strong>
-        VỮNG KỸ THUẬT.<br>
-        TỰ TIN BIỂU DIỄN.
-      </strong>
-    </p>
-  </div>
-</section>
-
-
-<!-- STYLES -->
-<section class="section styles" id="styles">
-  <div class="container">
-    <div class="section-label">🎀 CHƯƠNG TRÌNH ĐÀO TẠO</div>
-
-    <h2 class="section-title">
-      CHỌN HÀNH TRÌNH <span>VŨ ĐẠO!</span>
-    </h2>
-
-    <div class="style-grid">
-      <div class="style-card">
-        <div class="style-number">01</div>
-        <div class="style-icon">🌷</div>
-        <h3>NĂNG KHIẾU</h3>
-        <p>
-          Làm quen với vũ đạo, rèn nhịp điệu
-          và học các động tác múa ruy băng cơ bản.
-        </p>
-      </div>
-
-      <div class="style-card">
-        <div class="style-number">02</div>
-        <div class="style-icon">✨</div>
-        <h3>CHUYÊN SÂU</h3>
-        <p>
-          Nâng cao kỹ thuật, biểu cảm và phối hợp
-          động tác trong bài vũ đạo biểu diễn.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- AGE JOURNEY -->
-<section class="section journey">
-  <div class="container">
-    <div class="section-label">🌱 LỘ TRÌNH HỌC</div>
-
-    <h2 class="section-title">
-      GROW WITH <span>EPIC.</span>
-    </h2>
-
-    <div class="journey-grid">
-      <div class="age-card">
-        <div class="age-icon">🌼</div>
-        <div class="age">4–6 TUỔI</div>
-        <h3>START</h3>
-        <p>Làm quen ruy băng và nhịp điệu.</p>
-      </div>
-
-      <div class="age-card">
-        <div class="age-icon">🌈</div>
-        <div class="age">7–10 TUỔI</div>
-        <h3>LEARN</h3>
-        <p>Luyện động tác và phối hợp cơ thể.</p>
-      </div>
-
-      <div class="age-card">
-        <div class="age-icon">🦋</div>
-        <div class="age">11–14 TUỔI</div>
-        <h3>DEVELOP</h3>
-        <p>Phát triển kỹ thuật và biểu cảm.</p>
-      </div>
-
-      <div class="age-card">
-        <div class="age-icon">🌟</div>
-        <div class="age">15–18 TUỔI</div>
-        <h3>PERFORM</h3>
-        <p>Hoàn thiện bài múa và biểu diễn.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ======================================================
-     DANCE GAME
-====================================================== -->
-
-<section class="section game-section">
-
-  <div class="container">
-
-    <div class="section-label">
-      🎀 EPIC DANCE GAME
-    </div>
-
-    <h2 class="section-title">
-      DANCE <span>CHALLENGE!</span>
-    </h2>
-
-
-    <div class="game-card">
-
-      <div class="game-top">
-
-        <div>
-
-          <div class="game-title">
-            DANCE MIRROR 🎀
-          </div>
-
-          <p class="game-sub">
-            Ghi nhớ chuỗi → chọn đúng → giữ combo → lên level!
-          </p>
-
-        </div>
-
-
-        <div class="stats">
-
-          <div class="stat">
-            SCORE:
-            <strong id="score">0</strong>
-          </div>
-
-          <div class="stat">
-            COMBO:
-            <strong id="combo">0</strong>
-          </div>
-
-          <div class="stat">
-            LEVEL:
-            <strong id="level">1</strong>
-          </div>
-
-          <div class="stat">
-            TIME:
-            <strong id="time">30</strong>
-          </div>
-
-          <div class="stat best-stat">
-            BEST:
-            <strong id="bestScore">0</strong>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="game-screen" id="gameScreen">
-
-        <!-- ENERGY -->
-
-        <div class="energy-wrap">
-
-          <span>
-            ENERGY
-          </span>
-
-          <div class="energy-bar">
-
-            <div
-              class="energy-fill"
-              id="energyFill">
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- COMBO -->
-
-        <div
-          class="combo-pop"
-          id="comboPop">
-        </div>
-
-
-        <!-- FEEDBACK -->
-
-        <div
-          class="feedback"
-          id="feedback">
-        </div>
-
-
-        <!-- COUNTDOWN -->
-
-        <div
-          class="countdown"
-          id="countdown">
-
-          <div
-            class="countdown-number"
-            id="countdownNumber">
-            3
-          </div>
-
-          <div class="countdown-text">
-            SẴN SÀNG THỬ THÁCH VŨ ĐẠO!
-          </div>
-
-        </div>
-
-
-        <!-- CHARACTER -->
-
-        <div
-          class="game-character"
-          id="gameCharacter">
-
-          <div class="dancer-character">
-
-            <div class="dancer-hair">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-
-
-            <div class="dancer-head">
-
-              <div class="eye left"></div>
-              <div class="eye right"></div>
-
-              <div class="blush left"></div>
-              <div class="blush right"></div>
-
-              <div class="mouth">
-                ⌣
-              </div>
-
-            </div>
-
-
-            <div class="dancer-neck"></div>
-
-
-            <div class="dancer-body">
-
-              <div class="shirt-star">
-                ★
-              </div>
-
-            </div>
-
-
-            <div class="dancer-arm arm-left">
-
-              <div class="hand">
-                ♡
-              </div>
-
-            </div>
-
-
-            <div class="dancer-arm arm-right">
-
-              <div class="hand">
-                ♡
-              </div>
-
-            </div>
-
-
-            <div class="dancer-skirt"></div>
-
-
-            <div class="dancer-leg leg-left">
-
-              <div class="shoe"></div>
-
-            </div>
-
-
-            <div class="dancer-leg leg-right">
-
-              <div class="shoe"></div>
-
-            </div>
-
-          </div>
-
-
-          <div class="dancer-shadow"></div>
-
-        </div>
-
-
-        <!-- MESSAGE -->
-
-        <div
-          class="game-message"
-          id="gameMessage">
-
-          READY?
-
-        </div>
-
-
-        <div class="sequence-label">
-          CHUỖI ĐỘNG TÁC
-        </div>
-
-
-        <!-- SEQUENCE -->
-
-        <div
-          class="sequence"
-          id="sequence">
-        </div>
-
-
-        <!-- PROGRESS -->
-
-        <div class="sequence-progress">
-
-          <div
-            class="sequence-progress-fill"
-            id="sequenceProgress">
-          </div>
-
-        </div>
-
-
-        <!-- RESULT -->
-
-        <div
-          class="result"
-          id="result">
-
-          <div class="result-badge">
-            🎀 HOÀN THÀNH THỬ THÁCH
-          </div>
-
-          <h2 id="resultTitle">
-            PERFECT!
-          </h2>
-
-          <div
-            class="result-score"
-            id="resultScore">
-            Bạn đạt 0 điểm
-          </div>
-
-          <div
-            class="result-detail"
-            id="resultDetail">
-            Level 1 · Combo 0
-          </div>
-
-          <div
-            class="new-record"
-            id="newRecord">
-            🏆 NEW RECORD!
-          </div>
-
-          <button
-            class="game-start"
-            id="playAgain">
-
-            CHƠI LẠI 🎀
-
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <!-- CONTROLS -->
-
-      <div class="controls">
-
-        <button
-          class="control"
-          data-key="ArrowUp">
-          ↑
-        </button>
-
-        <button
-          class="control"
-          data-key="ArrowLeft">
-          ←
-        </button>
-
-        <button
-          class="control"
-          data-key="ArrowDown">
-          ↓
-        </button>
-
-        <button
-          class="control"
-          data-key="ArrowRight">
-          →
-        </button>
-
-        <button
-          class="control space"
-          data-key="Space">
-
-          SPACE — TẠO DÁNG! 💥
-
-        </button>
-
-      </div>
-
-
-      <!-- START -->
-
-      <button
-        class="game-start"
-        id="startGame">
-
-        ▶ BẮT ĐẦU THỬ THÁCH
-
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- GALLERY -->
-<section class="section gallery">
-
-  <div class="container">
-
-    <div class="section-label">
-      📸 EPIC MOMENTS
-    </div>
-
-    <h2 class="section-title">
-      LET'S <span>DANCE!</span>
-    </h2>
-
-    <div class="gallery-grid">
-
-      <div class="photo">
-        📷<br>
-        ẢNH LỚP VŨ ĐẠO
-      </div>
-
-      <div class="photo">
-        ⭐<br>
-        SHOWCASE
-      </div>
-
-      <div class="photo">
-        🎀<br>
-        DANCE TRAINING
-      </div>
-
-      <div class="photo">
-        ✨<br>
-        EPIC DANCE
-      </div>
-
-      <div class="photo">
-        ✨<br>
-        COMING SOON
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- CTA -->
-<section class="cta">
-
-  <div
-    class="sticker heart"
-    style="left:8%;top:25%;">
-    ♡
-  </div>
-
-  <div
-    class="sticker star"
-    style="right:8%;bottom:20%;">
-    ✦
-  </div>
-
-  <h2>
-    5, 6, 7, 8!<br>
-    LET'S DANCE.
-  </h2>
-
-  <p>
-    Sẵn sàng khám phá thế giới vũ đạo,
-    với múa ruy băng là nội dung học trọng tâm, cùng EPIC chưa?
-  </p>
-
-  <a
-    href="index.html#dang-ky"
-    class="btn btn-primary">
-
-    ĐĂNG KÝ HỌC 💛
-
-  </a>
-
-</section>
-
-
-<!-- FOOTER -->
 <footer>
-
-  <img
-    src="assets/logo1A.png"
-    alt="EPIC">
-
-  <p>
-    EPIC – Thỏa sức đam mê, khơi nguồn sáng tạo
-  </p>
-
-  <p style="margin-top:8px;font-size:13px;">
-    Trung tâm đào tạo năng khiếu dành cho trẻ em
-  </p>
-
+  © 2026 EPIC – Thỏa sức đam mê, tự tin tỏa sáng
 </footer>
 
-
-<script>
-
-/* =========================================================
-   FEEL THE BEAT — EPIC MINI BAND
-========================================================= */
-
-let epicAudio = null;
-
-function getEpicAudio(){
-
-  if(!epicAudio){
-
-    epicAudio =
-      new (window.AudioContext ||
-           window.webkitAudioContext)();
-
-  }
-
-  if(epicAudio.state === "suspended"){
-    epicAudio.resume();
-  }
-
-  return epicAudio;
-}
-
-/* =========================================================
-   EPIC DANCE MIRROR — GAME SOUNDS
-========================================================= */
-
-function gameTone(frequency, duration = 0.12, type = "sine", volume = 0.08){
-
-  const ctx = getEpicAudio();
-
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-
-  osc.type = type;
-
-  osc.frequency.setValueAtTime(
-    frequency,
-    ctx.currentTime
-  );
-
-  gain.gain.setValueAtTime(
-    volume,
-    ctx.currentTime
-  );
-
-  gain.gain.exponentialRampToValueAtTime(
-    0.001,
-    ctx.currentTime + duration
-  );
-
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-
-  osc.start();
-  osc.stop(
-    ctx.currentTime + duration
-  );
-}
-
-
-function gameMoveSound(key){
-
-  if(key === "ArrowLeft"){
-    gameTone(260, 0.10, "triangle", 0.07);
-  }
-
-  else if(key === "ArrowRight"){
-    gameTone(330, 0.10, "triangle", 0.07);
-  }
-
-  else if(key === "ArrowUp"){
-    gameTone(523.25, 0.12, "sine", 0.08);
-  }
-
-  else if(key === "ArrowDown"){
-    gameTone(196, 0.14, "sine", 0.09);
-  }
-
-  else if(key === "Space"){
-    gameTone(110, 0.18, "sine", 0.12);
-
-    setTimeout(()=>{
-      gameTone(220, 0.12, "triangle", 0.06);
-    }, 60);
-  }
-
-}
-
-
-function gameCorrectSound(){
-
-  gameTone(659.25, 0.10, "sine", 0.07);
-
-  setTimeout(()=>{
-    gameTone(783.99, 0.13, "sine", 0.06);
-  }, 70);
-
-}
-
-
-function gameMissSound(){
-
-  gameTone(140, 0.20, "sawtooth", 0.045);
-
-}
-
-
-function gameComboSound(){
-
-  gameTone(523.25, 0.10, "sine", 0.07);
-
-  setTimeout(()=>{
-    gameTone(659.25, 0.10, "sine", 0.07);
-  }, 80);
-
-  setTimeout(()=>{
-    gameTone(783.99, 0.18, "sine", 0.08);
-  }, 160);
-
-}
-/* =========================
-   DRUM
-========================= */
-
-function epicDrum(){
-
-  const ctx = getEpicAudio();
-
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-
-  osc.type = "sine";
-
-  osc.frequency.setValueAtTime(
-    150,
-    ctx.currentTime
-  );
-
-  osc.frequency.exponentialRampToValueAtTime(
-    55,
-    ctx.currentTime + 0.18
-  );
-
-  gain.gain.setValueAtTime(
-    0.8,
-    ctx.currentTime
-  );
-
-  gain.gain.exponentialRampToValueAtTime(
-    0.01,
-    ctx.currentTime + 0.18
-  );
-
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-
-  osc.start();
-
-  osc.stop(
-    ctx.currentTime + 0.2
-  );
-}
-
-
-/* =========================
-   BRASS
-========================= */
-
-/* =========================
-   BRASS
-========================= */
-
-function epicBrass(){
-
-  const ctx = getEpicAudio();
-
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-
-  osc.type = "square";
-
-  osc.frequency.setValueAtTime(
-    392,
-    ctx.currentTime
-  );
-
-  osc.frequency.setValueAtTime(
-    523.25,
-    ctx.currentTime + 0.08
-  );
-
-  osc.frequency.setValueAtTime(
-    659.25,
-    ctx.currentTime + 0.16
-  );
-
-  gain.gain.setValueAtTime(
-    0.12,
-    ctx.currentTime
-  );
-
-  gain.gain.exponentialRampToValueAtTime(
-    0.01,
-    ctx.currentTime + 0.35
-  );
-
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-
-  osc.start();
-  osc.stop(
-    ctx.currentTime + 0.36
-  );
-}
-
-/* =========================
-   GUITAR
-========================= */
-
-function epicGuitar(){
-
-  const ctx = getEpicAudio();
-
-  const notes = [
-    196,
-    246.94,
-    293.66
-  ];
-
-  notes.forEach((frequency,index)=>{
-
-    const osc =
-      ctx.createOscillator();
-
-    const gain =
-      ctx.createGain();
-
-    osc.type = "triangle";
-
-    osc.frequency.value =
-      frequency;
-
-    const start =
-      ctx.currentTime +
-      index * 0.025;
-
-    gain.gain.setValueAtTime(
-      0.16,
-      start
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-      0.01,
-      start + 0.65
-    );
-
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-
-    osc.start(start);
-
-    osc.stop(
-      start + 0.7
-    );
-
-  });
-}
-
-
-/* =========================
-   PIANO
-========================= */
-
-function epicPiano(){
-
-  const ctx = getEpicAudio();
-
-  const notes = [
-    261.63,
-    329.63,
-    392
-  ];
-
-  notes.forEach((frequency,index)=>{
-
-    const osc =
-      ctx.createOscillator();
-
-    const gain =
-      ctx.createGain();
-
-    osc.type = "sine";
-
-    osc.frequency.value =
-      frequency;
-
-    const start =
-      ctx.currentTime +
-      index * 0.08;
-
-    gain.gain.setValueAtTime(
-      0.2,
-      start
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-      0.01,
-      start + 0.6
-    );
-
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-
-    osc.start(start);
-
-    osc.stop(
-      start + 0.7
-    );
-
-  });
-}
-
-
-/* =========================
-   INSTRUMENT BUTTONS
-========================= */
-
-document
-  .querySelectorAll(".instrument")
-  .forEach(button=>{
-
-    button.addEventListener(
-      "click",
-      ()=>{
-
-        const sound =
-          button.dataset.sound;
-
-
-        if(sound === "drum"){
-          epicDrum();
+<!-- FIREBASE — CẬP NHẬT SĨ SỐ REAL-TIME -->
+<script type="module">
+  import {
+    db,
+    collection,
+    onSnapshot
+  } from "./firebase-config.js?v=4";
+
+  const classCards = document.querySelectorAll(".class-card");
+  const classesRef = collection(db, "classes");
+
+  onSnapshot(
+    classesRef,
+    (snapshot) => {
+      snapshot.forEach((docSnapshot) => {
+        const classId = docSnapshot.id;
+        const data = docSnapshot.data();
+
+        const card = document.querySelector(
+          `.class-card[data-class-id="${classId}"]`
+        );
+
+        if (!card) return;
+
+        const enrolled = Number(data.enrolled || 0);
+        const capacity = Number(data.capacity || 0);
+
+        const numberElement = card.querySelector(".capacity-number");
+        const leftElement = card.querySelector(".capacity-left");
+        const registerButton = card.querySelector(".register");
+
+        const isFull = capacity > 0 && enrolled >= capacity;
+
+        if (numberElement) {
+          numberElement.textContent = `${enrolled}/${capacity}`;
         }
 
-        if(sound === "trumpet"){
-          epicBrass();
+        if (leftElement) {
+          if (isFull) {
+            leftElement.textContent = "LỚP ĐÃ ĐẦY";
+          } else {
+            leftElement.textContent =
+              `Còn ${Math.max(capacity - enrolled, 0)} chỗ`;
+          }
         }
 
-        if(sound === "guitar"){
-          epicGuitar();
+        if (registerButton) {
+          if (isFull) {
+            registerButton.textContent = "LỚP ĐÃ ĐẦY";
+            registerButton.classList.add("full");
+            registerButton.removeAttribute("href");
+          } else {
+            registerButton.textContent = "Đăng ký lớp →";
+            registerButton.classList.remove("full");
+            registerButton.href =
+              `index.html?classId=${classId}#dang-ky`;
+          }
         }
-
-        if(sound === "piano"){
-          epicPiano();
-        }
-
-
-        /* Animation */
-
-        button.classList.remove(
-          "playing"
-        );
-
-        void button.offsetWidth;
-
-        button.classList.add(
-          "playing"
-        );
-
-
-        setTimeout(()=>{
-
-          button.classList.remove(
-            "playing"
-          );
-
-        },400);
-
-
-        /* Floating music note */
-
-        const note =
-          document.createElement(
-            "span"
-          );
-
-        note.className =
-          "beat-note";
-
-        const notes = [
-          "♪",
-          "♫",
-          "✦",
-          "♬"
-        ];
-
-        note.textContent =
-          notes[
-            Math.floor(
-              Math.random() *
-              notes.length
-            )
-          ];
-
-
-        note.style.setProperty(
-          "--note-x",
-          `${Math.random()*60-30}px`
-        );
-
-
-        button.appendChild(
-          note
-        );
-
-
-        setTimeout(()=>{
-
-          note.remove();
-
-        },800);
-
-      }
-    );
-
-  });
-
-
-/* =========================================================
-   DANCE MIRROR — WOW ENGINE
-========================================================= */
-
-const moves = [
-  "ArrowLeft",
-  "ArrowUp",
-  "ArrowRight",
-  "ArrowDown",
-  "Space"
-];
-
-const symbols = {
-
-  ArrowLeft:"←",
-  ArrowUp:"↑",
-  ArrowRight:"→",
-  ArrowDown:"↓",
-  Space:"●"
-
-};
-
-
-/* =========================
-   GAME STATE
-========================= */
-
-let sequence = [];
-let currentStep = 0;
-
-let score = 0;
-let combo = 0;
-let maxCombo = 0;
-
-let level = 1;
-
-let timeLeft = 30;
-
-let energy = 100;
-
-let playing = false;
-let acceptingInput = false;
-
-let timer = null;
-let countdownTimer = null;
-let nextLevelTimer = null;
-
-let sequenceStartTime = 0;
-
-let bestScore = Number(
-  localStorage.getItem("epicDanceHighScore") || 0
-);
-
-
-/* =========================
-   ELEMENTS
-========================= */
-
-const scoreEl =
-  document.getElementById("score");
-
-const comboEl =
-  document.getElementById("combo");
-
-const levelEl =
-  document.getElementById("level");
-
-const timeEl =
-  document.getElementById("time");
-
-const bestScoreEl =
-  document.getElementById("bestScore");
-
-const energyFill =
-  document.getElementById("energyFill");
-
-const sequenceEl =
-  document.getElementById("sequence");
-
-const sequenceProgress =
-  document.getElementById("sequenceProgress");
-
-const messageEl =
-  document.getElementById("gameMessage");
-
-const characterEl =
-  document.getElementById("gameCharacter");
-
-const gameScreen =
-  document.getElementById("gameScreen");
-
-const startBtn =
-  document.getElementById("startGame");
-
-const resultEl =
-  document.getElementById("result");
-
-const resultTitle =
-  document.getElementById("resultTitle");
-
-const resultScore =
-  document.getElementById("resultScore");
-
-const resultDetail =
-  document.getElementById("resultDetail");
-
-const newRecordEl =
-  document.getElementById("newRecord");
-
-const playAgain =
-  document.getElementById("playAgain");
-
-const comboPop =
-  document.getElementById("comboPop");
-
-const feedbackEl =
-  document.getElementById("feedback");
-
-const countdownEl =
-  document.getElementById("countdown");
-
-const countdownNumber =
-  document.getElementById("countdownNumber");
-
-
-/* =========================
-   BEST SCORE
-========================= */
-
-function updateBest(){
-
-  bestScoreEl.textContent =
-    bestScore;
-
-}
-
-
-/* =========================
-   RANDOM SEQUENCE
-========================= */
-
-function createSequence(){
-
-  sequence = [];
-
-  /*
-    Level 1 = 4 moves
-    Level 2 = 5
-    ...
-    Maximum = 10
-  */
-
-  const length =
-    Math.min(3 + level,10);
-
-
-  for(let i=0;i<length;i++){
-
-    let move;
-
-    do{
-
-      move =
-        moves[
-          Math.floor(
-            Math.random()*moves.length
-          )
-        ];
-
+      });
+    },
+    (error) => {
+      console.error("EPIC CLASSES ERROR:", error);
     }
-
-    while(
-
-      i >= 2 &&
-      sequence[i-1] === move &&
-      sequence[i-2] === move
-
-    );
-
-
-    sequence.push(move);
-
-  }
-
-
-  currentStep = 0;
-
-  sequenceStartTime =
-    performance.now();
-
-  renderSequence();
-
-}
-
-
-/* =========================
-   RENDER SEQUENCE
-========================= */
-
-function renderSequence(){
-
-  sequenceEl.innerHTML = "";
-
-
-  sequence.forEach((move,index)=>{
-
-    const item =
-      document.createElement("div");
-
-    item.className =
-      "seq-item";
-
-
-    if(index === currentStep){
-
-      item.classList.add(
-        "current"
-      );
-
-    }
-
-
-    if(index < currentStep){
-
-      item.classList.add(
-        "done"
-      );
-
-      item.textContent = "✓";
-
-    }
-    else{
-
-      item.textContent =
-        symbols[move];
-
-    }
-
-
-    sequenceEl.appendChild(item);
-
-  });
-
-
-  updateSequenceProgress();
-
-}
-
-
-/* =========================
-   PROGRESS
-========================= */
-
-function updateSequenceProgress(){
-
-  if(!sequence.length){
-
-    sequenceProgress.style.width =
-      "0%";
-
-    return;
-
-  }
-
-
-  const percent =
-    (currentStep / sequence.length) * 100;
-
-
-  sequenceProgress.style.width =
-    percent + "%";
-
-}
-
-
-/* =========================
-   STATS
-========================= */
-
-function updateStats(){
-
-  scoreEl.textContent =
-    score;
-
-  comboEl.textContent =
-    combo;
-
-  levelEl.textContent =
-    level;
-
-  timeEl.textContent =
-    timeLeft;
-
-  bestScoreEl.textContent =
-    bestScore;
-
-
-  if(timeLeft <= 5){
-
-    timeEl.style.color =
-      "var(--red)";
-
-  }
-  else{
-
-    timeEl.style.color =
-      "";
-
-  }
-
-
-  energyFill.style.width =
-    Math.max(0,energy) + "%";
-
-
-  if(energy <= 25){
-
-    energyFill.style.background =
-      "var(--red)";
-
-  }
-  else if(energy <= 50){
-
-    energyFill.style.background =
-      "var(--yellow)";
-
-  }
-  else{
-
-    energyFill.style.background =
-      "linear-gradient(90deg,var(--red),var(--yellow))";
-
-  }
-
-}
-
-
-/* =========================
-   MESSAGE
-========================= */
-
-function showMessage(text){
-
-  messageEl.textContent =
-    text;
-
-}
-
-
-/* =========================
-   FEEDBACK
-========================= */
-
-function showFeedback(
-  text,
-  type=""
-){
-
-  feedbackEl.textContent =
-    text;
-
-  feedbackEl.className =
-    "feedback " + type;
-
-  /*
-    Force animation restart
-  */
-
-  void feedbackEl.offsetWidth;
-
-  feedbackEl.classList.add(
-    "show"
   );
-
-}
-
-
-/* =========================
-   COMBO POP
-========================= */
-
-function showComboPop(text){
-
-  comboPop.textContent =
-    text;
-
-  comboPop.classList.remove(
-    "show"
-  );
-
-  void comboPop.offsetWidth;
-
-  comboPop.classList.add(
-    "show"
-  );
-
-}
-
-
-/* =========================
-   PARTICLES
-========================= */
-
-function createParticles(
-  amount=14
-){
-
-  const rect =
-    gameScreen.getBoundingClientRect();
-
-
-  for(let i=0;i<amount;i++){
-
-    const particle =
-      document.createElement("div");
-
-    particle.className =
-      "particle";
-
-
-    const x =
-      (Math.random()-.5)*280;
-
-    const y =
-      (Math.random()-.5)*180;
-
-
-    particle.style.left =
-      "50%";
-
-    particle.style.top =
-      "48%";
-
-    particle.style.setProperty(
-      "--x",
-      x + "px"
-    );
-
-    particle.style.setProperty(
-      "--y",
-      y + "px"
-    );
-
-
-    particle.style.background =
-      [
-        "var(--red)",
-        "var(--yellow)",
-        "var(--navy)",
-        "white",
-        "#CDBBFF"
-      ][
-        Math.floor(
-          Math.random()*5
-        )
-      ];
-
-
-    particle.style.width =
-      (6 + Math.random()*7) + "px";
-
-    particle.style.height =
-      (6 + Math.random()*7) + "px";
-
-
-    gameScreen.appendChild(
-      particle
-    );
-
-
-    setTimeout(()=>{
-      particle.remove();
-    },850);
-
-  }
-
-}
-
-
-/* =========================
-   CONFETTI
-========================= */
-
-function createConfetti(
-  amount=45
-){
-
-  for(let i=0;i<amount;i++){
-
-    const confetti =
-      document.createElement("div");
-
-    confetti.className =
-      "confetti";
-
-
-    const x =
-      (Math.random()-.5)*650;
-
-    const y =
-      (Math.random()-.5)*500;
-
-
-    confetti.style.setProperty(
-      "--x",
-      x + "px"
-    );
-
-    confetti.style.setProperty(
-      "--y",
-      y + "px"
-    );
-
-
-    confetti.style.background =
-      [
-        "var(--red)",
-        "var(--yellow)",
-        "var(--navy)",
-        "var(--pink)",
-        "var(--purple)"
-      ][
-        Math.floor(
-          Math.random()*5
-        )
-      ];
-
-
-    confetti.style.transform =
-      "rotate(" +
-      Math.random()*360 +
-      "deg)";
-
-
-    resultEl.appendChild(
-      confetti
-    );
-
-
-    setTimeout(()=>{
-      confetti.remove();
-    },1300);
-
-  }
-
-}
-
-
-/* =========================
-   ENERGY
-========================= */
-
-function changeEnergy(amount){
-
-  energy =
-    Math.max(
-      0,
-      Math.min(
-        100,
-        energy + amount
-      )
-    );
-
-
-  updateStats();
-
-
-  if(
-    energy <= 0 &&
-    playing
-  ){
-
-    showMessage(
-      "OUT OF ENERGY! 😵"
-    );
-
-    setTimeout(()=>{
-      endGame("energy");
-    },300);
-
-  }
-
-}
-
-
-/* =========================
-   DANCER MOVE
-========================= */
-
-function dancerAnimation(
-  key
-){
-
-  /*
-    Remove only movement classes.
-    Do NOT cancel the idle animation
-    on .dancer-character.
-  */
-
-  characterEl.classList.remove(
-    "move-left",
-    "move-right",
-    "move-up",
-    "move-down",
-    "move-space",
-    "hit",
-    "miss",
-    "level-up"
-  );
-
-
-  void characterEl.offsetWidth;
-
-
-  if(key === "ArrowLeft"){
-
-    characterEl.classList.add(
-      "move-left"
-    );
-
-  }
-
-  else if(key === "ArrowRight"){
-
-    characterEl.classList.add(
-      "move-right"
-    );
-
-  }
-
-  else if(key === "ArrowUp"){
-
-    characterEl.classList.add(
-      "move-up"
-    );
-
-  }
-
-  else if(key === "ArrowDown"){
-
-    characterEl.classList.add(
-      "move-down"
-    );
-
-  }
-
-  else if(key === "Space"){
-
-    characterEl.classList.add(
-      "move-space"
-    );
-
-  }
-
-
-  characterEl.classList.add(
-    "hit"
-  );
-
-
-  setTimeout(()=>{
-
-    characterEl.classList.remove(
-      "hit"
-    );
-
-  },400);
-
-}
-
-
-/* =========================
-   MISS
-========================= */
-
-function missAnimation(){
-
-  characterEl.classList.remove(
-    "miss"
-  );
-
-  void characterEl.offsetWidth;
-
-  characterEl.classList.add(
-    "miss"
-  );
-
-  setTimeout(()=>{
-
-    characterEl.classList.remove(
-      "miss"
-    );
-
-  },320);
-
-}
-
-
-/* =========================
-   START COUNTDOWN
-========================= */
-
-function startCountdown(){
-
-  countdownEl.classList.add(
-    "show"
-  );
-
-
-  const numbers =
-    ["3","2","1","GO!"];
-
-  let index = 0;
-
-
-  countdownNumber.textContent =
-    numbers[index];
-
-
-  countdownTimer =
-    setInterval(()=>{
-
-      index++;
-
-
-      if(index >= numbers.length){
-
-        clearInterval(
-          countdownTimer
-        );
-
-        countdownEl.classList.remove(
-          "show"
-        );
-
-        beginActualGame();
-
-        return;
-
-      }
-
-
-      countdownNumber.textContent =
-        numbers[index];
-
-
-      countdownNumber.style.animation =
-        "none";
-
-      void countdownNumber.offsetWidth;
-
-      countdownNumber.style.animation =
-        "countPop .7s ease";
-
-    },700);
-
-}
-
-
-/* =========================
-   ACTUAL GAME START
-========================= */
-
-function beginActualGame(){
-
-  playing = true;
-
-  acceptingInput = true;
-
-  gameScreen.classList.add(
-    "playing"
-  );
-
-  startBtn.textContent =
-    "↻ ĐANG THỬ THÁCH...";
-
-  showMessage(
-    "ĐẾN LƯỢT BẠN! 🎀"
-  );
-
-
-  createSequence();
-
-
-  timer =
-    setInterval(()=>{
-
-      timeLeft--;
-
-      updateStats();
-
-
-      if(timeLeft <= 0){
-
-        endGame("time");
-
-      }
-
-    },1000);
-
-}
-
-
-/* =========================
-   START GAME
-========================= */
-
-function startGame(){
-
-  clearInterval(timer);
-
-  clearInterval(countdownTimer);
-
-  clearTimeout(nextLevelTimer);
-
-
-  score = 0;
-
-  combo = 0;
-
-  maxCombo = 0;
-
-  level = 1;
-
-  timeLeft = 30;
-
-  energy = 100;
-
-
-  playing = false;
-
-  acceptingInput = false;
-
-
-  resultEl.classList.remove(
-    "show"
-  );
-
-  newRecordEl.classList.remove(
-    "show"
-  );
-
-
-  gameScreen.classList.remove(
-    "playing"
-  );
-
-
-  startBtn.textContent =
-    "GET READY...";
-
-
-  updateStats();
-
-
-  showMessage(
-    "SẴN SÀNG! 🎀"
-  );
-
-
-  startCountdown();
-
-}
-
-
-/* =========================
-   END GAME
-========================= */
-
-function endGame(reason="time"){
-
-  if(!playing && !acceptingInput){
-
-    /*
-      Prevent duplicate endings
-      during countdown/result state.
-    */
-
-  }
-
-
-  playing = false;
-
-  acceptingInput = false;
-
-
-  clearInterval(timer);
-
-  clearInterval(countdownTimer);
-
-  clearTimeout(nextLevelTimer);
-
-
-  gameScreen.classList.remove(
-    "playing"
-  );
-
-
-  startBtn.textContent =
-    "▶ BẮT ĐẦU THỬ THÁCH";
-
-
-  /*
-    High score
-  */
-
-  let isNewRecord = false;
-
-
-  if(score > bestScore){
-
-    bestScore = score;
-
-    localStorage.setItem(
-      "epicDanceHighScore",
-      bestScore
-    );
-
-    isNewRecord = true;
-
-  }
-
-
-  updateBest();
-
-
-  /*
-    Rank
-  */
-
-  let rank = "";
-
-
-  if(score >= 1800){
-
-    rank =
-      "🔥 DANCE LEGEND";
-
-  }
-
-  else if(score >= 1100){
-
-    rank =
-      "⭐ EPIC SUPERSTAR";
-
-  }
-
-  else if(score >= 700){
-
-    rank =
-      "🎀 DANCE MASTER";
-
-  }
-
-  else if(score >= 350){
-
-    rank =
-      "✨ DANCE CREATOR";
-
-  }
-
-  else{
-
-    rank =
-      "🌱 DANCE STARTER";
-
-  }
-
-
-  if(reason === "energy"){
-
-    resultTitle.textContent =
-      "KEEP DANCING! 💗";
-
-  }
-  else{
-
-    resultTitle.textContent =
-      rank;
-
-  }
-
-
-  resultScore.textContent =
-    "Bạn đạt " +
-    score +
-    " điểm";
-
-
-  resultDetail.textContent =
-    "Level " +
-    level +
-    " · Max Combo x" +
-    maxCombo;
-
-
-  if(isNewRecord){
-
-    newRecordEl.classList.add(
-      "show"
-    );
-
-    setTimeout(()=>{
-      createConfetti(55);
-    },100);
-
-  }
-  else{
-
-    newRecordEl.classList.remove(
-      "show"
-    );
-
-  }
-
-
-  resultEl.classList.add(
-    "show"
-  );
-
-}
-
-
-/* =========================
-   LEVEL UP
-========================= */
-
-function nextLevel(){
-
-  acceptingInput = false;
-
-
-  level++;
-
-
-  /*
-    Level bonus
-  */
-
-  score +=
-    100 * level;
-
-
-  /*
-    Keep combo alive
-  */
-
-  combo += 2;
-
-  maxCombo =
-    Math.max(
-      maxCombo,
-      combo
-    );
-
-
-  /*
-    Recover energy
-  */
-
-  energy =
-    Math.min(
-      100,
-      energy + 12
-    );
-
-
-  showMessage(
-    "LEVEL " +
-    level +
-    "! 🌟"
-  );
-
-
-  showComboPop(
-    "LEVEL UP!"
-  );
-
-
-  updateStats();
-
-
-  characterEl.classList.add(
-    "level-up"
-  );
-
-
-  createParticles(24);
-
-
-  setTimeout(()=>{
-
-    characterEl.classList.remove(
-      "level-up"
-    );
-
-  },750);
-
-
-  nextLevelTimer =
-    setTimeout(()=>{
-
-      if(playing){
-
-        createSequence();
-
-        acceptingInput = true;
-
-        showMessage(
-          "NEW COMBO! 🔥"
-        );
-
-      }
-
-    },850);
-
-}
-
-
-/* =========================
-   CALCULATE ACCURACY
-========================= */
-
-function getTimingQuality(){
-
-  const now =
-    performance.now();
-
-  const elapsed =
-    now - sequenceStartTime;
-
-
-  /*
-    Faster response = better.
-    Still generous for children.
-  */
-
-  if(elapsed < 1200){
-
-    return "PERFECT";
-
-  }
-
-  if(elapsed < 2200){
-
-    return "GREAT";
-
-  }
-
-  return "GOOD";
-
-}
-
-
-/* =========================
-   CHECK MOVE
-========================= */
-
-function checkMove(key){
-
-  if(
-    !playing ||
-    !acceptingInput
-  ){
-
-    return;
-
-  }
-
-
-  const expected =
-    sequence[currentStep];
-
-
-  /*
-    CORRECT
-  */
-
-  if(key === expected){
-gameMoveSound(key);
-gameCorrectSound();
-    const quality =
-      getTimingQuality();
-
-
-    currentStep++;
-
-
-    combo++;
-
-
-    maxCombo =
-      Math.max(
-        maxCombo,
-        combo
-      );
-
-
-    /*
-      Score
-    */
-
-    let points = 10;
-
-
-    if(quality === "PERFECT"){
-
-      points = 30;
-
-    }
-
-    else if(quality === "GREAT"){
-
-      points = 20;
-
-    }
-
-
-    /*
-      Combo bonus
-    */
-
-    points +=
-      Math.min(
-        combo * 2,
-        50
-      );
-
-
-    /*
-      Higher level bonus
-    */
-
-    points +=
-      (level - 1) * 3;
-
-
-    score +=
-      points;
-
-
-    /*
-      Energy reward
-    */
-
-    changeEnergy(
-      combo >= 5 ? 5 : 3
-    );
-
-
-    dancerAnimation(
-      key
-    );
-
-
-    /*
-      Feedback
-    */
-
-    showFeedback(
-      quality === "PERFECT"
-        ? "PERFECT! ✨"
-        : quality === "GREAT"
-        ? "GREAT! ⭐"
-        : "GOOD! 💗",
-      quality.toLowerCase()
-    );
-
-
-    if(combo >= 3){
-
-      showMessage(
-        "COMBO x" +
-        combo +
-        " 🔥"
-      );
-
-    }
-    else{
-
-      showMessage(
-        "NICE MOVE! ✨"
-      );
-
-    }
-
-
-    /*
-      Big combo effects
-    */
-
-    if(combo > 0 && combo % 5 === 0){
-
-      showComboPop(
-        "COMBO x" +
-        combo +
-        " 🔥"
-      );
-
-
-      createParticles(
-        18
-      );
-
-    }
-
-
-    /*
-      Perfect particle
-    */
-
-    if(
-      quality === "PERFECT"
-    ){
-
-      createParticles(
-        12
-      );
-
-    }
-
-
-    renderSequence();
-
-    updateStats();
-
-
-    /*
-      SEQUENCE COMPLETE
-    */
-
-    if(
-      currentStep >=
-      sequence.length
-    ){
-gameComboSound();
-      acceptingInput = false;
-
-
-      showFeedback(
-        "FULL COMBO! 🎉",
-        "perfect"
-      );
-
-
-      createParticles(
-        28
-      );
-
-
-      setTimeout(()=>{
-
-        if(playing){
-
-          nextLevel();
-
-        }
-
-      },400);
-
-    }
-
-  }
-
-  /*
-    WRONG
-  */
-
-  else{
-
-  gameMissSound();
-
-  combo = 0;
-
-
-    /*
-      Lose energy
-    */
-
-    changeEnergy(
-      -15
-    );
-
-
-    missAnimation();
-
-
-    showFeedback(
-      "MISS! 💗",
-      "miss"
-    );
-
-
-    showMessage(
-      "TRY AGAIN! 👀"
-    );
-
-
-    updateStats();
-
-
-    /*
-      If energy did not kill game,
-      keep playing.
-    */
-
-    if(
-      energy > 0 &&
-      playing
-    ){
-
-      renderSequence();
-
-    }
-
-  }
-
-}
-
-
-/* =========================================================
-   KEYBOARD
-========================================================= */
-
-document.addEventListener(
-  "keydown",
-  (event)=>{
-
-    let key = null;
-
-
-    if(event.code === "Space"){
-
-      key = "Space";
-
-    }
-
-    else if(
-      moves.includes(event.key)
-    ){
-
-      key = event.key;
-
-    }
-
-
-    if(key){
-
-      event.preventDefault();
-
-
-      /*
-        Avoid repeated keydown
-        when key is held.
-      */
-
-      if(event.repeat){
-
-        return;
-
-      }
-
-
-      checkMove(
-        key
-      );
-
-
-      const button =
-        document.querySelector(
-          '.control[data-key="' +
-          key +
-          '"]'
-        );
-
-
-      if(button){
-
-        button.classList.add(
-          "pressed"
-        );
-
-
-        setTimeout(()=>{
-
-          button.classList.remove(
-            "pressed"
-          );
-
-        },150);
-
-      }
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   BUTTON CONTROLS
-========================================================= */
-
-document
-  .querySelectorAll(".control")
-  .forEach(button=>{
-
-    button.addEventListener(
-      "click",
-      ()=>{
-
-        const key =
-          button.dataset.key;
-
-
-        button.classList.add(
-          "pressed"
-        );
-
-
-        setTimeout(()=>{
-
-          button.classList.remove(
-            "pressed"
-          );
-
-        },150);
-
-
-        checkMove(
-          key
-        );
-
-      }
-    );
-
-  });
-
-
-/* =========================================================
-   START BUTTON
-========================================================= */
-
-startBtn.addEventListener(
-  "click",
-  startGame
-);
-
-
-/* =========================================================
-   PLAY AGAIN
-========================================================= */
-
-playAgain.addEventListener(
-  "click",
-  startGame
-);
-
-
-/* =========================================================
-   INITIAL SCREEN
-========================================================= */
-
-updateBest();
-
-createSequence();
-
-updateStats();
-
-showMessage(
-  "READY? 💗"
-);
-
 </script>
 
 </body>
