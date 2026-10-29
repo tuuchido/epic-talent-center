@@ -168,11 +168,12 @@ p{
     min-width:150px;
 }
 
-.brand img{
-    width:118px;
-    height:auto;
-    max-height:62px;
-    object-fit:contain;
+.brand img {
+    display: block;
+    width: 118px;
+    height: 62px;
+    object-fit: contain;
+    object-position: center;
 }
 
 .brand-fallback{
