@@ -5975,3 +5975,25 @@ h6 {
         padding: 22px;
     }
 }
+/* Ảnh trong mục Hoạt động & thành tích */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 16px;
+}
+
+.gallery-item b {
+    display: block;
+    position: relative;
+    margin-top: 14px;
+    text-align: center;
+    line-height: 1.5;
+}
